@@ -1,0 +1,45 @@
+/* Jaden's code for fonts - start*/
+
+.comicsans {
+	  font-family: Comic Sans MS, Comic Sans, "comicsans";
+	  src: ('fonts/comic.ttf') format:('truetype'),
+	  src: url('fonts/comic.woff') format:('woff'),
+	  src: url('fonts/comic.woff2') format:('woff2');
+}
+.papyrus {
+	font-family: 'papyrus';
+    src: url('fonts/papyrus-webfont.woff2') format:('woff2'),
+    src: url('fonts/papyrus-webfont.woff') format:('woff'),
+	src: url('fonts/papyrus-webfont.ttf') format:('truetype'),
+	src: url('fonts/comic.otf') format:('opentype'),
+	src: url('fonts/comic.svg') format:('svg');
+}
+.arial {
+	font-family: Arial;
+}
+.dtm-mono {
+	font-family: 'dtm-mono';
+    src: url('fonts/dtm-mono-webfont.woff2') format:('woff2'),
+    src: url('fonts/dtm-mono-webfont.woff') format:('woff'),
+	src: url('fonts/DTM-mono.otf') format:('opentype');
+}
+.dtm-sans {
+	font-family: 'dtm-sans';
+	src: url('fonts/DTM-sans.otf') format:('opentype');
+	src: url('fonts/dtm-sans-webfont.woff2') format:('woff2'),
+    src: url('fonts/dtm-sans-webfont.woff') format:('woff');
+}
+.aster  {
+	font-family: 'Gaster-Regular';
+	src: url('fonts/new-aster.otf') format:('opentype'),
+    src: url('fonts/new-aster-webfont.woff2') format:('woff2'),
+    src: url('fonts/new-aster-webfont.woff') format:('woff');
+}
+.wingdings {
+	font-family: 'Wing-Ding-Gaster';
+	src: url('fonts/wingdings-pixelated-webfont.ttf') format:('truetype'),
+    src: url('fonts/wingdings-pixelated-webfont.woff2') format:('woff2'),
+    src: url('fonts/wingdings-pixelated-webfont.woff') format:('woff'),
+	src: url('fonts/wingdings-pixelated-webfont.svg') format:('svg');
+}
+/* Jaden's code for fonts - end*/

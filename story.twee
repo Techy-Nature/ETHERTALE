@@ -1,0 +1,160 @@
+:: StoryTitle
+
+FutureTale
+
+:: StorySubtitle
+Prologue: Starship Stowaway
+v.0.01
+
+Today is <<printfulldate>>. 
+It is <<printtime12hr>> o'clock.
+
+<<if $Frisk.inv.itemcounter gte 1>>[[Inventory]]<</if>>
+[[Character Description]]
+
+:: StoryInit [nobr]
+
+<<set $now = new Date(2050, 4, 1, 14, 30, 0)>>
+<<silently>><<set $Frisk to {}>>
+<<set $Frisk.equipped to {itemcounter: 0, head: "nothing", torso: "striped purple sweater and blue jeanshorts", feet: "dark brown sneakers"}>>
+<<set $Frisk.weapon to {limit: 1, itemcounter: 0, has: "nothing"}>>
+<<set $Frisk.inv to {limit: 10, itemcounter: 0, has: "nothing"}>>
+<<set $Frisk.inv.wearable to []>>
+<<set $Frisk.inv.equippable to []>><</silently>>
+<<set $Frisk.age to 17>>
+
+<<set
+	window.GameDays to [
+		"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"
+	];
+	window.GameMonths to [
+		"Jan", "Feb", "Mar", "Apr", "May", "Jun",
+		"Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+	];>>
+
+:: StoryData
+{
+        "ifid": "2FBC0655-AEE8-4AE6-AEA1-FE7A9EED763E"
+}
+
+:: Time Widgets [widget nobr]
+/*Adds the specified number of minutes. */
+<<widget "addmins">>
+<<run $now.setMinutes($now.getMinutes() + $args[0])>>
+<</widget>>
+/* Adds the specified number of hours. */
+<<widget "addhours">>
+<<run $now.setHours($now.getHours() + $args[0])>>
+<</widget>>
+
+/* Adds the specified number of days. */
+<<widget "adddays">>
+<<run $now.setHours($now.getHours() + $args[0] * 24)>>
+<</widget>>
+
+<<widget "printtime">><<print $now.getHours() + ':'>><<if $now.getMinutes() lt 10>><<print '0'>><</if>><<print $now.getMinutes()>><</widget>>
+
+<<widget "printfulldate">>/* Prints the current date ("{weekday} {month} {day}, {year}"). */
+<<print String.format("{0} {1} {2}, {3}",
+	GameDays[$now.getDay()],
+	GameMonths[$now.getMonth()],
+	$now.getDate(),
+	$now.getFullYear()
+)>>
+<</widget>>
+
+/* Prints the current time (12H). */
+<<widget "printtime12hr">>
+<<if $now.getHours() eq 0>>
+12
+<<elseif $now.getHours() gt 12>>
+<<print $now.getHours() - 12>>
+<<else>>
+<<print $now.getHours()>>
+<</if>>:
+<<if $now.getMinutes() lt 10>>0<</if>><<print $now.getMinutes()>> 
+<<if $now.getHours() gte 12>>PM<<else>>AM<</if>>
+<</widget>>
+
+:: Other Widgets [widget]
+
+<<widget "refresh">><<run Engine.show()>><</widget>>
+
+:: Javascript
+
+$(document).on(':passagestart', function (ev) {
+	if (!ev.passage.tags.includes('menuitem')) {
+		State.variables.return = ev.passage.title;
+	}
+});
+Config.history.controls = false;
+
+
+::PassageHeader
+
+<<if tags().includes('stoptime') is false>><<addmins 2>><</if>>
+
+:: Inventory [menuitem stoptime]
+I have <<print $Frisk.inv.itemcounter>> item<<if $Frisk.inv.itemcounter gt 1 or $Frisk.inv.itemcounter eq 0>>s<<else>><</if>> on me.
+I am wearing $Frisk.equipped.head on my head, $Frisk.equipped.torso on my body, and $Frisk.equipped.feet on my feet.
+I am using $Frisk.weapon.has as a weapon.
+
+<<print $Frisk.inv.equippable>>
+Equip something:
+<<if $Frisk.inv.equippable.count("high-tech army knife") eq 1>><<link "High-tech swiss army knife">><<set $Frisk.weapon.has to "high-tech swiss army knife">><<set $Frisk.weapon.itemcounter ++>><<refresh>><</link>><</if>>
+
+<<link "Return." $return>><</link>>
+
+:: Character Description [menuitem stoptime]
+
+My name is Frisk. I'm an orphan, so I don't know my parents' last name. I used to live on the streets of Earth.
+I'm likely high functioning autistic. I know a small amount of ASL (American Sign Language) from school before I graduated high school. I'm 17 (graduated a year early).
+
+<<link "Return." $return>><</link>>
+
+:: Start [stoptime]
+
+<<if visited() is 1>><span class="dtm-sans"><span class="glitch" data-text="You need to help Frisk and I.">You are the only one who can direct us.</span></span><</if>>
+
+It is giant... Much bigger than I imagined it to be before.
+
+[[The Starship Bonetrousle.|Starship Bonetrousle]]  
+
+:: Starship Bonetrousle
+
+From the cover of the trees, I marvel at the huge ship. Word on the street is, the ship has a crew of only seven. How it can function on that tiny of a crew is beyond me. 
+Crouching behind a bush, I wait stealthily until a stray box is left outside the humongous ship on it's lonesome, then I jump from behind the bush, arms pumping, $Frisk.equipped.feet slapping on the dirt and later the metal landing platform. Then I open the box up, and, jumping inside it, close it up again. Afterwards I quickly cover myself with a felt packing blanket, [[and wait.|Intro the ship]]
+
+:: Intro the ship
+
+I hear heavy footsteps, but somehow they seem more strong and confident than anything intimidating... "<span class="dtm-mono">A'right, one more box left!</span>" an ambiguously feminine voice rings out as the box I'm in lifts off the ground in one fluid motion. "<span class="dtm-mono">Huh, this box is heavy. Welp, in it goes!</span>" The <<hovertip "Monsters are a seperate race from humans, but lived and evolved on the same planet.">>monster<</hovertip>> starts moving with the box. I'm hesitating to breathe- I try to breathe as quietly as possible. <i><span class="dtm-mono">This has to work...</span></i> I think desperately. I can't stay on this planet any longer. I need a new start!
+
+I can hear the footsteps turn hollow as they head onto the ship, then the cargo hold. Then there's a loud "thump!" as the crate hits the ground. She(?) doesn't know I'm in here, so she drops the crate- I have to fight to keep from grunting in pain, but thankfully I manage not to groan.
+
+I hear her footsteps fading away, then a yell, "<span class="dtm-mono">Hey, Pap! Supplies are on! Let's hit the starstream!</span>"
+
+I hear a loud, "<span class="papyrus">OKAY, UNDYNE!</span>" over the speakers, the floor rumbling as the old ship [[starts up and stabilizes.|Exit the crate]] 
+
+:: Exit the crate
+
+<span class="dtm-sans"><span class="glitch" data-text="Choose wisely.">Your first choice.</span></span>
+
+After the footsteps die away through [[a pressurized door,|Starship hallway]] and later a second heavy rumbling signifies we've left the ground, I climb out of the crate. <<hovertip "The cargo hold. It's full of crates and other junk.">>The room I'm in<</hovertip>> has all kinds of crates, large and small. Maybe [[exploring the cargo hold|Explore Cargo]] first before leaving might be a good idea? There might be something useful in here...
+
+:: Explore Cargo
+<<if $now.getHours gte 5 or $now.getHours lte 10 and visited() gt 1 and visited() lt 5>><span class="dtm-sans">
+
+I look around, picking my way around and over crates. <<if visited() is 1>>I open one up, and find a crate of guns and a few very high-tech multi-function army knives. The guns are too big for me, but <span id="knife">I can <<link "take the knife.">><<set $Frisk.inv.equippable.concatUnique("high-tech army knife")>><<set $Frisk.inv.itemcounter ++>><<replace "#knife">>I've already taken a knife. I don't need two!<</replace>><</link>></span> I can equip it later, or right now from my [[Inventory.|Inventory]]<<elseif $now.getHours gte 5 or $now.getHours lte 10 and visited() gt 1 and visited() lt 5>> I try to find something useful, and find a large crate of beast jerky. <<if $Frisk.inv.itemcounter == $Frisk.inv.limit>>Unfortunately I can't take any, I've got too much stuff on me! <<else>> <<link "take a package of jerky.">><<set $Frisk.inv.concatUnique("packet of beast jerky") and $Frisk.inv.itemcounter ++>><<refresh>><</link>><</if>> There's not much here that I need right now. I've taken everything that was useful, sadly...<</if>>
+
+:: Starship hallway
+
+End of demo.
+
+:: Unequipping Code for later
+
+Unequip:
+<<if $Frisk.inv.wearable.count gt 1 and $Frisk.equipped.torso is "striped purple sweater and blue jeanshorts">><<link "unequip striped purple sweater and blue jeanshorts">><<set $Frisk.inv.wearable.concatUnique("striped purple sweater and blue jeanshorts")>><<set $Frisk.equipped.torso to undefined>><</link>><<elseif $Frisk.equipped.torso is undefined>>You're wearing nothing on your body right now.<</if>>
+
+Change their clothes?
+
+$Frisk.inv.wearable

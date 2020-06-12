@@ -1,0 +1,47 @@
+/* checkboxPlus widget by HiEv - Start */
+input[type="checkbox"].cbhidden {
+	display: none;
+}
+input[type="checkbox"] + label.chklabel {
+	padding: 4px 4px 4px 30px;
+	position: relative;
+	user-select: none;
+	cursor: pointer;
+}
+:focus > input[type="checkbox"] + label.chklabel::before {
+	border: #135BCF 2px solid;  /* Bright blue */
+	margin-left: 2px;
+	top: -1px;
+}
+input[type="checkbox"] + label.chklabel::before {
+	padding: 0 3px;
+	height: 15px;
+	width: 11px;
+	background: white;
+	border: 1px solid #999;  /* Gray */
+	border-radius: 5px;
+	content: ' ';
+	color: black;
+	line-height: 150%;
+	position: absolute;
+	text-align: center;
+	transform: translate(-130%, 20%);
+}
+input[type="checkbox"]:checked + label.chklabel::before {
+	content: '\2713';
+	font-weight: bold;
+	font-size: 78.75%;
+}
+input[type="checkbox"]:focus + label.chklabel::before {
+	border: #135BCF 2px solid;  /* Bright blue */
+	margin-left: 1px;
+}
+.chkbox {
+	display: inline-block;
+	margin: 0 10px 0 0;
+	line-height: 150%;
+}
+.chkbox:focus {
+	outline: 2px dotted #135BCF;  /* Bright blue */
+}
+/* checkboxPlus widget - End */
