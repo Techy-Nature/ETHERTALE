@@ -28,10 +28,6 @@ You'll need the images, fonts and music to go with the HTML file. You can downlo
 * [Sugarcube 2](https://www.motoslave.net/sugarcube/2/) - Game Format
 * [Tweego](http://www.motoslave.net/tweego/docs/#introduction) - Compiler
 
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
 ## Authors
 
 * **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
