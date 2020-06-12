@@ -32,7 +32,7 @@ You'll need the images, fonts and music to go with the HTML file. You can downlo
 * **Billie Thompson** - *Initial README file template* - [PurpleBooth](https://github.com/PurpleBooth)
 * **Duke** - [Dukemz](https://github.com/Dukemz)
 
-See also the list of [contributors](https://github.com/Techy-girl/FUTURETALE/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/Techy-girl/ETHERTALE/contributors) who participated in this project.
 
 ## Versioning
 
@@ -40,7 +40,7 @@ We use [SemVer](http://semver.org/) for versioning.
 
 ## License
 
-This project is licensed under the GNUvrs.3 License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the GNUvrs.3 License - see the [LICENSE.md](https://github.com/Techy-girl/ETHERTALE/LICENSE.md) file for details
 
 ## Credits/Acknolowdgements
 
