@@ -1,9 +1,9 @@
-# FUTURETALE
+# ETHERTALE
 ## "(a) crazy, fun au that's like a cross between Outertale, Deltarune and and a futuristic sci-fi adventure shounen series." -Amee, Author's Friend
 
-# FUTURETALE
+# ETHERTALE
 
-A coming of age adventure CYOA AU with space travel, inventory management, sci-fi technology and choices that impact your playthrough as well as future playthroughs, just like the original UNDERTALE.
+A coming of age adventure CYOA UNDERTALE AU with space travel, inventory management, sci-fi technology and choices that impact your playthrough as well as future playthroughs, just like the original UNDERTALE.
 
 ## Getting Started
 
