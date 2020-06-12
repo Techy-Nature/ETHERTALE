@@ -80,6 +80,51 @@ It is <<printtime12hr>>
 
 <<widget "refresh">><<run Engine.show()>><</widget>>
 
+/* <<checkboxPlus>> widget by HiEv
+	This widget allows you to display a custom checkbox which sets a
+	SugarCube variable, displays a (clickable) label, and satisfies
+	accessibility guidelines for users with impairments (usable via the
+	keyboard with TAB, SHIFT+TAB, and SPACE keys).  The	checkboxes are
+	also larger, to make them easier to see and to click on for mobile
+	devices.
+
+	Usage: <<checkboxPlus "variableName" "text" ["className"]>>
+
+	The value of the checkbox would then be tied to a variable, which
+	is passed to the widget as a string.  All story variables passed to
+	the widget will be set to either a Boolean true or false.  If the
+	variable had a "truthy" value, then the checkbox will be checked.
+	The	"className" is an optional parameter, which adds that CSS class
+	to the text.
+
+	Example: <<checkboxPlus "$EnabledOp" "Enable Option" "blueText">>
+*/
+<<widget "checkboxPlus">>
+	/* Make sure the variable passed in is a boolean. */
+	<<set State.setVar($args[0], !!State.getVar($args[0]))>>
+	<<if ndef _checkboxIDno>>
+		/* Start checkbox IDs at 1. */
+		<<set _checkboxIDno = 1>>
+	<<else>>
+		/* Next checkbox ID. */
+		<<set _checkboxIDno++>>
+	<</if>>
+	<<set _checkboxData = "'" + $args[0] + "'">>
+	<<if def $args[2]>>
+		<<set _cbStyle = " " + $args[2]>>
+	<<else>>
+		<<set _cbStyle = "">>
+	<</if>>
+	/* Display checkbox. */
+	<span class="chkbox" tabindex="0" onkeypress="if ((event.key == ' ') || (event.key == 'Spacebar')) { $(this).find('input[type=\'checkbox\']').trigger('click'); return false; }">
+		<<print '<input type="checkbox" id="checkbox_' + _checkboxIDno + '" tabindex="-1" class="cbhidden" onchange="SugarCube.State.setVar(' + _checkboxData + ', this.checked)" data-var="' + $args[0] + '"' + (State.getVar($args[0]) ? ' checked' : '') + '>'>>
+		<label @for="'checkbox_' + _checkboxIDno" @class="'chklabel' + _cbStyle">
+			$args[1]
+		</label>
+	</span>
+<</widget>>
+/* <<checkboxPlus>> Widget - End */
+
 :: Javascript
 
 $(document).on(':passagestart', function (ev) {
