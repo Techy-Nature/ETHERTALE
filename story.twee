@@ -7,7 +7,7 @@ Prologue: Starship Stowaway
 v.0.01
 
 Today is <<printfulldate>>. 
-It is <<printtime12hr>> o'clock.
+It is <<printtime12hr>>
 
 <<if $Frisk.inv.itemcounter gte 1>>[[Inventory]]<</if>>
 [[Character Description]]

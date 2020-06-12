@@ -3,7 +3,7 @@
 
 # FUTURETALE
 
-A coming of age CYOA AU with space travel, inventory management, sci-fi technology and choices that impact your playthrough as well as future playthroughs, just like the original UNDERTALE.
+A coming of age adventure CYOA AU with space travel, inventory management, sci-fi technology and choices that impact your playthrough as well as future playthroughs, just like the original UNDERTALE.
 
 ## Getting Started
 
@@ -11,7 +11,7 @@ Find index.html and run that on any browser, and you should be ready to play!
 
 ### Prerequisites
 
-You'll need the images and music to go with the HTML file. You can download the "export" folder, and you should be good to go after double-clicking the html file. Twine text-based games are pretty easy to play on most computer systems, even slow ones.
+You'll need the images, fonts and music to go with the HTML file. You can download the "export" folder, and you should be good to go after double-clicking the html file. Twine text-based games are pretty easy to play on most computer systems, even slow ones.
 
 ### Installing
 
@@ -26,10 +26,7 @@ You'll need the images and music to go with the HTML file. You can download the 
 
 * [Twine 2](http://twinery.org)
 * [Sugarcube 2](https://www.motoslave.net/sugarcube/2/) - Game Format
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+* [Tweego](http://www.motoslave.net/tweego/docs/#introduction) - Compiler
 
 ## Versioning
 
@@ -38,14 +35,15 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 ## Authors
 
 * **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Duke** - [Dukemz](https://github.com/Dukemz)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/Techy-girl/FUTURETALE/contributors) who participated in this project.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the GNUvrs.3 License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Credits/Acknolowdgements
 
-* Dukemz for his Inventory Code
+* Dukemz
 * Toby Fox for Undertale
