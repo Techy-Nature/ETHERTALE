@@ -15,7 +15,6 @@ You'll need the images, fonts and music to go with the HTML file. You can downlo
 
 ### Installing
 
-
 1. Download export folder
 
 2. Open folder
@@ -30,10 +29,14 @@ You'll need the images, fonts and music to go with the HTML file. You can downlo
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Billie Thompson** - *Initial README file template* - [PurpleBooth](https://github.com/PurpleBooth)
 * **Duke** - [Dukemz](https://github.com/Dukemz)
 
 See also the list of [contributors](https://github.com/Techy-girl/FUTURETALE/contributors) who participated in this project.
+
+## Versioning
+
+We use [SemVer](http://semver.org/) for versioning.
 
 ## License
 
