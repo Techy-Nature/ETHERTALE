@@ -7,12 +7,12 @@
 	  src: url('fonts/comic.woff2') format:('woff2');
 }
 .papyrus {
-	font-family: 'papyrus';
+	font-family: 'Papyrus';
     src: url('fonts/papyrus-webfont.woff2') format:('woff2'),
     src: url('fonts/papyrus-webfont.woff') format:('woff'),
 	src: url('fonts/papyrus-webfont.ttf') format:('truetype'),
-	src: url('fonts/comic.otf') format:('opentype'),
-	src: url('fonts/comic.svg') format:('svg');
+	src: url('fonts/papyrus.otf') format:('opentype'),
+	src: url('fonts/papyrus.svg') format:('svg');
 }
 .arial {
 	font-family: Arial;
@@ -41,5 +41,8 @@
     src: url('fonts/wingdings-pixelated-webfont.woff2') format:('woff2'),
     src: url('fonts/wingdings-pixelated-webfont.woff') format:('woff'),
 	src: url('fonts/wingdings-pixelated-webfont.svg') format:('svg');
+}
+body, tw-story {
+	font-size: 16px;
 }
 /* Jaden's code for fonts - end*/
