@@ -3,7 +3,7 @@
 
 # ETHERTALE
 
-A coming of age adventure CYOA UNDERTALE AU with space travel, inventory management, sci-fi technology and choices that impact your playthrough as well as future playthroughs, just like the original UNDERTALE.
+A coming of age adventure CYOA UNDERTALE AU that will have space travel, inventory management, sci-fi technology and choices that impact your playthrough as well as future playthroughs, just like the original UNDERTALE.
 
 ## Getting Started
 
