@@ -132,8 +132,7 @@ $(document).on(':passagestart', function (ev) {
 		State.variables.return = ev.passage.title;
 	}
 });
-Config.history.controls = false;
-
+Config.history.controls = false;}
 
 ::PassageHeader
 
@@ -159,12 +158,12 @@ I'm likely high functioning autistic. I know a small amount of ASL (American Sig
 
 :: Start [stoptime]
 
-<<if visited() is 1>><span class="dtm-sans"><span class="glitch" data-text="You need to help Frisk and I.">You are the only one who can direct us.</span></span><</if>>
+<<if $setup.ready>><<if visited() is 1>><span class="dtm-sans"><span class="glitch" data-text="You need to help Frisk and I.">You are the only one who can direct us.</span></span><</if>>
 
 It is giant... Much bigger than I imagined it to be before.
 
 [[The Starship Bonetrousle.|Starship Bonetrousle]]  
-
+<</if>>
 :: Starship Bonetrousle
 
 From the cover of the trees, I marvel at the huge ship. Word on the street is, the ship has a crew of only seven. How it can function on that tiny of a crew is beyond me. 
@@ -172,7 +171,7 @@ Crouching behind a bush, I wait stealthily until a stray box is left outside the
 
 :: Intro the ship
 <<addmins 4>>
-I hear heavy footsteps, but somehow they seem more strong and confident than anything intimidating... "<span class="dtm-mono">A'right, one more box left!</span>" an ambiguously feminine voice rings out as the box I'm in lifts off the ground in one fluid motion. "<span class="dtm-mono">Huh, this box is heavy. Welp, in it goes!</span>" The <<hovertip "Monsters are a seperate race from humans, but lived and evolved on the same planet.">>monster<</hovertip>> starts moving with the box. I'm hesitating to breathe- I try to breathe as quietly as possible. <i><span class="dtm-mono">This has to work...</span></i> I think desperately. I can't stay on this planet any longer. I need a new start!
+I hear heavy footsteps, but somehow they seem more strong and confident than anything intimidating... "<span class="dtm-mono">A'right, one more box left!</span>" an ambiguously feminine voice rings out as the box I'm in lifts off the ground in one fluid motion. "<span class="dtm-mono">Huh, this box is heavy. Welp, in it goes!</span>" The <<hovertip "Monsters are a seperate race from humans, but lived and evolved on the same planet.">>monster<</hovertip>> starts moving with the box. I'm hesitating to breathe- I try to breathe as quietly as possible. <i><span class="dtm-mono">This has to work...</span></i> I think desperately. <i><span class="dtm-mono">I can't stay on this planet any longer. I need a new start!</span>
 
 I can hear the footsteps turn hollow as they head onto the ship, then the cargo hold. Then there's a loud "thump!" as the crate hits the ground. She(?) doesn't know I'm in here, so she drops the crate- I have to fight to keep from grunting in pain, but thankfully I manage not to groan.
 
@@ -184,10 +183,10 @@ I hear a loud, "<span class="papyrus">OKAY, UNDYNE!</span>" over the ship's spea
 
 <span class="dtm-sans"><span class="glitch" data-text="Choose wisely.">Your first choice.</span></span>
 <<addmins 6>>
-After the footsteps die away through [[a pressurized door,|Starship hallway]] and later a second heavy rumbling signifies we've left the ground, I climb out of the crate. <<hovertip "The cargo hold. It's full of crates and other junk.">>The room I'm in<</hovertip>> has all kinds of crates, large and small. Maybe [[exploring the cargo hold|Explore Cargo]] first before leaving might be a good idea? There might be something useful in here...
+After the footsteps die away through [[a pressurized door,|Starship hallway]] and later a second heavy rumbling signifies we've left the ground, I climb out of the crate. <<hovertip "The cargo hold. It's full of crates and other junk.">>The room I'm in<</hovertip>> has all kinds of crates, large and small. Maybe <<hovertip "There might be something useful in here...">>[[exploring the cargo hold|Explore Cargo]]<</hovertip>> first before leaving might be a good idea? 
 
 :: Explore Cargo
-<<if $now.getHours gte 5 or $now.getHours lte 10 and visited() gt 1 and visited() lt 5>><span class="dtm-sans"><span class="glitch" data-text-"Try not to be a pig with the jerky, will you?">Try not to take too much jerky, will you?</span></span><<elseif $Frisk.inv.count("packet of beast jerky") gt 4>><span class="shadow"><span class="dtm-sans"><span class="glitch" data-text="You just couldn't resist. You piggy jerk.">You just had to do that, didn't you? Thanks for nothing!</span></span></span><</if>>
+<<if $now.getHours gte 5 or $now.getHours lte 10 and visited() gt 1 and visited() lt 5>><span class="dtm-sans"><span class="glitch" data-text-"Try not to be a pig with the jerky, will you?">Try not to take too much jerky, will you?</span></span><<elseif $Frisk.inv.count("packet of beast jerky") gte 5>><span class="shadow"><span class="dtm-sans"><span class="glitch" data-text="You just couldn't resist. You piggy jerk.">You just had to do that, didn't you? Thanks for nothing!</span></span></span><</if>>
 
 I look around, picking my way around and over crates. <<if visited() is 1>>I open one up, and find a crate of guns and a few very high-tech multi-function army knives. The guns are too big for me, but <span id="knife">I can <<link "take the knife.">><<set $Frisk.inv.equippable.concatUnique("high-tech army knife")>><<set $Frisk.inv.itemcounter ++>><<replace "#knife">>I've already taken a knife. I don't need two!<</replace>><</link>></span> I can equip it later, or right now from my [[Inventory.|Inventory]]<<elseif $now.getHours gte 5 or $now.getHours lte 10 and visited() gt 1 and visited() lt 5>> I try to find something useful, and find a large crate of beast jerky. <<if $Frisk.inv.itemcounter == $Frisk.inv.limit>>Unfortunately I can't take any, I've got too much stuff on me! <<else>> <<link "take a package of jerky.">><<set $Frisk.inv.concat("packet of beast jerky") and $Frisk.inv.itemcounter ++>><<refresh>><</link>><</if>> There's not much here that I need right now. I've taken everything that was useful, sadly...<</if>>
 
