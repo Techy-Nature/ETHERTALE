@@ -194,11 +194,3 @@ I look around, picking my way around and over crates. <<if visited() is 1>>I ope
 
 End of demo.
 
-:: Unequipping Code for later
-
-Unequip:
-<<if $Frisk.inv.wearable.count gt 1 and $Frisk.equipped.torso is "striped purple sweater and blue jeanshorts">><<link "unequip striped purple sweater and blue jeanshorts">><<set $Frisk.inv.wearable.concatUnique("striped purple sweater and blue jeanshorts")>><<set $Frisk.equipped.torso to undefined>><</link>><</if>>
-
-Change their clothes?
-
-$Frisk.inv.wearable
