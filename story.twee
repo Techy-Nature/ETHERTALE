@@ -22,7 +22,7 @@ It is <<printtime12hr>>
 <<set $Frisk.inv.wearable to []>>
 <<set $Frisk.inv.equippable to []>><</silently>>
 <<set $Frisk.age to 17>>
-
+<<set $Frisk.Gold = 10>>
 <<set
 	window.GameDays to [
 		"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"
