@@ -40,7 +40,7 @@ We use [SemVer](http://semver.org/) for versioning.
 
 ## License
 
-This project is licensed under the GNUvrs.3 License - see the [LICENSE.md](https://github.com/Techy-girl/ETHERTALE/LICENSE.md) file for details
+This project is licensed under the GNUvrs.3 License - see the [LICENSE.md](https://github.com/Techy-Nature/ETHERTALE/blob/master/LICENSE) file for details
 
 ## Credits/Acknolowdgements
 
