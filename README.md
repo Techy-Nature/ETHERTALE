@@ -1,5 +1,5 @@
 # ETHERTALE
-## "(a) crazy, fun au that's like a cross between Outertale, Deltarune and and a futuristic sci-fi adventure shounen series." -Amee, Author's Friend
+## "(a) crazy, fun au that's like a cross between Outertale, Deltarune and a futuristic sci-fi adventure shounen series." -Amee, Author's Friend
 
 # ETHERTALE
 
@@ -40,7 +40,7 @@ We use [SemVer](http://semver.org/) for versioning.
 
 ## License
 
-This project is licensed under the GNUvrs.3 License - see the [LICENSE.md](https://github.com/Techy-girl/ETHERTALE/LICENSE.md) file for details
+This project is licensed under the GNUvrs.3 License - see the [LICENSE.md](https://github.com/Techy-Nature/ETHERTALE/blob/master/LICENSE) file for details
 
 ## Credits/Acknolowdgements
 
