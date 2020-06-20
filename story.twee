@@ -186,7 +186,7 @@ I hear a loud, "<span class="papyrus">OKAY, UNDYNE!</span>" over the ship's spea
 
 <span class="dtm-sans"><span class="glitch" data-text="Choose wisely.">Your first choice.</span></span>
 <<addmins 6>>
-After the footsteps die away through [[a pressurized door,|Starship hallway]] and later a second heavy rumbling signifies we've left the ground, I climb out of the crate. <<hovertip "The cargo hold. It's full of crates and other junk.">>The room I'm in<</hovertip>> has all kinds of crates, large and small. Maybe <<hovertip "There might be something useful in here...">>[[exploring the cargo hold|Explore Cargo]]<</hovertip>> first before leaving might be a good idea? 
+After the footsteps die away through [[a pressurized door,|Starship hallway]] and later a second heavy rumbling signifies we've left the ground, I climb out of the crate. <<hovertip "The cargo hold. It's full of crates and other junk.">>The room I'm in<</hovertip>> is large, the size of a ballroom really, but only half of it is filled with stuff. Maybe <<hovertip "There might be something useful in here...">>[[exploring the cargo hold|Explore Cargo]]<</hovertip>> first before leaving might be a good idea? 
 
 :: Explore Cargo
 <<if $now.getHours gte 5 or $now.getHours lte 10 and visited() gt 1 and visited() lt 5>><span class="dtm-sans"><span class="glitch" data-text-"Try not to be a pig with the jerky, will you?">Try not to take too much jerky, will you?</span></span><<elseif $Frisk.inv.count("packet of beast jerky") gte 5>><span class="shadow"><span class="dtm-sans"><span class="glitch" data-text="You just couldn't resist. You piggy jerk.">You just had to do that, didn't you? Thanks for nothing!</span></span></span><</if>>
