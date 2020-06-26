@@ -195,5 +195,29 @@ I look around, picking my way around and over crates. <<if visited() is 1>>I ope
 
 :: Starship hallway
 
+<<if previous("Explore Cargo") is true>>After exiting the cargo hold,<</if>> I enter a long, curved hallway. Should I go [[left|Engine room]] [[right|Starship hallway 2]] or [[try to find an air vent|Vent 1]] to hide in? 
+
+<<timed 20s>><<goto "Footsteps">><</timed>>
+
+:: Vent 1
+I<<if previous("Footsteps") is true>> scrambled <<elseif previous("Starship hallway") is true>> climbed <</if>>into the vent. <<if previous("Starship hallway") is true and visited() is 1>> It's too dark to see past the first few feet, so I probably wouldn't be able to use these vents to transport myself, but they are good for hiding in. I <<link "exit the vent.">><<return>><</link>><<elseif previous("Footsteps") is true>>I quiet my breathing as the footsteps pass, trying not to shuffle uncomfortably in the tiny vent. Once the danger passes, I <<link "exit the vent.">><<return>><</link>> <</if>>
+
+
+:: Footsteps
+
+There are footsteps coming down the hallway! [[I should probably hide|Vent 1]]!
+
+<<timed 5s>> I should hurry! The footsteps are getting closer!<</timed>>
+<<Timed 5s>><<goto [[Caught!]]>><</timed>>
+
+:: Caught!
+
 End of demo.
 
+:: Starship hallway 2
+
+End of demo.
+
+:: Engine room
+
+End of demo.
