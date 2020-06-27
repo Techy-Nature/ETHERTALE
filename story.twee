@@ -15,7 +15,7 @@ It is <<printtime12hr>>
 :: StoryInit [nobr]
 
 <<set $now = new Date(2050, 4, 1, 14, 30, 0)>>
-/* Duke you can put your Inventory code here, for now I'm going to keep my code, but you can add yours and we'll slowly move to using your code.*/
+/* Duke you can put your Inventory code here, for now I'm going to keep my code, but you can add yours and we'll eventually move to using your code.*/
 
 /* Jaden's code below*/
 <<silently>><<set $Frisk to {}>>
