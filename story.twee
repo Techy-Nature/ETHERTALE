@@ -221,8 +221,14 @@ There are footsteps coming down the hallway! [[I should probably hide|Vent 1]]!
 I end up cowering as a figure with a giant shadow tramps lazily down the hallway. But what ends up showing up is a short, blue-clad skeleton. Monsters are powerful though, so I didn't underestimate this one- I ran. 
 But before I could get very far, my SOUL turned blue, and then I was lifted off the ground?
 "Whuh-" 
-<img src="imgs/Sans_ETHERTALE.png" alt="A short skeleton with a blue hoodie pointing upwards with blue magic emenating from his pointer finger shows himself.">
-I was confused as to this turn of events, but to say I was surprised would be a lie. 
+<img src="imgs/Sans_ETHERTALE.png" alt="A short skeleton with a blue hoodie pointing upwards with blue magic emenating from his pointer finger shows himself." height="700" width="500">
+I was confused as to this turn of events, but to say I was surprised would be a lie. I didn't hide because I...
+
+<<checkboxPlus "$curiousabtcrew" "was curious about the crew.">>
+<<checkboxPlus "$gotbored" "got bored slinking around like a rat.">>
+<<checkboxPlus "$wantedajob" "Needed somewhere to stay and work.">>
+
+[[I watch on as I'm carried by my SOUL to the front of the ship, likely where the captain will be.|Captains Cabin]]
 :: Starship hallway 2
 
 End of demo.
@@ -230,3 +236,6 @@ End of demo.
 :: Engine room
 
 End of demo.
+
+:: Captains Cabin
+
