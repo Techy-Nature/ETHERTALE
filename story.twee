@@ -270,8 +270,18 @@ I stand and watch him leave, then sit down and pull my legs up to my chest, wait
 
 :: Rude Introduction
 
-end demo
+Sans' eyes go black, his face looking very depressed and furious at the moment. I can tell he's trying to get his emotions under control. I must have pushed a bunch of his buttons all at once.
+
+"Yeah. Frisk. Got it. Never going to use it." Sans grumbles as we make our way to the end of the hallway. He then finds a metal specimen crate (with glass sides, a fingerprint lock, and a grated top) for my jail. He moves the grate, then drops me inside both with blue magic, being careful not to let me go before locking the grate back to the top of it with the fingerprint key. 
+
+The shape of the crate is an upright cylinder, the fingerpad key being on the outside and far from the grate. The keypad is connected through wiring on the outside of the crate, so it's completely impossible to open it from the inside. I can just stand up in it, it seems. My arms can reach out and stretch completely to the sides, but not upright- the grate is in the way. 
+
+Sans walks away, his posture hunched and his phalanges deep in his jacket pockets. <span class="dtm-mono">Is he... sad? I guess I did call him out on his name... Hm.</span> I wonder to myself. I'm honestly not surprised he's depressed, his name is way too accurate.
+
+I stand and watch him leave, then sit down and pull my legs up to my chest and lean against the glass, waiting for my inevitable fate.
 
 :: Nice Introduction
 
-End demo
+Sans blinks in surprise at my apparent kindness, then smiles and shakes his head ruefully. "<span class="comicsans">I almost wish I hadn't captured you, Frisk. I think I'll just bring you with me rather than... well, the alternative you probably wouldn't have liked.</span>"
+
+I nod. He puts me down, and I don't bother running. I want to see <<if $Frisk.gotbored is true or $Frisk.curiousabtcrew is true>>the rest of the crew!<<elseif $Frisk.wantedajob is true>>if I can get a job from this crew of monsters.<</if>>
