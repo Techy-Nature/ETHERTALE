@@ -79,7 +79,7 @@ It is <<printtime12hr>>
 <<if $now.getHours() gte 12>>PM<<else>>AM<</if>>
 <</widget>>
 
-:: Other Widgets [widget]
+:: Other Widgets [widget nobr]
 
 <<widget "refresh">><<run Engine.show()>><</widget>>
 
@@ -128,7 +128,7 @@ It is <<printtime12hr>>
 <</widget>>
 /* <<checkboxPlus>> Widget - End */
 
-:: Javascript [script]
+:: Javascript [script nobr]
 
 $(document).on(':passagestart', function (ev) {
 	if (!ev.passage.tags.includes('menuitem')) {
@@ -197,24 +197,25 @@ With that done, I [[exit through the pressurized door to the hallway.|Starship h
 
 :: Cargo Hold
 
-I enter the cargo hold<<if lastVisited("Explore Cargo") is 2>> again<</if>>. I can [[decide to look around|Explore Cargo]] or I can [[leave the way I came.|Starship hallway]]
+I enter the cargo hold<<if lastVisited("Explore Cargo") lte 2>> again<</if>>. I can [[decide to look around|Explore Cargo]] or I can [[leave the way I came.|Starship hallway]]
 
 :: Starship hallway
 
 <<if lastVisited("Explore Cargo") is 1>>After exiting the cargo hold,<</if>> I enter a long, curved hallway. Should I go [[left|Engine room]] [[right|Starship hallway 2]] or [[try to find an air vent|Vent 1]] to hide in? I can also go back into the [[cargo hold.|Cargo Hold]]
 
-<<timed 20s>><<goto "Footsteps">><</timed>>
+<<timed 15s>><<goto "Footsteps">><</timed>>
 
 :: Vent 1
-I<<if lastVisited("Footsteps") is 1>> scrambled <<elseif lastVisited("Starship hallway") is 1>> climbed <</if>>into the vent. <<if lastVisited("Starship hallway") is 1 and visited() is 1>> It's too dark to see past the first few feet, so I probably wouldn't be able to use these vents to transport myself, but they are good for hiding in. I <<return "exit the vent.">><<elseif lastVisited("Footsteps") is 1>>I quiet my breathing as the footsteps pass, trying not to shuffle uncomfortably in the tiny vent. <<timed 5s>>Once the danger passes, I <<return "exit the vent.">><</timed>><</if>>
+I<<if lastVisited("Footsteps")>> scrambled <<elseif lastVisited("Starship hallway") is 1>> climbed <</if>>into the vent. <<if lastVisited("Starship hallway") is 1 and visited() is 1>> It's too dark to see past the first few feet, so I probably wouldn't be able to use these vents to transport myself, but they are good for hiding in. I <<return "exit the vent.">><<elseif lastVisited("Footsteps") is 1>>I quiet my breathing as the footsteps pass, trying not to shuffle uncomfortably in the tiny vent. <<timed 5s>>Once the danger passes, I [[exit the vent|Starship hallway]].<</timed>><<else>>I then [[remove myself from the vent|Starship hallway]]. There's not much here to look at, after all.<</if>>
 
 
 :: Footsteps
 
 There are footsteps coming down the hallway! [[I should probably hide|Vent 1]]!
 
-<<timed 5s>> I should hurry! The footsteps are getting closer!<</timed>>
-<<Timed 3s>><<goto [[Caught!]]>><</timed>>
+<<nobr>>
+<<timed 10s>> I should hurry! The footsteps are getting closer!
+<<next>><<goto "Caught!">><</timed>><</nobr>>
 
 :: Caught!
 
@@ -241,7 +242,7 @@ End of demo.
 
 ::Hallway conversation
 
-"<span class="comicsans">Welp, might as well tell you the name of your judge, huh, kid? I'm Sans. Sans the skeleton.</span>" The skeleton pauses, then asks, "<span class="comicsans">So uh... kid, I think you know the gig's up, right? You can't possibly try to hide again after we know you're here.</span>"
+"<span class="comicsans">Welp, might as well tell you the name of your judge, huh, kid? I'm Sans. Sans the skeleton.</span>" The skeleton pauses, then asks, "<span class="comicsans">So uh... kid, I think you know the gig's up, right? You can't try to hide again after we know you're here, you'd just get caught again.</span>"
 
 Do I...
 
@@ -252,9 +253,13 @@ Or, try to be friendly with my introduction in the hopes of being released. "[[N
 
 :: Conversation part 2
 
-Sans waits for an answer, but when he realizes I'm glaring defiantly at him he looks ahead and sighs. The rest of the walk to the Dining Lounge is completely in silence.
+Sans waits for an answer, but when he realizes I'm glaring defiantly at him he looks ahead and sighs ruefully. The rest of the walk to what I'm assuming is the Captain's Cabin is completely in silence.
 
 At the end of the hallway there is a phone system for communicating with the captain and then with the rest of the crew. Sans floats and then drops me into a specimen crate with glass sides and grated top with a fingerprint lock, and makes a call to his "<span class="comicsans">bro</span>" to make an announcement for the crew to meet in the Dining Lounge next to the Kitchen. 
+
+Then he walks away with his phalanges deep in his pockets and his posture hunched over. He looks regretful, and I'm not surprised. No one likes jailing another sentient being. 
+
+I slide down the glass as I sit down, then I pull up my legs and hug them, waiting for my inevitable fate.
 
 :: Jerk conversation
 
@@ -264,7 +269,7 @@ Sans rolls his glowing eye, then at the end of the hallway finds a metal specime
 
 The shape of the crate is an upright cylinder, the fingerpad key being on the outside and far from the grate. The keypad is connected through wiring on the outside of the crate, so it's completely impossible to open it from the inside. I can just stand up in it, it seems. My arms can reach out and stretch completely to the sides, but not upright- the grate is in the way. 
 
-Sans walks away, his posture hunched and his phalanges deep in his jacket pockets. <span class="dtm-mono">Is he... sad? I guess I did call him a jerk... Hm.</span> I wonder to myself.
+Sans walks away, his posture hunched and his phalanges deep in his jacket pockets. <span class="dtm-mono">Is he... sad? I guess I did call him a jerk... Hm.</span> I ponder to myself.
 
 I stand and watch him leave, then sit down and pull my legs up to my chest, waiting for my inevitable fate.
 
@@ -272,16 +277,22 @@ I stand and watch him leave, then sit down and pull my legs up to my chest, wait
 
 Sans' eyes go black, his face looking very depressed and furious at the moment. I can tell he's trying to get his emotions under control. I must have pushed a bunch of his buttons all at once.
 
-"Yeah. Frisk. Got it. Never going to use it." Sans grumbles as we make our way to the end of the hallway. He then finds a metal specimen crate (with glass sides, a fingerprint lock, and a grated top) for my jail. He moves the grate, then drops me inside both with blue magic, being careful not to let me go before locking the grate back to the top of it with the fingerprint key. 
+"Yeah. Frisk. Got it. Never going to use it." Sans grumbles as we make our way to the end of the hallway. He then finds a metal specimen crate (with glass sides, a fingerprint lock, and a grated top) for my jail. He both moves the grate, and drops me inside with blue magic, being careful not to let me go before locking the grate back to the top of it with the fingerprint key. 
 
 The shape of the crate is an upright cylinder, the fingerpad key being on the outside and far from the grate. The keypad is connected through wiring on the outside of the crate, so it's completely impossible to open it from the inside. I can just stand up in it, it seems. My arms can reach out and stretch completely to the sides, but not upright- the grate is in the way. 
 
 Sans walks away, his posture hunched and his phalanges deep in his jacket pockets. <span class="dtm-mono">Is he... sad? I guess I did call him out on his name... Hm.</span> I wonder to myself. I'm honestly not surprised he's depressed, his name is way too accurate.
 
-I stand and watch him leave, then sit down and pull my legs up to my chest and lean against the glass, waiting for my inevitable fate.
+I stand and watch him leave, then sit down and pull my legs up to my chest while leaning against the glass, waiting for my inevitable fate.
 
 :: Nice Introduction
 
 Sans blinks in surprise at my apparent kindness, then smiles and shakes his head ruefully. "<span class="comicsans">I almost wish I hadn't captured you, Frisk. I think I'll just bring you with me rather than... well, the alternative you probably wouldn't have liked.</span>"
 
-I nod. He puts me down, and I don't bother running. I want to see <<if $Frisk.gotbored is true or $Frisk.curiousabtcrew is true>>the rest of the crew!<<elseif $Frisk.wantedajob is true>>if I can get a job from this crew of monsters.<</if>>
+I nod with a smile. He puts me down, and I don't bother running. I want to see <<if $Frisk.gotbored is true or $Frisk.curiousabtcrew is true>>the rest of the crew!<<elseif $Frisk.wantedajob is true>>if I can get a job from this crew of monsters.<<elseif $Frisk.gotbored is true and $Frisk.curiousabtcrew is true and $Frisk.wantedajob is true>> about getting a job from this crew of interesting monsters, as well as see the rest of them.<</if>>
+
+I follow Sans towards another hallway, and we make our way to the [[Dining Lounge]].
+
+:: Dining Lounge
+<<addmins 5>>
+end demo
