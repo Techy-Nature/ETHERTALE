@@ -9,7 +9,7 @@ v.0.01
 Today is <<printfulldate>>. 
 It is <<printtime12hr>>
 
-<<if $Frisk.inv.itemcounter gte 1>>[[Inventory]]<</if>>
+<<if hasVisited("Explore Cargo") is true>>[[Inventory]]<</if>>
 [[Character Description]]
 
 :: StoryInit [nobr]
@@ -148,7 +148,7 @@ I am using $Frisk.weapon.has as a weapon.
 
 <<print $Frisk.inv.equippable>>
 Equip something:
-<<if $Frisk.inv.equippable.count("high-tech army knife") eq 1>><<link "High-tech swiss army knife">><<set $Frisk.weapon.has to "high-tech swiss army knife">><<set $Frisk.weapon.itemcounter ++>><<refresh>><</link>><</if>>
+TODO
 
 <<link "Return." $return>><</link>>
 
@@ -242,7 +242,7 @@ End of demo.
 
 ::Hallway conversation
 
-"<span class="comicsans">Welp, might as well tell you the name of your judge, huh, kid? I'm Sans. Sans the skeleton.</span>" The skeleton pauses, then asks, "<span class="comicsans">So uh... kid, I think you know the gig's up, right? You can't try to hide again after we know you're here, you'd just get caught again.</span>"
+"<span class="comicsans">welp, might as well tell you the name of your judge, huh, kid? i'm sans. sans the skeleton.</span>" The skeleton pauses, then asks, "<span class="comicsans">so uh... kid, I think you know the gig's up, right? you can't try to hide again after we know you're here, you'd just get caught again.</span>"
 
 Do I...
 
@@ -263,7 +263,7 @@ I slide down the glass as I sit down, then I pull up my legs and hug them, waiti
 
 :: Jerk conversation
 
-"<span class="comicsans">Hey! there's no need for name-calling, kid. But I guess I can see where you're coming from. This has gotta be scary for a teenager like you.</span>" It's a statement more than a question, so I don't grace it with a response.
+"<span class="comicsans">hey! there's no need for name-calling, kid. but I guess I can see where you're coming from. this has gotta be scary for a teenager like you.</span>" It's a statement more than a question, so I don't grace it with a response.
 
 Sans rolls his glowing eye, then at the end of the hallway finds a metal specimen crate (with glass sides, a fingerprint lock, and a grated top) for my "<span class="comicsans">holding cell</span>" as he calls it. He moves the grate on top with his blue magic, then drops me inside with blue magic, being careful not to let me go before locking the grate back to the top of it. 
 
@@ -277,17 +277,17 @@ I stand and watch him leave, then sit down and pull my legs up to my chest, wait
 
 Sans' eyes go black, his face looking very depressed and furious at the moment. I can tell he's trying to get his emotions under control. I must have pushed a bunch of his buttons all at once.
 
-"Yeah. Frisk. Got it. Never going to use it." Sans grumbles as we make our way to the end of the hallway. He then finds a metal specimen crate (with glass sides, a fingerprint lock, and a grated top) for my jail. He both moves the grate, and drops me inside with blue magic, being careful not to let me go before locking the grate back to the top of it with the fingerprint key. 
+"yeah. frisk. got it. never going to use it." Sans grumbles as we make our way to the end of the hallway. He then finds a metal specimen crate (with glass sides, a fingerprint lock, and a grated top) for my jail. He both moves the grate, and drops me inside with blue magic, being careful not to let me go before locking the grate back to the top of it with the fingerprint key. 
 
 The shape of the crate is an upright cylinder, the fingerpad key being on the outside and far from the grate. The keypad is connected through wiring on the outside of the crate, so it's completely impossible to open it from the inside. I can just stand up in it, it seems. My arms can reach out and stretch completely to the sides, but not upright- the grate is in the way. 
 
 Sans walks away, his posture hunched and his phalanges deep in his jacket pockets. <span class="dtm-mono">Is he... sad? I guess I did call him out on his name... Hm.</span> I wonder to myself. I'm honestly not surprised he's depressed, his name is way too accurate.
 
-I stand and watch him leave, then sit down and pull my legs up to my chest while leaning against the glass, waiting for my inevitable fate.
+I stand and watch him leave, then sit down and pull my legs up to my chest while leaning my back against the glass, waiting for my inevitable fate.
 
 :: Nice Introduction
 
-Sans blinks in surprise at my apparent kindness, then smiles and shakes his head ruefully. "<span class="comicsans">I almost wish I hadn't captured you, Frisk. I think I'll just bring you with me rather than... well, the alternative you probably wouldn't have liked.</span>"
+Sans blinks in surprise at my apparent kindness, then smiles and shakes his head ruefully. "<span class="comicsans">i almost wish i hadn't captured you, frisk. i think i'll just bring you with me rather than... well, the alternative you probably wouldn't have liked.</span>"
 
 I nod with a smile. He puts me down, and I don't bother running. I want to see <<if $Frisk.gotbored is true or $Frisk.curiousabtcrew is true>>the rest of the crew!<<elseif $Frisk.wantedajob is true>>if I can get a job from this crew of monsters.<<elseif $Frisk.gotbored is true and $Frisk.curiousabtcrew is true and $Frisk.wantedajob is true>> about getting a job from this crew of interesting monsters, as well as see the rest of them.<</if>>
 
