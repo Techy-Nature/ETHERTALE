@@ -211,7 +211,7 @@ I<<if lastVisited("Footsteps")>> scrambled <<elseif lastVisited("Starship hallwa
 
 :: Footsteps
 
-There are footsteps coming down the hallway! [[I should probably hide|Vent 1]]!
+There are footsteps coming down the hallway! <<if lastVisited("Starship hallway")[[I should probably hide|Vent 1]]<<elseif lastVisited("Bedrooms hallway") is 1>>[[I should probably hide|Vent 2]]<</if>>!
 
 <<nobr>>
 <<timed 10s>> I should hurry! The footsteps are getting closer!
@@ -232,17 +232,9 @@ I am confused as to this turn of events, but to say I am surprised would be a li
 
 [[I watch the skeleton walk as I'm carried by my SOUL to the front of the ship, likely where the captain will be.|Hallway conversation]]
 
-:: Starship hallway 2
-
-End of demo.
-
-:: Engine room
-
-End of demo.
-
 ::Hallway conversation
 
-"<span class="comicsans">welp, might as well tell you the name of your judge, huh, kid? i'm sans. sans the skeleton.</span>" The skeleton pauses, then asks, "<span class="comicsans">so uh... kid, I think you know the gig's up, right? you can't try to hide again after we know you're here, you'd just get caught again.</span>"
+"<span class="comicsans">welp, might as well tell you the name of your judge, huh, kid? i'm sans. sans the skeleton.</span>" The monster pauses, then asks, "<span class="comicsans">so uh... kid, I think you know the gig's up, right? you can't try to hide again after we know you're here, you'd just get caught again.</span>"
 
 Do I...
 
@@ -259,7 +251,7 @@ At the end of the hallway there is a phone system for communicating with the cap
 
 Then he walks away with his phalanges deep in his pockets and his posture hunched over. He looks regretful, and I'm not surprised. No one likes jailing another sentient being. 
 
-I slide down the glass as I sit down, then I pull up my legs and hug them, waiting for my inevitable fate.
+I slide my back down the glass as I sit down, then I pull up my legs and hug them, waiting for my inevitable fate.
 
 :: Jerk conversation
 
@@ -277,7 +269,7 @@ I stand and watch him leave, then sit down and pull my legs up to my chest, wait
 
 Sans' eyes go black, his face looking very depressed and furious at the moment. I can tell he's trying to get his emotions under control. I must have pushed a bunch of his buttons all at once.
 
-"yeah. frisk. got it. never going to use it." Sans grumbles as we make our way to the end of the hallway. He then finds a metal specimen crate (with glass sides, a fingerprint lock, and a grated top) for my jail. He both moves the grate, and drops me inside with blue magic, being careful not to let me go before locking the grate back to the top of it with the fingerprint key. 
+"yeah. frisk. got it. never going to use it." Sans grumbles half-coherently as we make our way to the end of the hallway. He then finds a metal specimen crate (with glass sides, a fingerprint lock, and a grated top) for my jail. He both moves the grate, and drops me inside with blue magic, being careful not to let me go before locking the grate back to the top of it with the fingerprint key. 
 
 The shape of the crate is an upright cylinder, the fingerpad key being on the outside and far from the grate. The keypad is connected through wiring on the outside of the crate, so it's completely impossible to open it from the inside. I can just stand up in it, it seems. My arms can reach out and stretch completely to the sides, but not upright- the grate is in the way. 
 
@@ -289,10 +281,43 @@ I stand and watch him leave, then sit down and pull my legs up to my chest while
 
 Sans blinks in surprise at my apparent kindness, then smiles and shakes his head ruefully. "<span class="comicsans">i almost wish i hadn't captured you, frisk. i think i'll just bring you with me rather than... well, the alternative you probably wouldn't have liked.</span>"
 
-I nod with a smile. He puts me down, and I don't bother running. I want to see <<if $Frisk.gotbored is true or $Frisk.curiousabtcrew is true>>the rest of the crew!<<elseif $Frisk.wantedajob is true>>if I can get a job from this crew of monsters.<<elseif $Frisk.gotbored is true and $Frisk.curiousabtcrew is true and $Frisk.wantedajob is true>> about getting a job from this crew of interesting monsters, as well as see the rest of them.<</if>>
+I nod with a smile. He puts me down, and I don't bother running. I want to see <<if $Frisk.gotbored is true or $Frisk.curiousabtcrew is true>>the rest of the crew!<<elseif $Frisk.wantedajob is true>>if I can get a job from this crew of monsters.<<elseif $Frisk.gotbored is true and $Frisk.curiousabtcrew is true and $Frisk.wantedajob is true>>about getting a job from this crew of <i>interesting</i> monsters!<</if>>
 
 I follow Sans towards another hallway, and we make our way to the [[Dining Lounge]].
 
 :: Dining Lounge
 <<addmins 5>>
 end demo
+
+:: Bedrooms hallway
+
+<<if lastVisited("Starship hallway") is 1>>I walk to the end of the right hallway. There were a lot of bedroom doors that I went past.<<elseif lastVisited("Kitchen-sneaky" is 1>> I exit the kitchen, making sure to peek over into the door's windows before doing so.<</if>> Where should I go next?
+
+* <<nobr>><<if visited() is 1>><<hovertip "Maybe try to find some food?">>[[Go to the Kitchen.|Kitchen-sneaky]]<</hovertip>><<else>>[[Go to the Kitchen.|Kitchen-sneaky]]<</if>><</nobr>>
+* [[Go to the Dining Lounge.|Dining Lounge-sneaky]]
+* [[Hide in another vent.|Vent 2]]
+
+<<timed 10s>><<goto "Footsteps">><</timed>>
+
+::Vent 2
+
+I <<if lastVisited("Footsteps") is 1>>climb quickly<<else>>enter<</if>> the vent near the kitchens. <<if visited() is 1>>This one is also dark, but beyond that it is incredibly steamy and full of fog, as this vent redirects steam from the kitchens' ovens and other gas-powered appliances to the outside of the ship. I <<return "exit the vent.">><<elseif lastVisited("Footsteps") is 1>>I make like a mouse, quieting my breathing and trying not to make any noise as the shuffling footsteps pass. <<timed 5s>>Finally, after everything is safe outside, I clamber carefully [[back out of the vent|Bedrooms hallway]].<</if>>
+
+:: Kitchen-sneaky
+ 
+ I tip-toe into the kitchen, peeking through the double-door's windows before entering to make sure the coast is clear. I lean up on tip-toes and pull myself up to see through the tall windows, and no one is inside right now so I enter easily. 
+ 
+TODO: [adding choices for taking food from the kitchen](I can take an apple from the bowl on the counter, a mini monster cake from the cupboard, or a beast jerky, from the box next to the monster cakes.)
+ 
+[[Leave the kitchen|Bedrooms hallway]]
+
+:: Dining Lounge-sneaky
+
+
+
+:: Dining Lounge
+
+
+:: Engine room
+
+End of demo.
