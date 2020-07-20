@@ -201,7 +201,7 @@ I enter the cargo hold<<if lastVisited("Explore Cargo") lte 2>> again<</if>>. I 
 
 :: Starship hallway
 
-<<if lastVisited("Explore Cargo") is 1>>After exiting the cargo hold,<</if>> I enter a long, curved hallway. Should I go [[left|Engine room]] [[right|Starship hallway 2]] or [[try to find an air vent|Vent 1]] to hide in? I can also go back into the [[cargo hold.|Cargo Hold]]
+<<if lastVisited("Explore Cargo") is 1>>After exiting the cargo hold,<</if>> I enter a long, curved hallway. Should I go [[left|Engine room]] [[right|Bedrooms hallway]] or [[try to find an air vent|Vent 1]] to hide in? I can also go back into the [[cargo hold.|Cargo Hold]]
 
 <<timed 15s>><<goto "Footsteps">><</timed>>
 
@@ -211,7 +211,7 @@ I<<if lastVisited("Footsteps")>> scrambled <<elseif lastVisited("Starship hallwa
 
 :: Footsteps
 
-There are footsteps coming down the hallway! <<if lastVisited("Starship hallway")[[I should probably hide|Vent 1]]<<elseif lastVisited("Bedrooms hallway") is 1>>[[I should probably hide|Vent 2]]<</if>>!
+There are footsteps coming down the hallway! <<if lastVisited("Starship hallway")is 1>>[[I should probably hide|Vent 1]]<<elseif lastVisited("Bedrooms hallway") is 1>>[[I should probably hide|Vent 2]]<</if>>!
 
 <<nobr>>
 <<timed 10s>> I should hurry! The footsteps are getting closer!
@@ -291,7 +291,7 @@ end demo
 
 :: Bedrooms hallway
 
-<<if lastVisited("Starship hallway") is 1>>I walk to the end of the right hallway. There were a lot of bedroom doors that I went past.<<elseif lastVisited("Kitchen-sneaky" is 1>> I exit the kitchen, making sure to peek over into the door's windows before doing so.<<else>> I find myself in the bedroom hallway.<</if>> Where should I go next?
+<<nobr>><<if lastVisited("Starship hallway") is 1>>I walk to the end of the right hallway. There were a lot of bedroom doors that I went past.<<elseif lastVisited("Kitchen-sneaky") is 1>> I exit the kitchen, making sure to peek over into the door's windows before doing so.<<else>>I find myself in the bedroom hallway.<</if>><</nobr>> Where should I go next?
 
 * <<nobr>><<if visited() is 1>><<hovertip "Maybe try to find some food?">>[[Go to the Kitchen.|Kitchen-sneaky]]<</hovertip>><<else>>[[Go to the Kitchen.|Kitchen-sneaky]]<</if>><</nobr>>
 * [[Go to the Dining Lounge.|Dining Lounge-sneaky]]
@@ -301,7 +301,7 @@ end demo
 
 ::Vent 2
 
-I <<if lastVisited("Footsteps") is 1>>climb quickly<<else>>enter<</if>> the vent near the kitchens. <<if lastVisited("")>>This one is also dark, but beyond that it is incredibly steamy and full of fog, as this vent redirects steam from the kitchens' ovens and other gas-powered appliances to the outside of the ship. I <<return "exit the vent.">><<elseif lastVisited("Footsteps") is 1>>I make like a mouse, quieting my breathing and trying not to create any noise as the shuffling footsteps pass. <<timed 5s>>Finally, after everything is safe for me outside, I clamber carefully [[back out of the vent|Bedrooms hallway]].<</if>>
+I <<if lastVisited("Footsteps") is 1>>climb quickly into<<else>>enter<</if>> the vent near the kitchens. <<if lastVisited("Bedrooms hallway") is 1>>This one is also dark, but beyond that it is incredibly steamy and full of fog, as this vent redirects steam from the kitchens' ovens and other gas-powered appliances to the outside of the ship. I <<return "exit the vent.">><<elseif lastVisited("Footsteps") is 1>>I make like a mouse, quieting my breathing and trying not to create any noise as the shuffling footsteps pass. <<timed 5s>>Finally, after everything is safe for me outside, I clamber carefully [[back out of the vent|Bedrooms hallway]].<</timed>><<elseif lastVisited("Footsteps") is 2>>I finish doing what I was doing in here and [[exit the vent.|Bedrooms hallway]]<<else>>I [[exit the vent|Bedrooms hallway]] afterward.<</if>>
 
 :: Kitchen-sneaky
  
@@ -318,7 +318,7 @@ There's a fluffy monster in there lounging and reading a book... I better not en
 <<case 1>>
 I can see a skeleton sleeping on the couches. I probably shouldn't enter, I'd likely get caught. I [[step away|Bedrooms hallway]] from the door.
 <<case 2>>
-I can see that whoever was in there just left through another entryway. I enter through the door closest to me, then inspect the space. It's really pretty standard fare, a couple couches, a very comfortable looking recliner with a wooden plate that says, "Chairiel" on the back of it, a serving window from the kitchen, and a table with ten cloth placesettings and ten high-tech revolving chairs. <span id="<i>Must have ten people on this ship... unless they regularly have guests...</i> I think to myself curiously. There's nothing really in here of interest, except maybe the books on the ship shelf. There's a lot of them, though, and I don't know when whoever was in here will be back, so I take a quick glance and plan to move on as quickly as possible. 
+I can see that whoever was in there just left through another entryway. I enter through the door closest to me, then inspect the space. It's really pretty standard fare, a couple couches, a very comfortable looking recliner with a wooden plate that says, "Chairiel" on the back of it, a serving window from the kitchen, and a table with ten cloth placesettings and ten high-tech revolving chairs. <span class="dtm-mono"><i>They must regularly have guests... hmm...</i></span> I think to myself curiously. There's nothing really in here of interest, except maybe the books on the ship shelf. There's a lot of them, though, and I don't know when whoever was in here will be back, so I take a quick glance and plan to move on as quickly as possible. 
 There's a book about constellations (no surprise there), a book about ship AIs with an incredibly long, needlessly complicated name, a reference book of 5 different alien languages, and a mechanical journal with scribblings about Starship Mechanics on the front.
 You decide to stop looking when you hear footsteps coming, and go for a [[hasty exit.|Bedrooms hallway]]   
 <<case 3>>
@@ -331,7 +331,6 @@ Someone somehow muscular <i>and</i> fluffy is in there right now, writing in a j
 
 :: Dining Lounge
 end demo
-
 
 :: Engine room
 end demo
