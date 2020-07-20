@@ -15,7 +15,10 @@
 	src: url('fonts/papyrus.svg') format:('svg');
 }
 .arial {
-	font-family: Arial;
+	font-family: Arial; "Arial"
+	c: url('fonts/arial-webfont.woff2') format:('woff2'),
+    src: url('fonts/arial-webfont.woff') format:('woff'),
+	src: url('fonts/arial.ttf') format:('truetype');
 }
 .dtm-mono {
 	font-family: 'dtm-mono';

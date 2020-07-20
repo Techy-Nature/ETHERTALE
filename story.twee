@@ -224,7 +224,7 @@ But before I can get very far, my SOUL turns blue, and then I am lifted up-
 "Whuh-" 
 <img src="imgs/Sans_ETHERTALE.png" alt="A short skeleton with a blue hoodie pointing upwards with blue magic emenating from his pointer finger shows himself." height="700">
 <br>
-I am confused as to this turn of events, but to say I am surprised would be a lie. I didn't hide because I...
+I am confused as to this turn of events, but to say I am surprised to get caught would be a lie. I didn't hide because I...
 
 <<checkboxPlus "$Frisk.curiousabtcrew" "was curious about the crew.">>
 <<checkboxPlus "$Frisk.gotbored" "got bored slinking around like a rat.">>
@@ -247,7 +247,7 @@ Or, try to be friendly with my introduction in the hopes of being released. "[[N
 
 Sans waits for an answer, but when he realizes I'm glaring defiantly at him he looks ahead and sighs ruefully. The rest of the walk to what I'm assuming is the Captain's Cabin is completely in silence.
 
-At the end of the hallway there is a phone system for communicating with the captain and then with the rest of the crew. Sans floats and then drops me into a specimen crate with glass sides and grated top with a fingerprint lock, and makes a call to his "<span class="comicsans">bro</span>" to make an announcement for the crew to meet in the Dining Lounge next to the Kitchen. 
+At the end of the hallway there is a phone system for communicating with the captain and then with the rest of the crew. Sans floats and then drops me into a specimen crate with glass sides and grated top with an outside fingerprint lock, and makes a call to his "<span class="comicsans">bro</span>" to make an announcement for the crew to meet in the Dining Lounge next to the Kitchen. 
 
 Then he walks away with his phalanges deep in his pockets and his posture hunched over. He looks regretful, and I'm not surprised. No one likes jailing another sentient being. 
 
@@ -257,7 +257,7 @@ I slide my back down the glass as I sit down, then I pull up my legs and hug the
 
 "<span class="comicsans">hey! there's no need for name-calling, kid. but I guess I can see where you're coming from. this has gotta be scary for a teenager like you.</span>" It's a statement more than a question, so I don't grace it with a response.
 
-Sans rolls his glowing eye, then at the end of the hallway finds a metal specimen crate (with glass sides, a fingerprint lock, and a grated top) for my "<span class="comicsans">holding cell</span>" as he calls it. He moves the grate on top with his blue magic, then drops me inside with blue magic, being careful not to let me go before locking the grate back to the top of it. 
+Sans rolls his glowing eye, then at the end of the hallway finds a metal specimen crate (with glass sides, a fingerprint lock, and a grated top) for my "<span class="comicsans">holding cell</span>" as he calls it. He moves the grate on top, then drops me inside, both with blue magic, being careful not to let me go before locking the grate back to the top of it. 
 
 The shape of the crate is an upright cylinder, the fingerpad key being on the outside and far from the grate. The keypad is connected through wiring on the outside of the crate, so it's completely impossible to open it from the inside. I can just stand up in it, it seems. My arms can reach out and stretch completely to the sides, but not upright- the grate is in the way. 
 
@@ -291,7 +291,7 @@ end demo
 
 :: Bedrooms hallway
 
-<<if lastVisited("Starship hallway") is 1>>I walk to the end of the right hallway. There were a lot of bedroom doors that I went past.<<elseif lastVisited("Kitchen-sneaky" is 1>> I exit the kitchen, making sure to peek over into the door's windows before doing so.<</if>> Where should I go next?
+<<if lastVisited("Starship hallway") is 1>>I walk to the end of the right hallway. There were a lot of bedroom doors that I went past.<<elseif lastVisited("Kitchen-sneaky" is 1>> I exit the kitchen, making sure to peek over into the door's windows before doing so.<<else>> I find myself in the bedroom hallway.<</if>> Where should I go next?
 
 * <<nobr>><<if visited() is 1>><<hovertip "Maybe try to find some food?">>[[Go to the Kitchen.|Kitchen-sneaky]]<</hovertip>><<else>>[[Go to the Kitchen.|Kitchen-sneaky]]<</if>><</nobr>>
 * [[Go to the Dining Lounge.|Dining Lounge-sneaky]]
@@ -301,23 +301,38 @@ end demo
 
 ::Vent 2
 
-I <<if lastVisited("Footsteps") is 1>>climb quickly<<else>>enter<</if>> the vent near the kitchens. <<if visited() is 1>>This one is also dark, but beyond that it is incredibly steamy and full of fog, as this vent redirects steam from the kitchens' ovens and other gas-powered appliances to the outside of the ship. I <<return "exit the vent.">><<elseif lastVisited("Footsteps") is 1>>I make like a mouse, quieting my breathing and trying not to make any noise as the shuffling footsteps pass. <<timed 5s>>Finally, after everything is safe outside, I clamber carefully [[back out of the vent|Bedrooms hallway]].<</if>>
+I <<if lastVisited("Footsteps") is 1>>climb quickly<<else>>enter<</if>> the vent near the kitchens. <<if lastVisited("")>>This one is also dark, but beyond that it is incredibly steamy and full of fog, as this vent redirects steam from the kitchens' ovens and other gas-powered appliances to the outside of the ship. I <<return "exit the vent.">><<elseif lastVisited("Footsteps") is 1>>I make like a mouse, quieting my breathing and trying not to create any noise as the shuffling footsteps pass. <<timed 5s>>Finally, after everything is safe for me outside, I clamber carefully [[back out of the vent|Bedrooms hallway]].<</if>>
 
 :: Kitchen-sneaky
  
- I tip-toe into the kitchen, peeking through the double-door's windows before entering to make sure the coast is clear. I lean up on tip-toes and pull myself up to see through the tall windows, and no one is inside right now so I enter easily. 
+ I tip-toe into the kitchen, peeking through the double-door's windows before entering to make sure the coast is clear. I lean up on tip-toes and pull myself up to see through the tall windows, and when I see that no one is inside I go ahead and enter. 
  
 TODO: [adding choices for taking food from the kitchen](I can take an apple from the bowl on the counter, a mini monster cake from the cupboard, or a beast jerky, from the box next to the monster cakes.)
  
-[[Leave the kitchen|Bedrooms hallway]]
+[[Leave the kitchen.|Bedrooms hallway]]
 
-:: Dining Lounge-sneaky
-
-
+:: Dining Lounge-sneaky [nobr]
+<<switch random(0,4)>>
+<<case 0>>
+There's a fluffy monster in there lounging and reading a book... I better not enter. I [[step back|Bedrooms hallway]] from the door.
+<<case 1>>
+I can see a skeleton sleeping on the couches. I probably shouldn't enter, I'd likely get caught. I [[step away|Bedrooms hallway]] from the door.
+<<case 2>>
+I can see that whoever was in there just left through another entryway. I enter through the door closest to me, then inspect the space. It's really pretty standard fare, a couple couches, a very comfortable looking recliner with a wooden plate that says, "Chairiel" on the back of it, a serving window from the kitchen, and a table with ten cloth placesettings and ten high-tech revolving chairs. <span id="<i>Must have ten people on this ship... unless they regularly have guests...</i> I think to myself curiously. There's nothing really in here of interest, except maybe the books on the ship shelf. There's a lot of them, though, and I don't know when whoever was in here will be back, so I take a quick glance and plan to move on as quickly as possible. 
+There's a book about constellations (no surprise there), a book about ship AIs with an incredibly long, needlessly complicated name, a reference book of 5 different alien languages, and a mechanical journal with scribblings about Starship Mechanics on the front.
+You decide to stop looking when you hear footsteps coming, and go for a [[hasty exit.|Bedrooms hallway]]   
+<<case 3>>
+I see three monsters talking in there - two skeletons and a fishy looking one. I better not go in. I [[step away from the door.|Bedrooms hallway]]
+<<case 4>>
+Someone somehow muscular <i>and</i> fluffy is in there right now, writing in a journal of some sort. I [[go back to the hallway.|Bedrooms hallway]]
+<<default>>
+<span id="glitch" data-text="Glitchy things happened, this shouldn't show unless there's been a glitch."> Glitchy things happened, this shouldn't show unless there's been a glitch.</span>
+<</switch>>
 
 :: Dining Lounge
+end demo
 
 
 :: Engine room
+end demo
 
-End of demo.
