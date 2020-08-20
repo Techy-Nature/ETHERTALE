@@ -1,0 +1,83 @@
+/* Jaden's code for styling - start*/
+
+.comicsans {
+	  font-family: Comic Sans MS, Comic Sans, "comicsans";
+	  src: ('fonts/comic.ttf') format:('truetype'),
+	  src: url('fonts/comic.woff') format:('woff'),
+	  src: url('fonts/comic.woff2') format:('woff2');
+}
+.papyrus {
+	font-family: 'Papyrus';
+    src: url('fonts/papyrus-webfont.woff2') format:('woff2'),
+    src: url('fonts/papyrus-webfont.woff') format:('woff'),
+	src: url('fonts/papyrus-webfont.ttf') format:('truetype'),
+	src: url('fonts/papyrus.otf') format:('opentype'),
+	src: url('fonts/papyrus.svg') format:('svg');
+}
+.arial {
+	font-family: Arial, 'Arial';
+	c: url('fonts/arial-webfont.woff2') format:('woff2'),
+    src: url('fonts/arial-webfont.woff') format:('woff'),
+	src: url('fonts/arial.ttf') format:('truetype');
+}
+.dtm-mono {
+	font-family: 'dtm-mono';
+    src: url('fonts/dtm-mono-webfont.woff2') format:('woff2'),
+    src: url('fonts/dtm-mono-webfont.woff') format:('woff'),
+	src: url('fonts/DTM-mono.otf') format:('opentype');
+}
+.dtm-sans {
+	font-family: 'dtm-sans';
+	src: url('fonts/DTM-sans.otf') format:('opentype');
+	src: url('fonts/dtm-sans-webfont.woff2') format:('woff2'),
+    src: url('fonts/dtm-sans-webfont.woff') format:('woff');
+}
+.aster  {
+	font-family: 'Gaster-Regular';
+	src: url('fonts/new-aster.otf') format:('opentype'),
+    src: url('fonts/new-aster-webfont.woff2') format:('woff2'),
+    src: url('fonts/new-aster-webfont.woff') format:('woff');
+	src: url('fonts/new-aster.ttf') format:('truetype'),
+}
+.wingdings {
+	font-family: 'Wing-Ding-Gaster';
+	src: url('fonts/wingdings-pixelated-webfont.ttf') format:('truetype'),
+    src: url('fonts/wingdings-pixelated-webfont.woff2') format:('woff2'),
+    src: url('fonts/wingdings-pixelated-webfont.woff') format:('woff'),
+	src: url('fonts/wingdings-pixelated-webfont.svg') format:('svg');
+}
+body, tw-story {
+	font-size: 16px;
+}
+body {
+	background-color: #000;
+}
+.pcdarklink {
+	color: grey;
+	font-weight: 50;
+	color: transparent;
+	text-shadow:
+		0em    0em 0.02em rgba(255,255,255,0.75),
+		-0.2em 0em 0.5em  rgba(255,255,255,0.5),
+		0.2em  0em 0.5em  rgba(255,255,255,0.5);
+}
+ .pcdarklink a:hover {
+	color: lightgrey;
+	font-weight: 50;
+	color: transparent;
+	text-shadow:
+		0em    0em 0.02em rgba(255,255,255,0.75),
+		-0.2em 0em 0.5em  rgba(255,255,255,0.5),
+		0.2em  0em 0.5em  rgba(255,255,255,0.5);
+}
+.pcdark {
+	color: grey;
+	font-weight: 30
+	color: transparent;
+	text-shadow:
+		0em    0em 0.02em rgba(255,255,255,0.75),
+		-0.2em 0em 0.5em  rgba(255,255,255,0.5),
+		0.2em  0em 0.5em  rgba(255,255,255,0.5);
+}
+
+/* Jaden's code for styling - end*/

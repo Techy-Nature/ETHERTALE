@@ -46,3 +46,5 @@ This project is licensed under the GNUvrs.3 License - see the [LICENSE.md](https
 
 * Dukemz
 * Toby Fox for Undertale
+
+NOTES: Don't clear your browser cache before saving your game in a seperate file! You'll lose all your progress, so please be careful!
