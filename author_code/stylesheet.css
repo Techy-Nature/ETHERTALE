@@ -40,7 +40,7 @@
 	src: url('fonts/new-aster.ttf') format:('truetype'),
 }
 .wingdings {
-	font-family: 'Wing-Ding-Gaster';
+	font-family: 'Wing-Ding-Gaster', Wingdings;
 	src: url('fonts/wingdings-pixelated-webfont.ttf') format:('truetype'),
     src: url('fonts/wingdings-pixelated-webfont.woff2') format:('woff2'),
     src: url('fonts/wingdings-pixelated-webfont.woff') format:('woff'),
@@ -52,7 +52,7 @@ body, tw-story {
 body {
 	background-color: #000;
 }
-.pcdarklink {
+.pcdarklink a {
 	color: grey;
 	font-weight: 50;
 	color: transparent;
