@@ -13,6 +13,10 @@ It is <<printtime12hr>>
 @@.desclink;[[Character Description]]@@
 @@.ctrlslink;.PCdarklink;[[Controls]]@@
 
+:: StoryMenu [stoptime]
+
+<span id="restartlink">[[Restart|Start]]</span>
+
 :: StoryInit [nobr]
 
 <<set $now = new Date(2050, 4, 1, 14, 30, 0)>>
@@ -118,9 +122,11 @@ duck.dbg("Finished printing item dictionary.");
 	<<trigger 'click' '.invlink a'>>
 	<<which 17>>
 	<<trigger 'click' '.ctrlslink a'>>
+	<<which 16>>
+	<<trigger 'click' '#restartlink a'>>
 	<</event>>
-//Js Date events, different from the ones above
 
+//Js Date events, different from the ones above
 
 :: StoryData
 {
@@ -269,7 +275,7 @@ Links will let you continue through the story. If something is colored different
 
 :: Start [stoptime]
 
-<<if visited() is 1>><span class="dtm-sans"><span class="glitch" data-text="You need to help Frisk and I.">You are the only one who can direct us.</span></span><</if>>
+<<if visited() is 1>><span class="dtm-mono"><span class="glitch" data-text="You need to help Frisk and I.">You are the only one who can direct us.</span></span><</if>>
 
 It is giant... Much bigger than I imagined it to be before.
 
@@ -277,7 +283,7 @@ It is giant... Much bigger than I imagined it to be before.
 
 :: Starship Bonetrousle
 
-From behind the corner of the buildings 20 feet away, I marvel at the beautiful, shiny chrome ship. Word on the street is, the ship has a crew of only seven. How it can function on that tiny of a crew is beyond me.
+From behind the corner of the buildings 20 feet away, I marvel at the beautiful, shiny chrome ship. Word on the street is, the ship has a crew of only eight. How it can function on that tiny of a crew is beyond me.
 Crouching behind a bush, I wait stealthily until a stray box is left outside the humongous ship on it's lonesome, then I jump from behind the bush, arms pumping, $Frisk.equipped.feet slapping on the dirt and later the metal landing platform. Then I open the box up, and, jumping inside it, close it up again. Afterwards I quickly cover myself with a felt packing blanket, @@.onlylink;[[and wait.|Intro the ship]]@@
 
 :: Intro the ship
@@ -294,7 +300,7 @@ I hear a loud, "<span class="papyrus">OKAY, UNDYNE!</span>" over the ship's spea
 
 <span class="dtm-sans"><span class="glitch" data-text="Choose wisely.">Your first choice.</span></span>
 <<addmins 6>>
-After the footsteps die away through @@.link1;[[a pressurized door,|Starship hallway]]@@ and later a second heavy rumbling signifies we've left the ground, I climb out of the crate. <<hovertip "The cargo hold. It's full of crates and other junk.">>The room I'm in<</hovertip>> is large, the size of a ballroom really, but only half of it is filled with stuff. Maybe @@.link2;<<hovertip "There might be something useful in here...">>[[exploring the cargo hold|Explore Cargo]]<</hovertip>>@@ first before leaving might be a good idea?
+After the footsteps die away through @@.link1;[[a pressurized door,|Starship hallway]]@@ and later a second heavy rumbling signifies we've left the ground, I climb out of the crate. <<hovertip "The cargo hold. It's full of crates and other junk.">>The room I'm in<</hovertip>> is large, the size of a small ballroom really, but only half of it is filled with stuff. Maybe @@.link2;<<hovertip "There might be something useful in here...">>[[exploring the cargo hold|Explore Cargo]]<</hovertip>>@@ first before leaving might be a good idea?
 
 :: Explore Cargo
 I look around, picking my way around and over crates. <<if visited() is 1>>I open one up, and find a crate of guns and a few very high-tech multi-function army knives. The guns are too big for me, but <span id="knife" class="link1">I can <<link "take the knife.">><<set $Frisk.inv.equippable.concatUnique("high-tech army knife")>><<set $Frisk.inv.itemcounter ++>><<replace "#knife">>I've already taken a knife. I don't need two! I can equip it later, or right now from my @@.link1;[[Inventory.|Inventory]]@@<</replace>><</link>></span><<elseif $now.getHours gte 5 or $now.getHours lte 10 and visited() gt 1 and visited() lt 5>> I try to find something useful, and find a large crate of beast jerky. <<if $Frisk.inv.itemcounter == $Frisk.inv.limit>> Unfortunately I can't take any, I've got too much stuff on me! <<else>> <<link "take a package of jerky.">><<set $Frisk.inv.concat("packet of beast jerky") and $Frisk.inv.itemcounter ++>><<refresh>><</link>><</if>><<else>> There's not much here that I need right now. I've taken everything that was useful, sadly...<</if>>
@@ -485,5 +491,5 @@ I walk over to the Grav arrays and look at them, following your suggestion. Ther
 <span class="pcdark">You ask...</span>
 <span class="pcdarklink link1">[[How do the grav-arrays work?|Gravity on ship Explain]]</span>
 <span class="pcdarklink link2">[[How do they plan on getting off the ship without the crew seeing them?|The non-existent Escape-ship Plan]]</span>
-@@.pcdarklink;.link3;[[Who figured out long-distance space travel?|W.D. Gaster]]@@
+<span class="pcdarklink link3">[[Who figured out long-distance space travel?|W.D. Gaster]]<span>
 <span class="pcdarklink link4">[[You're done, that's all you wanted to know.|Engine room]]</span>
