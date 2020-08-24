@@ -16,9 +16,31 @@ It is <<printtime12hr>>
 :: StoryInit [nobr]
 
 <<set $now = new Date(2050, 4, 1, 14, 30, 0)>>
-/* Duke you can put your Inventory code here, for now I'm going to keep my code, but you can add yours and we'll eventually move to using your code.*/
 
-/* Jaden's code below*/
+/*
+Dukemz's code here.
+This won't actually do anything yet, apart from print some text to the console,
+which you can view with F12 or Ctrl+Shift+I in most browsers.
+*/
+<<script>>
+// I'll put my functions in this object. You should be able to call them with `duck.functionName()`
+// or something similar.
+window.duck = {};
+
+// Just a nice little function to display coloured text in the console. Called it the duck debugger because why not.
+duck.dbg = text => { return console.log("%c[DUCK DEBUGGER] " + `%c${text}`, "color:aqua", "color:grey"); }
+duck.dbg("Starting Dukemz's code and setting up item dictionary.");
+
+// Set up the item dictionary.
+duck.itemdict = [
+	// This will contain items later.
+];
+duck.dbg("Printing the item dictionary below...");
+console.log(duck.itemdict);
+duck.dbg("Finished printing item dictionary.");
+<</script>>
+
+/* Jaden's code below */
 <<silently>><<set $Frisk to {}>>
 <<set $Frisk.equipped to {itemcounter: 0, head: "nothing", torso: "striped purple sweater and blue jeanshorts", feet: "dark brown sneakers"}>>
 <<set $Frisk.weapon to {limit: 1, itemcounter: 0, has: "nothing"}>>
@@ -27,7 +49,7 @@ It is <<printtime12hr>>
 <<set $Frisk.inv.equippable to []>><</silently>>
 <<set $Frisk.age to 17>>
 <<set $Frisk.Gold = 10>>
-//Chapelr's code below
+// Chapelr's code below
 <<set
 	window.GameDays to [
 		"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"
@@ -106,7 +128,7 @@ It is <<printtime12hr>>
 }
 
 :: Time Widgets [widget nobr]
-/*Adds the specified number of minutes. */
+/* Adds the specified number of minutes. */
 <<widget "addmins">>
 <<run $now.setMinutes($now.getMinutes() + $args[0])>>
 <</widget>>
