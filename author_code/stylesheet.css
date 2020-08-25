@@ -46,6 +46,9 @@
     src: url('fonts/wingdings-pixelated-webfont.woff') format:('woff'),
 	src: url('fonts/wingdings-pixelated-webfont.svg') format:('svg');
 }
+.cambria {
+	font-family: Cambria;
+}
 body, tw-story {
 	font-size: 16px;
 }

@@ -62,7 +62,7 @@ duck.dbg("Finished printing item dictionary.");
 		"Jan", "Feb", "Mar", "Apr", "May", "Jun",
 		"Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
 	];>>
-	//Chapelr's code end
+	//  Chapelr's code end
 	/* Keyboard Event setup by Jaden*/
 	<<set $rocketsactive to true>>
 	<<event click ".linkcheck">>
@@ -78,6 +78,8 @@ duck.dbg("Finished printing item dictionary.");
 	<<event click '.linkcheck2 a'>>
 	<<which 01>>
 	<<set $linkclicked2 to true>>
+	<</event>>
+	<<event keydown '.linkcheck2 a'>>
 	<<which 51>>
 	<<set $linkclicked2 to true>>
 	<</event>>
@@ -126,7 +128,7 @@ duck.dbg("Finished printing item dictionary.");
 	<<trigger 'click' '#restartlink a'>>
 	<</event>>
 
-//Js Date events, different from the ones above
+// Js Date events, different from the ones above
 
 :: StoryData
 {
@@ -473,7 +475,7 @@ I forego speech in favor of thinking to you, since you're already in my head. <i
 
 :: Frisk will say Oh, okay
 
-I narrow my eyes even more than they already are in caution, then think to you, <i><span "dtm-mono">Well... I guess that's fine? As long as you suggest to me what you think I should do, we shouldn't have a problem, right?</span></i>
+I narrow my eyes even more than they already are in caution, then think to you, <i><span class="dtm-mono">Well... I guess that's fine? As long as you suggest to me what you think I should do, we shouldn't have a problem, right?</span></i>
 <span class="pcdarklink link1">[[Agreed. Now do they mind looking at those Grav-arrays?|Frisk Inspects Grav-Arrays]]</span>
 <span class="pcdarklink link2">[[Disagree-|I can imagine how that'll go down, badly]]</span>
 
