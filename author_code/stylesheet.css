@@ -1,8 +1,61 @@
 /* Jaden's code for styling - start*/
 
+/* StoryInterface Styling */
+
+#passages {
+width: 75%
+flex-flow: column nowrap;
+display: inline-block;
+padding-left: 5%
+}
+#sidebar 	{
+	border-right-style: solid;
+	border-right-color: white;
+	border-right-width: medium;
+	width: auto;
+	float: left;
+	margin-right: 50px
+	flex-flow: column nowrap;
+}
+#interface {
+	background-color: black;
+	font-family: 'fixedsys';
+	src: url('fonts/fixedsys.fon') format:('font'),
+	src: url('fonts/fixedsys.ttf') format:('truetype'),
+	src: url('fonts/fixedsys.woff') format:('woff'),
+	src: url('fonts/fixedsys.woff2') format:('woff2'),
+	src: url('fonts/fixedsys.otf') format:('opentype');
+}
+
+#menu-story {
+	float: left;
+	background-color: inherit;
+	border-style: solid;
+	border-color: white;
+	border-width: thick;
+	margin: 50px;
+	width: 250px
+	float: left;
+	flex-flow: inherit;
+}
+#story-subtitle {
+background-color: inherit;
+width: 250px;
+float: left;
+flex-flow: column nowrap;
+}
+.pcdarkbtn {
+	border-style: solid;
+	border-color: white;
+	background-color: darkgrey;
+	color: lightgrey;
+	box-shadow: 0.08em 0.08em 0.08em grey;
+}
+
+/* StoryInterface styling end */
 .comicsans {
 	  font-family: Comic Sans MS, Comic Sans, "comicsans";
-	  src: ('fonts/comic.ttf') format:('truetype'),
+	  src: url('fonts/comic.ttf') format:('truetype'),
 	  src: url('fonts/comic.woff') format:('woff'),
 	  src: url('fonts/comic.woff2') format:('woff2');
 }
@@ -16,7 +69,7 @@
 }
 .arial {
 	font-family: Arial, 'Arial';
-	c: url('fonts/arial-webfont.woff2') format:('woff2'),
+	src: url('fonts/arial-webfont.woff2') format:('woff2'),
     src: url('fonts/arial-webfont.woff') format:('woff'),
 	src: url('fonts/arial.ttf') format:('truetype');
 }
@@ -54,6 +107,12 @@ body, tw-story {
 }
 body {
 	background-color: #000;
+	font-family: 'fixedsys', Fixedsys;
+	src: url('fonts/fixedsys.fon') format:('font'),
+	src: url('fonts/fixedsys.ttf') format:('truetype'),
+	src: url('fonts/fixedsys.woff') format:('woff'),
+	src: url('fonts/fixedsys.woff2') format:('woff2'),
+	src: url('fonts/fixedsys.otf') format:('opentype');
 }
 .pcdarklink a {
 	color: grey;

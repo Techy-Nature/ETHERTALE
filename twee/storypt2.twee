@@ -10,7 +10,7 @@ Frisk thinks, then replies, <i><span class="dtm-mono">I believe I read somewhere
 
 :: Jump explain
 
-<i><span class="dtm-mono">Basically we end up in zero gravity until we touch down on the ceiling or another surface. This is pretty easily remedied, though. Usually space-farers just find an empty piece of wall and walk back to the ground from there.</span></i> I grin mischieviously. <i><span class="dtm-mono">It'd likely be an easy way to prank someone on the spaceship, though!</span></i> Frisk giggles quietly, trying not to create too much noise. <span class="dtm-mono">[[Anyway, you have any other questions about this?|Gravity on ship Explain]]</span>
+<i><span class="dtm-mono">Basically we end up in zero gravity until we touch down on the ceiling or another surface. This is pretty easily remedied, though. Usually space-farers just find an empty piece of wall and walk back to the ground from there.</span></i> I grin mischieviously. <i><span class="dtm-mono">It'd likely be an easy way to prank someone, though!</span></i> Frisk giggles quietly, trying not to create too much noise. <span class="dtm-mono">[[Anyway, you have any other questions about this?|Gravity on ship Explain]]</span>
 
 :: W.D. Gaster [slowtime]
 
@@ -106,7 +106,7 @@ How should I react, do you think?
 :: Aggression!
 
 I tense up, but before I can do anything to defend myself, a voice from above speaks out to my assailant. "<span class="aster">Undyne!</span>" The fishy woman's hand slowly withdraws. "<span class="dtm-sans">What?</span>"
-""<span class="aster">I believe this calls for a more delicate word.</span>"
+""<span class="aster">I do believe this calls for a more delicate word.</span>"
 A huff, a dismissive hand-wave, then the shadow that was cast over me withdraws, and a new one takes it's place.
 <img src="imgs/Undyne_ETHERTALE.png" alt="A fishy, red-haired and blue-skinned woman with webbed fingers waves dismissively." height="800">
 
@@ -118,12 +118,12 @@ The skeletal man stands up and steps back, waiting for me to exit. <span class="
 
 :: Caught by Gaster and Undyne
 
-"@@.aster;Now that you're up, I hope you'll forgive me...@@" He grimaces, pulling slightly at his turtleneck.
+"@@.aster;Now that you're up, I hope you'll forgive me...@@" He grmaces, pulling slightly at his turtleneck.
 <img src="imgs/WDGaster_by_inviseri-daf_ETHERTALE.png" alt="The skeletal chemistry scientist turns his skull to a grimace, phalanges pulling at the neck of his turtleneck." height="700">
 
 "<span class="aster">...But we need to put cuffs on you for the time being. We'll make sure they aren't tight, isn't that right, Undyne?</span>"
 Undyne rolls her eyes. "<span class="dtm-sans">You haven't even introduced yourself yet, you old bag of bones!</span>" Undyne then turns to me, a grin on her face, while the skeleton in question's face turns indignant. Before he can get a word in edgewise, Undyne introduces him. "<span class="dtm-sans">This skeleton is Wing Din Gaster.</span>" She gestures to him. "<span class="dtm-sans">He doesn't care much for fame, despite being FAMOUS, which is why he didn't introduce himself. You probably already know his name!</span>"
-I nod, smirking. <span class="pcdarklink"><<linkreplace "You express confusion to me..." t8n>></span>I explain to you in my mind that Wing Din Gaster is the inventor of the ultra-efficient fuel that made space-travel possible. You make a sound that is the equivalent of a nod and an impressed gasp in my mind.<</linkreplace>>
+I nod, smirking. <span class="pcdarklink"><<linkreplace "You express confusion to me...">>I explain to you in my mind that Wing Din Gaster is the inventor of the ultra-efficient fuel that made space-travel possible. You make a sound that is the equivalent of a nod and an impressed gasp in my mind.<</linkreplace>></span>
 
 By the time I'm done explaining to you, the cuffs are already on and I am prodded along by Undyne as I follow Gaster, exiting [[to the hallway.|Following Gaster]]
 

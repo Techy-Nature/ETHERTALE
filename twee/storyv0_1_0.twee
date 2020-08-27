@@ -2,20 +2,27 @@
 
 EtherTale
 
-:: StorySubtitle
+:: StoryDisplayTitle [stoptime]
+
+<span class="emboss" id="fadeintitle">ETHERTALE</span>
+
+:: StorySubtitle [stoptime]
 Prologue: Starship Stowaway
-v.0.01
+v.0.02
 
 Today is <<printfulldate>>.
 It is <<printtime12hr>>
 
-<<if hasVisited("Explore Cargo") is true>>@@.invlink;[[Inventory]]@@<</if>>
-@@.desclink;[[Character Description]]@@
-@@.ctrlslink;.PCdarklink;[[Controls]]@@
 
-:: StoryMenu [stoptime]
+:: StoryInterface
 
-<span id="restartlink">[[Restart|Start]]</span>
+<div id="interface">
+<div id="sidebar">
+<div id="story-title" data-passage="StoryDisplayTitle"
+	<div id="menu-story" data-passage="StoryMenu"></div>
+	<div id="story-subtitle" data-passage="StorySubtitle"></div></div>
+	<div id="passages"></div>
+</div>
 
 :: StoryInit [nobr]
 
@@ -43,7 +50,11 @@ duck.dbg("Printing the item dictionary below...");
 console.log(duck.itemdict);
 duck.dbg("Finished printing item dictionary.");
 <</script>>
-
+/*
+Jaden here. In Opera the shortcut for the Developer Console is Ctrl-Shift-J I believe, but you can add more shortcuts through the settings.
+All I did was go to the settings and search up "keyboard" without the quotes, and it should find it. If that doesn't work, try "shortcuts,"
+again without the quotes.
+*/
 /* Jaden's code below */
 <<silently>><<set $Frisk to {}>>
 <<set $Frisk.equipped to {itemcounter: 0, head: "nothing", torso: "striped purple sweater and blue jeanshorts", feet: "dark brown sneakers"}>>
@@ -64,7 +75,6 @@ duck.dbg("Finished printing item dictionary.");
 	];>>
 	//  Chapelr's code end
 	/* Keyboard Event setup by Jaden*/
-	<<set $rocketsactive to true>>
 	<<event click ".linkcheck">>
 	<<set $linkclicked to true>>
 	<<which 01>>
@@ -238,6 +248,12 @@ Config.history.controls = false;
 
 :: PassageFooter
 
+:: StoryMenu
+
+<<if hasVisited("Explore Cargo") is true>><span id="invlink">[[Inventory]]</span><</if>>
+<span id="desclink">[[Character Description]]</span>
+<span class="pcdarkbtn" id="ctrlslink"><button type="button" data-passage="Controls" class="link-internal">[[Controls]]</span>
+
 :: Inventory [menuitem stoptime]
 
 I have <<print $Frisk.inv.itemcounter>> item<<if $Frisk.inv.itemcounter gt 1 or $Frisk.inv.itemcounter eq 0>>s<<else>><</if>> on me.
@@ -289,7 +305,8 @@ From behind the corner of the buildings 20 feet away, I marvel at the beautiful,
 Crouching behind a bush, I wait stealthily until a stray box is left outside the humongous ship on it's lonesome, then I jump from behind the bush, arms pumping, $Frisk.equipped.feet slapping on the dirt and later the metal landing platform. Then I open the box up, and, jumping inside it, close it up again. Afterwards I quickly cover myself with a felt packing blanket, @@.onlylink;[[and wait.|Intro the ship]]@@
 
 :: Intro the ship
-<<addmins 4>>
+<<nobr>><<set $rocketsactive to true>>
+<<addmins 4>><</nobr>>
 I hear heavy footsteps, but somehow they seem more strong and confident than anything intimidating... "<span class="dtm-mono">A'right, one more box left!</span>" an ambiguously feminine voice rings out as the box I'm in lifts off the ground in one fluid motion. "<span class="dtm-mono">Huh, this box is heavy. Welp, in it goes!</span>" The <<hovertip "Monsters are a seperate race from humans, but lived and evolved on the same planet.">>monster<</hovertip>> starts moving with the box. I'm hesitating to breathe- I try to breathe as quietly as possible. <i><span class="dtm-mono">This has to work...</span></i> I think desperately. <i><span class="dtm-mono">I can't stay on this planet any longer. I need a new start!</span></i>
 
 I can hear the footsteps turn hollow as they head onto the ship, then the cargo hold. Then there's a loud "thump!" as the crate hits the ground. She(?) doesn't know I'm in here, so she drops the crate- I have to fight to keep from grunting in pain, but thankfully I manage not to groan.
@@ -297,6 +314,7 @@ I can hear the footsteps turn hollow as they head onto the ship, then the cargo 
 I hear her footsteps fading away, then a yell, "<span class="dtm-mono">Hey, Pap! Supplies are on! Let's hit the starstream!</span>"
 
 I hear a loud, "<span class="papyrus">OKAY, UNDYNE!</span>" over the ship's speakers, the floor rumbling as the old rockets @@.link1;[[start up and stabilize.|Exit the crate]]@@
+
 
 :: Exit the crate
 
@@ -396,7 +414,7 @@ Sans blinks in surprise at my apparent kindness, then smiles and shakes his head
 
 I nod with a smile. He puts me down, and I don't bother running. I want to see <<if $Frisk.gotbored is true or $Frisk.curiousabtcrew is true>>the rest of the crew!<<elseif $Frisk.wantedajob is true>>if I can get a job from this crew of monsters.<<elseif $Frisk.gotbored is true and $Frisk.curiousabtcrew is true and $Frisk.wantedajob is true>>about getting a job from this crew of <i>interesting</i> monsters!<</if>>
 
-I follow Sans towards another hallway, and we make our way to the @@.onlylink;[[Dining Lounge.|Dining Lounge]]@@
+I follow Sans towards another hallway, and we make our way to the <span class="onlylink">[[Dining Lounge.|Dining Lounge]]</span>
 
 
 :: Bedrooms hallway
