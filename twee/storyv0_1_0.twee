@@ -66,10 +66,10 @@ again without the quotes.
 // Jaden's code below
 <<silently>><<set $Frisk to {}>>
 <<set $Frisk.equipped to {itemcounter: 0, head: "nothing", torso: "striped purple sweater and blue jeanshorts", feet: "dark brown sneakers"}>>
-<<set $Frisk.weapon to {limit: 1, itemcounter: 0}>>
-<<set $Frisk.inv to {limit: 10, itemcounter: 0}>>
-<<set Frisk.inv.has to ["nothing"]>>
-<<set Frisk.weapon.has to ["nothing"]>>
+<<set $Frisk.weapon to {limit: 1, itemcounter: 0, has: []}>>
+<<set $Frisk.inv to {limit: 10, itemcounter: 0, has: []}>>
+<<set $Frisk.inv.has to ["nothing"]>>
+<<set $Frisk.weapon.has to ["nothing"]>>
 <</silently>>
 <<set $Frisk.age to 17>>
 <<set $Frisk.Gold = 10>>
@@ -330,7 +330,7 @@ I hear a loud, "<span class="papyrus">OKAY, UNDYNE!</span>" over the ship's spea
 After the footsteps die away through <span class="link1">[[a pressurized door,|Starship hallway]]</span> and later a second heavy rumbling signifies we've left the ground, I climb out of the crate. <<hovertip "The cargo hold. It's full of crates and other junk.">>The room I'm in<</hovertip>> is large, the size of a small ballroom really, but only half of it is filled with stuff. Maybe <span class="link2"><<hovertip "There might be something useful in here...">>[[exploring the cargo hold|Explore Cargo]]<</hovertip>></span> first before leaving might be a good idea?
 
 :: Explore Cargo
-I look around, picking my way around and over crates. <<if visited() is 1>>I open one up, and find a crate of guns and a few very high-tech multi-function army knives. The guns are too big for me, but <span id="knife" class="link1">I can <<link "take the knife.">><<set $Frisk.inv.has.concatUnique("high tech pocket knife")>><<set $Frisk.inv.itemcounter ++>><<refresh>><<replace "#knife">>I've already taken a knife. I don't need two! I can equip it later, or right now from my <span class="link1">[[Inventory.|Inventory]]</span><</replace>><</link>></span><<elseif $now.getHours() gte 5 and $now.getHours() lte 10 and visited() gt 1 and visited() lt 5>> I try to find something useful, and find a large crate of beast jerky. <<if $Frisk.inv.itemcounter === $Frisk.inv.limit>> Unfortunately I can't take any, I've got too much stuff on me! <<else>> <<link "take a package of jerky.">><<set $Frisk.inv.has.concat("packet of beast jerky") and $Frisk.inv.itemcounter ++>><<refresh>><</link>><<else>> There's not much here that I need right now. I've taken everything that was useful, sadly...<</if>>
+ <<if visited() is 1>>I open one up, and find a crate of guns and a few very high-tech multi-function army knives. The guns are too big for me, but <span id="knife">I can <<link "take the knife.">><<set $Frisk.inv.has.concatUnique("high-tech army knife")>><<set $Frisk.inv.itemcounter ++>><<replace "#knife">>I've already taken a knife. I don't need two!<</replace>><</link>></span> I can equip it later, or right now from my [[Inventory.|Inventory]]<<elseif $now.getHours gte 5 and $now.getHours lte 10 and visited() gt 1 and visited() lt 5>> I try to find something useful, and find a large crate of beast jerky. <<if $Frisk.inv.itemcounter == $Frisk.inv.limit>>Unfortunately I can't take any, I've got too much stuff on me! <<else>> <<link "take a package of jerky.">><<set $Frisk.inv.concat("packet of beast jerky") and $Frisk.inv.itemcounter ++>><<refresh>><</link>><</if>><<else>> There's not much here that I need right now. I've taken everything that was useful, sadly...<</if>>
 
 With that done, I <span class="link2">[[exit through the pressurized door to the hallway.|Starship hallway]]</span>
 
@@ -441,7 +441,7 @@ End of this route's content! Thanks for playing the demo! :)
 
 :: Vent 2
 
-I <<if lastVisited("Footsteps") is 1>>climb quickly into<<else>>enter<</if>> the vent near the kitchens. <<if lastVisited("Bedrooms hallway") is 1>>This one is<<if hasVisited("Vent 1") is true>> also<</if>> dark, but beyond that it is incredibly steamy and full of fog, as this vent redirects steam from the kitchens' ovens and other gas-powered appliances to the heating systems to be redirected into the cold areas of the ship. @@<<elseif lastVisited("Footsteps") is 1>>I make like a mouse, quieting my breathing and trying not to create any noise as the shuffling footsteps pass. <<timed 5s>>Finally, after everything is safe for me outside, I clamber carefully @@.onlylink;[[back out of the vent.|Bedrooms hallway]]@@<</timed>><<elseif lastVisited("Footsteps") is 2>>I finish doing what I was doing in here and @@.onlylink;[[exit the vent.|Bedrooms hallway]]@@<<else>>I @@.onlylink;[[exit the vent|Bedrooms hallway]]@@ afterward. <i>@@.dtm-mono;Not much here to do,@@</i> I shrug to myself.<</if>>
+I <<if lastVisited("Footsteps") is 1>>climb quickly into<<else>>enter<</if>> the vent near the kitchens. <<if lastVisited("Bedrooms hallway") is 1>>This one is<<if hasVisited("Vent 1") is true>> also<</if>> dark, but beyond that it is incredibly steamy and full of fog, as this vent redirects steam from the kitchens' ovens and other gas-powered appliances to the heating systems to heat the cold areas of the ship. I [[climb out of the vent.|Bedroom hallway]] @@<<elseif lastVisited("Footsteps") is 1>>I make like a mouse, quieting my breathing and trying not to create any noise as the shuffling footsteps pass. <<timed 5s>>Finally, after everything is safe for me outside, I clamber carefully @@.onlylink;[[back out of the vent.|Bedrooms hallway]]@@<</timed>><<elseif lastVisited("Footsteps") is 2>>I finish doing what I was doing in here and @@.onlylink;[[exit the vent.|Bedrooms hallway]]@@<<else>>I @@.onlylink;[[exit the vent|Bedrooms hallway]]@@ afterward. <i>@@.dtm-mono;Not much here to do,@@</i> I shrug to myself.<</if>>
 
 :: Kitchen-sneaky
 
@@ -480,7 +480,6 @@ There's a book about constellations (no surprise there), a book about ship AIs w
 
 :: Engine room
 <<if visited() is 1>>I creep into the engine room quietly.<<else>>I find myself in the engine room.<</if>> There isn't much to see here, other than lots of different sized vents and the boiler/heating and cooling system, the power source of the gravitational arrays, as well as the two giant, metal drums that house the rocket systems. I stay clear of those, as they are known to get very hot, at least when in use, which <<if $rocketsactive is true>>they are.<<elseif $rocketsactive is false>>they aren't.<</if>>
-What should I do next?
 *  <<if $linkclicked is undefined>><span class="linkcheck link1">[[Try to find a big enough vent to sleep in|Explore Engine Room]]</span><<elseif $linkclicked is true or hasVisited("Explore Engine Room") is true>>@@.link1;[[Decide to wait safely in the big vent that I found.|Waiting or Sleeping Vent 3]]@@<</if>>
 * @@.link2;[[Go back to the hallway and explore some more of the ship.|Starship hallway]]@@
 * <<if $linkclicked2 is undefined>><span class="linkcheck2"><span class="pcdarklink link3">[[Get Frisk to inspect the gravitational arrays|Player inspects Grav-Arrays]]</span></span><<elseif $linkclicked2 is true and hasVisited("Questions about Grav-array") is true>><span class="pcdarklink link3">[[Ask more questions about the Gravitational Arrays|Questions about Grav-array and ship]]</span><</if>>
