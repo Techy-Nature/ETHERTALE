@@ -11,7 +11,7 @@ Find index.html and run that on any browser, and you should be ready to play!
 
 ### Prerequisites
 
-You'll need the images, fonts and music to go with the HTML file. You can download the "export" folder, and you should be good to go after double-clicking the html file. Twine text-based games are pretty easy to play on most computer systems, even slow ones.
+You'll need the images, fonts and music to go with the HTML file. You can download the "export" folder, and you should be good to go after double-clicking the index.html file. Twine text-based games are pretty easy to play on most computer systems, even slow ones.
 
 ### Installing
 
@@ -19,7 +19,9 @@ You'll need the images, fonts and music to go with the HTML file. You can downlo
 
 2. Open folder
 
-3. Run index.html
+3. Run index.html in any internet browser
+
+4. Make sure not to use private mode while playing Twine games. SAVES will NOT work on that mode.
 
 ## Built With
 
@@ -31,6 +33,7 @@ You'll need the images, fonts and music to go with the HTML file. You can downlo
 
 * **Billie Thompson** - *Initial README file template* - [PurpleBooth](https://github.com/PurpleBooth)
 * **Duke** - [Dukemz](https://github.com/Dukemz)
+* **Jaden** - [Techy-Nature](https://github.com/Techy-Nature)
 
 See also the list of [contributors](https://github.com/Techy-girl/ETHERTALE/contributors) who participated in this project.
 

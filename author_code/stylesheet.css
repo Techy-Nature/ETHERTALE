@@ -3,55 +3,53 @@
 /* StoryInterface Styling */
 
 #passages {
-width: 75%
+width: 100%;
 flex-flow: column nowrap;
-display: inline-block;
-padding-left: 5%
+display: block flow;
+padding: 5%, 5%, 5%, 5%;
 }
 #sidebar 	{
-	border-right-style: solid;
-	border-right-color: white;
-	border-right-width: medium;
-	width: auto;
+	border-style: solid;
+	border-color: white;
+	border-width: medium;
+	width: 40%;
 	float: left;
-	margin-right: 50px
+	margin-right: 50px;
 	flex-flow: column nowrap;
 }
+#images {
+	border-bottom-width: 6px;
+	border-right-width: 6px;
+	margin: 5%, 5%, 5%, 5%;
+	width: 70%;
+}
+
 #interface {
 	background-color: black;
-	font-family: 'fixedsys';
-	src: url('fonts/fixedsys.fon') format:('font'),
-	src: url('fonts/fixedsys.ttf') format:('truetype'),
-	src: url('fonts/fixedsys.woff') format:('woff'),
-	src: url('fonts/fixedsys.woff2') format:('woff2'),
-	src: url('fonts/fixedsys.otf') format:('opentype');
+}
+#menu-story a {
+	color: #ff0000;
+	text-shadow: 0.08em 0.08em 0.08em #FFF;
+	float: left;
 }
 
-#menu-story {
-	float: left;
-	background-color: inherit;
-	border-style: solid;
-	border-color: white;
-	border-width: thick;
-	margin: 50px;
-	width: 250px
-	float: left;
-	flex-flow: inherit;
-}
 #story-subtitle {
 background-color: inherit;
-width: 250px;
+width: 25%;
 float: left;
-flex-flow: column nowrap;
+flex-flow: column wrap;
 }
-.pcdarkbtn {
-	border-style: solid;
-	border-color: white;
-	background-color: darkgrey;
-	color: lightgrey;
-	box-shadow: 0.08em 0.08em 0.08em grey;
+#menu-story {
+	float: left;
+	padding: 2%, 2%, 2%, 2%;
+	width: 250px;
+	float: left;
+	flex-flow: column wrap;
 }
-
+#menu-dialog-story.saves {
+	background-color: black;
+	background-image: image("/imgs/SAVE_LOAD_DTM_STAR.png");
+}
 /* StoryInterface styling end */
 .comicsans {
 	  font-family: Comic Sans MS, Comic Sans, "comicsans";
@@ -107,12 +105,6 @@ body, tw-story {
 }
 body {
 	background-color: #000;
-	font-family: 'fixedsys', Fixedsys;
-	src: url('fonts/fixedsys.fon') format:('font'),
-	src: url('fonts/fixedsys.ttf') format:('truetype'),
-	src: url('fonts/fixedsys.woff') format:('woff'),
-	src: url('fonts/fixedsys.woff2') format:('woff2'),
-	src: url('fonts/fixedsys.otf') format:('opentype');
 }
 .pcdarklink a {
 	color: grey;
