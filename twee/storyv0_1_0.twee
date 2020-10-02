@@ -320,7 +320,7 @@ I can hear the footsteps turn hollow as they head onto the ship, then the cargo 
 
 I hear her footsteps fading away, then a yell, "<span class="dtm-mono">Hey, Pap! Supplies are on! Let's hit the starstream!</span>"
 
-I hear a loud, "<span class="papyrus">OKAY, UNDYNE!</span>" over the ship's speakers, the floor rumbling as the old rockets <span class="link1">[[start up and stabilize.|Exit the crate]]</span>
+I hear a loud, "@@.papyrus;OKAY, UNDYNE!@@" over the ship's speakers, the floor rumbling as the old rockets <span class="link1">[[start up and stabilize.|Exit the crate]]</span>
 
 
 :: Exit the crate
@@ -482,7 +482,7 @@ There's a book about constellations (no surprise there), a book about ship AIs w
 <<if visited() is 1>>I creep into the engine room quietly.<<else>>I find myself in the engine room.<</if>> There isn't much to see here, other than lots of different sized vents and the boiler/heating and cooling system, the power source of the gravitational arrays, as well as the two giant, metal drums that house the rocket systems. I stay clear of those, as they are known to get very hot, at least when in use, which <<if $rocketsactive is true>>they are.<<elseif $rocketsactive is false>>they aren't.<</if>>
 *  <<if $linkclicked is undefined>><span class="linkcheck link1">[[Try to find a big enough vent to sleep in|Explore Engine Room]]</span><<elseif $linkclicked is true or hasVisited("Explore Engine Room") is true>>@@.link1;[[Decide to wait safely in the big vent that I found.|Waiting or Sleeping Vent 3]]@@<</if>>
 * @@.link2;[[Go back to the hallway and explore some more of the ship.|Starship hallway]]@@
-* <<if $linkclicked2 is undefined>><span class="linkcheck2"><span class="pcdarklink link3">[[Get Frisk to inspect the gravitational arrays|Player inspects Grav-Arrays]]</span></span><<elseif $linkclicked2 is true and hasVisited("Questions about Grav-array") is true>><span class="pcdarklink link3">[[Ask more questions about the Gravitational Arrays|Questions about Grav-array and ship]]</span><</if>>
+* <<if $linkclicked2 is undefined>><span class="linkcheck2"><span class="pcdarklink link3">[[Get Frisk to inspect the gravitational arrays|Player inspects Grav-Arrays]]</span></span><<elseif $linkclicked2 is true and hasVisited("Questions about Grav-array and ship") is true>><span class="pcdarklink link3">[[Ask more questions about the Gravitational Arrays|Questions about Grav-array and ship]]</span><</if>>
 
 :: Explore Engine Room
 

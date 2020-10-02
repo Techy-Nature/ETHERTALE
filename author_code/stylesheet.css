@@ -48,7 +48,6 @@ flex-flow: column wrap;
 }
 #menu-dialog-story.saves {
 	background-color: black;
-	background-image: image("/imgs/SAVE_LOAD_DTM_STAR.png");
 }
 /* StoryInterface styling end */
 .comicsans {
@@ -58,12 +57,12 @@ flex-flow: column wrap;
 	  src: url('fonts/comic.woff2') format:('woff2');
 }
 .papyrus {
-	font-family: 'Papyrus';
+	font-family: Papyrus, 'Papyrus';
     src: url('fonts/papyrus-webfont.woff2') format:('woff2'),
     src: url('fonts/papyrus-webfont.woff') format:('woff'),
 	src: url('fonts/papyrus-webfont.ttf') format:('truetype'),
-	src: url('fonts/papyrus.otf') format:('opentype'),
-	src: url('fonts/papyrus.svg') format:('svg');
+	src: url('fonts/papyrus-webfont.otf') format:('opentype'),
+	src: url('fonts/papyrus-webfont.svg') format:('svg');
 }
 .arial {
 	font-family: Arial, 'Arial';
@@ -87,8 +86,8 @@ flex-flow: column wrap;
 	font-family: 'Gaster-Regular';
 	src: url('fonts/new-aster.otf') format:('opentype'),
     src: url('fonts/new-aster-webfont.woff2') format:('woff2'),
-    src: url('fonts/new-aster-webfont.woff') format:('woff');
-	src: url('fonts/new-aster.ttf') format:('truetype'),
+    src: url('fonts/new-aster-webfont.woff') format:('woff'),
+	src: url('fonts/new-aster.ttf') format:('truetype');
 }
 .wingdings {
 	font-family: 'Wing-Ding-Gaster', Wingdings;

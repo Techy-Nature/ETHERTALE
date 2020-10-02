@@ -10,7 +10,7 @@ Frisk thinks, then replies, <i><span class="dtm-mono">I think I read somewhere t
 
 :: Jump explain
 
-<i><span class="dtm-mono">Basically we end up in zero gravity until we touch down on the ceiling or another surface. This is pretty easily remedied, though. Usually space-farers just find an empty piece of wall and walk back to the ground from there.</span></i> I grin mischieviously. <i><span class="dtm-mono">It'd likely be an easy way to prank someone, though!</span></i> Frisk giggles quietly, trying not to create too much noise. <span class="dtm-mono">[[Anyway, you have any other questions about this?|Gravity on ship Explain]]</span>
+<i><span class="dtm-mono">Basically we end up in zero gravity until we touch down on the ceiling or another surface. This is pretty easily remedied, though. Usually space-farers just find an empty piece of wall and walk back to the ground from there.</span></i> I grin mischieviously. <i><span class="dtm-mono">It'd likely be an easy way to prank someone, though!</span></i> I giggle quietly, trying not to create too much noise. <span class="dtm-mono">[[Anyway, you have any other questions about this?|Gravity on ship Explain]]</span>
 
 :: W.D. Gaster [slowtime]
 
@@ -20,8 +20,8 @@ I scrunch up my nose. <i><span class="dtm-mono onlylink">[[We probably shouldn't
 
 "<span class="dtm-mono">I-</span>" I stop myself from saying anything, then think to you, <i><span class="dtm-mono">I don't have a plan- But uh, I'm thinking of trying to sneak out before everyone's gotten down to the cargo hold, but after it's opened.</span></i> I shrug.
 
-@@.pcdarklink;[[You react with understanding.|Understanding is always good]]@@
-[[You react with frustration!|Frustrated yell]]
+@@.pcdarklink;.link1;[[You react with understanding.|Understanding is always good]]@@
+@@.pcdarklink;.link2;[[You react with frustration!|Frustrated yell]]@@
 
 :: Frustrated yell
 
@@ -60,7 +60,7 @@ I jump into one of the many convenient vents, obscuring myself in shadow. Heavy 
 The other, more feminine voice agreed, "<span class="dtm-sans">Don't make this HARDER than it has to BE, HUMAN!</span>"
 The footsteps come closer still. There's nothing I can do now. The fact that they know I'm human is bad. I panic panic panic-
 Footsteps are coming closer-
-My breathing accelerates-
+My breathing quickens-
 
 The grate on the vent is pulled aside, and the light filters back in. Suddenly the alarms stop blaring, the light returning to normal; can they see me?
 An arm moves in, webbed fingers reaching in to grab me. What do I do?!
@@ -106,8 +106,8 @@ How long should I <<if $now.getHours() gte 20 or $now.getHours() lt 6>>sleep<<el
 
 I flinch as the hands grab me, then haul me out by my arms. Blinking as the lights turn back to normal and I'm hauled from the darkness of the vent and into the engine room, I see two monsters. One is the famous biochemist skeleton who invented the fuel for hyper-efficient space-travel, the other a fishy looking monster. The latter is the one who hauled me out.
 
-A pair of high-tech hand-cuffs are put onto me, then skeleton man makes a speech. "<span class="aster">I don't intend to harm you, however, we will need to figure out how you're going to repay us for hitching a ride uninvited. If you had tried to leave through the vents- I know this ship inside and out, you'll only come upon the fans and filters that circulate and purify air inside the ship. Please don't try to escape, you'll only make it harder on yourself and us. We already know you're here, so there's no point in escape. Just come along quietly, please.</span>" He grimaces, tugging lightly at his turtleneck.
-<img src="imgs/WDGaster_by_inviseri-daf_ETHERTALE.png" alt="The skeletal chemistry scientist turns his skull to a slight grimace, phalanges pulling at the neck of his turtleneck." height="700">
+A pair of high-tech hand-cuffs are put onto me, then skeleton man makes a speech. "<span class="aster">I don't intend to harm you, however, we will need to figure out how you're going to repay us for hitching a ride uninvited. Just come along quietly, please.</span>" A slight smile graces his skull, tugging lightly at his turtleneck.
+<img src="imgs/WDgaster_by_inviseri-daf-Recolored_by_Jaden-Smile.png" alt="Image of the skeletal chemistry scientist slightly smiles, right phalanges pulling at the neck of his turtleneck." height="700">
 How should I react, do you think?
 
 <span class="pcdark">Say...</span>
@@ -132,7 +132,7 @@ The skeletal man stands up and steps back, waiting for me to exit. <span class="
 :: Caught by Gaster and Undyne
 
 "@@.aster;Now that you're up, I hope you'll forgive me...@@" He grmaces, pulling slightly at his turtleneck.
-<img src="imgs/WDGaster_by_inviseri-daf_ETHERTALE.png" alt="Image of the skeletal chemistry scientist turning his skull to a grimace, phalanges pulling at the neck of his turtleneck." height="700">
+<img src="imgs/WDGaster_by_inviseri-daf_Recolored_Grimace.png" alt="Image of the skeletal chemistry scientist turning his skull to a grimace, phalanges pulling at the neck of his turtleneck." height="700">
 
 "<span class="aster">...But we need to put cuffs on you for the time being. We'll make sure they aren't tight, isn't that right, Undyne?</span>"
 Undyne just rolls her eyes. "<span class="dtm-sans">You haven't even introduced yourself yet, you old bag of bones!</span>" Undyne then turns to me, a grin on her face, while the skeleton in question's face turns indignant. Before he can get a word in edgewise, Undyne introduces him. "<span class="dtm-sans">This skeleton is Wing Din Gaster.</span>" She gestures to him. "<span class="dtm-sans">He doesn't care much for fame, despite being FAMOUS, which is why he didn't introduce himself. You probably already know his name!</span>"
