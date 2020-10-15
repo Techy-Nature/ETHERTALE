@@ -27,7 +27,7 @@ I scrunch up my nose. <i><span class="dtm-mono onlylink">[[We probably shouldn't
 
 <span class="pcdark rumble">...How have you not gotten a working plan yet?!</span> You burst out in my mind.
 
-I flinch. "<span class="dtm-mono">Umm-- uh- I-I don't know!</span>" I stutter. "<span class="dtm-mono">I just- I needed a ride, and it was right here, so I went ahead hitched one!</span>"
+I flinch. "<span class="dtm-mono">Umm-- uh- I-I don't know!</span>" I stutter. "<span class="dtm-mono">I just- I needed a ride, and it was right here, so I went ahead hitched one! I needed to get away!</span>"
 
 Suddenly, alarms start blaring!
 
@@ -106,8 +106,9 @@ How long should I <<if $now.getHours() gte 20 or $now.getHours() lt 6>>sleep<<el
 
 I flinch as the hands grab me, then haul me out by my arms. Blinking as the lights turn back to normal and I'm hauled from the darkness of the vent and into the engine room, I see two monsters. One is the famous biochemist skeleton who invented the fuel for hyper-efficient space-travel, the other a fishy looking monster. The latter is the one who hauled me out.
 
-A pair of high-tech hand-cuffs are put onto me, then skeleton man makes a speech. "<span class="aster">I don't intend to harm you, however, we will need to figure out how you're going to repay us for hitching a ride uninvited. Just come along quietly, please.</span>" A slight smile graces his skull, tugging lightly at his turtleneck.
+A pair of high-tech hand-cuffs are snapped onto my wrists, then skeleton man makes a speech. "<span class="aster">I don't intend to harm you, however, we will need to figure out how you're going to repay us for hitching a ride uninvited. Just come along quietly, please.</span>" A slight smile graces his skull, tugging lightly at his turtleneck.
 <img src="imgs/WDgaster_by_inviseri-daf-Recolored_by_Jaden-Smile.png" alt="Image of the skeletal chemistry scientist slightly smiles, right phalanges pulling at the neck of his turtleneck." height="700">
+
 How should I react, do you think?
 
 <span class="pcdark">Say...</span>
@@ -121,8 +122,7 @@ How should I react, do you think?
 I tense up, but before I can do anything to defend myself, a voice from above speaks out to my assailant. "<span class="aster">Undyne!</span>" The fishy woman's hand slowly withdraws. "<span class="dtm-sans">What?</span>"
 ""<span class="aster">I do believe this calls for a more delicate word.</span>"
 A huff, a dismissive hand-wave, then the shadow that was cast over me withdraws, and a new one takes it's place.
-<img src="imgs/Undyne_ETHERTALE.png" alt="A fishy, red-haired and blue-skinned woman with webbed fingers waves dismissively." height="800">
-
+<img src="imgs/Undyne_ETHERTALE.png" alt="A fishy, red-haired and blue-skinned woman with webbed fingers waves dismissively.">
 A skeleton taller than the woman crouches down in front of me, keeping his balance with four phalanges on a rare patch of empty wall above him. He's wearing a dark grey turtle-neck and a white, pristine lab-coat with black slacks, along with black dress-shoes. The labcoat's tails billow out behind him as he crouches down, then they rest on the floor of the engine room.
  I glare downwards after sizing him up and glancing into his white eyelight (his right eye must have been injured, as it droops to the point where his other eyelight can't form), afterwards fiddling with a stray wire sticking out of the entrance to the vent.
 He pauses to take a deep, calming breath through his nose, then explains his intentions. "<span class="aster">I don't intend to harm you, however, we will need to figure out how you're going to repay us for hitching a ride uninvited. If you try to leave through the vents- I know this ship inside and out, you'll only come upon the fans and filters that circulate and purify air inside the ship.</span>" He pauses to let that sink in. "<span class="aster">In other words, you're stuck. So please come out, and follow us. You can't escape on this ship, there's nowhere for you to go that we wouldn't be able to find you, now that we know you're here.</span>"
@@ -148,7 +148,7 @@ In the time between learning my fate and being lead along by Gaster, my arms and
 
 Gaster nods in agreement but says, "<span class="aster">We're almost there. The <i>Bonetrousle</i> isn't that big on the inside, as it's mostly cargo space, and the lab is fairly large, as well. You'll be fine until we get there, then I'll take them off when everyone is around and you're in a containment chamber.</span>"
 
-<i><span class="dtm-mono">Oh. Great. I'm going to jail.</span></i> I think to myself sarcastically. At least I know where I'm going now, even if it isn't going to be pleasant. I dejectedly lower my head, watching the floor as we [[walk along.|Containment Chamber]] The tenseness in my arms and shoulders bleeds out into the air, following us at our heels, then dissipating.
+<i><span class="dtm-mono">Oh. Great. I'm going to jail.</span></i> I think to myself sarcastically. At least I know where I'm going now, even if it isn't going to be pleasant. I dejectedly lower my head, watching the floor as we [[walk along.|Containment Chamber]] The tenseness in my arms and shoulders bleeds out into the air, following us at our heels, then dissipating behind us.
 
 :: I've got a plan, but Follow
 

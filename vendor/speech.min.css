@@ -1,0 +1,2 @@
+/* speech.min.css, by chapel; for use with speech.js */
+.say {border:medium,solid,white;overflow:auto}.say img{max-width:20%;float:left;margin-right:1em}.say p:first-of-type{display: none}.say p:last-of-type{padding:.5em;margin:0}

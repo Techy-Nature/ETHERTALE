@@ -5,8 +5,8 @@
 #passages {
 width: 100%;
 flex-flow: column nowrap;
-display: block flow;
-padding: 5%, 5%, 5%, 5%;
+display: block;
+padding: 5%;
 }
 #sidebar 	{
 	border-style: solid;
@@ -14,14 +14,14 @@ padding: 5%, 5%, 5%, 5%;
 	border-width: medium;
 	width: 40%;
 	float: left;
-	margin-right: 50px;
+	margin-right: 10%;
 	flex-flow: column nowrap;
 }
 #images {
-	border-bottom-width: 6px;
-	border-right-width: 6px;
-	margin: 5%, 5%, 5%, 5%;
-	width: 70%;
+	border-style: 6px, solid, white;
+	margin: 10%;
+	display: inline-block;
+	width: 250px;
 }
 
 #interface {
@@ -41,7 +41,7 @@ flex-flow: column wrap;
 }
 #menu-story {
 	float: left;
-	padding: 2%, 2%, 2%, 2%;
+	padding: 2%;
 	width: 250px;
 	float: left;
 	flex-flow: column wrap;
@@ -57,7 +57,7 @@ flex-flow: column wrap;
 	  src: url('fonts/comic.woff2') format:('woff2');
 }
 .papyrus {
-	font-family: Papyrus, 'Papyrus';
+	font-family: Papyrus Regular, 'Papyrus';
     src: url('fonts/papyrus-webfont.woff2') format:('woff2'),
     src: url('fonts/papyrus-webfont.woff') format:('woff'),
 	src: url('fonts/papyrus-webfont.ttf') format:('truetype'),
@@ -71,13 +71,13 @@ flex-flow: column wrap;
 	src: url('fonts/arial.ttf') format:('truetype');
 }
 .dtm-mono {
-	font-family: 'dtm-mono';
+	font-family: 'dtm-mono', Determination Mono Regular;
     src: url('fonts/dtm-mono-webfont.woff2') format:('woff2'),
     src: url('fonts/dtm-mono-webfont.woff') format:('woff'),
 	src: url('fonts/DTM-mono.otf') format:('opentype');
 }
 .dtm-sans {
-	font-family: 'dtm-sans';
+	font-family: 'dtm-sans', Determination Sans Regular;
 	src: url('fonts/DTM-sans.otf') format:('opentype');
 	src: url('fonts/dtm-sans-webfont.woff2') format:('woff2'),
     src: url('fonts/dtm-sans-webfont.woff') format:('woff');

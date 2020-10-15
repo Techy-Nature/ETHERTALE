@@ -23,7 +23,7 @@ It is <<printtime12hr>>
 <div id="sidebar">
 <div id="story-title" data-passage="StoryDisplayTitle"></div>
 	<div id="menu-story" data-passage="StoryMenu"></div>
-	<div id="story-subtitle" data-passage="StorySubtitle"></div></div>
+	<div id="story-subtitle" data-passage="StorySubtitle"></div></div><div id="images" data-passage="Location/NPCBusts"></div>
 	<div id="passages"></div>
 	</div>
 
@@ -39,7 +39,7 @@ It is <<printtime12hr>>
 /*
 Dukemz's code here.
 This won't actually do anything yet, apart from print some text to the console,
-which you can view with F12 or Ctrl+Shift+I in most browsers.
+ which you can view with F12 or Ctrl+Shift+I in most browsers.
 */
 <<script>>
 // I'll put my functions in this object. You should be able to call them with `duck.functionName()`
@@ -64,15 +64,17 @@ All I did was go to the settings and search up "keyboard" without the quotes, an
 again without the quotes.
 */
 // Jaden's code below
-<<silently>><<set $Frisk to {}>>
+<<set $Frisk to {}>>
 <<set $Frisk.equipped to {itemcounter: 0, head: "nothing", torso: "striped purple sweater and blue jeanshorts", feet: "dark brown sneakers"}>>
 <<set $Frisk.weapon to {limit: 1, itemcounter: 0, has: []}>>
 <<set $Frisk.inv to {limit: 10, itemcounter: 0, has: []}>>
 <<set $Frisk.inv.has to ["nothing"]>>
+<<set $Frisk.weapon to {}>>
+	<<set $Frisk.weapon.equipable to ["nothing"]>>
 <<set $Frisk.weapon.has to ["nothing"]>>
-<</silently>>
 <<set $Frisk.age to 17>>
 <<set $Frisk.Gold = 10>>
+<<Character "sans-thoughtful" "">>
 // Chapelr's code below
 <<set
 	window.GameDays to [
@@ -157,8 +159,9 @@ again without the quotes.
 
 <<silently>>
 <<if $Frisk.inv.itemcounter gte 1>><<set $Frisk.inv.has.deleteAt(0)>><</if>>
-<<if $Frisk.weapon.itemcounter gte 1>><<set $Frisk.weapon.has.deleteAt(0)>><</if>>
+<<if $Frisk.weapon.itemcounter gte 1>><<set $Frisk.weapon.has.deleteAt(0)>><</if>><<if $Frisk.weapon.itemcounter gte 1>><<set $Frisk.weapon.equipable.deleteAt(0)>><</if>>
 <</silently>>
+
 :: Time Widgets [widget nobr]
 
 /* Adds the specified number of minutes. */
@@ -203,7 +206,7 @@ again without the quotes.
 
 <<widget "refresh">><<run Engine.show()>><</widget>>
 
-/* <<checkboxPlus>> widget by HiEv
+/* /checkboxPlus>> widget by HiEv
 	This widget allows you to display a custom checkbox which sets a
 	SugarCube variable, displays a (clickable) label, and satisfies
 	accessibility guidelines for users with impairments (usable via the
@@ -217,8 +220,7 @@ again without the quotes.
 	is passed to the widget as a string.  All story variables passed to
 	the widget will be set to either a Boolean true or false.  If the
 	variable had a "truthy" value, then the checkbox will be checked.
-	The	"className" is an optional parameter, which adds that CSS class
-	to the text.
+	The	"className" is an optional parameter, which adds that CSS class	to the text.
 
 	Example: /checkboxPlus "$EnabledOp" "Enable Option" "blueText"/
 */
@@ -264,19 +266,20 @@ Config.saves.slots = 1
 
 :: Inventory [menuitem stoptime]
 
-I have <<print $Frisk.inv.itemcounter>> item<<if $Frisk.inv.itemcounter gt 1 or $Frisk.inv.itemcounter eq 0>>s<<else>><</if>> on me.
+I have<<print $Frisk.inv.itemcounter>> item<<if $Frisk.inv.itemcounter gt 1 or $Frisk.inv.itemcounter eq 0>>s<<else>><</if>> on me.
 I am wearing $Frisk.equipped.head on my head, $Frisk.equipped.torso on my body, and $Frisk.equipped.feet on my feet.
 I am using $Frisk.weapon.has as a weapon.
 
 Equip something:
-TODO
+<<print $Frisk.weapon.equipable>>
+(TODO)
 
 @@.onlylink;<<link "Return." $return>><</link>>@@
 
 :: Character Description [menuitem stoptime]
 
 My name is Frisk. I'm an orphan, so I don't know my parents' last name. I used to live on the streets of Earth.
-People tell me I'm "high functioning" autistic. I know a small amount of ASL (American Sign Language) from school before I ran away to learn by traveling rather than by what others tell me.
+People tell me I'm "high functioning" autistic. I know a small amount of ASL (American Sign Language) from school before I ran away from school to learn by traveling rather than by what others tell me. I'm <<= $Frisk.age>> years of age.
 
 @@.onlylink;<<link "Return." $return>><</link>>@@
 
@@ -418,7 +421,7 @@ I stand and watch him leave, then sit down and pull my legs up to my chest while
 
 :: Nice Introduction
 
-Sans blinks in surprise at my apparent kindness and friendliness, then smiles and shakes his head ruefully. "<span class="comicsans">welp, gee kid, i almost wish i hadn't captured you. i think i'll just bring you with me instead of... well, the alternative you probably wouldn't have liked.</span>"
+Sans blinks in surprise at my apparent kindness and friendliness, then smiles and shakes his head ruefully. "<span class="comicsans">gee kid, i almost wish i hadn't captured you. i think i'll just bring you with me instead of... well, the alternative you probably wouldn't have liked.</span>"
 
 I nod with an apologetic smile. He puts me down, and I don't bother running. I want to see <<if $Frisk.gotbored is true or $Frisk.curiousabtcrew is true>>the rest of the crew!<<elseif $Frisk.wantedajob is true>>if I can get a job from this crew of monsters.<<elseif $Frisk.gotbored is true and $Frisk.curiousabtcrew is true and $Frisk.wantedajob is true>>about getting a job from this crew of <i>interesting</i> monsters!<</if>>
 
@@ -426,7 +429,24 @@ I follow Sans towards another hallway, and we make our way to the <span class="o
 
 :: Dining Lounge
 
-End of this route's content! Thanks for playing the demo! :)
+When we get there, Sans takes out a radio that was attached to his beltloop and sheepishly radios the other crewmembers, but before that he invites me to explore the common dining room. <<if $Frisk.exploredlounge is true>>I decline for now, and instead sit on the couch and half-listen to Sans argue with his cohorts.<<else>>I follow his suggestion and inspect the space. It's really pretty standard fare, a couple couches, a very comfortable looking recliner with a wooden plate that says, "Chairiel" on the back of it, a serving window that connects to the kitchen, and a table with ten cloth placesettings and ten high-tech revolving chairs. <span class="dtm-mono"><i>They must regularly have guests... hmm...</i></span> I think to myself curiously, as Sans talks to the other members of the crew in the background. I don't pay much attention to him... There's nothing really in here of interest other than Sans, except maybe the books on the ship shelf. I take a look at them while Sans argues with his cohorts.
+
+There's a book about constellations in different starsystems (no surprise there), a book about ship AIs with an incredibly long, needlessly complicated name, a reference book of 5 different alien languages, and a mechanical journal with scribblings about Starship Mechanics on the front. I can also see there's a few old children's bedtime storybooks. I wonder whose those were? After I'm done looking around, I sit down on the couch to wait for Sans to be done with the radio.<</if>>
+
+When Sans is done arguing on my behalf, he comes over and sits next to me. "@@.comicsans;welp, i managed to get you secured with a place on the crew, if you want it.@@" He pauses and yawns, then shakes his head to try to ward his sleepiness away and says, "@@.comicsans;other than that, we can drop you off at the next planet, but you'd have to pay us something in return next time we come around.@@"
+
+I should say...
+<<nobr>>
+<<if $Frisk.wantedajob is true and $Frisk.curiousabtcrew is true>>"[[I can work for you all for as long as you need me to!|Job Secured!]]"<<elseif $Frisk.gotbored is true and $Frisk.wantedajob is false and $Frisk.curiousabtcrew is false>>"[[Sure! I can work for you guys for a while, at least until I repay you all for hitching a ride, eheh...|Job Choose]]"
+<<elseif $Frisk.wantedajob is true and $Frisk.curiousabtcrew is true and $Frisk.gotbored is true>>"[[I'd love to work with you all, but I think I'd like to do whatever you need me to, rather than one specific job all the time.|Job Secured!]]"<</if>>
+
+:: Job Secured!
+
+End of this route! Thanks for playing!
+
+:: Job Choose
+
+End of this route's content! Thanks for playing!
 
 :: Bedrooms hallway
 
@@ -459,6 +479,7 @@ There's a fluffy monster in there lounging and reading a book... I better not en
 <<case 1>>
 I can see a skeleton sleeping on the couches. I probably shouldn't enter, I'd likely get caught. I @@.onlylink;[[step away|Bedrooms hallway]]@@ from the door.
 <<case 2>>
+<<set $Frisk.exploredlounge to true>>
 <p>I can see that whoever was in there just left through another entryway. I enter through the door closest to me, then inspect the space. It's really pretty standard fare, a couple couches, a very comfortable looking recliner with a wooden plate that says, "Chairiel" on the back of it, a serving window from the kitchen, and a table with ten cloth placesettings and ten high-tech revolving chairs. <span class="dtm-mono"><i>They must regularly have guests... hmm...</i></span> I think to myself curiously. There's nothing really in here of interest, except maybe the books on the ship shelf. There's a lot of them, though, and I don't know when whoever was in here will be back, so I take a quick glance and plan to move on as quickly as possible.</p>
 <br>
 There's a book about constellations (no surprise there), a book about ship AIs with an incredibly long, needlessly complicated name, a reference book of 5 different alien languages, and a mechanical journal with scribblings about Starship Mechanics on the front. After hearing footsteps coming from a back hallway, I quickly [[make my escape.|Bedrooms hallway]]
@@ -467,10 +488,12 @@ I see three monsters talking in there - two skeletons and a fishy looking one wh
 <<case 4>>
 Someone somehow muscular <i>and</i> fluffy is in there right now, writing in a journal of some sort. I @@.onlylink;[[go back to the end of the bedroom hallway.|Bedrooms hallway]]@@
 <<case 5>>
+<<set $Frisk.exploredlounge to true>>
 <p>I can see that whoever was in there just left through another entryway. I enter through the door closest to me, then inspect the space. It's really pretty standard fare, a couple couches, a very comfortable looking recliner with a wooden plate that says, "Chairiel" on the back of it, a serving window from the kitchen, and a table with ten cloth placesettings and ten high-tech revolving chairs. <span class="dtm-mono"><i>They must regularly have guests... hmm...</i></span> I think to myself curiously. There's nothing really in here of interest, except maybe the books on the ship shelf. There's a lot of them, though, and I don't know when whoever was in here will be back, so I take a quick glance and plan to move on as quickly as possible.</p>
 <br>
 There's a book about constellations (no surprise there), a book about ship AIs with an incredibly long, needlessly complicated name, a reference book of 5 different alien languages, and a mechanical journal with scribblings about Starship Mechanics on the front. After hearing footsteps coming from a back hallway, I quickly [[make my escape.|Bedrooms hallway]]
 <<case 6>>
+<<set $Frisk.exploredlounge to true>>
 <p>I can see that whoever was in there just left through another entryway. I enter through the door closest to me, then inspect the space. It's really pretty standard fare, a couple couches, a very comfortable looking recliner with a wooden plate that says, "Chairiel" on the back of it, a serving window from the kitchen, and a table with ten cloth placesettings and ten high-tech revolving chairs. <span class="dtm-mono"><i>They must regularly have guests... hmm...</i></span> I think to myself curiously. There's nothing really in here of interest, except maybe the books on the ship shelf. There's a lot of them, though, and I don't know when whoever was in here will be back, so I take a quick glance and plan to move on as quickly as possible.</p>
 <br>
 There's a book about constellations (no surprise there), a book about ship AIs with an incredibly long, needlessly complicated name, a reference book of 5 different alien languages, and a mechanical journal with scribblings about Starship Mechanics on the front. After hearing footsteps coming from a back hallway, I quickly [[make my escape.|Bedrooms hallway]]
@@ -518,7 +541,7 @@ I narrow my eyes even more than they already are in caution, then think to you, 
 
 :: Frisk Inspects Grav-Arrays [slowtime]
 
-I walk over to the Grav arrays and look at them, following your suggestion. There are flashing blue lights and wires that seem to run the length of the ship, and they converge here to the power source in the engine room. The power source is a bright, neon blue orb that sits on a pedestal near the wall next to the rockets<<if hasVisited("Explore Engine room") is true>>(on the opposite side of the where I found the vent, of course)<</if>>, with the wires connected through three-pronged power strips on the pedestal that connect to the orb with smaller, more delicate blue wires. It seems like a pretty elaborate setup.
+I walk over to the Grav arrays and look at them, following your suggestion. There are flashing blue lights and wires that seem to run the length of the ship, and they converge here to the power source in the engine room. The power source is a bright, neon blue orb that sits on a pedestal near the wall next to the rockets<<if hasVisited("Explore Engine room") is true>>(on the opposite side of  where I found the vent, of course)<</if>>, with the wires connected through three-pronged power strips on the pedestal that connect to the orb with smaller, more delicate blue wires. It seems like a pretty elaborate setup.
 
 <i><span class="dtm-mono">Do you have any questions about this, <<print $PCname>>?</span></i> I wonder to you.
 
