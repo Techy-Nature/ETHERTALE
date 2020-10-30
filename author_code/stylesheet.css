@@ -2,52 +2,45 @@
 
 /* StoryInterface Styling */
 
-#passages {
-width: 100%;
-flex-flow: column nowrap;
-display: block;
-padding: 5%;
-}
-#sidebar 	{
-	border-style: solid;
-	border-color: white;
-	border-width: medium;
-	width: 40%;
-	float: left;
-	margin-right: 10%;
-	flex-flow: column nowrap;
-}
-#images {
-	border-style: 6px, solid, white;
-	margin: 10%;
-	display: inline-block;
-	width: 250px;
-}
-
 #interface {
 	background-color: black;
+	grid-template-rows: 25% 75%;
+	grid-template-columns: 25% 75%;
 }
+
+#sidebar 	{
+	display: grid;
+	border: solid white medium;
+	float: left;
+	grid-template-columns: 25% 25%;
+	grid-row: 1;
+}
+#story-title {
+	padding: 1%;
+}
+
 #menu-story a {
 	color: #ff0000;
 	text-shadow: 0.08em 0.08em 0.08em #FFF;
-	float: left;
 }
 
 #story-subtitle {
 background-color: inherit;
-width: 25%;
-float: left;
-flex-flow: column wrap;
+grid-column: 5;
 }
+
 #menu-story {
-	float: left;
-	padding: 2%;
-	width: 250px;
-	float: left;
-	flex-flow: column wrap;
+	padding: 3%;
+	grid-column: 5;
+	grid-row: 2;
 }
-#menu-dialog-story.saves {
-	background-color: black;
+
+#passages {
+	width: 40%;
+	flex-flow: row nowrap;
+	display: grid;
+	padding: 2%;
+	grid-row: 2;
 }
 /* StoryInterface styling end */
 .comicsans {
