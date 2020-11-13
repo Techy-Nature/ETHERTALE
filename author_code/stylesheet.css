@@ -1,7 +1,10 @@
 /* Jaden's code for styling - start*/
 
-/* StoryInterface Styling */
+/* StoryInterface styling */
 
+body {
+	background-color: #000;
+}
 #interface {
 	background-color: black;
 	grid-template-rows: 25% 75%;
@@ -43,6 +46,7 @@ grid-column: 5;
 	grid-row: 2;
 }
 /* StoryInterface styling end */
+/* Text styling start */
 .comicsans {
 	  font-family: Comic Sans MS, Comic Sans, "comicsans";
 	  src: url('fonts/comic.ttf') format:('truetype'),
@@ -95,9 +99,7 @@ grid-column: 5;
 body, tw-story {
 	font-size: 16px;
 }
-body {
-	background-color: #000;
-}
+
 .pcdarklink a {
 	color: grey;
 	font-weight: 50;

@@ -2,6 +2,10 @@
 
 ETHERTALE
 
+:: Story-Display-Title [stoptime]
+
+<img src="imgs/ETHERTALE.png" height="200" width="290">
+
 :: StorySubtitle [stoptime]
 Prologue: Starship Stowaway
 v.0.02beta
@@ -17,15 +21,32 @@ It is <<printtime12hr>>
 
 <div id="interface">
 <div id="sidebar">
-<div id="story-title"><img src="imgs/ETHERTALE.png" height="200" width="290"></div>
+<div id="story-title" data-passage="Story-Display-Title"></div>
 	<div id="menu-story" data-passage="StoryMenu"></div>
 	<div id="story-subtitle" data-passage="StorySubtitle"></div></div><div id="passages"></div>
 	</div>
 
-:: StoryMenu
+:: StoryMenu [stoptime]
 
 [[Reset|Start][$resetcounter ++]]
 <<link "SAVE/LOAD">><<run UI.saves()>><</link>>
+@@.pcdarklink;[[Player Settings]]@@
+
+:: Player Settings [stoptime]
+
+<<if $offline is undefined or $offline is false>>@@.pcdarklink;<<link "I'm Offline">><<set $offline to true>><<refresh>><</link>>@@<<elseif $offline is true>>@@.pcdarklink;<<link "I'm Online.">><<set $offline to false>><<refresh>><</link>>@@<</if>>
+<<if hasVisited("Player inspects Grav-Arrays") is true>>
+@@.pcdarklink;<<link "I go by she/her">><<setPronouns "f">><</link>>@@
+
+@@.pcdarklink;<<link "I go by he/him">><<setPronouns>><</link>>@@
+
+@@.pcdarklink;<<link "I go by they/them">><<setPronouns "n">><</link>>
+@@
+
+@@.pcdarklink;<<link "I go by it/its">><<setPronouns "i">><</link>>@@
+<</if>>
+
+@@.link2;.pcdarklink;<<link "Return." $return>><</link>>@@
 
 :: StoryInit [nobr]
 
@@ -60,26 +81,48 @@ again without the quotes.
 */
 // Jaden's code below
 <<set $Frisk to {}>>
-<<set $Frisk.equipped to {itemcounter: 0, head: "nothing", torso: "striped purple sweater and blue jeanshorts", feet: "dark brown sneakers"}>>
-<<set $Frisk.weapon to {limit: 1, itemcounter: 0, has: []}>>
-<<set $Frisk.inv to {limit: 10, itemcounter: 0, has: []}>>
+<<set $Frisk.equipped to {head: "nothing", torso: "striped purple sweater and blue jeanshorts", feet: "dark brown sneakers"}>>
+<<set $Frisk.weapon to {limit: 1, itemcounter: 0}>>
+<<set $Frisk.inv to {limit: 10, itemcounter: 0}>>
+<<set $Frisk.inv.has to []>>
 <<set $Frisk.inv.has to ["nothing"]>>
 <<set $Frisk.weapon to {}>>
+	<<set $Frisk.weapon.has to []>>
 	<<set $Frisk.weapon.equipable to ["nothing"]>>
 <<set $Frisk.weapon.has to ["nothing"]>>
-<<set $Frisk.age to 17>>
-<<set $Frisk.Gold = 10>>
+<<set $Frisk.age to 16>>
+<<set $Frisk.Gold to 10>>
 <<set $Frisk.resetcounter to 0>>
 <<set $Frisk.weapon-counter to 0>>
+<<set $Frisk.maxHP to 120>>
+<<set $Frisk.HP to 20>>
+<<set $Frisk.LV to 0>>
+<<set $Frisk.EXP to 0>>
 // Jaden's talk macro setup
+// Sans talk macros
 <<character "sans-thoughtful" "imgs/Talk/Sans/thoughtful.png">>
 <<character "sans-bluemagic" "imgs/Talk/Sans/angry-bluemagic.png">>
 <<character "sans-smile" "imgs/Talk/Sans/smile.png">>
 <<character "sans-winkysmile" "imgs/Talk/Sans/wink~.png">>
 <<character "sans-blushy" "imgs/Talk/Sans/blush.png">>
 <<character "sans-serious" "imgs/Talk/Sans/serious.png">>
+// Gaster talk macros
+<<character "G-annoyed" "imgs/Talk/Gaster/annoyed.png">>
+<<character "G-bored" "imgs/Talk/Gaster/bored.png">>
+<<character "G-determined" "imgs/Talk/Gaster/determined.png">>
+<<character "G-furious" "imgs/Talk/Gaster/furious.png">>
+<<character "G-content" "imgs/Talk/Gaster/satisfied.png">>
+<<character "G-confused" "imgs/Talk/Gaster/confused.png">>
+//HP Meter setup
+<<newmeter "Frisk-HP" $Frisk.HP>>
+<<sizing 10% 10em>>
+<<animation false>>
+<<colors #fff200 darkred white>>
+<<label "HP: $Frisk.HP" white left>>
+<</newmeter>>
 
 // talk macros stop here, Chapelr's code below
+
 <<set
 	window.GameDays to [
 		"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"
@@ -155,6 +198,7 @@ again without the quotes.
 	/* Event setup finished */
 
 :: StoryData
+
 {
         "ifid": "2FBC0655-AEE8-4AE6-AEA1-FE7A9EED763E"
 }
@@ -163,7 +207,7 @@ again without the quotes.
 
 <<silently>>
 <<if $Frisk.inv.itemcounter gte 1>><<set $Frisk.inv.has.deleteAt(0)>><</if>>
-<<if $Frisk.weapon.itemcounter gte 1>><<set $Frisk.weapon.has.deleteAt(0)>><</if>><<if $Frisk.weapon.itemcounter gte 1>><<set $Frisk.weapon.equipable.deleteAt(0)>><</if>>
+<<if $Frisk.weapon.itemcounter gte 1>><<set $Frisk.weapon.has.deleteAt(0)>><<set $Frisk.weapon.equipable.deleteAt(0)>><</if>>
 <</silently>>
 
 :: Time Widgets [widget nobr]
@@ -209,6 +253,27 @@ again without the quotes.
 :: Other Widgets [widget nobr]
 
 <<widget "refresh">><<run Engine.show()>><</widget>>
+
+/* /SetGender>> widget - Start - By HiEv */
+<<widget "SetGender">><<nobr>>
+/* Usage... (defaults to male) */
+/* for "he":   <<SetGender>> or <<SetGender "m">> */
+/* for "she":  <<SetGender "f">> */
+/* for "they": <<SetGender "n">> */
+/* for "it":   <<SetGender "i">> */
+/* $pgen: 0 = male, 1 = female, 2 = gender neutral, 3 = no gender */
+	<<switch $args[0]>>
+		<<case "f">>
+			<<set $pgen = 1>>
+		<<case "n">>
+			<<set $pgen = 2>>
+		<<case "i">>
+			<<set $pgen = 3>>
+		<<default>>
+			<<set $pgen = 0>>
+	<</switch>>
+<</nobr>><</widget>>
+/* /SetGender>> widget - End */
 
 /* /checkboxPlus>> widget by HiEv
 	This widget allows you to display a custom checkbox which sets a
@@ -261,8 +326,8 @@ again without the quotes.
  //Add a electrified shortsword to Frisk's Inventory
  <<widget "add-e-shortsword">><<set $Frisk.weapon.equipable("electric shortsword")>><</widget>>
  /* Equip a weapon from the weapons inventory to the weapons slot.
- */ 
-<<widget "equip-weapon">>><<if $Frisk.weapon.equipable.length eq 1 and $Frisk.weapon.equipable.includes("nothing") is false>><<set $Frisk.weapon.has.concat($Frisk.weapon.equipable)>><<elseif $Frisk.weapon.equipable.length gt 1>><<set _removed = $Frisk.weapon.equipable.splice(1, 1)>><<set _removed.push($Frisk.weapon.has)>><</if>><</widget>>
+ */
+<<widget "equip-weapon">>><<if $Frisk.weapon.equipable.length is 1 and $Frisk.weapon.equipable.includes("nothing") is false>><<set $Frisk.weapon.has.concat($Frisk.weapon.equipable)>><<elseif $Frisk.weapon.equipable.length gt 1>><<run _removed = $Frisk.weapon.equipable.splice(1, 1)>><<set _removed.push($Frisk.weapon.has)>><</if>><</widget>>
 
 :: Javascript [script nobr]
 
@@ -273,6 +338,45 @@ $(document).on(':passagestart', function (ev) {
 });
 Config.history.controls = false;
 Config.saves.slots = 1
+
+/* Pronoun Templates - Start - By HiEv */
+/* $pgen: 0 = male, 1 = female, 2 = gender neutral, 3 = no gender */
+$(document).one(":passagestart", function () {
+	if (State.variables.pgen === undefined) {
+		State.variables.pgen = 0;  /* Default gender */
+	}
+});
+Template.add("they", function () { return ["he", "she", "they", "it"][State.variables.pgen]; });
+Template.add("them", function () { return ["him", "her", "them", "it"][State.variables.pgen]; });
+Template.add("themself", function () { return ["himself", "herself", "themself", "itself"][State.variables.pgen]; });
+Template.add("themselves", function () { return ["themselves", "themselves", "themselves", "themselves"][State.variables.pgen]; });
+Template.add("their", function () { return ["his", "her", "their", "its"][State.variables.pgen]; });
+Template.add("theirs", function () { return ["his", "hers", "theirs", "its"][State.variables.pgen]; });
+Template.add("theyre", function () { return ["he's", "she's", "they're", "it's"][State.variables.pgen]; });
+Template.add("youngPerson", function () { return ["boy", "girl", "person", "person"][State.variables.pgen]; });
+Template.add("youngPeople", function () { return ["boys", "girls", "people", "people"][State.variables.pgen]; });
+Template.add("adultPerson", function () { return ["man", "woman", "person", "person"][State.variables.pgen]; });
+Template.add("adultPeople", function () { return ["men", "women", "people", "people"][State.variables.pgen]; });
+Template.add("generalPerson", function () { return ["guy", "girl", "guy", "guy"][State.variables.pgen]; });
+Template.add("generalPeople", function () { return ["guys", "girls", "guys", "guys"][State.variables.pgen]; });
+Template.add("pal", function () { return ["dude", "chick", "pal", "pal"][State.variables.pgen]; });
+Template.add("pals", function () { return ["dudes", "chicks", "pals", "pals"][State.variables.pgen]; });
+Template.add("They", function () { return ["He", "She", "They", "It"][State.variables.pgen]; });
+Template.add("Them", function () { return ["Him", "Her", "Them", "It"][State.variables.pgen]; });
+Template.add("Themself", function () { return ["Himself", "Herself", "Themself", "Itself"][State.variables.pgen]; });
+Template.add("Themselves", function () { return ["Themselves", "Themselves", "Themselves", "Themselves"][State.variables.pgen]; });
+Template.add("Their", function () { return ["His", "Her", "Their", "Its"][State.variables.pgen]; });
+Template.add("Theirs", function () { return ["His", "Hers", "Theirs", "Its"][State.variables.pgen]; });
+Template.add("Theyre", function () { return ["He's", "She's", "They're", "It's"][State.variables.pgen]; });
+Template.add("YoungPerson", function () { return ["Boy", "Girl", "Person", "Person"][State.variables.pgen]; });
+Template.add("YoungPeople", function () { return ["Boys", "Girls", "People", "People"][State.variables.pgen]; });
+Template.add("AdultPerson", function () { return ["Man", "Woman", "Person", "Person"][State.variables.pgen]; });
+Template.add("AdultPeople", function () { return ["Men", "Women", "People", "People"][State.variables.pgen]; });
+Template.add("GeneralPerson", function () { return ["Guy", "Girl", "Guy", "Guy"][State.variables.pgen]; });
+Template.add("GeneralPeople", function () { return ["Guys", "Girls", "Guys", "Guys"][State.variables.pgen]; });
+Template.add("Pal", function () { return ["Dude", "Chick", "Pal", "Pal"][State.variables.pgen]; });
+Template.add("Pals", function () { return ["Dudes", "Chicks", "Pals", "Pals"][State.variables.pgen]; });
+/* Pronoun Templates - End */
 
 :: PassageHeader [nobr]
 
@@ -286,15 +390,14 @@ I am using $Frisk.weapon.has as a weapon.
 
 Equip something:
 <<print $Frisk.weapon.equipable>>
-<<if $Frisk.weapon.equipable.length gt 0>><<equip-weapon>><</if>>
-(TODO)
+<<if $Frisk.weapon.equipable.length is 1>><<link "Equip a weapon.">><<equip-weapon>><<refresh>><</link>><</if>>
 
 @@.onlylink;<<link "Return." $return>><</link>>@@
 
 :: Character Description [menuitem stoptime]
 
 My name is Frisk. I'm an orphan, so I don't know my parents' last name. I used to live on the streets of Earth.
-People tell me I'm "high functioning" autistic. I know a small amount of ASL (American Sign Language) from school before I ran away from school to learn by traveling rather than by what others tell me. I'm <<= $Frisk.age>> years of age.
+People tell me I'm "high functioning" autistic. I know a small amount of ASL (American Sign Language) from school before I ran away from there to learn by traveling rather than by what others tell me. I'm <<= $Frisk.age>> years of age, and my birthday is April 28th.
 
 @@.onlylink;<<link "Return." $return>><</link>>@@
 
@@ -376,7 +479,7 @@ There are footsteps coming down the hallway! <<if lastVisited("Starship hallway"
 
 :: Caught!
 
-I end up cowering as a figure with a giant shadow tramps lazily down the hallway. But what ends up showing up is a short, blue-clad skeleton monster. <<if $Frisk.inv>>Since I don't have a weapon, I can't fight. I don't underestimate this one- I run.
+I end up cowering as a figure with a giant shadow tramps lazily down the hallway. But what ends up showing up is a short, blue-clad skeleton monster. Since I don't have a weapon equipped, I can't fight. I don't underestimate this one- I run.
 But before I can get very far, my SOUL turns blue, and then I am lifted up-
 "Whuh-!"
 <img src="https://64.media.tumblr.com/d49bfa4ea3e82e078cffe5ff9a84f1b4/38e5ea264066037a-6f/s1280x1920/62509708cf4939a306817d1ef8c54aab59e03ae4.png" alt="A short skeleton with a blue hoodie pointing upwards with blue magic emenating from his pointer finger shows himself." height="600">
@@ -391,20 +494,22 @@ I am confused as to this turn of events, but to say I am surprised to get caught
 
 :: Hallway conversation
 
-<span class="comicsans"><<sans-bluemagic>>welp, might as well tell you the name of your judge, huh, kid? i'm sans. sans the skeleton.</span><</sans-bluemagic>>" The monster pauses, thoughtful. <span class="comicsans">so uh... kid, I think you know the gig's up, right? you can't try to hide again after we know you're here, you'd just get caught again.</span>"
+<span class="comicsans"><<sans-bluemagic>>welp, might as well tell you the name of your judge, huh, kid? i'm sans. sans the skeleton.<</sans-bluemagic>></span> The monster pauses, thoughtful.
+
+<span class="comicsans"><<sans-bluemagic>>so uh... kid, I think you know the gig's up, right? you can't try to hide again after we know you're here, you'd just get caught again.<</sans-bluemagic>></span>
 
 Do I...
 
 <span class="link1">[[Stay stubbornly silent.|Conversation part 2]]</span>
-"<span class="link2">[[I agree, I guess. But that doesn't mean I won't try, jerk.|Jerk conversation]]</span>"
-Completely ignore the question and introduce myself instead. "@@.link3;[[Terrible to meet you, Sans. I'm Frisk! Also, doesn't Sans mean without? Unfortunate name if you ask me.|Rude Introduction]]@@"
+"<span class="link2 dtm-mono">[[I agree, I guess. But that doesn't mean I won't try, jerk.|Jerk conversation]]</span>"
+Completely ignore the question and introduce myself instead. "@@.link3;.dtm-mono;[[Terrible to meet you, Sans. I'm Frisk! Also, doesn't Sans mean without? Unfortunate name if you ask me.|Rude Introduction]]@@"
 Or, try to be friendly with my introduction in the hopes of being released, and resolve to stay put. "@@.link4;[[Nice to meet you, Sans. I'm Frisk! Also, I agree, it would be wasted effort on both of our parts if I tried to run again.|Nice Introduction]]@@"
 
 :: Conversation part 2
 
 Sans waits for an answer, but when he realizes I'm glaring defiantly at him he looks ahead and sighs ruefully. The rest of the walk to what I'm assuming is the Captain's Cabin is completely in silence.
 
-At the end of the hallway there is a button-phone system for communicating with the captain and then with the rest of the crew. Sans floats and then drops me into a specimen crate with glass sides and grated top with an outside fingerprint lock, and makes a call to his "<span class="comicsans">bro</span>" to make an announcement for the crew to meet in the Dining Lounge next to the Kitchen.
+At the end of the hallway there is a button-phone system for communicating with the captain and then with the rest of the crew. Sans lifts and then drops me into a specimen crate with glass sides and grated top with an outside fingerprint lock, and makes a call to his quote unquote, "<span class="comicsans">bro</span>" to make an announcement for the crew to meet in the Dining Lounge next to the Kitchen.
 
 Then he walks away with his phalanges deep in his pockets and his posture hunched over. He looks regretful, and I'm not surprised. No one likes jailing another sentient being.
 
@@ -412,7 +517,7 @@ I slide my back down the glass as I sit down, then I pull up my legs and hug the
 
 :: Jerk conversation
 
-"<span class="comicsans">hey! there's no need for name-calling, kid. but I guess I can see where you're coming from. this has gotta be scary for a lil' teen like you.</span>" It's a statement more than a question, so I don't grace it with a response.
+<span class="comicsans"><<sans-thoughtful>>hey! there's no need for name-calling, kid. but I guess I can see where you're coming from. this has gotta be scary for a lil' teen like you<</sans-thoughtful>></span> It's a statement more than a question, so I don't grace it with a response.
 
 Sans rolls his glowing eye, then at the end of the hallway finds a metal specimen crate (with glass sides, a fingerprint lock, and a grated top) for my "<span class="comicsans">holding cell</span>" as he calls it. He moves the grate on top, then drops me inside, both with blue magic, being careful not to let me go before locking the grate back to the top of it.
 
@@ -426,7 +531,7 @@ I stand and watch him leave, then sit down and pull my legs up to my chest, wait
 
 Sans' eyes darken, his face looking very depressed and furious at the moment. I can tell he's trying to get his emotions under control. I must have pushed a bunch of his buttons all at once.
 
-"<span class="comicsans">yeah. frisk. got it. never going to use it.</span>" Sans grumbles half-coherently as we make our way to the end of the hallway. He then finds a metal specimen crate (with glass sides, a fingerprint lock, and a grated top) for my jail. He both moves the grate, and drops me inside with blue magic, being careful not to let me go before locking the grate back to the top of it with the numberpad key.
+<<sans-serious>><span class="comicsans">yeah. frisk. got it. never going to use it.</span><</sans-serious>> Sans grumbles half-coherently as we make our way to the end of the hallway. He then finds a metal specimen crate (with glass sides, a fingerprint lock, and a grated top) for my jail. He both moves the grate, and drops me inside with blue magic, being careful not to let me go before locking the grate back to the top of it with the numberpad key.
 
 The shape of the crate is an upright cylinder, the numberpad key being on the outside and far from the grate. The keypad is connected through wiring on the outside of the crate, so it's completely impossible to open it from the inside. I can just stand up in it, it seems. My arms can reach out and stretch completely to the sides, but not upright- the grate is in the way.
 
@@ -436,9 +541,11 @@ I stand and watch him leave, then sit down and pull my legs up to my chest while
 
 :: Nice Introduction
 
-Sans blinks in surprise at my apparent kindness and friendliness, then smiles and shakes his head ruefully. "<span class="comicsans">gee kid, i almost wish i hadn't captured you. i think i'll just bring you with me instead of... well, the alternative you probably wouldn't have liked.</span>"
+Sans blinks in surprise at my apparent kindness and friendliness, then smiles and shakes his head ruefully. <span class="comicsans"><<sans-smile>>gee kid, i almost wish i hadn't captured you. i think i'll just bring you with me instead of...<</sans-smile>></span>
 
-I nod with an apologetic smile. He puts me down, and I don't bother running. I want to see <<if $Frisk.gotbored is true or $Frisk.curiousabtcrew is true>>the rest of the crew!<<elseif $Frisk.wantedajob is true>>if I can get a job from this crew of monsters.<<elseif $Frisk.gotbored is true and $Frisk.curiousabtcrew is true and $Frisk.wantedajob is true>>about getting a job from this crew of <i>interesting</i> monsters!<</if>>
+<span class="comicsans"><<sans-serious>>well, the alternative you probably wouldn't have liked.<<sans-serious>></span>
+
+I nod with an apologetic grimace. He puts me down, and I don't bother running. I want to see <<if $Frisk.gotbored is true or $Frisk.curiousabtcrew is true>>the rest of the crew!<<elseif $Frisk.wantedajob is true>>if I can get a job from this crew of monsters.<<elseif $Frisk.gotbored is true and $Frisk.curiousabtcrew is true and $Frisk.wantedajob is true>>about getting a job from this crew of <i>interesting</i> monsters!<</if>>
 
 I follow Sans towards another hallway, and we make our way to the <span class="onlylink">[[Dining Lounge.|Dining Lounge]]</span>
 
@@ -448,14 +555,18 @@ When we get there, Sans takes out a radio that was attached to his beltloop and 
 
 There's a book about constellations in different starsystems (no surprise there), a book about ship AIs with an incredibly long, needlessly complicated name, a reference book of 5 different alien languages, and a mechanical journal with scribblings about Starship Mechanics on the front. I can also see there's a few old children's bedtime storybooks. I wonder whose those were? After I'm done looking around, I sit down on the couch to wait for Sans to be done with the radio.<</if>>
 
-When Sans is done arguing on my behalf, he comes over and sits next to me. "@@.comicsans;welp, i managed to get you secured with a place on the crew, if you want it.@@" He pauses and yawns, then shakes his head to try to ward his sleepiness away and says, "@@.comicsans;other than that, we can drop you off at the next planet, but you'd have to pay us something in return next time we come around.@@"
+When Sans is done arguing on my behalf, he comes over and sits next to me.
+@@.comicsans;<<sans-smile>>welp, i managed to get you secured with a place on the crew, if you want it.<</sans-smile>>@@"
+He pauses and yawns, then shakes his head to try to ward his sleepiness away. <<if $Frisk.exploredlounge is true>>Evidently sitting on this couch makes him remember all the times he's slept on it.<</if>>
+
+@@.comicsans;<<sans-thoughtful>>other than that, we can drop you off at the next habi planet, but you'd have to pay us something in return next time we come around.<</sans-thoughtful>>@@
 
 I say...
 <<nobr>>
-<<if $Frisk.wantedajob is true and $Frisk.curiousabtcrew is true and $Frisk.gotbored is false>>"@@.dtm-mono;[[I can work for you all for as long as you need me to!|Job Secured!]]@@"<<elseif $Frisk.gotbored is true and $Frisk.wantedajob is false and $Frisk.curiousabtcrew is false>>"@@.dtm-mono;[[Sure! I can work for you guys for a while, at least until I repay you all for hitching a ride, eheh...|Job Choose]]@@"
+<<if $Frisk.wantedajob is true and $Frisk.curiousabtcrew is true and $Frisk.gotbored is false>>"@@.dtm-mono;[[I can work for you all for as long as you need me to!|Job Choose]]@@"<<elseif $Frisk.gotbored is true and $Frisk.wantedajob is false and $Frisk.curiousabtcrew is false>>"@@.dtm-mono;[[Sure! I can work for you guys for a while, at least until I repay you all for hitching a ride, eheh...|Job Choose]]@@"<</nobr>>
 
-"@@.dtm-mono;[[I think I'd rather you drop me off at the nearest habitable planet. I'll find a way to make some money and pay you all off, no problem!|Tem Skip]]@@"
-<<elseif $Frisk.wantedajob is true and $Frisk.curiousabtcrew is true and $Frisk.gotbored is true>>"@@.dtm-mono;[[I'd love to work with you all, but I think I'd like to do whatever you need me to, rather than one specific job all the time.|Job Secured!]]@@"<</if>>
+<<nobr>>"@@.dtm-mono;[[I think I'd rather you drop me off at the nearest habitable planet. I'll find a way to make some money and pay you all, no problem!|Tem Skip]]@@"
+<<elseif $Frisk.wantedajob is true and $Frisk.curiousabtcrew is true and $Frisk.gotbored is true>>"@@.dtm-mono;[[I'd love to work with you all, but I think I'd like to do whatever you need me to, rather than one specific job all the time.|Job Secured!]]@@"<</if>><</nobr>>
 
 :: Job Secured! [stop-time]
 
@@ -486,7 +597,7 @@ I <<if lastVisited("Footsteps") is 1>>climb quickly into<<else>>enter<</if>> the
 
 :: Kitchen-sneaky
 
- I sneak into the kitchen, peeking through the double-door's windows before entering to make sure the coast is clear. I lean up on tip-toes and pull myself up to see through the tall windows, and when I see that no one is inside I go ahead and enter.
+I sneak into the kitchen, peeking through the double-door's windows before entering to make sure the coast is clear. I lean up on tip-toes and pull myself up to see through the tall windows, and when I see that no one is inside I go ahead and enter.
 
 TODO: [adding choices for taking food from the kitchen](I can take an apple from the bowl on the counter, a mini monster cake from the cupboard, or a beast jerky, from the box next to the monster cakes.)
 
@@ -536,7 +647,7 @@ I look around the slightly cramped Engine room. With all the wires and miscellan
 
 I blink. "@@.dtm-mono;Who are you? And how are you in my head?@@" I whisper into the empty engine room, my eyes wide.
 
-<span class="pcdark">You're</span> <<textbox "$PCname" "Your first name">><span class="pcdark">, and then you say-</span>
+<span class="pcdark">You're</span> <<textbox "$PCname" "Your first name">><span class="pcdark">, I go by (insert pronouns cycling-link here later), and then you say-</span>
 
 * <span class="pcdarklink link1">[[Uh... I can explain?|Then Explain, Frisk demands]]</span>
 
@@ -576,6 +687,6 @@ I walk over to the Grav arrays and look at them, following your suggestion. Ther
 
 <span class="pcdark">You ask...</span>
 <span class="pcdarklink link1">[[How do the grav-arrays work?|Gravity on ship Explain]]</span>
-<span class="pcdarklink link2">[[How do they plan on getting off the ship without the crew seeing them?|The non-existent Escape-ship Plan]]</span>
+<span class="pcdarklink link2">[[How do they plan on getting off the ship without the crew seeing them?|The non-existent Jump-ship Plan]]</span>
 <span class="pcdarklink link3">[[Who figured out long-distance space travel?|W.D. Gaster]]<span>
 <span class="pcdarklink link4">[[You're done, that's all you wanted to know.|Engine room]]</span>
