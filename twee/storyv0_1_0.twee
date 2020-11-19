@@ -34,18 +34,20 @@ It is <<printtime12hr>>
 
 :: Player Settings [stoptime]
 
-<<if $offline is undefined or $offline is false>>@@.pcdarklink;<<link "I'm Offline">><<set $offline to true>><<refresh>><</link>>@@<<elseif $offline is true>>@@.pcdarklink;<<link "I'm Online.">><<set $offline to false>><<refresh>><</link>>@@<</if>>
+<<cycle "$PCoffline">>
+<<option "Offline." false>>
+<<option "Online." true>>
+<</cycle>>
 <<if hasVisited("Player inspects Grav-Arrays") is true>>
-@@.pcdarklink;<<link "I go by she/her">><<setPronouns "f">><</link>>@@
+// $pgen: 0 = male, 1 = female, 2 = gender neutral, 3 = no gender
+<label><<radiobutton $pgen 1>>@@.pcdarklink; I go by she/her.@@<</radiobutton>></label>
 
-@@.pcdarklink;<<link "I go by he/him">><<setPronouns>><</link>>@@
+<label><<radiobutton $pgen 0>>@@.pcdarklink; I go by he/him.@@<</radiobutton>></label>
 
-@@.pcdarklink;<<link "I go by they/them">><<setPronouns "n">><</link>>
-@@
+<label><<radiobutton $pgen 2>>@@.pcdarklink; I go by they/them.@@<</radiobutton>></label>
 
-@@.pcdarklink;<<link "I go by it/its">><<setPronouns "i">><</link>>@@
+<label><<radiobutton $pgen 3>>@@.pcdarklink; I go by it/its.@@<</radiobutton>></label>
 <</if>>
-
 @@.link2;.pcdarklink;<<link "Return." $return>><</link>>@@
 
 :: StoryInit [nobr]
@@ -84,11 +86,8 @@ again without the quotes.
 <<set $Frisk.equipped to {head: "nothing", torso: "striped purple sweater and blue jeanshorts", feet: "dark brown sneakers"}>>
 <<set $Frisk.weapon to {limit: 1, itemcounter: 0}>>
 <<set $Frisk.inv to {limit: 10, itemcounter: 0}>>
-<<set $Frisk.inv.has to []>>
-<<set $Frisk.inv.has to ["nothing"]>>
 <<set $Frisk.weapon to {}>>
-	<<set $Frisk.weapon.has to []>>
-	<<set $Frisk.weapon.equipable to ["nothing"]>>
+<<set $Frisk.weapon.equipable to ["nothing"]>>
 <<set $Frisk.weapon.has to ["nothing"]>>
 <<set $Frisk.age to 16>>
 <<set $Frisk.Gold to 10>>
@@ -113,6 +112,18 @@ again without the quotes.
 <<character "G-furious" "imgs/Talk/Gaster/furious.png">>
 <<character "G-content" "imgs/Talk/Gaster/satisfied.png">>
 <<character "G-confused" "imgs/Talk/Gaster/confused.png">>
+// Frisk Talk macros
+<<character "Frisk-determined" "imgs/Talk/Frisk_Determined.png">>
+<<character "Frisk-furious" "imgs/Talk/Frisk_Furious.png">>
+<<character "Frisk-angry" "imgs/Talk/Frisk_Angry.png">>
+<<character "Frisk-bored" "imgs/Talk/Frisk_Bored.png">>
+<<character "Frisk-happy" "imgs/Talk/Frisk_Happy.png">>
+<<character "Frisk-flirty" "imgs/Talk/Frisk_Flirty.png">>
+<<character "Frisk-sad" "imgs/Talk/Frisk_Sad.png">>
+<<character "Frisk-embarrased" "imgs/Talk/Frisk_Embarrased.png">>
+<<character "Frisk-worried" "imgs/Talk/Frisk_Worried.png">>
+<<character "Frisk-surprised" "imgs/Talk/Frisk_Surprised.png">>
+<<character "Frisk-confuzzled" "imgs/Talk/Frisk_Confused.png">>
 //HP Meter setup
 <<newmeter "Frisk-HP" $Frisk.HP>>
 <<sizing 10% 10em>>
@@ -120,9 +131,7 @@ again without the quotes.
 <<colors #fff200 darkred white>>
 <<label "HP: $Frisk.HP" white left>>
 <</newmeter>>
-
-// talk macros stop here, Chapelr's code below
-
+// Chapelr's code below
 <<set
 	window.GameDays to [
 		"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"
@@ -327,7 +336,7 @@ again without the quotes.
  <<widget "add-e-shortsword">><<set $Frisk.weapon.equipable("electric shortsword")>><</widget>>
  /* Equip a weapon from the weapons inventory to the weapons slot.
  */
-<<widget "equip-weapon">>><<if $Frisk.weapon.equipable.length is 1 and $Frisk.weapon.equipable.includes("nothing") is false>><<set $Frisk.weapon.has.concat($Frisk.weapon.equipable)>><<elseif $Frisk.weapon.equipable.length gt 1>><<run _removed = $Frisk.weapon.equipable.splice(1, 1)>><<set _removed.push($Frisk.weapon.has)>><</if>><</widget>>
+<<widget "equip-weapon">>><<if $Frisk.weapon.equipable.length is 1 and $Frisk.weapon.equipable.includes("nothing") is false>><<set $Frisk.weapon.has.concat($Frisk.weapon.equipable)>><<elseif $Frisk.weapon.equipable.length gt 1>><<run $removed == $Frisk.weapon.equipable.splice(1, 1)>><<set $removed.push($Frisk.weapon.has)>><</if>><</widget>>
 
 :: Javascript [script nobr]
 
@@ -406,16 +415,16 @@ People tell me I'm "high functioning" autistic. I know a small amount of ASL (Am
 KEY:
 Button = ThisLink (extra info)
 AND/OR
-Button+OtherButton/SameasOtherButton = ThisMenu
+Button&OtherButton/SameasOtherButton = ThisMenu
 ---
 Ctrl = This Controls Menu
 ; = Inventory Menu
 F4 = Character Description
 1 = clicking on the first link (when there's multiple links)
 2thru9 = Clicking on the other links (it only goes up to nine)
-SPACE+ENTER/RETURN = clicking on the only link on the page, or clicking on the first link
+SPACE&ENTER/RETURN = clicking on the only link on the page, or clicking on the first link
 ---
-Links will let you continue through the story. If something is colored differently or the font is different, it's usually someone else speaking or their intentions, besides Frisk's. Other than that, gameplay is pretty easy! Have fun! ;) (One quick note, Frisk's thoughts and speech will be in the font Determination-Mono. But besides that, everything else is true! :D)
+Links will let you continue through the story. If something is colored differently or the font is different, it's usually someone speaking, their intentions or thoughts. Thoughts are always <i>in italic,</i> no matter what font they are in. Other than that, gameplay is pretty easy! Have fun! ;)
 
 @@.onlylink;<<link "Return." $return>><</link>>@@
 
@@ -435,7 +444,7 @@ Crouching behind a bush, I wait stealthily until a stray box is left outside the
 :: Intro the ship
 <<nobr>><<set $rocketsactive to true>>
 <<addmins 4>><</nobr>>
-I hear heavy footsteps, but somehow they seem more strong and confident than anything intimidating... "<span class="dtm-mono">A'right, one more box left!</span>" an ambiguously feminine voice rings out as the box I'm in lifts off the ground in one fluid motion. "<span class="dtm-mono">Huh, this box is heavy. Welp, in it goes!</span>" The <<hovertip "Monsters are a seperate race from humans, but lived and evolved on the same planet.">>monster<</hovertip>> starts moving with the box. I'm hesitating to breathe- I try to breathe as quietly as possible. <i><span class="dtm-mono">This has to work...</span></i> I think desperately. <i><span class="dtm-mono">I can't stay on this planet any longer. I need a new start!</span></i>
+I hear heavy footsteps, but somehow they seem more strong and confident than anything intimidating... "<span class="dtm-mono">A'right, one more box left!</span>" an ambiguously feminine voice rings out as the box I'm in lifts off the ground in one fluid motion. "<span class="dtm-mono">Huh, this box is heavier than I thought it'd be. Welp, in it goes!</span>" The <<hovertip "Monsters are a seperate race from humans, but lived and evolved on the same planet.">>monster<</hovertip>> starts moving with the box. I'm hesitating to breathe- I try to breathe as quietly as possible. <i><span class="dtm-mono">This has to work...</span></i> I think desperately. <i><span class="dtm-mono">I can't stay on this planet any longer. I need a new start!</span></i>
 
 I can hear the footsteps turn hollow as they head onto the ship, then the cargo hold. Then there's a loud "thump!" as the crate hits the ground. She(?) doesn't know I'm in here, so she drops the crate- I have to fight to keep from grunting in pain, but thankfully I manage not to groan.
 
@@ -475,9 +484,9 @@ There are footsteps coming down the hallway! <<if lastVisited("Starship hallway"
 
 <<nobr>>
 <<timed 10s>> I should hurry! The footsteps are getting closer!
-<<next>><<goto "Caught!">><</timed>><</nobr>>
+<<next>><<goto "Caught by Sans!">><</timed>><</nobr>>
 
-:: Caught!
+:: Caught by Sans!
 
 I end up cowering as a figure with a giant shadow tramps lazily down the hallway. But what ends up showing up is a short, blue-clad skeleton monster. Since I don't have a weapon equipped, I can't fight. I don't underestimate this one- I run.
 But before I can get very far, my SOUL turns blue, and then I am lifted up-
@@ -501,7 +510,7 @@ I am confused as to this turn of events, but to say I am surprised to get caught
 Do I...
 
 <span class="link1">[[Stay stubbornly silent.|Conversation part 2]]</span>
-"<span class="link2 dtm-mono">[[I agree, I guess. But that doesn't mean I won't try, jerk.|Jerk conversation]]</span>"
+<span class="link2 dtm-mono">[[I agree, I guess. But that doesn't mean I won't try, jerk.|Jerk conversation]]</span>
 Completely ignore the question and introduce myself instead. "@@.link3;.dtm-mono;[[Terrible to meet you, Sans. I'm Frisk! Also, doesn't Sans mean without? Unfortunate name if you ask me.|Rude Introduction]]@@"
 Or, try to be friendly with my introduction in the hopes of being released, and resolve to stay put. "@@.link4;[[Nice to meet you, Sans. I'm Frisk! Also, I agree, it would be wasted effort on both of our parts if I tried to run again.|Nice Introduction]]@@"
 
@@ -517,19 +526,23 @@ I slide my back down the glass as I sit down, then I pull up my legs and hug the
 
 :: Jerk conversation
 
-<span class="comicsans"><<sans-thoughtful>>hey! there's no need for name-calling, kid. but I guess I can see where you're coming from. this has gotta be scary for a lil' teen like you<</sans-thoughtful>></span> It's a statement more than a question, so I don't grace it with a response.
+<<Frisk-furious>>I agree, I guess. But that doesn't mean I won't try, jerk!<</Frisk-furious>>
 
-Sans rolls his glowing eye, then at the end of the hallway finds a metal specimen crate (with glass sides, a fingerprint lock, and a grated top) for my "<span class="comicsans">holding cell</span>" as he calls it. He moves the grate on top, then drops me inside, both with blue magic, being careful not to let me go before locking the grate back to the top of it.
+<span class="comicsans"><<sans-thoughtful>>hey! there's no need for name-calling, kid. but I guess I can see where you're coming from. this has gotta be scary for a lil' child like you.<</sans-thoughtful>></span> It's a statement more than a question, so I don't grace it with a response.
+
+Sans rolls his glowing eye, then at the end of the hallway finds a metal specimen crate (with glass sides, a fingerprint lock, and a grated top) for my "<span class="comicsans">holding cell</span>" as he proceeds to call it. He moves the grate on top, then drops me inside, both with blue magic, being careful not to let me go before locking the grate back to the top of it.
 
 The shape of the crate is an upright cylinder, the fingerpad key being on the outside and far from the grate. The keypad is connected through wiring on the outside of the crate, so it's completely impossible to open it from the inside. I can just stand up in it, it seems. My arms can reach out and stretch completely to the sides, but not upright- the grate is in the way.
 
-Sans walks away, his posture hunched and his phalanges deep in his jacket pockets. <span class="dtm-mono">Is he... sad? I guess I did call him a jerk... Hm.</span> I ponder to myself.
+Sans walks away, his posture hunched and his phalanges deep in his jacket pockets. <span class="dtm-mono"><i>Is he... sad? I guess I did call him a jerk... Hm.</i></span> I ponder to myself.
 
 I stand and watch him leave, then sit down and pull my legs up to my chest, waiting for my inevitable fate.
 
 :: Rude Introduction
 
-Sans' eyes darken, his face looking very depressed and furious at the moment. I can tell he's trying to get his emotions under control. I must have pushed a bunch of his buttons all at once.
+<<Frisk-determined>><span class="dtm-mono">Terrible to meet you, Sans. I'm Frisk! Also, doesn't Sans mean without? Unfortunate name if you ask me.</span><</Frisk-determined>>
+
+Sans' eyes darken, his face looking very depressed and furious for the moment. I can tell he's trying to get his emotions under control. I must have pushed a bunch of his buttons all at once.
 
 <<sans-serious>><span class="comicsans">yeah. frisk. got it. never going to use it.</span><</sans-serious>> Sans grumbles half-coherently as we make our way to the end of the hallway. He then finds a metal specimen crate (with glass sides, a fingerprint lock, and a grated top) for my jail. He both moves the grate, and drops me inside with blue magic, being careful not to let me go before locking the grate back to the top of it with the numberpad key.
 
@@ -543,9 +556,9 @@ I stand and watch him leave, then sit down and pull my legs up to my chest while
 
 Sans blinks in surprise at my apparent kindness and friendliness, then smiles and shakes his head ruefully. <span class="comicsans"><<sans-smile>>gee kid, i almost wish i hadn't captured you. i think i'll just bring you with me instead of...<</sans-smile>></span>
 
-<span class="comicsans"><<sans-serious>>well, the alternative you probably wouldn't have liked.<<sans-serious>></span>
+<span class="comicsans"><<sans-serious>>well, the alternative you probably wouldn't have liked.<</sans-serious>></span>
 
-I nod with an apologetic grimace. He puts me down, and I don't bother running. I want to see <<if $Frisk.gotbored is true or $Frisk.curiousabtcrew is true>>the rest of the crew!<<elseif $Frisk.wantedajob is true>>if I can get a job from this crew of monsters.<<elseif $Frisk.gotbored is true and $Frisk.curiousabtcrew is true and $Frisk.wantedajob is true>>about getting a job from this crew of <i>interesting</i> monsters!<</if>>
+I nod with an apologetic grimace. He puts me down, and I don't bother running. I want to see <<nobr>><<if $Frisk.gotbored is true or $Frisk.curiousabtcrew is true>>the rest of the crew!<<elseif $Frisk.wantedajob is true>>if I can get a job from this crew of monsters.<<elseif $Frisk.gotbored is true and $Frisk.curiousabtcrew is true and $Frisk.wantedajob is true>>about getting a job from this crew of <i>interesting</i> monsters!<</if>><</nobr>>
 
 I follow Sans towards another hallway, and we make our way to the <span class="onlylink">[[Dining Lounge.|Dining Lounge]]</span>
 
@@ -647,7 +660,8 @@ I look around the slightly cramped Engine room. With all the wires and miscellan
 
 I blink. "@@.dtm-mono;Who are you? And how are you in my head?@@" I whisper into the empty engine room, my eyes wide.
 
-<span class="pcdark">You're</span> <<textbox "$PCname" "Your first name">><span class="pcdark">, I go by (insert pronouns cycling-link here later), and then you say-</span>
+/* $pgen: 0 = male, 1 = female, 2 = gender neutral, 3 = no gender */
+<span class="pcdark">You're</span> <<textbox "$PCname" "Your first name">><span class="pcdark">, I go by <span class="pcdarklink"><<nobr>><<cycle $pgen>><<option "she/her" 1>><<option "he/him" 0>><<option "they/them" 2>><<option "it/its" 3>><</cycle>><</nobr>></span>, and then you say-</span>
 
 * <span class="pcdarklink link1">[[Uh... I can explain?|Then Explain, Frisk demands]]</span>
 

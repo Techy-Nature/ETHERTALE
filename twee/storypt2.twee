@@ -1,8 +1,8 @@
 :: Gravity on ship Explain
 
-<<if previous()>>Frisk thinks, then replies, <i><span class="dtm-mono">I think I read somewhere that the gravity on ships is powered by skeletons and other monsters with the blue magic ability. To calibrate one of these things, one of those types of monsters has to target the orb and pedestal with their magic, keeping it on the ground. Then the pedestal will power the gravity on the ship, keeping everyone on the ground by their SOULs. Obviously jumping doesn't work too well, but as long as our feet touch the ground, it will let us move about the ship easily.</span></i>
-
-<i><span class="dtm-mono">Any more questions about this?</span></i> I think to you.
+<<nobr>><<if lastVisited("Jump explain") is 1>>Frisk thinks, then replies, <i><span class="dtm-mono">I think I read somewhere that the gravity on ships is powered by skeletons and other monsters with the blue magic ability. To calibrate one of these things, one of those types of monsters has to target the orb and pedestal with their magic, keeping it on the ground. Then the pedestal will power the gravity on the ship, keeping everyone on the ground by their SOULs. Obviously jumping doesn't work too well, but as long as our feet touch the ground, it will let us move about the ship easily.</span></i><</if>>
+<</nobr>>
+  <i><span class="dtm-mono">Any more questions about this?<span></i> I think to you.
 
 @@.pcdarklink;.link1;[[How is this ship and the grav-orb powered?|Power]]@@
 <span class="pcdarklink link2">[[What happens when you try to jump, or get pushed over?|Jump explain]]</span>

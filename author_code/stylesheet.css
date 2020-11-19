@@ -54,7 +54,7 @@ grid-column: 5;
 	  src: url('fonts/comic.woff2') format:('woff2');
 }
 .papyrus {
-	font-family: Papyrus Regular, 'Papyrus';
+	font-family: Papyrus, 'Papyrus';
     src: url('fonts/papyrus-webfont.woff2') format:('woff2'),
     src: url('fonts/papyrus-webfont.woff') format:('woff'),
 	src: url('fonts/papyrus-webfont.ttf') format:('truetype'),
