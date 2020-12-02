@@ -1,5 +1,5 @@
 # ETHERTALE
-## "(a) crazy, fun au that's like a cross between Outertale, Deltarune and a futuristic sci-fi adventure shounen series." -Amee, Author's Friend
+## "(a) crazy, fun AU that's like a cross between Outertale, Deltarune and a futuristic sci-fi adventure shounen series." -Amee, Author's Friend
 
 # ETHERTALE
 
