@@ -1,0 +1,178 @@
+:: Gravity on ship Explain
+
+<<nobr>><<if lastVisited("Jump explain") is 1>>Frisk thinks, then replies, <i><span class="dtm-mono">I think I read somewhere that the gravity on ships is powered by skeletons and other monsters with the blue magic ability. To calibrate one of these things, one of those types of monsters has to target the orb and pedestal with their magic, keeping it on the ground. Then the pedestal will power the gravity on the ship, keeping everyone on the ground by their SOULs. Obviously jumping doesn't work too well, but as long as our feet touch the ground, it will let us move about the ship easily.</span></i><</if>>
+<</nobr>>
+  <i><span class="dtm-mono">Any more questions about this?<span></i> I think to you.
+
+@@.pcdarklink;.link1;[[How is this ship and the grav-orb powered?|Power]]@@
+<span class="pcdarklink link2">[[What happens when you try to jump, or get pushed over?|Jump explain]]</span>
+@@.pcdarklink;.link3;[[Nope!|Questions about Grav-array and ship]]@@
+
+:: Jump explain
+
+<i><span class="dtm-mono">Basically we end up in zero gravity until we touch down on the ceiling or another surface. This is pretty easily remedied, though. Usually space-farers just find an empty piece of wall and walk back to the ground from there.</span></i> I grin mischieviously. <i><span class="dtm-mono">It'd likely be an easy way to prank someone, though!</span></i> I giggle quietly, trying not to create too much noise. <span class="dtm-mono">[[Anyway, you have any other questions about this?|Gravity on ship Explain]]</span>
+
+:: W.D. Gaster [slowtime]
+
+I scrunch up my nose. <i><span class="dtm-mono onlylink">[[We probably shouldn't talk about someone who is listening.|Questions about Grav-array and ship]]</span> <span class="dtm-mono">He is on this ship, I saw him get on.</span></i> I shiver. <i><span class="dtm-mono">He has microphones everywhere, and cameras that help patrol the halls. I've seen them. Honestly I'm surprised he hasn't caught me yet. My saving grace, I think, has been that I've been pretty quiet so far.</span></i>
+
+:: The non-existent Jump-ship Plan [slowtime]
+
+"<span class="dtm-mono">I-</span>" I stop myself from saying anything, then think to you, <i><span class="dtm-mono">I don't have a plan- But uh, I'm thinking of trying to sneak out before everyone's gotten down to the cargo hold, but after it's opened.</span></i> I shrug.
+
+@@.pcdarklink;.link1;[[You react with understanding.|Understanding is always good]]@@
+@@.pcdarklink;.link2;[[You react with frustration!|Frustrated yell]]@@
+
+:: Frustrated yell
+
+<span class="pcdark shudder rumble">...How have you not gotten a working plan yet?!</span> You burst out in my mind.
+
+I flinch. <<Frisk-worried>><span class="dtm-mono">Umm-- uh- I-I don't know! I just-<</Frisk-worried>>
+<<Frisk-angry>><span class="dtm-mono">I needed a ride, and it was right here, so I went ahead hitched one! I needed to get away!</span><</Frisk-angry>>
+
+Suddenly, alarms start blaring!
+
+<<Frisk-furious>><span class="dtm-mono">Crap, I shouted that out loud!</span><</Frisk-furious>>
+
+<span class="pcdarklink onlylink"><i>[[No shiz, Sherlock!|Hide!]]</i></span>
+
+:: Understanding is always good
+
+I can hear you taking a deep, calming breath in my mind. <span class="pcdark"><i>Frisk. You'll be the death of us yet, but if anyone can make up a plan on the spot, I'm sure both of </i>us<i> can figure something out while waiting for the ship to land.</i> You feel Frisk nod in agreement.</span>
+
+<i><em>@@.dtm-mono;[[Definitely.|Engine room]]@@</em></i>
+
+
+:: Power [slowtime]
+
+<<Frisk-bored>><span class="dtm-mono">Solar from us humans when possible, but...</span><</Frisk-bored>>
+<<Frisk-worried>><span class="dtm-mono">...Otherwise we use fuel that was invented by the one who is listening for anyone who doesn't belong here. <<nobr>><<if hasVisited('W.D. Gaster') is false>>There's microphones pretty much everywhere on this ship, and cameras in the main hallways.<</if>><</nobr>></span><</Frisk-worried>>
+I pause, then ask,
+ <<Frisk-confuzzled>><span class="dtm-mono onlylink">[[Any other questions?|Questions about Grav-array and ship]]</span><</Frisk-confuzzled>>
+
+:: Hide!
+<<addmins 2>>
+I jump into one of the many convenient vents, obscuring myself in shadow. Heavy footsteps, the same as those that carried the box to the cargo hold, and another set of controlled, light footsteps, walk into the engine room. I try to quiet my breathing as much as possible, breathing through my mouth rather than my nose. Two voices call out in unison in the light-flashing orange-tinged darkness.
+
+@@.aster;Hello?@@
+@@.dtm-sans;Hello?@@
+
+<i><span class="dtm-mono">Crap. They're on to us. And if I try to go deeper into the vents, no telling where I'll end up-</span></i>
+
+<<G-annoyed>><span class="wingdings">COME OUT, YOUNG ONE. WE KNOW YOU'RE THERE.</span><</G-annoyed>> The noise that the skeleton made sucked all the air out of the room. It's the language of machines- how-? <span class="pcdark">You can hear through Frisk's ears fabric flapping. The speaker must be signing. Interesting...</span>
+
+The other, more feminine voice called out, "<span class="dtm-sans">Don't make this HARDER than it has to BE, HUMAN!</span>"
+The footsteps come closer still. There's nothing I can do now. The fact that they know I'm human is bad. I panic panic panic-
+Footsteps are coming closer-
+My breathing quickens-
+
+The grate on the vent is pulled aside, and the light filters back in. Suddenly the alarms stop blaring, the light returning to normal; can they see me?
+An arm moves in, webbed fingers reaching in to grab me. What do I do?!
+
+<span class="link1">[[There's nothing I can do!|Grabbed!]]</span>
+<span class="link2 pcdarklink">[[Bite the hand, of course! Try to shove it off! Fight!|Aggression!]]</span>
+
+:: Waiting or Sleeping Vent 3 [stoptime]
+
+How long should I <<if $now.getHours() gte 20 or $now.getHours() lt 6>>sleep<<else>>wait<</if>> for?
+
+<<switch $now.getHours()>>
+<<case 20>>
+<span class="onlylink"><<link "Sleep for 11 hours.">><<addhrs 11>><<refresh>><</link>></span>
+<<case 21>>
+<span class="onlylink"><<link "Sleep for 10 hours.">><<addhrs 10>><<refresh>><</link>></span>
+<<case 22>>
+<span class="onlylink"><<link "Sleep for 9 hours.">><<addhrs 9>><<refresh>><</link></span>
+<<case 23>>
+<span class="onlylink"><<link "Sleep for 8 hours.">><<addhrs 8>><<refresh>><</link>></span>
+<<case 24>>
+<span class="onlylink"><<link "Sleep for 7 hours.">><<addhrs 7>><<refresh>><</link>></span>
+<<case 1>>
+<span class="onlylink"><<link "Sleep for 7 hours.">><<addhrs 7>><<refresh>><</link>></span>
+<<case 2>>
+<span class="onlylink"><<link "Sleep for 7 hours.">><<addhrs 7>><<refresh>><</link>></span>
+<<case 3>>
+<span class="onlylink"><<link "Rest for 6 hours.">><<addhrs 8>><<refresh>><</link>></span>
+<<case 4>>
+<span class="onlylink"><<link "Rest for 5 hours">><<addhrs 5>><<refresh>><</link>></span>
+<<case 5>>
+<span class="onlylink"><<link "Rest for 3 hours">><<addhrs 3>><<refresh>><</link>></span>
+<<default>>
+<span class="link1"><<link "Wait for half-an-hour.">><<addmins 30>><<refresh>><</link>></span>
+<span class="link2"><<link "Wait for an hour.">><<addhrs 1>><<refresh>><</link>></span>
+<span class="link3"><<link "Wait for two hours.">><<addhrs 2>><<refresh>><</link>></span>
+<span class="link4"><<link "Wait for three hours.">><<addhrs 3>><<refresh>><</link>></span>
+<span class="link5"><<link "Wait for four hours.">><<addhrs 4>><<refresh>><</link>></span>
+<</switch>>
+<<if $now.getHours() gte 20 or $now.getHours() lt 6>><span class="link2">[[Exit the large vent.|Engine room]]</span><<else>><span class="link6">[[Exit the large vent.|Engine room]]</span><</if>>
+
+:: Grabbed!
+
+I flinch as the hands grab me, then haul me out by my arms. Blinking as the lights turn back to normal and I'm hauled from the darkness of the vent and into the engine room, I see two monsters. One is the famous biochemist skeleton who invented the fuel for hyper-efficient space-travel, the other a fishy looking monster. The latter is the one who hauled me out.
+
+A pair of high-tech hand-cuffs are snapped onto my wrists, then skeleton man makes a speech. <span class="aster">I don't intend to harm you, however, we will need to figure out how you're going to repay us for hitching a ride uninvited. Just come along quietly, please.</span> A slight smile graces his skull, tugging lightly at his turtleneck.
+<img src="imgs/WDgaster_by_inviseri-daf-Recolored_by_Jaden-Smile.png" alt="Image of the skeletal chemistry scientist slightly smiling, right phalanges pulling at the neck of his turtleneck." height="700">
+
+How should I react, do you think?
+
+<span class="pcdark">Say...</span>
+
+"[[Sure.|Following]]" <span class="pcdark">Then nod meekly.</span>
+"[[Yeah, whatever you say Doc.|Sassy Follow]]" <span class="pcdark">Then roll their eyes defiantly.</span>
+"[[Sure, fine.|I've got a plan, but Follow]]" <span class="pcdark">Say this, nod, then plan on escaping as soon as the cuffs come off.</span>
+
+:: Aggression!
+
+I tense up, but before I can do anything to defend myself, a voice from above speaks out to my assailant.
+ <<G-furious>><span class="aster"><b>Undyne!</b></span><</G-furious>>
+ The fishy woman's hand slowly withdraws. "<span class="dtm-sans">What?</span>"
+<<G-determined>><span class="aster">I do believe this calls for a more delicate word.</span><</G-determined>>
+A huff, a dismissive hand-wave, then the shadow that was cast over me withdraws, and a new one takes it's place.
+<img src="imgs/Undyne_ETHERTALE.png" alt="A fishy, red-haired and blue-skinned woman with webbed fingers waves dismissively.">
+A skeleton taller than the woman crouches down in front of me, keeping his balance with four phalanges on a rare patch of empty wall above him. He's wearing a dark grey turtle-neck and a white, pristine lab-coat with black slacks, along with black dress-shoes. The labcoat's tails billow out behind him as he crouches down, then they rest on the floor of the engine room.
+ I glare downwards after sizing him up and glancing into his white eyelight (his right eye must have been injured, as it droops to the point where his other eyelight can't form), afterwards fiddling with a stray wire sticking out of the entrance to the vent.
+He pauses to take a deep, calming breath through his nose, then explains his intentions. <<G-bored>><span class="aster">I don't intend to harm you, however, we will need to figure out how you're going to repay us for hitching a ride uninvited. If you try to leave through the vents- I know this ship inside and out, you'll only come upon the fans and filters that circulate and purify air inside the ship.</span><</G-bored>>
+He pauses to let that sink in.
+<<G-determined>><span class="aster">In other words, you're stuck. So please come out, and follow us. You can't escape on this ship, there's nowhere for you to go that we wouldn't be able to find you, now that we know you're here.</span><</G-determined>>
+
+The skeletal man stands up and steps back, waiting for me to exit. <span class="onlylink">[[I crawl slowly out of the vent.|Caught by Gaster and Undyne]]</span>
+
+:: Caught by Gaster and Undyne
+
+<<G-worried>>@@.aster;Now that you're up and out of there, I hope you'll forgive me...@@<</G-worried>>
+He grimaces wider, pulling slightly at his turtleneck.
+<img src="imgs/WDGaster_by_inviseri-daf_Recolored_Grimace.png" alt="Image of the skeletal chemistry scientist turning his skull to a wide grimace, phalanges pulling at the neck of his turtleneck." height="700">
+
+<<G-worried>><span class="aster">...But we need to put cuffs on you for the time being. We'll make sure they aren't too tight, isn't that right, Undyne?</span><</G-worried>>
+Undyne just rolls her eyes. "<span class="dtm-sans">You haven't even introduced yourself yet, you old bag of bones!</span>" Undyne then turns to me, a grin on her face, while the skeleton in question's face turns indignant. Before he can get a word in edgewise, Undyne introduces him. "<span class="dtm-sans">This skeleton is Wing Din Gaster.</span>" She gestures to him. "<span class="dtm-sans">He doesn't care much for fame, despite being FAMOUS, which is why he didn't introduce himself. You probably already know his name!</span>"
+I nod, smirking. <span class="pcdarklink"><<linkreplace "You express confusion to me...">>I explain to you in my mind that Wing Din Gaster is the inventor of the ultra-efficient fuel that made space-travel possible. <span class="pcdark">You make a sound that is the equivalent of a nod and an impressed gasp in my mind.</span><</linkreplace>></span>
+
+A couple minutes later the cuffs are on and I am prodded along by Undyne as I follow Gaster, exiting [[to the hallway.|Following Gaster]]
+
+:: Following Gaster
+
+In the time between learning my fate, which hasn't happened yet, and being lead along by Gaster, my arms and shoulders become stiff with tense anticipation. I try to flap my hands to expell that extra anxious energy, but remember that I'm in cuffs and end up just moving my cuffs in opposite directions, then flopping them back down against the front of my body. I expell a  long, tense sigh instead, but that doesn't do it as well as it should. I attempt to try to flap them in cuffs again, but that doesn't work too well.
+
+<<G-confused>><span class="aster">What are you doing, child?</span><</G-confused>>
+ I flinch, having to speak out loud for the first time since I got here. I hesitate for a moment before explaining.
+ <<Frisk-worried>><span class="dtm-mono">...I'm Autistic. I'm trying to expell my nervous energy by flapping my hands... But doing that in cuffs is pretty much impossible.</span><</Frisk-worried>>
+
+Gaster nods in agreement but says, <<G-bored>><span class="aster">We're almost there. The <i>Bonetrousle</i> isn't that big on the inside, as it's mostly cargo space, and the lab as well as the computer rooms are fairly large, as well. You'll be fine until we get there, then I'll take them off when everyone is around and you're in a containment chamber.</span><</G-bored>>
+
+<i><span class="dtm-mono">Oh. Great. I'm going to jail.</span></i> I think to myself sarcastically. At least I know where I'm going now, even if it isn't going to be pleasant. I dejectedly lower my head, watching the floor as we [[walk along.|Containment Chamber]] The tenseness in my arms and shoulders bleeds out into the air, following us at our heels. It then dissipates behind us. The tense energy that once was instead turns to a crestfallen, disappointed aura.
+
+:: I've got a plan, but Follow
+
+End demo! Thanks for playing! :D
+
+:: Following
+
+End demo! Thanks for playing! :D
+
+:: Sassy Follow
+
+End demo! Thanks for playing! :D
+
+:: Containment Chamber [slowtime]
+
+End demo.

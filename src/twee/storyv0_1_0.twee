@@ -1,0 +1,690 @@
+:: StoryTitle
+
+ETHERTALE
+
+:: Story-Display-Title [stoptime]
+
+<<if $PCoffline is true>><img src="imgs/ETHERTALE.png" height="200" width="290"><<elseif $PCoffline is false>><img src="https://64.media.tumblr.com/faa8605ab579b6873fda05032dc1cef4/a63caba7052a3a50-7a/s400x600/49e5982462a061a7f94b9a8a062538b9b9a65c8e.png" height="200" width="290"><<else>><img src="imgs/ETHERTALE.png" height="200" width="290"><</if>>
+
+:: StorySubtitle [stoptime]
+Prologue: Starship Stowaway
+v.0.02beta
+
+Today is <<printfulldate>>.
+It is <<printtime12hr>>
+
+<span id="desclink">[[Character Description]]</span>
+<span class="pcdarklink ctrlslink">[[Controls]]</span>
+
+:: StoryInterface
+
+<div id="interface">
+<div id="sidebar">
+<div id="story-title" data-passage="Story-Display-Title"></div>
+	<div id="menu-story" data-passage="StoryMenu"></div>
+	<div id="story-subtitle" data-passage="StorySubtitle"></div></div><div id="passages"></div>
+	</div>
+
+:: StoryMenu [stoptime]
+
+[[Reset|Start][$resetcounter ++]]
+<<link "SAVE/LOAD">><<run UI.saves()>><</link>>
+@@.pcdarklink;[[Player Settings]]@@
+
+:: Player Settings [stoptime]
+
+<<listbox "$PCoffline" autoselect>>
+<<option "Offline." true>>
+<<option "Online." false>>
+<</cycle>>
+WARNING: If you're on Android, or any phone-like device, Online is the only way to play with pictures for now. Sorry.
+<<nobr>><<if hasVisited("Player inspects Grav-Arrays") is true>>
+// $pgen: 0 = male, 1 = female, 2 = gender neutral, 3 = no gender
+<<listbox "$pgen">>
+	<<option "Female, she/her" 1>>
+	<<option "Male, he/him" 0>>
+	<<option "Non-gendered, it/its" 3>>
+	<<option "Androgynous, they/them" 2>>
+<</listbox>><</if>><</nobr>>
+<span class="pcdarklink onlylink"><<link "Return." $return>><</link>></span>
+
+:: StoryInit [nobr]
+
+<<set $now = new Date(2050, 4, 1, 14, 30, 0)>>
+
+/*
+Dukemz's code here.
+This won't actually do anything yet, apart from print some text to the console,
+ which you can view with F12 or Ctrl+Shift+I in most browsers.
+*/
+<<script>>
+// I'll put my functions in this object. You should be able to call them with `duck.functionName()`
+// or something similar.
+window.duck = {};
+
+// Just a nice little function to display coloured text in the console. Called it the duck debugger because why not.
+duck.dbg = text => { return console.log("%c[DUCK DEBUGGER] " + `%c${text}`, "color:aqua", "color:grey"); }
+duck.dbg("Starting Dukemz's code and setting up item dictionary.");
+
+// Set up the item dictionary.
+duck.itemdict = [
+	// This will contain items later.
+];
+duck.dbg("Printing the item dictionary below...");
+console.log(duck.itemdict);
+duck.dbg("Finished printing item dictionary.");
+<</script>>
+/*
+Jaden here. In Opera the shortcut for the Developer Console is Ctrl-Shift-J, but you can add more shortcuts through the settings.
+All I did was go to the settings and search up "keyboard" without the quotes, and it should find it. If that doesn't work, try "shortcuts,"
+again without the quotes.
+*/
+// Jaden's code below
+<<set $Frisk to {}>>
+<<set $Frisk.age to 16>>
+<<set $Frisk.Gold to 10>>
+<<set $Frisk.resetcounter to 0>>
+<<set $Frisk.maxHP to 120>>
+<<set $Frisk.HP to 20>>
+<<set $Frisk.LV to 0>>
+<<set $Frisk.EXP to 0>>
+// Jaden's talk macro setup
+// Sans talk macros
+<<character "sans-thoughtful" "imgs/Talk/Sans/thoughtful.png">>
+<<character "sans-bluemagic" "imgs/Talk/Sans/angry-bluemagic.png">>
+<<character "sans-smile" "imgs/Talk/Sans/smile.png">>
+<<character "sans-winkysmile" "imgs/Talk/Sans/wink~.png">>
+<<character "sans-blushy" "imgs/Talk/Sans/blush.png">>
+<<character "sans-serious" "imgs/Talk/Sans/serious.png">>
+// Gaster talk macros
+<<character "G-annoyed" "imgs/Talk/Gaster/annoyed.png">>
+<<character "G-bored" "imgs/Talk/Gaster/bored.png">>
+<<character "G-determined" "imgs/Talk/Gaster/determined.png">>
+<<character "G-furious" "imgs/Talk/Gaster/furious.png">>
+<<character "G-content" "imgs/Talk/Gaster/satisfied.png">>
+<<character "G-confused" "imgs/Talk/Gaster/confused.png">>
+<<character "G-surprise-confused" "imgs/Talk/Gaster/surprised-confused.png">>
+<<character "G-surprised" "imgs/Talk/Gaster/surprised.png">>
+<<character "G-worried" "imgs/Talk/Gaster/worried.png">>
+<<character "G-blush" "imgs/Talk/Gaster/blushy.png">>
+// Frisk Talk macros
+<<character "Frisk-determined" "imgs/Talk/Frisk_Determined.png">>
+<<character "Frisk-furious" "imgs/Talk/Frisk_Furious.png">>
+<<character "Frisk-angry" "imgs/Talk/Frisk_Angry.png">>
+<<character "Frisk-bored" "imgs/Talk/Frisk_Bored.png">>
+<<character "Frisk-happy" "imgs/Talk/Frisk_Happy.png">>
+<<character "Frisk-flirty" "imgs/Talk/Frisk_Flirty.png">>
+<<character "Frisk-sad" "imgs/Talk/Frisk_Sad.png">>
+<<character "Frisk-embarrased" "imgs/Talk/Frisk_Embarrased.png">>
+<<character "Frisk-worried" "imgs/Talk/Frisk_Worried.png">>
+<<character "Frisk-surprised" "imgs/Talk/Frisk_Surprised.png">>
+<<character "Frisk-confuzzled" "imgs/Talk/Frisk_Confused.png">>
+//HP Meter setup
+<<newmeter "Frisk-HP" $Frisk.HP>>
+<<sizing 10% 10em>>
+<<animation false>>
+<<colors #fff200 darkred white>>
+<<label "HP: $Frisk.HP" white left>>
+<</newmeter>>
+// Chapelr's code below
+<<set
+	window.GameDays to [
+		"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"
+	];
+	window.GameMonths to [
+		"Jan", "Feb", "Mar", "Apr", "May", "Jun",
+		"Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+	];>>
+	//  Chapelr's code end
+	/* Keyboard Event setup by Jaden*/
+	<<event click ".linkcheck">>
+	<<set $linkclicked to true>>
+	<<which 01>>
+	<<set $linkclicked to true>>
+	<</event>>
+	<<event keyup ".linkcheck">>
+	<<which 49>>
+	<<set $linkclicked to true>>
+	<<which 13>>
+	<</event>>
+	<<event click '.linkcheck2 a'>>
+	<<which 01>>
+	<<set $linkclicked2 to true>>
+	<</event>>
+	<<event keydown '.linkcheck2 a'>>
+	<<which 51>>
+	<<set $linkclicked2 to true>>
+	<</event>>
+	<<event keyup 'linkcheck2 a'>>
+	<<which 51>>
+	<<set $linkclicked2 to true>>
+	<</event>>
+	<<event keydown>>
+	<<which 49>>
+	<<trigger 'click' '.link1 a'>>
+	<</event>>
+	<<event keydown>>
+	<<which 13>>
+	<<trigger 'click' '.link1 a'>>
+	<<trigger 'click' '.onlylink a '>>
+	<<which 32>>
+	<<trigger 'click' '.onlylink a'>>
+		<<trigger 'click' '.link1 a'>>
+	<</event>>
+	<<event keydown>>
+	<<which 50>>
+	<<trigger 'click' '.link2 a'>>
+	<<which 51>>
+	<<trigger 'click' '.link3 a'>>
+	<<which 52>>
+			<<trigger 'click' '.link4 a'>>
+		<<which 53>>
+			<<trigger 'click' '.link5 a'>>
+		<<which 54>>
+			<<trigger 'click' '.link6 a'>>
+		<<which 55>>
+			<<trigger 'click' '.link7 a'>>
+		<<which 56>>
+			<<trigger 'click' '.link8 a'>>
+		<<which 57>>
+			<<trigger 'click' '.link9 a'>>
+	<</event>>
+	<<event keydown>>
+	<<which 115>>
+	<<trigger 'click' '.desclink a'>>
+	<<which 186>>
+	<<trigger 'click' '.invlink a'>>
+	<<which 17>>
+	<<trigger 'click' '.ctrlslink a'>>
+	<<which 16>>
+	<<trigger 'click' '#restartlink a'>>
+	<</event>>
+	/* Event setup finished */
+
+:: StoryData
+
+{
+        "ifid": "2FBC0655-AEE8-4AE6-AEA1-FE7A9EED763E"
+}
+
+:: Time Widgets [widget nobr]
+
+/* Adds the specified number of minutes. */
+<<widget "addmins">>
+<<run $now.setMinutes($now.getMinutes() + $args[0])>>
+<</widget>>
+/* Adds the specified number of hours. */
+<<widget "addhrs">>
+<<run $now.setHours($now.getHours() + $args[0])>>
+<</widget>>
+
+/* Adds the specified number of days. */
+<<widget "adddays">>
+<<run $now.setHours($now.getHours() + $args[0] * 24)>>
+<</widget>>
+
+<<widget "printtime">><<print $now.getHours() + ':'>><<if $now.getMinutes() lt 10>><<print '0'>><</if>><<print $now.getMinutes()>><</widget>>
+
+<<widget "printfulldate">>/* Prints the current date ("{weekday} {month} {day}, {year}"). */
+<<print String.format("{0} {1} {2}, {3}",
+	GameDays[$now.getDay()],
+	GameMonths[$now.getMonth()],
+	$now.getDate(),
+	$now.getFullYear()
+)>>
+<</widget>>
+
+/* Prints the current time (12H). */
+<<widget "printtime12hr">>
+<<if $now.getHours() eq 0>>
+12
+<<elseif $now.getHours() gt 12>>
+<<print $now.getHours() - 12>>
+<<else>>
+<<print $now.getHours()>>
+<</if>>:
+<<if $now.getMinutes() lt 10>>0<</if>><<print $now.getMinutes()>>
+<<if $now.getHours() gte 12>>PM<<else>>AM<</if>>
+<</widget>>
+
+:: Other Widgets [widget nobr]
+
+<<widget "refresh">><<run Engine.show()>><</widget>>
+
+/* /SetGender>> widget - Start - By HiEv */
+<<widget "SetGender">><<nobr>>
+/* Usage... (defaults to male) */
+/* for "he":   <<SetGender>> or <<SetGender "m">> */
+/* for "she":  <<SetGender "f">> */
+/* for "they": <<SetGender "n">> */
+/* for "it":   <<SetGender "i">> */
+/* $pgen: 0 = male, 1 = female, 2 = gender neutral, 3 = no gender */
+	<<switch $args[0]>>
+		<<case "m">>
+			<<set $pgen = 0>>
+		<<case "f">>
+			<<set $pgen = 1>>
+		<<case "n">>
+			<<set $pgen = 2>>
+		<<case "i">>
+			<<set $pgen = 3>>
+		<<default>>
+			<<set $pgen = 0>>
+	<</switch>>
+<</nobr>><</widget>>
+/* /SetGender>> widget - End */
+
+/* /checkboxPlus>> widget by HiEv
+	This widget allows you to display a custom checkbox which sets a
+	SugarCube variable, displays a (clickable) label, and satisfies
+	accessibility guidelines for users with impairments (usable via the
+	keyboard with TAB, SHIFT+TAB, and SPACE keys).  The	checkboxes are
+	also larger, to make them easier to see and to click on for mobile
+	devices.
+
+	Usage: /checkboxPlus "variableName" "text" ["className"]\
+
+	The value of the checkbox would then be tied to a variable, which
+	is passed to the widget as a string.  All story variables passed to
+	the widget will be set to either a Boolean true or false.  If the
+	variable had a "truthy" value, then the checkbox will be checked.
+	The	"className" is an optional parameter, which adds that CSS class	to the text.
+
+	Example: /checkboxPlus "$EnabledOp" "Enable Option" "blueText"/
+*/
+<<widget "checkboxPlus">>
+	/* Make sure the variable passed in is a boolean. */
+	<<set State.setVar($args[0], !!State.getVar($args[0]))>>
+	<<if ndef _checkboxIDno>>
+		/* Start checkbox IDs at 1. */
+		<<set _checkboxIDno = 1>>
+	<<else>>
+		/* Next checkbox ID. */
+		<<set _checkboxIDno++>>
+	<</if>>
+	<<set _checkboxData = "'" + $args[0] + "'">>
+	<<if def $args[2]>>
+		<<set _cbStyle = " " + $args[2]>>
+	<<else>>
+		<<set _cbStyle = "">>
+	<</if>>
+	/* Display checkbox. */
+	<span class="chkbox" tabindex="0" onkeypress="if ((event.key == ' ') || (event.key == 'Spacebar')) { $(this).find('input[type=\'checkbox\']').trigger('click'); return false; }">
+		<<print '<input type="checkbox" id="checkbox_' + _checkboxIDno + '" tabindex="-1" class="cbhidden" onchange="SugarCube.State.setVar(' + _checkboxData + ', this.checked)" data-var="' + $args[0] + '"' + (State.getVar($args[0]) ? ' checked' : '') + '>'>>
+		<label @for="'checkbox_' + _checkboxIDno" @class="'chklabel' + _cbStyle">
+			$args[1]
+		</label>
+	</span>
+<</widget>> /*
+// /checkboxPlus/ Widget - End
+
+:: Javascript [script nobr]
+
+$(document).on(':passagestart', function (ev) {
+	if (!ev.passage.tags.includes('menuitem')) {
+		State.variables.return = ev.passage.title;
+	}
+});
+Config.history.controls = false;
+Config.saves.slots = 1
+
+/* Pronoun Templates - Start - By HiEv */
+/* $pgen: 0 = male, 1 = female, 2 = gender neutral, 3 = no gender */
+$(document).one(":passagestart", function () {
+	if (State.variables.pgen === undefined) {
+		State.variables.pgen = 0;  /* Default gender */
+	}
+});
+Template.add("they", function () { return ["he", "she", "they", "it"][State.variables.pgen]; });
+Template.add("them", function () { return ["him", "her", "them", "it"][State.variables.pgen]; });
+Template.add("themself", function () { return ["himself", "herself", "themself", "itself"][State.variables.pgen]; });
+Template.add("themselves", function () { return ["themselves", "themselves", "themselves", "themselves"][State.variables.pgen]; });
+Template.add("their", function () { return ["his", "her", "their", "its"][State.variables.pgen]; });
+Template.add("theirs", function () { return ["his", "hers", "theirs", "its"][State.variables.pgen]; });
+Template.add("theyre", function () { return ["he's", "she's", "they're", "it's"][State.variables.pgen]; });
+Template.add("youngPerson", function () { return ["boy", "girl", "person", "person"][State.variables.pgen]; });
+Template.add("youngPeople", function () { return ["boys", "girls", "people", "people"][State.variables.pgen]; });
+Template.add("adultPerson", function () { return ["man", "woman", "person", "person"][State.variables.pgen]; });
+Template.add("adultPeople", function () { return ["men", "women", "people", "people"][State.variables.pgen]; });
+Template.add("generalPerson", function () { return ["guy", "girl", "guy", "guy"][State.variables.pgen]; });
+Template.add("generalPeople", function () { return ["guys", "girls", "guys", "guys"][State.variables.pgen]; });
+Template.add("pal", function () { return ["dude", "chick", "pal", "pal"][State.variables.pgen]; });
+Template.add("pals", function () { return ["dudes", "chicks", "pals", "pals"][State.variables.pgen]; });
+Template.add("They", function () { return ["He", "She", "They", "It"][State.variables.pgen]; });
+Template.add("Them", function () { return ["Him", "Her", "Them", "It"][State.variables.pgen]; });
+Template.add("Themself", function () { return ["Himself", "Herself", "Themself", "Itself"][State.variables.pgen]; });
+Template.add("Themselves", function () { return ["Themselves", "Themselves", "Themselves", "Themselves"][State.variables.pgen]; });
+Template.add("Their", function () { return ["His", "Her", "Their", "Its"][State.variables.pgen]; });
+Template.add("Theirs", function () { return ["His", "Hers", "Theirs", "Its"][State.variables.pgen]; });
+Template.add("Theyre", function () { return ["He's", "She's", "They're", "It's"][State.variables.pgen]; });
+Template.add("YoungPerson", function () { return ["Boy", "Girl", "Person", "Person"][State.variables.pgen]; });
+Template.add("YoungPeople", function () { return ["Boys", "Girls", "People", "People"][State.variables.pgen]; });
+Template.add("AdultPerson", function () { return ["Man", "Woman", "Person", "Person"][State.variables.pgen]; });
+Template.add("AdultPeople", function () { return ["Men", "Women", "People", "People"][State.variables.pgen]; });
+Template.add("GeneralPerson", function () { return ["Guy", "Girl", "Guy", "Guy"][State.variables.pgen]; });
+Template.add("GeneralPeople", function () { return ["Guys", "Girls", "Guys", "Guys"][State.variables.pgen]; });
+Template.add("Pal", function () { return ["Dude", "Chick", "Pal", "Pal"][State.variables.pgen]; });
+Template.add("Pals", function () { return ["Dudes", "Chicks", "Pals", "Pals"][State.variables.pgen]; });
+/* Pronoun Templates - End */
+
+:: PassageHeader [nobr]
+
+<<if tags().includes('stoptime') is false>><<addmins 2>><<elseif tags().includes('slowtime') is true>><<addmins 1>><</if>>
+
+:: Inventory [menuitem stoptime]
+
+OLD
+I have<<print $Frisk.inv.itemcounter>> item<<if $Frisk.inv.itemcounter gt 1 or $Frisk.inv.itemcounter eq 0>>s<<else>><</if>> on me. I have <<= $Frisk.weapon.counter>>
+I am wearing $Frisk.equipped.head on my head, $Frisk.equipped.torso on my body, and $Frisk.equipped.feet on my feet.
+I am using $Frisk.weapon.has as a weapon.
+
+Equip something:
+<<print $Frisk.weapon.equipable>>
+<<if $Frisk.weapon.equipable.length is 1>><<link "Equip a weapon.">><<equip-weapon>><<refresh>><</link>><</if>>
+
+@@.onlylink;<<link "Return." $return>><</link>>@@
+
+:: Character Description [menuitem stoptime]
+
+My name is Frisk. I'm an orphan, so I don't know my parents' last name. I used to live on the streets of Earth.
+People tell me I'm "high functioning" autistic. I know a small amount of ASL (American Sign Language) from school before I ran away from there to learn by traveling rather than by what others tell me. I'm <<= $Frisk.age>> years of age, and my birthday is April 28th.
+
+@@.onlylink;<<link "Return." $return>><</link>>@@
+
+:: Controls [menuitem stoptime]
+
+KEY:
+Button = ThisLink (extra info)
+AND/OR
+Button&OtherButton/SameasOtherButton = ThisMenu
+---
+Ctrl = This Controls Menu
+; = Inventory Menu
+F4 = Character Description
+1 = clicking on the first link (when there's multiple links)
+2thru9 = Clicking on the other links (it only goes up to nine)
+SPACE&ENTER/RETURN = clicking on the only link on the page, or clicking on the first link
+---
+Links will let you continue through the story. If something is colored differently or the font is different, it's usually someone speaking, their intentions or thoughts. Thoughts are always <i>in italic,</i> no matter what font they are in. Other than that, gameplay is pretty easy! Have fun! ;)
+
+@@.onlylink;<<link "Return." $return>><</link>>@@
+
+:: Start [stoptime]
+
+<<if visited() is 1>><span class="dtm-mono"><span class="glitch" data-text="You need to help Frisk and I.">You are the only one who can direct us.</span></span><</if>>
+
+It is giant... Much bigger than I imagined it to be before.
+
+@@.onlylink;[[The Starship Bonetrousle.|Starship Bonetrousle]]@@
+
+:: Starship Bonetrousle
+
+From behind the corner of the buildings 20 feet away, I marvel at the beautiful, shiny chrome ship. Word on the street is, the ship has a crew of only eight. How it can function on that tiny of a crew is beyond me.
+Crouching behind a bush, I wait stealthily until a stray box is left outside the humongous ship on it's lonesome, then I jump from behind the bush, arms pumping, dark brown sneakers slapping on the dirt and later the metal landing platform. Then I open the box up, and, jumping inside it, close it up again. Afterwards I quickly cover myself with a felt packing blanket, @@.onlylink;[[and wait.|Intro the ship]]@@
+
+:: Intro the ship
+<<nobr>><<addmins 4>><</nobr>>
+I hear heavy footsteps, but somehow they seem more strong and confident than anything intimidating... "<span class="dtm-mono">A'right, one more box left!</span>" an ambiguously feminine voice rings out as the box I'm in lifts off the ground in one fluid motion. "<span class="dtm-mono">Huh, this box is heavier than I thought it'd be. Welp, in it goes!</span>" The <<hovertip "Monsters are a seperate race from humans, but lived and evolved on the same planet.">>monster<</hovertip>> starts moving with the box. I'm hesitating to breathe- I try to breathe as quietly as possible. <i><span class="dtm-mono">This has to work...</span></i> I think desperately. <i><span class="dtm-mono">I can't stay on this planet any longer. I need a new start!</span></i>
+
+I can hear the footsteps turn hollow as they head onto the ship, then the cargo hold. Then there's a loud "thump!" as the crate hits the ground. She(?) doesn't know I'm in here, so she drops the crate- I have to fight to keep from grunting in pain, but thankfully I manage not to groan.
+
+I hear her footsteps fading away, then a yell, "<span class="dtm-mono">Hey, Pap! Supplies are on! Let's hit the starstream!</span>"
+
+I hear a loud, "<span class="papyrus">OKAY, UNDYNE!</span>" over the ship's speakers, the floor rumbling as the old rockets <span class="link1">[[start up and stabilize.|Exit the crate]]</span>
+
+
+:: Exit the crate
+<<nobr>><<set $rocketsactive to true>><</nobr>>
+<<if visited() is 1>><span class="dtm-sans"><span class="glitch" data-text="Choose wisely.">Your first choice.</span></span><</if>>
+<<addmins 6>>
+After the footsteps die away through <span class="link1">[[a pressurized door,|Starship hallway]]</span> and later a second heavy rumbling signifies we've left the ground, I climb out of the crate. <<hovertip "The cargo hold. It's full of crates and other junk.">>The room I'm in<</hovertip>> is large, the size of a small ballroom really, but only half of it is filled with stuff. Maybe <span class="link2"><<hovertip "There might be something useful in here...">>[[exploring the cargo hold|Explore Cargo]]<</hovertip>></span> first before leaving might be a good idea?
+
+:: Explore Cargo
+ <<if visited() is 1>>(TODO: Duke needs to add functionality to equip weapons and inventory management.)<<elseif $now.getHours gte 5 and $now.getHours lte 10 and visited() gt 1 and visited() lt 5>> I try to find something useful, and find a large crate of beast jerky. TODO:(Add Functionality for taking inventory items)<<else>> There's not much here that I need right now. I've taken everything that was useful, sadly...<</if>>
+
+With that done, I <span class="link2">[[exit through the pressurized door to the hallway.|Starship hallway]]</span>
+
+:: Cargo Hold
+
+I enter the cargo hold<<if lastVisited("Explore Cargo") lte 2>> again<</if>>. I can <span class="link1">[[decide to look around|Explore Cargo]]</span> or I can <span class="link2">[[leave the way I came.|Starship hallway]]</span>
+
+:: Starship hallway
+
+<<if lastVisited("Explore Cargo") is 1>>After exiting the cargo hold,<</if>> I enter a long, curved hallway. Should I go <span class="link1">[[left|Engine room]]</span> <span class="link2">[[right|Bedrooms hallway]]</span> or <span class="link3">[[try to find an air vent|Vent 1]]</span> to hide in? I can also go back into the <span class="link4">[[cargo hold.|Cargo Hold]]</span>
+
+<<timed 15s>><<goto "Footsteps">><</timed>>
+
+:: Vent 1
+
+I<<if lastVisited("Footsteps") lte 2>> scrambled <<elseif lastVisited("Starship hallway") is 1>> climbed <</if>>into the vent. <<if lastVisited("Starship hallway") lte 3 or visited() is 1>> It's too dark to see past the first few feet, so I probably wouldn't be able to use these vents to transport myself, but they are good for hiding in. I <span class="link1">[[exit the vent.|Starship hallway]]</span><<elseif lastVisited("Footsteps") is 1>>I quiet my breathing as the footsteps pass, trying not to shuffle uncomfortably in the tiny vent. <<timed 5s>>Once the danger passes, I <span class="link1">[[exit the vent|Starship hallway]]</span>.<</timed>><<else>>I then <span class="link1">[[remove myself from the vent.|Starship hallway]]</span> There's not much here to look at, after all.<</if>>
+
+:: Footsteps
+
+There are footsteps coming down the hallway! <<if lastVisited("Starship hallway")is 1>><span class="link1">[[I should probably hide|Vent 1]]</span><<elseif lastVisited("Bedrooms hallway") is 1>><span class="link1">[[I should probably hide|Vent 2]]</span><</if>>!
+
+<<nobr>>
+<<timed 10s>> I should hurry! The footsteps are getting closer!
+<<next>><<goto "Caught by Sans!">><</timed>><</nobr>>
+
+:: Caught by Sans!
+
+I end up cowering as a figure with a giant shadow tramps lazily down the hallway. But what ends up showing up is a short, blue-clad skeleton monster. Since I don't have a weapon equipped, I can't fight. I don't underestimate this one- I run.
+But before I can get very far, my SOUL turns blue, and then I am lifted up-
+"Whuh-!"
+<img src="https://64.media.tumblr.com/d49bfa4ea3e82e078cffe5ff9a84f1b4/38e5ea264066037a-6f/s1280x1920/62509708cf4939a306817d1ef8c54aab59e03ae4.png" alt="A short skeleton with a blue hoodie pointing upwards with blue magic emenating from his pointer finger shows himself." height="600">
+<br>
+I am confused as to this turn of events, but to say I am surprised to get caught would be a lie. I didn't hide because I...
+
+<<checkboxPlus "$Frisk.curiousabtcrew" "was curious about the crew.">>
+<<checkboxPlus "$Frisk.gotbored" "got bored slinking around like a rat.">>
+<<checkboxPlus "$Frisk.wantedajob" "Needed somewhere to stay and work.">>
+
+<span class="onlylink">[[I watch the skeleton walk as I'm carried by my SOUL to the front of the ship, likely where the captain will be.|Hallway conversation]]</span>
+
+:: Hallway conversation
+
+<span class="comicsans"><<sans-bluemagic>>welp, might as well tell you the name of your judge, huh, kid? i'm sans. sans the skeleton.<</sans-bluemagic>></span> The monster pauses, thoughtful.
+
+<span class="comicsans"><<sans-bluemagic>>so uh... kid, I think you know the gig's up, right? you can't try to hide again after we know you're here, you'd just get caught again.<</sans-bluemagic>></span>
+
+Do I...
+
+<span class="link1">[[Stay stubbornly silent.|Conversation part 2]]</span>
+<<Frisk-angry>><span class="link2 dtm-mono">[[I agree, I guess. But that doesn't mean I won't try, jerk.|Jerk conversation]]</span><</Frisk-angry>>
+Completely ignore the question and introduce myself instead.
+<<Frisk-determined>>@@.link3;.dtm-mono;[[Terrible to meet you, Sans. I'm Frisk! Also, doesn't Sans mean without? Unfortunate name if you ask me.|Rude Introduction]]@@<</Frisk-determined>>
+Or, try to be friendly with my introduction in the hopes of being released, and resolve to stay put. <<Frisk-happy>>@@.link4;[[Nice to meet you, Sans. I'm Frisk! Also, I agree, it would be wasted effort on both of our parts if I tried to run again.|Nice Introduction]]@@<</Frisk-happy>>
+
+:: Conversation part 2
+
+Sans waits for an answer, but when he realizes I'm glaring defiantly at him he looks ahead and sighs ruefully. The rest of the walk to what I'm assuming is the Captain's Cabin is completely in silence.
+
+At the end of the hallway there is a button-phone system for communicating with the captain and then with the rest of the crew. Sans lifts and then drops me into a specimen crate with glass sides and grated top with an outside fingerprint lock, and makes a call to his quote unquote, "<span class="comicsans">bro</span>" to make an announcement for the crew to meet in the Dining Lounge next to the Kitchen.
+
+Then he walks away with his phalanges deep in his pockets and his posture hunched over. He looks regretful, and I'm not surprised. No one likes jailing another sentient being.
+
+I slide my back down the glass as I sit down, then I pull up my legs and hug them, waiting for my inevitable fate.
+
+:: Jerk conversation
+
+<<Frisk-furious>>I agree, I guess. But that doesn't mean I won't try, jerk!<</Frisk-furious>>
+
+<span class="comicsans"><<sans-thoughtful>>hey! there's no need for name-calling, kid. but I guess I can see where you're coming from. this has gotta be scary for a lil' child like you.<</sans-thoughtful>></span> It's a statement more than a question, so I don't grace it with a response.
+
+Sans rolls his glowing eye, then at the end of the hallway finds a metal specimen crate (with glass sides, a fingerprint lock, and a grated top) for my "<span class="comicsans">holding cell</span>" as he proceeds to call it. He moves the grate on top, then drops me inside, both with blue magic, being careful not to let me go before locking the grate back to the top of it.
+
+The shape of the crate is an upright cylinder, the fingerpad key being on the outside and far from the grate. The keypad is connected through wiring on the outside of the crate, so it's completely impossible to open it from the inside. I can just stand up in it, it seems. My arms can reach out and stretch completely to the sides, but not upright- the grate is in the way.
+
+Sans walks away, his posture hunched and his phalanges deep in his jacket pockets. <span class="dtm-mono"><i>Is he... sad? I guess I did call him a jerk... Hm.</i></span> I ponder to myself.
+
+I stand and watch him leave, then sit down and pull my legs up to my chest, waiting for my inevitable fate.
+
+:: Rude Introduction
+
+<<Frisk-determined>><span class="dtm-mono">Terrible to meet you, Sans. I'm Frisk! Also, doesn't Sans mean without? Unfortunate name if you ask me.</span><</Frisk-determined>>
+
+Sans' eyes darken, his face looking very depressed and furious for the moment. I can tell he's trying to get his emotions under control. I must have pushed a bunch of his buttons all at once.
+
+<<sans-serious>><span class="comicsans">yeah. frisk. got it. never going to use it.</span><</sans-serious>> Sans grumbles half-coherently as we make our way to the end of the hallway. He then finds a metal specimen crate (with glass sides, a fingerprint lock, and a grated top) for my jail. He both moves the grate, and drops me inside with blue magic, being careful not to let me go before locking the grate back to the top of it with the numberpad key.
+
+The shape of the crate is an upright cylinder, the numberpad key being on the outside and far from the grate. The keypad is connected through wiring on the outside of the crate, so it's completely impossible to open it from the inside. I can just stand up in it, it seems. My arms can reach out and stretch completely to the sides, but not upright- the grate is in the way.
+
+Sans walks away, his posture hunched and his phalanges deep in his jacket pockets. <i><span class="dtm-mono">Is he... sad? I guess I did call him out on his name... Hm.</span></i> I wonder to myself. I'm honestly not surprised he's depressed, his name is way too accurate.
+
+I stand and watch him leave, then sit down and pull my legs up to my chest while leaning my back against the glass, waiting for my inevitable fate.
+
+:: Nice Introduction
+
+<<Frisk-happy>><span class="dtm-mono">Nice to meet you, Sans. I'm Frisk! Also, I agree, it would be wasted effort on both of our parts if I tried to run again.</span><</Frisk-happy>>
+
+Sans blinks in surprise at my apparent kindness and friendliness, then smiles and shakes his head ruefully.
+<span class="comicsans"><<sans-smile>>gee kid, i almost wish i hadn't captured you. i think i'll just bring you with me instead of...<</sans-smile>></span>
+
+<span class="comicsans"><<sans-serious>>well, the alternative you probably wouldn't have liked.<</sans-serious>></span>
+
+I nod with an apologetic grimace. He puts me down, and I don't bother running. I want to see <<nobr>><<if $Frisk.gotbored is true or $Frisk.curiousabtcrew is true>>the rest of the crew!<<elseif $Frisk.wantedajob is true>>if I can get a job from this crew of monsters.<<elseif $Frisk.gotbored is true and $Frisk.curiousabtcrew is true and $Frisk.wantedajob is true>>about getting a job from this crew of <i>interesting</i> monsters!<</if>><</nobr>>
+
+I follow Sans towards another hallway, and we make our way to the <span class="onlylink">[[Dining Lounge.|Dining Lounge]]</span>
+
+:: Dining Lounge
+
+When we get there, Sans takes out a radio that was attached to his beltloop and sheepishly radios the other crewmembers, but before that he invites me to explore the common dining room. <<if $Frisk.exploredlounge is true>>I decline for now, and instead sit on the couch and half-listen to Sans argue with his cohorts.<<else>>I follow his suggestion and inspect the space. It's really pretty standard fare, a couple couches, a very comfortable looking recliner with a wooden plate that says, "Chairiel" on the back of it, a serving window that connects to the kitchen, and a table with ten cloth placesettings and ten high-tech revolving chairs. <span class="dtm-mono"><i>They must regularly have guests... hmm...</i></span> I think to myself curiously, as Sans talks to the other members of the crew in the background. I don't pay much attention to him... There's nothing really in here of interest other than Sans, except maybe the books on the ship shelf. I take a look at them while Sans argues with his cohorts.
+
+There's a book about constellations in different starsystems (no surprise there), a book about ship AIs with an incredibly long, needlessly complicated name, a reference book of 5 different alien languages, and a mechanical journal with scribblings about Starship Mechanics on the front. I can also see there's a few old children's bedtime storybooks. I wonder whose those were? After I'm done looking around, I sit down on the couch to wait for Sans to be done with the radio.<</if>>
+
+When Sans is done arguing on my behalf, he comes over and sits next to me.
+@@.comicsans;<<sans-smile>>welp, i managed to get you secured with a place on the crew, if you want it.<</sans-smile>>@@"
+He pauses and yawns, then shakes his head to try to ward his sleepiness away. <<if $Frisk.hasseenSansoncouch is true>>Evidently sitting on this couch makes him remember all the times he's slept on it.<</if>>
+
+@@.comicsans;<<sans-thoughtful>>other than that, we can drop you off at the next habi planet, but you'd have to pay us something in return next time we come around.<</sans-thoughtful>>@@
+
+I say...
+<<nobr>>
+<<if $Frisk.wantedajob is true and $Frisk.curiousabtcrew is true and $Frisk.gotbored is false>>"@@.dtm-mono;[[I can work for you all for as long as you need me to!|Job Choose]]@@"<<elseif $Frisk.gotbored is true and $Frisk.wantedajob is false and $Frisk.curiousabtcrew is false>>"@@.dtm-mono;[[Sure! I can work for you guys for a while, at least until I repay you all for hitching a ride, heheh...|Job Choose]]@@"<</nobr>>
+
+<<nobr>>"@@.dtm-mono;[[I think I'd rather you drop me off at the nearest habitable planet. I'll find a way to make some money and pay you all, no problem!|Tem Skip]]@@"
+<<elseif $Frisk.wantedajob is true and $Frisk.curiousabtcrew is true and $Frisk.gotbored is true>>"@@.dtm-mono;[[I'd love to work with you all, but I think I'd like to do whatever you need me to, rather than one specific job all the time.|Job Secured!]]@@"<</if>><</nobr>>
+
+:: Job Secured! [stop-time]
+
+End of this route! Thanks for playing!
+
+:: Job Choose [stop-time]
+
+End of this route's content! Thanks for playing!
+
+:: Tem Skip [stop-time]
+
+End of this route! Thanks so much for playing! :)
+
+:: Bedrooms hallway
+
+<<nobr>><<if lastVisited("Starship hallway") is 1>>I walk to the end of the right hallway. There were a lot of bedroom doors that I went past.<<elseif lastVisited("Kitchen-sneaky") is 1>> I exit the kitchen, making sure to peek over into the door's windows before doing so.<<else>>I find myself in the bedroom hallway.<</if>><</nobr>> Where should I go next?
+
+* <<nobr>><<if visited() is 1>>@@.link1;<<hovertip "Maybe try to find some food?">>[[Go to the Kitchen.|Kitchen-sneaky]]<</hovertip>>@@<<else>>@@.link1;[[Go to the Kitchen.|Kitchen-sneaky]]@@<</if>><</nobr>>
+* @@.link2;[[Go to the Dining Lounge.|Dining Lounge-sneaky]]@@
+* @@.link3;[[Go back to the other end of the hallway.|Starship hallway]]@@
+* @@.link4;[[Hide in a vent.|Vent 2]]@@
+
+<<timed 10s>><<goto "Footsteps">><</timed>>
+
+:: Vent 2
+
+I <<if lastVisited("Footsteps") is 1>>climb quickly into<<else>>enter<</if>> the vent near the kitchens. <<if lastVisited("Bedrooms hallway") is 1>>This one is<<if hasVisited("Vent 1") is true>> also<</if>> dark, but beyond that it is incredibly steamy and full of fog, as this vent redirects steam from the kitchens' ovens and other gas-powered appliances to the heating systems to heat the cold areas of the ship. I [[climb out of the vent.|Bedroom hallway]] @@<<elseif lastVisited("Footsteps") is 1>>I make like a mouse, quieting my breathing and trying not to create any noise as the shuffling footsteps pass. <<timed 5s>>Finally, after everything is safe for me outside, I clamber carefully @@.onlylink;[[back out of the vent.|Bedrooms hallway]]@@<</timed>><<elseif lastVisited("Footsteps") is 2>>I finish doing what I was doing in here and @@.onlylink;[[exit the vent.|Bedrooms hallway]]@@<<else>>I @@.onlylink;[[exit the vent|Bedrooms hallway]]@@ afterward. <i>@@.dtm-mono;Not much here to do,@@</i> I shrug to myself.<</if>>
+
+:: Kitchen-sneaky
+
+I sneak into the kitchen, peeking through the double-door's windows before entering to make sure the coast is clear. I lean up on tip-toes and pull myself up to see through the tall windows, and when I see that no one is inside I go ahead and enter.
+
+TODO: [adding choices for taking food from the kitchen](I can take an apple from the bowl on the counter, a mini monster cake from the cupboard, or a beast jerky, from the box next to the monster cakes.)
+
+[[Leave the kitchen.|Bedrooms hallway]]
+
+:: Dining Lounge-sneaky [nobr]
+
+<<switch random(0,6)>>
+<<case 0>>
+There's a fluffy monster in there lounging and reading a book... I better not enter. I @@.onlylink;[[step back|Bedrooms hallway]] from the door.
+<<case 1>>
+I can see a skeleton sleeping on the couches. I probably shouldn't enter, I'd likely get caught. I @@.onlylink;[[step away|Bedrooms hallway]]@@ from the door. <<set $Frisk.hasseenSansoncouch to true>>
+<<case 2>>
+<<set $Frisk.exploredlounge to true>>
+<p>I can see that whoever was in there just left through another entryway. I enter through the door closest to me, then inspect the space. It's really pretty standard fare, a couple couches, a very comfortable looking recliner with a wooden plate that says, "Chairiel" on the back of it, a serving window from the kitchen, and a table with ten cloth placesettings and ten high-tech revolving chairs. <span class="dtm-mono"><i>They must regularly have guests... hmm...</i></span> I think to myself curiously. There's nothing really in here of interest, except maybe the books on the ship shelf. There's a lot of them, though, and I don't know when whoever was in here will be back, so I take a quick glance and plan to move on as quickly as possible.</p>
+<br>
+There's a book about constellations (no surprise there), a book about ship AIs with an incredibly long, needlessly complicated name, a reference book of 5 different alien languages, and a mechanical journal with scribblings about Starship Mechanics on the front. After hearing footsteps coming from a back hallway, I quickly [[make my escape.|Bedrooms hallway]]
+<<case 3>>
+I see three monsters talking in there - two skeletons and a fishy looking one whose voice sounds like the monster who brought the boxes onto the ship. I better not go in. I @@.onlylink;[[step away from the door.|Bedrooms hallway]]@@
+<<case 4>>
+Someone somehow muscular <i>and</i> fluffy is in there right now, writing in a journal of some sort. I @@.onlylink;[[go back to the end of the bedroom hallway.|Bedrooms hallway]]@@
+<<case 5>>
+<<set $Frisk.exploredlounge to true>>
+<p>I can see that whoever was in there just left through another entryway. I enter through the door closest to me, then inspect the space. It's really pretty standard fare, a couple couches, a very comfortable looking recliner with a wooden plate that says, "Chairiel" on the back of it, a serving window from the kitchen, and a table with ten cloth placesettings and ten high-tech revolving chairs. <span class="dtm-mono"><i>They must regularly have guests... hmm...</i></span> I think to myself curiously. There's nothing really in here of interest, except maybe the books on the ship shelf. There's a lot of them, though, and I don't know when whoever was in here will be back, so I take a quick glance and plan to move on as quickly as possible.</p>
+<br>
+There's a book about constellations (no surprise there), a book about ship AIs with an incredibly long, needlessly complicated name, a reference book of 5 different alien languages, and a mechanical journal with scribblings about Starship Mechanics on the front. After hearing footsteps coming from a back hallway, I quickly [[make my escape.|Bedrooms hallway]]
+<<case 6>>
+<<set $Frisk.exploredlounge to true>>
+<p>I can see that whoever was in there just left through another entryway. I enter through the door closest to me, then inspect the space. It's really pretty standard fare, a couple couches, a very comfortable looking recliner with a wooden plate that says, "Chairiel" on the back of it, a serving window from the kitchen, and a table with ten cloth placesettings and ten high-tech revolving chairs. <span class="dtm-mono"><i>They must regularly have guests... hmm...</i></span> I think to myself curiously. There's nothing really in here of interest, except maybe the books on the ship shelf. There's a lot of them, though, and I don't know when whoever was in here will be back, so I take a quick glance and plan to move on as quickly as possible.</p>
+<br>
+There's a book about constellations (no surprise there), a book about ship AIs with an incredibly long, needlessly complicated name, a reference book of 5 different alien languages, and a mechanical journal with scribblings about Starship Mechanics on the front. After hearing footsteps coming from a back hallway, I quickly [[make my escape.|Bedrooms hallway]]
+<<default>>
+<span id="glitch" data-text="Glitchy things happened, this shouldn't show unless there's been a glitch."> Glitchy things happened, this shouldn't show unless there's been a glitch.</span>
+<</switch>>
+
+:: Engine room
+<<if visited() is 1>>I creep into the engine room quietly.<<else>>I find myself in the engine room.<</if>> There isn't much to see here, other than lots of different sized vents and the boiler/heating and cooling system, the power source of the gravitational arrays, as well as the two giant, metal drums that house the rocket systems. I stay clear of those, as they are known to get very hot, at least when in use, which <<if $rocketsactive is true>>they are.<<elseif $rocketsactive is false>>they aren't.<</if>>
+*  <<if $linkclicked is undefined>><span class="linkcheck link1">[[Try to find a big enough vent to sleep in|Explore Engine Room]]</span><<elseif $linkclicked is true or hasVisited("Explore Engine Room") is true>>@@.link1;[[Decide to wait safely in the big vent that I found.|Waiting or Sleeping Vent 3]]@@<</if>>
+* @@.link2;[[Go back to the hallway and explore some more of the ship.|Starship hallway]]@@
+* <<if $linkclicked2 is undefined>><span class="linkcheck2"><span class="pcdarklink link3">[[Get Frisk to inspect the gravitational arrays|Player inspects Grav-Arrays]]</span></span><<elseif $linkclicked2 is true and hasVisited("Questions about Grav-array and ship") is true>><span class="pcdarklink link3">[[Ask more questions about the Gravitational Arrays|Questions about Grav-array and ship]]</span><</if>>
+
+:: Explore Engine Room
+
+I look around the slightly cramped Engine room. With all the wires and miscellaneous electronics covering the floor and walls, it's a wonder I can find any vents at all. I open a few of them up, but eventually find a really well hidden, giant vent sneakily placed tightly next to the rocket drums. I try out the vent, and find that it's huge width lends itself to stretching myself out easily. I decide to go deeper before finding that it actually gets even wider the deeper you go in, before eventually tightening up again. I can easily make myself at home when I feel the need to, but right now, I @@.onlylink;[[crawl out of the vent.|Engine room]]@@
+
+:: Player inspects Grav-Arrays
+
+I blink. <<Frisk-confuzzled>><span class="dtm-mono">Who are you? And how are you in my head? I whisper into the empty engine room, my eyes wide.</span><</Frisk-confuzzled>>
+
+/* $pgen: 0 = male, 1 = female, 2 = gender neutral, 3 = no gender */
+<span class="pcdark">You're</span> <<textbox "$PCname" "Your first name">><span class="pcdark">, I go by <span class="pcdarklink"><<cycle "$pgen">><<option "she/her" 1>><<option "he/him" 0>><<option "they/them" 2>><<option "it/its" 3>><</cycle>></span>, and then you say-</span>
+
+* <span class="pcdarklink link1">[[Uh... I can explain?|Then Explain, Frisk demands]]</span>
+
+* <span class="pcdarklink link2">[[Basically I'm a helper for you. I consciously make decisions for you. Wait-|I can imagine how that'll go down, badly]]</span>
+
+* <span class="pcdarklink link3">[[I'm your unconscious mind? That's not right either...|I can imagine how that'll go down, badly]]</span>
+
+* <span class="pcdarklink link4">[[I guess I'm on this ride with you, helping you along the way.|Frisk will say Oh, okay]]</span>
+
+:: I can imagine how that'll go down, badly
+
+<span class="pcdark">Yeah, you're not saying that, but nice try. That will just end in them ignoring your advice for the rest of this playthrough. :( In which case, the playthrough will end because you won't be able to interact with Frisk well anymore.</span> <<if lastVisited("Player inspects Grav-Arrays") is 1>><span class="pcdarklink pcdarklinkhover link1">[[Go back to looking through the options.|Player inspects Grav-Arrays]]</span><<elseif lastVisited("Frisk will say Oh, okay") is 1>><span class="pcdarklink pcdarklinkhover link1">[[Go back.|Frisk will say Oh, okay]]</span><</if>>
+
+:: Then Explain, Frisk demands
+
+I forego speech in favor of thinking to you, since you're already in my head. <i><span class="dtm-mono">Then please do, $PCname.</span></i> <span class="pcdark">You say...</span>
+
+<span class="pcdarklink link1">[[I guess I'm on this ride with you, helping you along the way.|Frisk will say Oh, okay]]</span>
+<span class="pcdark">This is the only explanation that will make sense to Frisk. <i>If you tell them you're the player, you doubt that they'll understand at this point in time.</i></span>
+
+:: Frisk will say Oh, okay
+
+I narrow my eyes more in caution, then think to you, <i><span class="dtm-mono">Well... I guess that's fine? As long as you suggest to me what you think I should do, we shouldn't have a problem, right?</span></i>
+<span class="pcdarklink link1">[[Agreed. Now do they mind looking at those Grav-arrays?|Frisk Inspects Grav-Arrays]]</span>
+<span class="pcdarklink link2">[[Disagree-|I can imagine how that'll go down, badly]]</span>
+
+:: Frisk Inspects Grav-Arrays [slowtime]
+
+I walk over to the Grav arrays and look at them, following your suggestion. There are flashing blue lights and wires that seem to run the length of the ship, and they converge here to the power source in the engine room. The power source is a bright, neon blue orb that sits on a pedestal near the wall next to the rockets<<if hasVisited("Explore Engine room") is true>>(on the opposite side of where I found the vent, of course)<</if>>, with the wires connected through three-pronged power strips on the pedestal that connect to the orb with smaller, more delicate blue wires. It seems like a pretty elaborate setup.
+
+<i><span class="dtm-mono">Do you have any questions about this, <<print $PCname>>?</span></i> I wonder to you without speaking.
+
+<span class="pcdarklink link1">[[Nope!|Engine room]]</span>
+<span class="pcdarklink link2">[[Yes, I do.|Questions about Grav-array and ship]]</span>
+
+:: Questions about Grav-array and ship [slowtime]
+
+<span class="pcdark">You ask...</span>
+<span class="pcdarklink link1">[[How do the grav-arrays work?|Gravity on ship Explain]]</span>
+<span class="pcdarklink link2">[[How do they plan on getting off the ship without the crew seeing them?|The non-existent Jump-ship Plan]]</span>
+<span class="pcdarklink link3">[[Who figured out long-distance space travel?|W.D. Gaster]]<span>
+<span class="pcdarklink link4">[[You're done, that's all you wanted to know.|Engine room]]</span>

@@ -13,7 +13,6 @@ v.0.02beta
 Today is <<printfulldate>>.
 It is <<printtime12hr>>
 
-<<if hasVisited("Explore Cargo") is true>><span id="invlink">[[Inventory]]</span><</if>>
 <span id="desclink">[[Character Description]]</span>
 <span class="pcdarklink ctrlslink">[[Controls]]</span>
 
@@ -83,16 +82,9 @@ again without the quotes.
 */
 // Jaden's code below
 <<set $Frisk to {}>>
-<<set $Frisk.equipped to {head: "nothing", torso: "striped purple sweater and blue jeanshorts", feet: "dark brown sneakers"}>>
-<<set $Frisk.weapon to {limit: 1, itemcounter: 0}>>
-<<set $Frisk.inv to {limit: 10, itemcounter: 0}>>
-<<set $Frisk.weapon to {}>>
-<<set $Frisk.weapon.equipable to ["nothing"]>>
-<<set $Frisk.weapon.has to ["nothing"]>>
 <<set $Frisk.age to 16>>
 <<set $Frisk.Gold to 10>>
 <<set $Frisk.resetcounter to 0>>
-<<set $Frisk.weapon-counter to 0>>
 <<set $Frisk.maxHP to 120>>
 <<set $Frisk.HP to 20>>
 <<set $Frisk.LV to 0>>
@@ -112,6 +104,10 @@ again without the quotes.
 <<character "G-furious" "imgs/Talk/Gaster/furious.png">>
 <<character "G-content" "imgs/Talk/Gaster/satisfied.png">>
 <<character "G-confused" "imgs/Talk/Gaster/confused.png">>
+<<character "G-surprise-confused" "imgs/Talk/Gaster/surprised-confused.png">>
+<<character "G-surprised" "imgs/Talk/Gaster/surprised.png">>
+<<character "G-worried" "imgs/Talk/Gaster/worried.png">>
+<<charactter "G-blush" "imgs/Talk/Gaster/blushy.png">>
 // Frisk Talk macros
 <<character "Frisk-determined" "imgs/Talk/Frisk_Determined.png">>
 <<character "Frisk-furious" "imgs/Talk/Frisk_Furious.png">>
@@ -211,13 +207,6 @@ again without the quotes.
 {
         "ifid": "2FBC0655-AEE8-4AE6-AEA1-FE7A9EED763E"
 }
-
-:: PassageReady
-
-<<silently>>
-<<if $Frisk.inv.itemcounter gte 1>><<set $Frisk.inv.has.deleteAt(0)>><</if>>
-<<if $Frisk.weapon.itemcounter gte 1>><<set $Frisk.weapon.has.deleteAt(0)>><<set $Frisk.weapon.equipable.deleteAt(0)>><</if>>
-<</silently>>
 
 :: Time Widgets [widget nobr]
 
@@ -328,16 +317,6 @@ again without the quotes.
 <</widget>> /*
 // /checkboxPlus/ Widget - End
 
-:: Item Widgets
-
-// Add a high-tech knife to Frisk's inventory
- <<widget "add-knife">><<set $Frisk.weapon.equipable.concatUnique("high-tech army knife")>><</widget>>
- //Add a electrified shortsword to Frisk's Inventory
- <<widget "add-e-shortsword">><<set $Frisk.weapon.equipable("electric shortsword")>><</widget>>
- /* Equip a weapon from the weapons inventory to the weapons slot.
- */
-<<widget "equip-weapon">>><<if $Frisk.weapon.equipable.length is 1 and $Frisk.weapon.equipable.includes("nothing") is false>><<set $Frisk.weapon.has.concat($Frisk.weapon.equipable)>><<elseif $Frisk.weapon.equipable.length gt 1>><<run $removed == $Frisk.weapon.equipable.splice(1, 1)>><<set $removed.push($Frisk.weapon.has)>><</if>><</widget>>
-
 :: Javascript [script nobr]
 
 $(document).on(':passagestart', function (ev) {
@@ -442,25 +421,24 @@ From behind the corner of the buildings 20 feet away, I marvel at the beautiful,
 Crouching behind a bush, I wait stealthily until a stray box is left outside the humongous ship on it's lonesome, then I jump from behind the bush, arms pumping, $Frisk.equipped.feet slapping on the dirt and later the metal landing platform. Then I open the box up, and, jumping inside it, close it up again. Afterwards I quickly cover myself with a felt packing blanket, @@.onlylink;[[and wait.|Intro the ship]]@@
 
 :: Intro the ship
-<<nobr>><<set $rocketsactive to true>>
-<<addmins 4>><</nobr>>
+<<nobr>><<addmins 4>><</nobr>>
 I hear heavy footsteps, but somehow they seem more strong and confident than anything intimidating... "<span class="dtm-mono">A'right, one more box left!</span>" an ambiguously feminine voice rings out as the box I'm in lifts off the ground in one fluid motion. "<span class="dtm-mono">Huh, this box is heavier than I thought it'd be. Welp, in it goes!</span>" The <<hovertip "Monsters are a seperate race from humans, but lived and evolved on the same planet.">>monster<</hovertip>> starts moving with the box. I'm hesitating to breathe- I try to breathe as quietly as possible. <i><span class="dtm-mono">This has to work...</span></i> I think desperately. <i><span class="dtm-mono">I can't stay on this planet any longer. I need a new start!</span></i>
 
 I can hear the footsteps turn hollow as they head onto the ship, then the cargo hold. Then there's a loud "thump!" as the crate hits the ground. She(?) doesn't know I'm in here, so she drops the crate- I have to fight to keep from grunting in pain, but thankfully I manage not to groan.
 
 I hear her footsteps fading away, then a yell, "<span class="dtm-mono">Hey, Pap! Supplies are on! Let's hit the starstream!</span>"
 
-I hear a loud, "@@.papyrus;OKAY, UNDYNE!@@" over the ship's speakers, the floor rumbling as the old rockets <span class="link1">[[start up and stabilize.|Exit the crate]]</span>
+I hear a loud, "<span class="papyrus">OKAY, UNDYNE!</span>" over the ship's speakers, the floor rumbling as the old rockets <span class="link1">[[start up and stabilize.|Exit the crate]]</span>
 
 
 :: Exit the crate
-
-<span class="dtm-sans"><span class="glitch" data-text="Choose wisely.">Your first choice.</span></span>
+<<nobr>><<set $rocketsactive to true>><</nobr>>
+<<if visited() is 1>><span class="dtm-sans"><span class="glitch" data-text="Choose wisely.">Your first choice.</span></span><</if>>
 <<addmins 6>>
 After the footsteps die away through <span class="link1">[[a pressurized door,|Starship hallway]]</span> and later a second heavy rumbling signifies we've left the ground, I climb out of the crate. <<hovertip "The cargo hold. It's full of crates and other junk.">>The room I'm in<</hovertip>> is large, the size of a small ballroom really, but only half of it is filled with stuff. Maybe <span class="link2"><<hovertip "There might be something useful in here...">>[[exploring the cargo hold|Explore Cargo]]<</hovertip>></span> first before leaving might be a good idea?
 
 :: Explore Cargo
- <<if visited() is 1>>I open one up, and find a crate of guns and a few very high-tech multi-function army knives. The guns are too big for me, but <span id="knife">I can <<link "take the knife.">><<set $Frisk.weapon.equipable.concatUnique("high-tech army knife") and $Frisk.inv.has.concatUnique("high-tech army knife")>><<set $Frisk.inv.itemcounter ++>><<replace "#knife">>I've already taken a knife. I don't need two!  I can equip it later, or right now from my [[Inventory.|Inventory]]<</replace>><</link>></span><<elseif $now.getHours gte 5 and $now.getHours lte 10 and visited() gt 1 and visited() lt 5>> I try to find something useful, and find a large crate of beast jerky. <<if $Frisk.inv.itemcounter == $Frisk.inv.limit>>Unfortunately I can't take any, I've got too much stuff on me! <<else>> <<link "take a package of jerky.">><<set $Frisk.inv.concat("packet of beast jerky") and $Frisk.inv.itemcounter ++>><<refresh>><</link>><</if>><<else>> There's not much here that I need right now. I've taken everything that was useful, sadly...<</if>>
+ <<if visited() is 1>>(TODO: Duke needs to add functionality to equip weapons and inventory management.)<<elseif $now.getHours gte 5 and $now.getHours lte 10 and visited() gt 1 and visited() lt 5>> I try to find something useful, and find a large crate of beast jerky. TODO:(Add Functionality for taking inventory items)<<else>> There's not much here that I need right now. I've taken everything that was useful, sadly...<</if>>
 
 With that done, I <span class="link2">[[exit through the pressurized door to the hallway.|Starship hallway]]</span>
 
@@ -510,9 +488,10 @@ I am confused as to this turn of events, but to say I am surprised to get caught
 Do I...
 
 <span class="link1">[[Stay stubbornly silent.|Conversation part 2]]</span>
-<span class="link2 dtm-mono">[[I agree, I guess. But that doesn't mean I won't try, jerk.|Jerk conversation]]</span>
-Completely ignore the question and introduce myself instead. "@@.link3;.dtm-mono;[[Terrible to meet you, Sans. I'm Frisk! Also, doesn't Sans mean without? Unfortunate name if you ask me.|Rude Introduction]]@@"
-Or, try to be friendly with my introduction in the hopes of being released, and resolve to stay put. "@@.link4;[[Nice to meet you, Sans. I'm Frisk! Also, I agree, it would be wasted effort on both of our parts if I tried to run again.|Nice Introduction]]@@"
+<<Frisk-angry>><span class="link2 dtm-mono">[[I agree, I guess. But that doesn't mean I won't try, jerk.|Jerk conversation]]</span><</Frisk-angry>>
+Completely ignore the question and introduce myself instead.
+<<Frisk-determined>>@@.link3;.dtm-mono;[[Terrible to meet you, Sans. I'm Frisk! Also, doesn't Sans mean without? Unfortunate name if you ask me.|Rude Introduction]]@@<</Frisk-determined>>
+Or, try to be friendly with my introduction in the hopes of being released, and resolve to stay put. <<Frisk-happy>>@@.link4;[[Nice to meet you, Sans. I'm Frisk! Also, I agree, it would be wasted effort on both of our parts if I tried to run again.|Nice Introduction]]@@<</Frisk-happy>>
 
 :: Conversation part 2
 
@@ -554,7 +533,10 @@ I stand and watch him leave, then sit down and pull my legs up to my chest while
 
 :: Nice Introduction
 
-Sans blinks in surprise at my apparent kindness and friendliness, then smiles and shakes his head ruefully. <span class="comicsans"><<sans-smile>>gee kid, i almost wish i hadn't captured you. i think i'll just bring you with me instead of...<</sans-smile>></span>
+<<Frisk-happy>><span class="dtm-mono">Nice to meet you, Sans. I'm Frisk! Also, I agree, it would be wasted effort on both of our parts if I tried to run again.</span><</Frisk-happy>>
+
+Sans blinks in surprise at my apparent kindness and friendliness, then smiles and shakes his head ruefully.
+<span class="comicsans"><<sans-smile>>gee kid, i almost wish i hadn't captured you. i think i'll just bring you with me instead of...<</sans-smile>></span>
 
 <span class="comicsans"><<sans-serious>>well, the alternative you probably wouldn't have liked.<</sans-serious>></span>
 
@@ -570,13 +552,13 @@ There's a book about constellations in different starsystems (no surprise there)
 
 When Sans is done arguing on my behalf, he comes over and sits next to me.
 @@.comicsans;<<sans-smile>>welp, i managed to get you secured with a place on the crew, if you want it.<</sans-smile>>@@"
-He pauses and yawns, then shakes his head to try to ward his sleepiness away. <<if $Frisk.exploredlounge is true>>Evidently sitting on this couch makes him remember all the times he's slept on it.<</if>>
+He pauses and yawns, then shakes his head to try to ward his sleepiness away. <<if $Frisk.hasseenSansoncouch is true>>Evidently sitting on this couch makes him remember all the times he's slept on it.<</if>>
 
 @@.comicsans;<<sans-thoughtful>>other than that, we can drop you off at the next habi planet, but you'd have to pay us something in return next time we come around.<</sans-thoughtful>>@@
 
 I say...
 <<nobr>>
-<<if $Frisk.wantedajob is true and $Frisk.curiousabtcrew is true and $Frisk.gotbored is false>>"@@.dtm-mono;[[I can work for you all for as long as you need me to!|Job Choose]]@@"<<elseif $Frisk.gotbored is true and $Frisk.wantedajob is false and $Frisk.curiousabtcrew is false>>"@@.dtm-mono;[[Sure! I can work for you guys for a while, at least until I repay you all for hitching a ride, eheh...|Job Choose]]@@"<</nobr>>
+<<if $Frisk.wantedajob is true and $Frisk.curiousabtcrew is true and $Frisk.gotbored is false>>"@@.dtm-mono;[[I can work for you all for as long as you need me to!|Job Choose]]@@"<<elseif $Frisk.gotbored is true and $Frisk.wantedajob is false and $Frisk.curiousabtcrew is false>>"@@.dtm-mono;[[Sure! I can work for you guys for a while, at least until I repay you all for hitching a ride, heheh...|Job Choose]]@@"<</nobr>>
 
 <<nobr>>"@@.dtm-mono;[[I think I'd rather you drop me off at the nearest habitable planet. I'll find a way to make some money and pay you all, no problem!|Tem Skip]]@@"
 <<elseif $Frisk.wantedajob is true and $Frisk.curiousabtcrew is true and $Frisk.gotbored is true>>"@@.dtm-mono;[[I'd love to work with you all, but I think I'd like to do whatever you need me to, rather than one specific job all the time.|Job Secured!]]@@"<</if>><</nobr>>
@@ -622,7 +604,7 @@ TODO: [adding choices for taking food from the kitchen](I can take an apple from
 <<case 0>>
 There's a fluffy monster in there lounging and reading a book... I better not enter. I @@.onlylink;[[step back|Bedrooms hallway]] from the door.
 <<case 1>>
-I can see a skeleton sleeping on the couches. I probably shouldn't enter, I'd likely get caught. I @@.onlylink;[[step away|Bedrooms hallway]]@@ from the door.
+I can see a skeleton sleeping on the couches. I probably shouldn't enter, I'd likely get caught. I @@.onlylink;[[step away|Bedrooms hallway]]@@ from the door. <<set $Frisk.hasseenSansoncouch to true>>
 <<case 2>>
 <<set $Frisk.exploredlounge to true>>
 <p>I can see that whoever was in there just left through another entryway. I enter through the door closest to me, then inspect the space. It's really pretty standard fare, a couple couches, a very comfortable looking recliner with a wooden plate that says, "Chairiel" on the back of it, a serving window from the kitchen, and a table with ten cloth placesettings and ten high-tech revolving chairs. <span class="dtm-mono"><i>They must regularly have guests... hmm...</i></span> I think to myself curiously. There's nothing really in here of interest, except maybe the books on the ship shelf. There's a lot of them, though, and I don't know when whoever was in here will be back, so I take a quick glance and plan to move on as quickly as possible.</p>
@@ -658,10 +640,10 @@ I look around the slightly cramped Engine room. With all the wires and miscellan
 
 :: Player inspects Grav-Arrays
 
-I blink. "@@.dtm-mono;Who are you? And how are you in my head?@@" I whisper into the empty engine room, my eyes wide.
+I blink. <<Frisk-confuzzled>><span class="dtm-mono">Who are you? And how are you in my head? I whisper into the empty engine room, my eyes wide.</span><</Frisk-confuzzled>>
 
 /* $pgen: 0 = male, 1 = female, 2 = gender neutral, 3 = no gender */
-<span class="pcdark">You're</span> <<textbox "$PCname" "Your first name">><span class="pcdark">, I go by <span class="pcdarklink"><<nobr>><<cycle $pgen>><<option "she/her" 1>><<option "he/him" 0>><<option "they/them" 2>><<option "it/its" 3>><</cycle>><</nobr>></span>, and then you say-</span>
+<span class="pcdark">You're</span> <<textbox "$PCname" "Your first name">><span class="pcdark">, I go by <span class="pcdarklink"><<cycle "$pgen">><<option "she/her" 1>><<option "he/him" 0>><<option "they/them" 2>><<option "it/its" 3>><</cycle>></span>, and then you say-</span>
 
 * <span class="pcdarklink link1">[[Uh... I can explain?|Then Explain, Frisk demands]]</span>
 
@@ -684,7 +666,7 @@ I forego speech in favor of thinking to you, since you're already in my head. <i
 
 :: Frisk will say Oh, okay
 
-I narrow my eyes even more than they already are in caution, then think to you, <i><span class="dtm-mono">Well... I guess that's fine? As long as you suggest to me what you think I should do, we shouldn't have a problem, right?</span></i>
+I narrow my eyes more in caution, then think to you, <i><span class="dtm-mono">Well... I guess that's fine? As long as you suggest to me what you think I should do, we shouldn't have a problem, right?</span></i>
 <span class="pcdarklink link1">[[Agreed. Now do they mind looking at those Grav-arrays?|Frisk Inspects Grav-Arrays]]</span>
 <span class="pcdarklink link2">[[Disagree-|I can imagine how that'll go down, badly]]</span>
 
@@ -692,7 +674,7 @@ I narrow my eyes even more than they already are in caution, then think to you, 
 
 I walk over to the Grav arrays and look at them, following your suggestion. There are flashing blue lights and wires that seem to run the length of the ship, and they converge here to the power source in the engine room. The power source is a bright, neon blue orb that sits on a pedestal near the wall next to the rockets<<if hasVisited("Explore Engine room") is true>>(on the opposite side of where I found the vent, of course)<</if>>, with the wires connected through three-pronged power strips on the pedestal that connect to the orb with smaller, more delicate blue wires. It seems like a pretty elaborate setup.
 
-<i><span class="dtm-mono">Do you have any questions about this, <<print $PCname>>?</span></i> I wonder to you.
+<i><span class="dtm-mono">Do you have any questions about this, <<print $PCname>>?</span></i> I wonder to you without speaking.
 
 <span class="pcdarklink link1">[[Nope!|Engine room]]</span>
 <span class="pcdarklink link2">[[Yes, I do.|Questions about Grav-array and ship]]</span>
