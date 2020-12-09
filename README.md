@@ -7,21 +7,21 @@ A coming of age adventure CYOA UNDERTALE AU that will have space travel, invento
 
 ## Getting Started
 
-Find index.html and run that on any browser, and you should be ready to play!
+Find index.html and run that on any browser, and you should be ready to play! Make sure to keep the files in the same arrangement and the same file names as they came in.
 
 ### Prerequisites
 
-You'll need the images, fonts and music to go with the HTML file. You can download the "export" folder, and you should be good to go after double-clicking the index.html file. Twine text-based games are pretty easy to play on most computer systems, even slow ones.
+You'll need the images, fonts and music to go with the HTML file. They are all bundled in the releases page. Twine games are generally pretty easy on the computer so all you'll really need is a browser of some sort that can display images and text effects, and you'll be good. Just get the most recent version of whatever browser you'll be using and you should be set.
 
 ### Installing
 
-1. Download export folder
+1. Download ETHERTALE.zip from [releases page.](https://github.com/Techy-Nature/ETHERTALE/releases)
 
-2. Open folder
+2. Extract the folder anywhere you please (just please don't rename the img and font files or move the font and image files outside of their folder structure okay? thx!)
 
 3. Run index.html in any internet browser
 
-4. Make sure not to use private mode while playing Twine games. SAVES will NOT work on that mode.
+4. Make sure **NOT** to use private mode while playing Twine games. *SAVES* will **NOT** work on that mode. Also don't erase your cache without first backing up your save externally.
 
 ## Built With
 
@@ -49,5 +49,3 @@ This project is licensed under the GNUvrs.3 License - see the [LICENSE.md](https
 
 * Dukemz
 * Toby Fox for Undertale
-
-NOTES: Don't clear your browser cache before saving your game in a seperate file! You'll lose all your progress, so please be careful!

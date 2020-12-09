@@ -45,6 +45,15 @@ grid-column: 5;
 	padding: 2%;
 	grid-row: 2;
 }
+@media (max-width: 800px) {
+  #passages {
+		width: 80%;
+		text-align: center;
+	}
+	#interface {
+		font-size: 13px;
+	}
+}
 /* StoryInterface styling end */
 /* Text styling start */
 .comicsans {
