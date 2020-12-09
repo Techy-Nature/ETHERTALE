@@ -5,6 +5,14 @@
 
 A coming of age adventure CYOA UNDERTALE AU that will have space travel, inventory management, sci-fi technology and choices that impact your playthrough as well as future playthroughs, just like the original UNDERTALE.
 
+# DONATE?
+
+You don't have to, but I'd really appreciate it if you did. :) It helps me get better artwork and possibly coding help as well. 
+
+[Donate! Every dollar helps!](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=JQ9BXNQUQS5NQ&currency_code=USD)
+
+Thanks so much if you donate, or if you share this page or the [Tumblr dev blog](https://ethertale-fangame.tumblr.com) around!
+
 ## Getting Started
 
 Find index.html and run that on any browser, and you should be ready to play! Make sure to keep the files in the same arrangement and the same file names as they came in.
