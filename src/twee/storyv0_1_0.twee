@@ -4,7 +4,11 @@ ETHERTALE
 
 :: Story-Display-Title [stoptime]
 
-<<if $PCoffline is true>><img src="imgs/ETHERTALE.png" height="200" width="290"><<elseif $PCoffline is false>><img src="https://64.media.tumblr.com/faa8605ab579b6873fda05032dc1cef4/a63caba7052a3a50-7a/s400x600/49e5982462a061a7f94b9a8a062538b9b9a65c8e.png" height="200" width="290"><<else>><img src="imgs/ETHERTALE.png" height="200" width="290"><</if>>
+<<if $PCOffline is false>>
+  <img src="https://64.media.tumblr.com/faa8605ab579b6873fda05032dc1cef4/a63caba7052a3a50-7a/s400x600/49e5982462a061a7f94b9a8a062538b9b9a65c8e.png" alt="ETHERTALE logo" height="200" width="290">
+<<elseif $PCoffline is true or $PCoffline is undefined>>
+  <img src="imgs/ETHERTALE.png" alt="ETHERTALE logo" height="200" width="290">
+<</if>>
 
 :: StorySubtitle [stoptime]
 Prologue: Starship Stowaway
@@ -37,11 +41,12 @@ It is <<printtime12hr>>
 
 :: Player Settings [stoptime menuitem]
 
-<<listbox "$PCoffline" autoselect>>
-<<option "Offline." true>>
-<<option "Online." false>>
-<</listbox>>
-<strong>WARNING: <i>If you're on Android, or any phone-like device, Online will be the only way to play with pictures. Unfortunately I'll need to edit this message later once I fix the images on Online mode. Thanks for your patience.</i></strong>
+<span class="pcdarklink link1"><<if $PCOffline is false>>
+  <<link "Would you like to play offline?" 'Player Settings'>><<set $PCOffline to true>><<refresh>><</link>>
+<<else>>
+  <<link "Would you like to play online?" 'Player Settings'>><<set $PCOffline to false>><<refresh>><</link>>
+<</if>>
+<strong>WARNING: <i>If you're on Android, or any phone-like device, Online is the only way to play with pictures. Sorry about that.</i></strong>
 <<nobr>><<if hasVisited("Player inspects Grav-Arrays") is true>>
 /* $pgen: 0 = male, 1 = female, 2 = gender neutral, 3 = no gender */
 <<listbox "$pgen">>
@@ -51,10 +56,11 @@ It is <<printtime12hr>>
 	<<option "Androgynous, they/them" 2>>
 <</listbox>><</if>><</nobr>>
 
-<span class="pcdarklink onlylink"><<link "Return." $return>><<refresh>><</link>></span>
+<span class="pcdarklink link2"><<link "Return." $return>><<refresh>><</link>></span>
 
 :: StoryInit [nobr]
 <<set $resetcounter to recall('resets', 0)>>
+<<set $PCOffline to true>>
 <<set $now = new Date(2050, 4, 1, 14, 30, 0)>>
 /*
 Dukemz's code here.
@@ -100,6 +106,13 @@ again without the quotes.
 <<character "sans-winkysmile" "imgs/Talk/Sans/wink~.png">>
 <<character "sans-blushy" "imgs/Talk/Sans/blush.png">>
 <<character "sans-serious" "imgs/Talk/Sans/serious.png">>
+// Online Talk heads for sans
+<<character "sans-thoughtful-o" "https://1.bp.blogspot.com/-Eg9Ykka4KgU/X9FReLD9NvI/AAAAAAAAAQM/NZoqnRHuHxYsOdwRzQy64NE5ulfj06lWACLcBGAsYHQ/s450/thoughtful.png">>
+<<character "sans-bluemagic-o" "https://1.bp.blogspot.com/-X9jL_BrXIVo/X9FRdlp6sgI/AAAAAAAAAQA/IJ7GA_Bnv3gk66xUDwxPhTasEQPRcxe5QCLcBGAsYHQ/s450/angry-bluemagic.png">>
+<<character "sans-smile-o" "https://1.bp.blogspot.com/-4CQLrDcCzrM/X9FRd44pPFI/AAAAAAAAAQI/pVuPgvoBC0k8fjhXjyr6HV3-mAyBv0VUACLcBGAsYHQ/s450/smile.png">>
+<<character "sans-winkysmile-o" "https://1.bp.blogspot.com/-exMXd8kROWQ/X9FRe7UYzHI/AAAAAAAAAQQ/yFJDTVoSIMAX4vj69yYRu3eo-rpIcUjbwCLcBGAsYHQ/s450/wink%257E.png">>
+<<character "sans-blushy-o" "https://1.bp.blogspot.com/-WU2lvQS6mPE/X9FRdh6ugII/AAAAAAAAAQE/BlqHJ96JVWsmy-9LcOn0a9KUW9VWvVe-gCLcBGAsYHQ/s450/blush.png">>
+<<character "sans-serious-o" "https://1.bp.blogspot.com/-SlrS2jPwGPI/X9FRdp5L9MI/AAAAAAAAAP8/avxbP2VI6tg6Yb8m28wXk19yggVWFNM5ACLcBGAsYHQ/s450/serious.png.png">>
 // Gaster talk macros
 <<character "G-annoyed" "imgs/Talk/Gaster/annoyed.png">>
 <<character "G-bored" "imgs/Talk/Gaster/bored.png">>
@@ -111,6 +124,20 @@ again without the quotes.
 <<character "G-surprised" "imgs/Talk/Gaster/surprised.png">>
 <<character "G-worried" "imgs/Talk/Gaster/worried.png">>
 <<character "G-blush" "imgs/Talk/Gaster/blushy.png">>
+<<character "G-embarrased" "imgs/Talk/Gaster/embarrassed.png">>
+//Online Gaster heads
+<<character "G-annoyed-o" "https://1.bp.blogspot.com/-JqZCDI0-hqc/X9FUjBlJVEI/AAAAAAAAASA/bd9UQhyrIh0Ru1kLFJoLJdB2dDSY9AWbQCLcBGAsYHQ/s700/annoyed.png">>
+<<character "G-bored-o" "https://1.bp.blogspot.com/-k_AkWP-oM5E/X9FUjMWty0I/AAAAAAAAASE/KOEGCdLZ_vUibGOztY-FqAIuYo3UBFt3QCLcBGAsYHQ/s700/bored.png">>
+<<character "G-determined-o" "https://1.bp.blogspot.com/-LaKSCS9yhNU/X9FUkTx1O8I/AAAAAAAAASU/kAZFYYRJbR4Hf7TJdM2XlJ90-gvkZlgtACLcBGAsYHQ/s700/determined.png">>
+<<character "G-furious-o" "https://1.bp.blogspot.com/-TfMuXLrEujc/X9FUkwq43fI/AAAAAAAAASc/9V_yVAWxFiMCALUJ5K8mFm3pc4Qufd-WACLcBGAsYHQ/s700/furious.png">>
+<<character "G-content-o" "https://1.bp.blogspot.com/-ExPdOYClZkw/X9FUlQoQfkI/AAAAAAAAASg/zch3WQd39LUQjiacv0DU4GBR1iu-9Ul4QCLcBGAsYHQ/s700/satisfied.png">>
+<<character "G-confused-o" "https://1.bp.blogspot.com/-Mu0-28dkjX4/X9FUj-yz61I/AAAAAAAAASQ/5zjjbHz5yG0um-Cq9sJrDXzzUeUn0CCPQCLcBGAsYHQ/s892/confused.png">>
+<<character "G-surprise-confused-o" "https://1.bp.blogspot.com/-Xil9DIKgsk4/X9FUmQHElGI/AAAAAAAAASo/6NjYMNEfNlIxcqJnfDpqB4A04WIR-WoJQCLcBGAsYHQ/s892/surprised-confused.png">>
+<<character "G-surprised-o" "https://1.bp.blogspot.com/-gVFuVjDC9gM/X9FUmhEXctI/AAAAAAAAASs/fxhmzJ18NKMKYQl4FDM0UcGjzNFnWhXhACLcBGAsYHQ/s892/surprised.png">>
+<<character "G-worried-o" "https://1.bp.blogspot.com/-GKnY2LhSmEU/X9FUmjhBFyI/AAAAAAAAASw/0Pz3mdDZDl4JX7cfEs1B4sCu3QOPVtaiQCLcBGAsYHQ/s700/worried.png">>
+<<character "G-blush-o" "https://1.bp.blogspot.com/-rtzq9bEnjtg/X9FUjd5nyNI/AAAAAAAAASI/HNVBANbULhMwEJIZFzFz8f6b96PWj5LMwCLcBGAsYHQ/s700/blushy.png">>
+<<character "G-embarrased-o" "https://1.bp.blogspot.com/-PCmW3q6-KS4/X9FUkuvVPPI/AAAAAAAAASY/R8OCMEQXmOYBkHqip48jS5kEc-6lDrOngCLcBGAsYHQ/s700/embarrassed.png">>
+
 // Frisk Talk macros
 <<character "Frisk-determined" "imgs/Talk/Frisk/Frisk_Determined.png">>
 <<character "Frisk-furious" "imgs/Talk/Frisk/Frisk_Furious.png">>
@@ -123,6 +150,18 @@ again without the quotes.
 <<character "Frisk-worried" "imgs/Talk/Frisk/Frisk_Worried.png">>
 <<character "Frisk-surprised" "imgs/Talk/Frisk/Frisk_Surprised.png">>
 <<character "Frisk-confuzzled" "imgs/Talk/Frisk/Frisk_Confused.png">>
+// Frisk Online Talk heads
+<<character "Frisk-determined-o" "https://raw.githubusercontent.com/Techy-Nature/ETHERTALE/master/src/imgs/Talk/Frisk/Frisk_Determined.png">>
+<<character "Frisk-furious-o" "https://raw.githubusercontent.com/Techy-Nature/ETHERTALE/master/src/imgs/Talk/Frisk/Frisk_Furious.png">>
+<<character "Frisk-angry-o" "https://github.com/Techy-Nature/ETHERTALE/blob/master/src/imgs/Talk/Frisk/Frisk_Angry.png?raw=true">>
+<<character "Frisk-bored-o" "https://github.com/Techy-Nature/ETHERTALE/blob/master/src/imgs/Talk/Frisk/Frisk_Bored.png?raw=true">>
+<<character "Frisk-happy-o" "https://github.com/Techy-Nature/ETHERTALE/blob/master/src/imgs/Talk/Frisk/Frisk_Happy.png?raw=true">>
+<<character "Frisk-flirty-o" "https://github.com/Techy-Nature/ETHERTALE/blob/master/src/imgs/Talk/Frisk/Frisk_Flirty.png?raw=true">>
+<<character "Frisk-sad-o" "https://github.com/Techy-Nature/ETHERTALE/blob/master/src/imgs/Talk/Frisk/Frisk_Sad.png?raw=true">>
+<<character "Frisk-embarrased-o" "https://github.com/Techy-Nature/ETHERTALE/blob/master/src/imgs/Talk/Frisk/Frisk_Embarrased.png?raw=true">>
+<<character "Frisk-worried-o" "https://github.com/Techy-Nature/ETHERTALE/blob/master/src/imgs/Talk/Frisk/Frisk_Worried.png?raw=true">>
+<<character "Frisk-surprised-o" "https://github.com/Techy-Nature/ETHERTALE/blob/master/src/imgs/Talk/Frisk/Frisk_Surprised.png?raw=true">>
+<<character "Frisk-confuzzled-o" "https://github.com/Techy-Nature/ETHERTALE/blob/master/src/imgs/Talk/Frisk/Frisk_Confused.png?raw=true">>
 //HP Meter setup
 <<newmeter "Frisk-HP" $Frisk.HP>>
 <<sizing 10% 10em>>
@@ -475,7 +514,11 @@ There are footsteps coming down the hallway! <<if lastVisited("Starship hallway"
 I end up cowering as a figure with a giant shadow tramps lazily down the hallway. But what ends up showing up is a short, blue-clad skeleton monster. Since I don't have a weapon equipped, I can't fight. I don't underestimate this one- I run.
 But before I can get very far, my SOUL turns blue, and then I am lifted up-
 "Whuh-!"
-<<if $PCOffline is false>><img src="https://64.media.tumblr.com/d49bfa4ea3e82e078cffe5ff9a84f1b4/38e5ea264066037a-6f/s1280x1920/62509708cf4939a306817d1ef8c54aab59e03ae4.png" alt="A short skeleton with a blue hoodie pointing upwards with blue magic emenating from his pointer finger shows himself!" height="600"><<elseif $PCoffline is true or $PCoffline is undefined>><img src="imgs\Sans_ETHERTALE.png" alt="A short skeleton with a blue hoodie pointing upwards with blue magic emenating from his pointer finger shows himself!" height="600"><</if>>
+<<if $PCOffline is false>>
+  <img src="https://64.media.tumblr.com/d49bfa4ea3e82e078cffe5ff9a84f1b4/38e5ea264066037a-6f/s1280x1920/62509708cf4939a306817d1ef8c54aab59e03ae4.png" alt="A shortstack skeleton shows himself, blue magic emenating from his eye." height="600">
+<<elseif $PCoffline is true or $PCoffline is undefined>>
+  <img src="imgs/Sans_ETHERTALE.png" alt="A" height="600">
+<</if>>
 
 I am confused as to this turn of events, but to say I am surprised to get caught would be a lie. I didn't hide because I...
 
@@ -487,19 +530,37 @@ I am confused as to this turn of events, but to say I am surprised to get caught
 
 :: Hallway conversation
 
-<span class="comicsans"><<sans-bluemagic>>welp, might as well tell you the name of your judge, huh, kid? i'm sans. sans the skeleton.<</sans-bluemagic>></span> The monster pauses, thoughtful.
+<<if $PCOffline is false>>
+<span class="comicsans"><<sans-bluemagic-o>>welp, might as well tell you the name of your judge, huh, kid? i'm sans. sans the skeleton.<</sans-bluemagic-o>></span> 
+<<elseif $PCoffline is true or $PCoffline is undefined>>
+<span class="comicsans"><<sans-bluemagic>>welp, might as well tell you the name of your judge, huh, kid? i'm sans. sans the skeleton.<</sans-bluemagic>></span> 
+<</if>>The monster pauses, thoughtful.
+<<if $PCOffline is false>>
+<span class="comicsans"><<sans-bluemagic-o>>so uh... kid, I think you know the gig's up, right? you can't try to hide again after we know you're here, you'd just get caught again.<</sans-bluemagic-o>></span>
+<<elseif $PCoffline is true or $PCoffline is undefined>><span class="comicsans"><<sans-bluemagic>>so uh... kid, I think you know the gig's up, right? you can't try to hide again after we know you're here, you'd just get caught again.<</sans-bluemagic>></span>
+<</if>>
 
-<span class="comicsans"><<sans-bluemagic>>so uh... kid, I think you know the gig's up, right? you can't try to hide again after we know you're here, you'd just get caught again.<</sans-bluemagic>></span>
 
 Do I...
 
 <span class="link1">[[Stay stubbornly silent.|Conversation part 2]]</span>
-<<Frisk-angry>><span class="link2 dtm-mono">[[I agree, I guess. But that doesn't mean I won't try, jerk.|Jerk conversation]]</span><</Frisk-angry>>
+
+<<if $PCOffline is false>>
+<<Frisk-angry-o>><span class="link2 dtm-mono">[[I agree, I guess. But that doesn't mean I won't try, jerk.|Jerk conversation]]</span><</Frisk-angry-o>><<elseif $PCoffline is true or $PCoffline is undefined>><<Frisk-angry>><span class="link2 dtm-mono">[[I agree, I guess. But that doesn't mean I won't try, jerk.|Jerk conversation]]</span><</Frisk-angry>><</if>>
 Completely ignore the question and introduce myself instead.
-<<Frisk-determined>>@@.link3;.dtm-mono;[[Terrible to meet you, Sans. I'm Frisk! Also, doesn't Sans mean without? Unfortunate name if you ask me.|Rude Introduction]]@@<</Frisk-determined>>
-Or, try to be friendly with my introduction in the hopes of being released, and resolve to stay put. <<Frisk-happy>>@@.link4;[[Nice to meet you, Sans. I'm Frisk! Also, I agree, it would be wasted effort on both of our parts if I tried to run again.|Nice Introduction]]@@<</Frisk-happy>>
-Or, try to be friendly with my introduction in the hopes of being released, and resolve to try to escape should the oppurtunity arrise.
-[[Nice to meet you, Sans. I'm Frisk!|Nice Introduction but escapist Frisk]]
+<<if $PCOffline is false>>
+@@.link3;.dtm-mono;<<Frisk-determined-o>>[[Terrible to meet you, Sans. I'm Frisk! Also, doesn't Sans mean without? Unfortunate name if you ask me.|Rude Introduction]]<</Frisk-determined-o>>@@
+<<elseif $PCoffline is true or $PCoffline is undefined>>@@.link3;.dtm-mono;<<Frisk-determined>>[[Terrible to meet you, Sans. I'm Frisk! Also, doesn't Sans mean without? Unfortunate name if you ask me.|Rude Introduction]]<</Frisk-determined>>@@
+<</if>>
+Or, try to be friendly with my introduction in the hopes of being released, and resolve to stay put. 
+<<if $PCOffline is false>><<Frisk-happy-o>>@@.link4;[[Nice to meet you, Sans. I'm Frisk! Also, I agree, it would be wasted effort on both of our parts if I tried to run again.|Nice Introduction]]@@<</Frisk-happy-o>>
+<<elseif $PCoffline is true or $PCoffline is undefined>>
+<<Frisk-happy>>@@.link4;[[Nice to meet you, Sans. I'm Frisk! Also, I agree, it would be wasted effort on both of our parts if I tried to run again.|Nice Introduction]]@@<</Frisk-happy>><</if>>
+Or, try to be friendly with my introduction in the hopes of being released, but resolve to try to escape should the oppurtunity arrise.
+<<if $PCOffline is false>>
+<<Frisk-happy-o>>[[Nice to meet you, Sans. I'm Frisk!|Nice Introduction but escapist Frisk]]<</Frisk-happy-o>>
+<<elseif $PCoffline is true or $PCoffline is undefined>><<Frisk-happy>>[[Nice to meet you, Sans. I'm Frisk!|Nice Introduction but escapist Frisk]]<</Frisk-happy>>
+<</if>>
 
 :: Conversation part 2
 
@@ -512,10 +573,10 @@ Then he walks away with his phalanges deep in his pockets and his posture hunche
 I slide my back down the glass as I sit down, then I pull up my legs and hug them, waiting for my inevitable fate.
 
 :: Jerk conversation
-
-<<Frisk-furious>>I agree, I guess. But that doesn't mean I won't try, jerk!<</Frisk-furious>>
-
-<span class="comicsans"><<sans-thoughtful>>hey! there's no need for name-calling, kid. but I guess I can see where you're coming from. this has gotta be scary for a lil' kid like you.<</sans-thoughtful>></span> It's a statement more than a question, so I don't grace it with a response.
+<<if $PCOffline is false>><span class="comicsans"><<sans-thoughtful-o>>hey! there's no need for name-calling, kid. but I guess I can see where you're coming from. this has gotta be scary for a lil' kid like you.<</sans-thoughtful-o>></span>
+<<elseif $PCoffline is true or $PCoffline is undefined>><span class="comicsans"><<sans-thoughtful>>hey! there's no need for name-calling, kid. but I guess I can see where you're coming from. this has gotta be scary for a lil' kid like you.<</sans-thoughtful>></span>
+<</if>>
+It's a statement more than a question, so I don't grace it with a response.
 
 Sans rolls his glowing eye, then at the end of the hallway finds a metal specimen crate (with glass sides, a fingerprint lock, and a grated top) for my "<span class="comicsans">holding cell</span>" as he proceeds to call it. He moves the grate on top, then drops me inside, both with blue magic, being careful not to let me go before locking the grate back to the top of it.
 
@@ -527,11 +588,11 @@ I stand and watch him leave, then sit down and pull my legs up to my chest, wait
 
 :: Rude Introduction
 
-<<Frisk-determined>><span class="dtm-mono">Terrible to meet you, Sans. I'm Frisk! Also, doesn't Sans mean without? Unfortunate name if you ask me.</span><</Frisk-determined>>
-
 Sans' eyes darken, his face looking very depressed and furious for the moment. I can tell he's trying to get his emotions under control. I must have pushed a bunch of his buttons all at once.
-
-<<sans-serious>><span class="comicsans">yeah. frisk. got it. never going to use it.</span><</sans-serious>> Sans grumbles half-coherently as we make our way to the end of the hallway. He then finds a metal specimen crate (with glass sides, a fingerprint lock, and a grated top) for my jail. He both moves the grate, and drops me inside with blue magic, being careful not to let me go before locking the grate back to the top of it with the numberpad key.
+<<if $PCOffline is false>><<sans-serious-o>><span class="comicsans">yeah. frisk. got it. never going to use it.</span><</sans-serious-o>>
+<<elseif $PCoffline is true or $PCoffline is undefined>><<sans-serious>><span class="comicsans">yeah. frisk. got it. never going to use it.</span><</sans-serious>>
+<</if>> 
+Sans grumbles only half-coherently as we make our way to the end of the hallway. He then finds a metal specimen crate (with glass sides, a fingerprint lock, and a grated top) for my jail. He both moves the grate, and drops me inside with blue magic, being careful not to let me go before locking the grate back to the top of it with the numberpad key.
 
 The shape of the crate is an upright cylinder, the numberpad key being on the outside and far from the grate. The keypad is connected through wiring on the outside of the crate, so it's completely impossible to open it from the inside. I can just stand up in it, it seems. My arms can reach out and stretch completely to the sides, but not upright- the grate is in the way.
 
@@ -541,29 +602,36 @@ I stand and watch him leave, then sit down and pull my legs up to my chest while
 
 :: Nice Introduction
 
-<<Frisk-happy>><span class="dtm-mono">Nice to meet you, Sans. I'm Frisk! Also, I agree, it would be wasted effort on both of our parts if I tried to run again.</span><</Frisk-happy>>
-
 Sans blinks in surprise at my apparent kindness and friendliness, then smiles and shakes his head ruefully.
-<span class="comicsans"><<sans-smile>>gee kid, i almost wish i hadn't captured you. i think i'll just bring you with me instead of...<</sans-smile>></span>
+<<if $PCOffline is false>><span class="comicsans"><<sans-smile-o>>gee kid, i almost wish i hadn't captured you. i think i'll just bring you with me instead of...<</sans-smile-o>></span>
+<<elseif $PCoffline is true or $PCoffline is undefined>><span class="comicsans"><<sans-smile>>gee kid, i almost wish i hadn't captured you. i think i'll just bring you with me instead of...<</sans-smile>></span>
+<</if>>
 
-<span class="comicsans"><<sans-serious>>well, the alternative you probably wouldn't have liked.<</sans-serious>></span>
+<<if $PCOffline is false>><span class="comicsans"><<sans-serious-o>>well, the alternative you probably wouldn't have liked.<</sans-serious-o>></span>
+<<elseif $PCoffline is true or $PCoffline is undefined>>
+<span class="comicsans"><<sans-serious>>well, the alternative you probably wouldn't have liked.<</sans-serious>></span><</if>>
 
-I nod with an apologetic grimace. He puts me down, and I don't bother running. I want to see <<nobr>><<if $Frisk.gotbored is true or $Frisk.curiousabtcrew is true>>the rest of the crew!<<elseif $Frisk.wantedajob is true>>if I can get a job from this crew of monsters.<<elseif $Frisk.gotbored is true and $Frisk.curiousabtcrew is true and $Frisk.wantedajob is true>>about getting a job from this crew of <i>interesting</i> monsters!<</if>><</nobr>>
+
+I nod with an apologetic grimace. He puts me down, and I don't bother running. I want to see <<nobr>><<if $Frisk.gotbored is true or $Frisk.curiousabtcrew is true>>the rest of the crew!<<elseif $Frisk.wantedajob is true>>if I can get a job from this crew of monsters.<<elseif $Frisk.gotbored is true and $Frisk.curiousabtcrew is true and $Frisk.wantedajob is true>>about getting a job from this crew of <b>interesting</b> monsters!<</if>><</nobr>>
 
 I follow Sans towards another hallway, and we make our way to the <span class="onlylink">[[Dining Lounge.|Dining Lounge]]</span>
 
 
-:: Nice Conversation but escapist Frisk
+:: Nice Introduction but escapist Frisk
 
-<<Frisk-happy>><span class="dtm-mono">Nice to meet you, Sans. I'm Frisk!</span><</Frisk-happy>>
 
 Sans blinks in surprise at my apparent kindness and friendliness, but realises I'm not offering to skip out on trying to escape and shakes his head ruefully.
-<span class="comicsans"><<sans-thoughtful>>gee kid, i wish we could've met on better terms.<</sans-thoughtful>> <</>></span>
+<<if $PCOffline is false>><span class="comicsans"><<sans-thoughtful-o>>gee kid, i wish we could've met on better terms.<</sans-thoughtful-o>></span>
+<<elseif $PCoffline is true or $PCoffline is undefined>><span class="comicsans"><<sans-thoughtful>>gee kid, i wish we could've met on better terms.<</sans-thoughtful>></span>
+<</if>>
 
-<span class="comicsans"><<sans-serious>>unfortunately you seem dead set on escaping, and that's not going to get you very far with me or anyone else on this crew.<</sans-serious>></span>
 
-I nod with an apologetic grimace. The rest of the walk to what I'm assuming is the Captain's Cabin is completely in regretful silence.
-Sans lifts and then drops me into a specimen crate with glass sides and grated top with an outside fingerprint lock, and makes a call to his quote unquote, "<span class="comicsans">bro</span>" to make an announcement for the crew to meet in the Dining Lounge next to the Kitchen.
+<<if $PCOffline is false>><span class="comicsans"><<sans-serious-o>>unfortunately you seem dead set on escaping, and that's not going to get you very far with me or anyone else on this crew.<</sans-serious-o>></span>
+<<elseif $PCoffline is true or $PCoffline is undefined>><span class="comicsans"><<sans-serious>>unfortunately you seem dead set on escaping, and that's not going to get you very far with me or anyone else on this crew.<</sans-serious>></span>
+<</if>>
+
+I grimace apologetically. The rest of the walk to what I'm assuming is the Captain's Cabin, but doesn't end up being that is completely in regretful silence.
+Sans lifts and then drops me into a specimen crate in the Cargo Hold with glass sides and grated top with an outside fingerprint lock, and makes a radio call to his quote unquote, "<span class="comicsans">bro</span>" to make an announcement for the crew to meet in the Dining Lounge next to the Kitchen.
 
 Then he walks away with his phalanges deep in his pockets and his posture hunched over. He looks regretful, and I'm not surprised. No one likes jailing another sentient being.
 
@@ -576,17 +644,30 @@ When we get there, Sans takes out a radio that was attached to his beltloop and 
 There's a book about constellations in different starsystems (no surprise there), a book about ship AIs with an incredibly long, needlessly complicated name, a reference book of 5 different alien languages, and a mechanical journal with scribblings about Starship Mechanics on the front. I can also see there's a few old children's bedtime storybooks. I wonder whose those were? After I'm done looking around, I sit down on the couch to wait for Sans to be done with the radio.<</if>>
 
 When Sans is done arguing on my behalf, he comes over and sits next to me.
-@@.comicsans;<<sans-smile>>welp, i managed to get you secured with a place on the crew, if you want it.<</sans-smile>>@@"
+<<if $PCOffline is false>>@@.comicsans;<<sans-smile-o>>welp, i managed to get you secured with a place on the crew, if you want it.<</sans-smile-o>>@@
+<<elseif $PCoffline is true or $PCoffline is undefined>>@@.comicsans;<<sans-smile>>welp, i managed to get you secured with a place on the crew, if you want it.<</sans-smile>>@@
+<</if>>
+
 He pauses and yawns, then shakes his head to try to ward his sleepiness away. <<if $Frisk.hasseenSansoncouch is true>>Evidently sitting on this couch makes him remember all the times he's slept on it.<</if>>
 
-@@.comicsans;<<sans-thoughtful>>other than that, we can drop you off at the next habi planet, but you'd have to pay us something in return next time we come around.<</sans-thoughtful>>@@
+<<if $PCOffline is false>>@@.comicsans;<<sans-thoughtful-o>>other than that, we can drop you off at the next habi planet, but you'd have to pay us something in return next time we come around.<</sans-thoughtful-o>>@@
+<<elseif $PCoffline is true or $PCoffline is undefined>>
+@@.comicsans;<<sans-thoughtful>>other than that, we can drop you off at the next habi planet, but you'd have to pay us something in return next time we come around.<</sans-thoughtful>>@@<</if>>
 
 I say...
-<<nobr>>
-<<if $Frisk.wantedajob is true and $Frisk.curiousabtcrew is true and $Frisk.gotbored is false>>"@@.dtm-mono;[[I can work for you all for as long as you need me to!|Job Choose]]@@"<<elseif $Frisk.gotbored is true and $Frisk.wantedajob is false and $Frisk.curiousabtcrew is false>>"@@.dtm-mono;[[Sure! I can work for you guys for a while, at least until I repay you all for hitching a ride, heheh...|Job Choose]]@@"<</nobr>>
 
-<<nobr>>"@@.dtm-mono;[[I think I'd rather you drop me off at the nearest habitable planet. I'll find a way to make some money and pay you all, no problem!|Tem Skip]]@@"
-<<elseif $Frisk.wantedajob is true and $Frisk.curiousabtcrew is true and $Frisk.gotbored is true>>"@@.dtm-mono;[[I'd love to work with you all, but I think I'd like to do whatever you need me to, rather than one specific job all the time.|Job Secured!]]@@"<</if>><</nobr>>
+<<if $Frisk.wantedajob is true and $Frisk.curiousabtcrew is true and $Frisk.gotbored is false>><<if $PCOffline is false>>@@.dtm-mono;<<Frisk-happy-o>>[[I can work for you all for as long as you need me to!|Job Choose]]<</Frisk-happy-o>>@@
+<<elseif $PCoffline is true or $PCoffline is undefined>>
+@@.dtm-mono;<<Frisk-happy>>[[I can work for you all for as long as you need me to!|Job Choose]]<</Frisk-happy>>@@<</if>><<elseif $Frisk.gotbored is true and $Frisk.wantedajob is false and $Frisk.curiousabtcrew is false>><<if $PCOffline is false>>@@.dtm-mono;<<Frisk-embarrased-o>>[[Sure! I can work for you guys for a while, at least until I repay you all for hitching a ride, heheh...|Job Choose]]<</Frisk-embarrased-o>>@@
+<<elseif $PCoffline is true or $PCoffline is undefined>>@@.dtm-mono;<<Frisk-embarrased>>[[Sure! I can work for you guys for a while, at least until I repay you all for hitching a ride, heheh...|Job Choose]]<</Frisk-embarrased>>@@
+<</if>>
+
+<<if $PCOffline is false>>@@.dtm-mono;<<Frisk-determined-o>>[[I think I'd rather you drop me off at the nearest habitable planet. I'll find a way to make some money and pay you all, no problem!|Tem Skip]]<</Frisk-determined-o>>@@
+<<elseif $PCoffline is true or $PCoffline is undefined>>@@.dtm-mono;<<Frisk-determined>>[[I think I'd rather you drop me off at the nearest habitable planet. I'll find a way to make some money and pay you all, no problem!|Tem Skip]]<</Frisk-determined>>@@
+<</if>>
+<<elseif $Frisk.wantedajob is true and $Frisk.curiousabtcrew is true and $Frisk.gotbored is true>><<if $PCOffline is false>>@@.dtm-mono;<<Frisk-determined-o>>[[I'd love to work with you all, but I think I'd like to do whatever you need me to, rather than one specific job all the time.|Job Secured!]]<</Frisk-determined-o>>@@
+<<elseif $PCoffline is true or $PCoffline is undefined>>@@.dtm-mono;<<Frisk-determined>>[[I'd love to work with you all, but I think I'd like to do whatever you need me to, rather than one specific job all the time.|Job Secured!]]<</Frisk-determined>>@@
+<</if>><</if>>
 
 :: Job Secured! [stop-time]
 
@@ -669,7 +750,9 @@ I look around the slightly cramped Engine room. With all the wires and miscellan
 :: Player inspects Grav-Arrays
 
 I jump, confused and startled at the gentle prodding of a voice inside my subconscious. I whisper incredibly quietly into the engine room.
- <<Frisk-confuzzled>><span class="dtm-mono">Who are you? And how are you in my head?</span><</Frisk-confuzzled>> 
+<<nobr>><<if $PCOffline is false>> <<Frisk-confuzzled-o>><span class="dtm-mono">Who are you? And how are you in my head?</span><</Frisk-confuzzled-o>>
+<<elseif $PCoffline is true or $PCoffline is undefined>> <<Frisk-confuzzled>><span class="dtm-mono">Who are you? And how are you in my head?</span><</Frisk-confuzzled>>
+<</if>><</nobr>>
 
 
 /* $pgen: 0 = male, 1 = female, 2 = gender neutral, 3 = no gender */
@@ -685,7 +768,7 @@ I jump, confused and startled at the gentle prodding of a voice inside my subcon
 
 :: I can imagine how that'll go down, badly
 
-<span class="pcdark">Yeah, you're not saying that, but nice try. That will just end in them ignoring your advice for the rest of this playthrough. (In which case, the playthrough will end because you won't be able to interact with Frisk well anymore.)</span> <<if lastVisited("Player inspects Grav-Arrays") is 1>><span class="pcdarklink pcdarklinkhover link1">[[Go back to looking through the options.|Player inspects Grav-Arrays]]</span><<elseif lastVisited("Frisk will say Oh, okay") is 1>><span class="pcdarklink pcdarklinkhover link1">[[Go back.|Frisk will say Oh, okay]]</span><</if>>
+<span class="pcdark">Yeah, you're not saying that, but nice try. That will just end in them ignoring your advice for the rest of this playthrough. (In which case, the playthrough will end because you won't be able to interact with Frisk well anymore.)</span> <<if lastVisited("Player inspects Grav-Arrays") is 1>><span class="pcdarklink pcdarklinkhover link1">[[Go back to looking through the options.|Player inspects Grav-Arrays]]</span><<elseif lastVisited("Frisk will say Oh, okay") is 1>><span class="pcdarklink pcdarklinkhover link1">[[Try again with a different option.|Frisk will say Oh, okay]]</span><</if>>
 
 :: Then Explain, Frisk demands
 
