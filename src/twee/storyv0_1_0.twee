@@ -63,10 +63,7 @@ It is <<printtime12hr>>
 <<set $PCOffline to true>>
 <<set $now = new Date(2050, 4, 1, 14, 30, 0)>>
 
-/* Dukemz's inventory code goes here. */
-<<script>>
-// gonna paste this here later
-<</script>>
+/* Dukemz: In case my inventory system for some reason doesn't work as it should, I can re-paste it here in a script tag. */
 
 /*
 Jaden here. In Opera the shortcut for the Developer Console is Ctrl-Shift-J, but you can add more shortcuts through the settings.

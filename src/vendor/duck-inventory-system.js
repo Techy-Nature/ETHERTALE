@@ -1,4 +1,4 @@
-// duck stuff
+// Dukemz's stuff
 // I'll put my functions in this object. You should be able to call them with `duck.functionName()`.
 window.duck = {};
 
