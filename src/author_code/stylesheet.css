@@ -62,9 +62,10 @@ font-family: 'Comic Sans MS', 'Comic Sans', 'comicsans';
 	src: url('fonts/comic.woff') format:('woff'),
 	src: url('fonts/comic.woff2') format:('woff2');
 }
-.papyrus {
-font-family: Papyrus, 'Papyrus';
-	src: url('fonts/papyrus-webfont.woff2') format:('woff2'),
+
+@fontface {
+font-family: 'Papyrus', Papyrus;
+src: url('fonts/papyrus-webfont.woff2') format:('woff2'),
 	url('fonts/papyrus-webfont.woff') format:('woff'),
 	url('fonts/papyrus-webfont.ttf') format:('truetype'),
 	url('fonts/papyrus-webfont.otf') format:('opentype'),
@@ -111,6 +112,9 @@ font-family: 'dtm-sans', 'Determination Sans Regular';
 }
 .wingdings {
     font-family: 'Wingdings-Pixelated';
+}
+.papyrus {
+font-family: 'Papyrus', Papyrus;
 }
 	font-family: Cambria;
 }
