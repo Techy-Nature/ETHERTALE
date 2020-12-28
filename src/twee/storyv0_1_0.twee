@@ -62,28 +62,9 @@ It is <<printtime12hr>>
 <<set $resetcounter to recall('resets', 0)>>
 <<set $PCOffline to true>>
 <<set $now = new Date(2050, 4, 1, 14, 30, 0)>>
-/*
-Dukemz's code here.
-This won't actually do anything yet, apart from print some text to the console,
- which you can view with F12 or Ctrl+Shift+I in most browsers.
-*/
-<<script>>
-// I'll put my functions in this object. You should be able to call them with `duck.functionName()`
-// or something similar.
-window.duck = {};
 
-// Just a nice little function to display coloured text in the console. Called it the duck debugger because why not.
-duck.dbg = text => { return console.log("%c[DUCK DEBUGGER] " + `%c${text}`, "color:aqua", "color:grey"); }
-duck.dbg("Starting Dukemz's code and setting up item dictionary.");
+/* Dukemz: In case my inventory system for some reason doesn't work as it should, I can re-paste it here in a script tag. */
 
-// Set up the item dictionary.
-duck.itemdict = [
-	// This will contain items later.
-];
-duck.dbg("Printing the item dictionary below...");
-console.log(duck.itemdict);
-duck.dbg("Finished printing item dictionary.");
-<</script>>
 /*
 Jaden here. In Opera the shortcut for the Developer Console is Ctrl-Shift-J, but you can add more shortcuts through the settings.
 All I did was go to the settings and search up "keyboard" without the quotes, and it should find it. If that doesn't work, try "shortcuts,"
