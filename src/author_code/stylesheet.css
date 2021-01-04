@@ -33,7 +33,10 @@ body {
 background-color: inherit;
 grid-column: 5;
 }
-story-subtitle:a {
+#invlink a{
+	color: #ff0000;
+}
+#desclink a{
 	color: #ff0000;
 }
 #menu-story {
