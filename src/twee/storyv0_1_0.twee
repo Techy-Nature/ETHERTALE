@@ -17,9 +17,11 @@ v.0.03.0beta
 Today is <<printfulldate>>.
 It is <<printtime12hr>>
 
-<span id="desclink">[[Character Description]]</span>
+<span id="desclink"><span class="subtitlelink">[[Character Description]]</span></span>
 
-<span class="pcdarklink ctrlslink">[[Controls]]</span>
+<span id="invlink"><span class="subtitlelink">[[Backpack Inventory|Inventory]]</span></span>
+
+
 
 :: StoryInterface
 
@@ -38,6 +40,8 @@ It is <<printtime12hr>>
 <<link "SAVE/LOAD">><<run UI.saves()>><</link>>
 
 @@.pcdarklink;[[Player Settings]]@@
+
+<span class="pcdarklink ctrlslink">[[Controls]]</span>
 
 :: Player Settings [stoptime menuitem]
 
@@ -224,7 +228,7 @@ again without the quotes.
 	<<trigger 'click' '#restartlink a'>>
 	<</event>>
 	/* Event setup finished */
-
+	
 :: StoryData
 
 {
@@ -366,8 +370,8 @@ Template.add("themselves", function () { return ["themselves", "themselves", "th
 Template.add("their", function () { return ["his", "her", "their", "its"][State.variables.pgen]; });
 Template.add("theirs", function () { return ["his", "hers", "theirs", "its"][State.variables.pgen]; });
 Template.add("theyre", function () { return ["he's", "she's", "they're", "it's"][State.variables.pgen]; });
-Template.add("youngPerson", function () { return ["boy", "girl", "person", "person"][State.variables.pgen]; });
-Template.add("youngPeople", function () { return ["boys", "girls", "people", "people"][State.variables.pgen]; });
+Template.add("youngPerson", function () { return ["boy", "girl", "kid", "child"][State.variables.pgen]; });
+Template.add("youngPeople", function () { return ["boys", "girls", "kids", "children"][State.variables.pgen]; });
 Template.add("adultPerson", function () { return ["man", "woman", "person", "person"][State.variables.pgen]; });
 Template.add("adultPeople", function () { return ["men", "women", "people", "people"][State.variables.pgen]; });
 Template.add("generalPerson", function () { return ["guy", "girl", "guy", "guy"][State.variables.pgen]; });
@@ -381,8 +385,8 @@ Template.add("Themselves", function () { return ["Themselves", "Themselves", "Th
 Template.add("Their", function () { return ["His", "Her", "Their", "Its"][State.variables.pgen]; });
 Template.add("Theirs", function () { return ["His", "Hers", "Theirs", "Its"][State.variables.pgen]; });
 Template.add("Theyre", function () { return ["He's", "She's", "They're", "It's"][State.variables.pgen]; });
-Template.add("YoungPerson", function () { return ["Boy", "Girl", "Person", "Person"][State.variables.pgen]; });
-Template.add("YoungPeople", function () { return ["Boys", "Girls", "People", "People"][State.variables.pgen]; });
+Template.add("YoungPerson", function () { return ["Boy", "Girl", "Kid", "Child"][State.variables.pgen]; });
+Template.add("YoungPeople", function () { return ["Boys", "Girls", "Kids", "Children"][State.variables.pgen]; });
 Template.add("AdultPerson", function () { return ["Man", "Woman", "Person", "Person"][State.variables.pgen]; });
 Template.add("AdultPeople", function () { return ["Men", "Women", "People", "People"][State.variables.pgen]; });
 Template.add("GeneralPerson", function () { return ["Guy", "Girl", "Guy", "Guy"][State.variables.pgen]; });
@@ -397,14 +401,12 @@ Template.add("Pals", function () { return ["Dudes", "Chicks", "Pals", "Pals"][St
 
 :: Inventory [menuitem stoptime]
 
-OLD
-I have<<print $Frisk.inv.itemcounter>> item<<if $Frisk.inv.itemcounter gt 1 or $Frisk.inv.itemcounter eq 0>>s<<else>><</if>> on me. I have <<= $Frisk.weapon.counter>>
-I am wearing $Frisk.equipped.head on my head, $Frisk.equipped.torso on my body, and $Frisk.equipped.feet on my feet.
-I am using $Frisk.weapon.has as a weapon.
+You have <<print $duck.inv.length>> item<<if $duck.inv.length is 0>>s<<elseif $duck.inv.length gt 1>>s<<else>><</if>> in your backpack.
+<<if $duck.inv.length is 0 and $duck.inv.isEmpty is true>>You have nothing in your backpack right now.<</if>>
 
-Equip something:
-<<print $Frisk.weapon.equipable>>
-<<if $Frisk.weapon.equipable.length is 1>><<link "Equip a weapon.">><<equip-weapon>><<refresh>><</link>><</if>>
+You can carry <<print $duck.inv.length -= $duck.invSpace>> more items.
+
+You have: TODO (Use, drop, or transfer items)
 
 @@.onlylink;<<link "Return." $return>><</link>>@@
 
@@ -458,13 +460,13 @@ I hear a loud, "<span class="papyrus">OKAY, UNDYNE!</span>" over the ship's spea
 
 
 :: Exit the crate
-<<nobr>><<set $rocketsactive to true>><</nobr>>
+<<nobr>><<set $rocketsactive to true>><<set $Frisk.onboardship to true>><</nobr>>
 <<if visited() is 1 and $resetcounter is 0>><span class="dtm-sans"><span class="glitch" data-text="Choose wisely.">Your first choice.</span></span><</if>>
 <<addmins 6>>
 After the footsteps die away through <span class="link1">[[a pressurized door,|Starship hallway]]</span> and later a second heavy rumbling signifies we've left the ground, I climb out of the crate. <<hovertip "The cargo hold. It's full of crates and other junk.">>The room I'm in<</hovertip>> is large, the size of a small ballroom really, but only half of it is filled with stuff. Maybe <span class="link2"><<hovertip "There might be something useful in here...">>[[exploring the cargo hold|Explore Cargo]]<</hovertip>></span> first before leaving might be a good idea?
 
 :: Explore Cargo
- <<if visited() is 1>>(TODO: Duke needs to add functionality to equip weapons and inventory management.)<<elseif $now.getHours gte 5 and $now.getHours lte 10 and visited() gt 1 and visited() lt 5>> I try to find something useful, and find a large crate of beast jerky. TODO:(Add Functionality for taking inventory items)<<else>> There's not much here that I need right now. I've taken everything that was useful, sadly...<</if>>
+ <<if visited() is 1>>(TODO: Duke needs to add functionality to equip weapons and inventory management.)<<elseif $now.getHours gte 5 and $now.getHours lte 10 and visited() gt 1 and visited() lt 5>> I try to find something useful, and find a large crate of beast jerky. TODO:(Finish Functionality for taking inventory items)<<else>> There's not much here that I need right now. I've taken everything that was useful, sadly...<</if>>
 
 With that done, I <span class="onlylink">[[exit through the pressurized door to the hallway.|Starship hallway]]</span>
 
@@ -681,15 +683,17 @@ I <<if lastVisited("Footsteps") is 1>>climb quickly into<<else>>enter<</if>> the
 
 I sneak into the kitchen, peeking through the double-door's windows before entering to make sure the coast is clear. I lean up on tip-toes and pull myself up to see through the tall windows, and when I see that no one is inside I go ahead and enter.
 
-TODO: [adding choices for taking food from the kitchen](I can take an apple from the bowl on the counter, a mini monster cake from the cupboard, or a beast jerky, from the box next to the monster cakes.)
+[TODO: Fix inventory code and finish it.](You can take an apple from the counter, a mini monster cake from a box in the cupboard, or a beast jerky from another box next to the monster cakes.)
 
+/*For later:
+<<if duck.inv.length >= duck.invSpace>>You can't take anything else. Your backpack is completely full.<<else>>I can take an @@.link1;<<link "apple">><<run duck.addItem(0)>><</link>>@@ from the bowl on the counter, a @@.link2;<<link "mini monster cake">><<run duck.addItem(12)>><</link>>@@ from the cupboard, or a @@.link3;<<link "beast jerky">><<run duck.addItem(13)>><</link>>@@, from the box next to the monster cakes.<</if>>*/
 <span class="onlylink">[[Leave the kitchen.|Bedrooms hallway]]</span>
 
 :: Dining Lounge-sneaky [nobr]
 
 <<switch random(0,6)>>
 <<case 0>>
-There's a fluffy monster in there lounging and reading a book... I better not enter. I @@.onlylink;[[step back|Bedrooms hallway]] from the door.
+There's a fluffy monster in there lounging and reading a book... I better not enter. I @@.onlylink;[[step back|Bedrooms hallway]]@@ from the door.
 <<case 1>>
 I can see a short skeleton sleeping on one of the couches. I probably shouldn't enter, I'd likely get caught. I @@.onlylink;[[step away|Bedrooms hallway]]@@ from the door. <<set $Frisk.hasseenSansoncouch to true>>
 <<case 2>>
@@ -716,7 +720,7 @@ There's a book about constellations (no surprise there), a book about ship AIs w
 <</switch>>
 
 :: Engine room
-<<if visited() is 1>>I creep into the engine room quietly.<<elseif visited() gt 1>>I find myself in the engine room again.<</if>> There isn't much to see here, other than lots of different sized vents and the boiler/heating and cooling system, the power source of the gravitational arrays, as well as the two giant, metal drums that house the rocket systems. I stay clear of those, as they are known to get very hot, at least when in use, which <<if $rocketsactive is true>>they are.<<elseif $rocketsactive is false>>they aren't.<<else>> <span id="glitch" data-text="errors happened, please don't glitch the game.">errors happened, please don't glitch the game.</span><</if>>
+<<if visited() is 1>>I creep into the engine room quietly.<<elseif visited() gt 1>>I find myself in the engine room again.<</if>> There isn't much to see here, other than lots of different sized vents and the boiler/heating and cooling system, the power source of the gravitational arrays, as well as the two giant, metal drums that house the rocket systems. I stay clear of those, as they are known to get very hot, at least when in use, which <<if $rocketsactive is true>>they are.<<elseif $rocketsactive is false>>they aren't.<<else>> <span id="glitch" data-text="Errors happened, please don't glitch the game.">Errors happened, please don't glitch the game.</span><</if>>
 
 *  <<if $linkclicked is undefined>><span class="linkcheck link1">[[Try to find a big enough vent to sleep in|Explore Engine Room]]</span><<elseif $linkclicked is true or hasVisited("Explore Engine Room") is true>>@@.link1;[[Decide to wait safely in the big vent that I found.|Waiting or Sleeping Vent 3]]@@<</if>>
 

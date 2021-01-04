@@ -7,7 +7,7 @@ A coming of age adventure CYOA UNDERTALE AU that will have space travel, invento
 
 # DONATE?
 
-You don't have to, but I'd really appreciate it if you did. :) It helps me get better artwork and possibly coding help as well. 
+You don't have to, but I'd really appreciate it if you did. :) It helps me get better artwork, music and possibly coding help as well. 
 
 [Donate! Every dollar helps!](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=JQ9BXNQUQS5NQ&currency_code=USD)
 
@@ -15,7 +15,7 @@ Thanks so much if you donate, or if you share this page or the [Tumblr dev blog]
 
 ## Getting Started
 
-Find index.html and run that on any browser, and you should be ready to play! Make sure to keep the files in the same arrangement and the same file names as they came in.
+Follow the instructions below in installing. Find index.html and run that on any browser after extracting the zip file, and you should be ready to play! Make sure to keep the files in the same arrangement and the same file names as they came in.
 
 ### Prerequisites
 
@@ -25,7 +25,7 @@ You'll need the images, fonts and music to go with the HTML file. They are all b
 
 1. Download ETHERTALE.zip from [releases page.](https://github.com/Techy-Nature/ETHERTALE/releases)
 
-2. Extract the folder anywhere you please (just please don't rename the img and font files or move the font and image files outside of their folder structure okay? thx!)
+2. Extract the folder anywhere you please (just please don't rename the img and font files or move the font and image files outside of their folder structure okay? thanks!)
 
 3. Run index.html in any internet browser
 
