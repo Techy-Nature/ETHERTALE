@@ -21,6 +21,9 @@ It is <<printtime12hr>>
 
 <span id="invlink">[[Backpack Inventory|Inventory]]</span>
 
+@@.pcdarklink;[[Player Settings]]@@
+
+<span class="pcdarklink"><span id="ctrlslink">[[Controls]]</span></span>
 
 
 :: StoryInterface
@@ -39,9 +42,6 @@ It is <<printtime12hr>>
 
 <<link "SAVE/LOAD">><<run UI.saves()>><</link>>
 
-@@.pcdarklink;[[Player Settings]]@@
-
-<span class="pcdarklink ctrlslink">[[Controls]]</span>
 
 :: Player Settings [stoptime menuitem]
 
