@@ -59,3 +59,7 @@ It is <<printtime12hr>>
 <</listbox>><</if>><</nobr>>
 
 <span class="pcdarklink link2"><<link "Return." $return>><<refresh>><</link>></span>
+
+:: PassageHeader [nobr]
+
+<<if tags().includes('stoptime') is false>><<addmins 2>><<elseif tags().includes('slowtime') is true>><<addmins 1>><</if>>
