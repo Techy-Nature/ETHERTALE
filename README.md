@@ -42,6 +42,7 @@ You'll need the images and fonts to go with the HTML file. They are all bundled 
 * **Billie Thompson** - *Initial README file template* - [PurpleBooth](https://github.com/PurpleBooth)
 * **Duke** - [Dukemz](https://github.com/Dukemz)
 * **Jaden** - [Techy-Nature](https://github.com/Techy-Nature)
+* **Irin** - [AFriendlyIrin](https://github.com/AFriendlyIrin)
 
 See also the list of [contributors](https://github.com/Techy-girl/ETHERTALE/contributors) who participated in this project.
 
@@ -56,4 +57,5 @@ This project is licensed under the GNUvrs.3 License - see the [LICENSE.md](https
 ## Credits/Acknowledgments
 
 * Dukemz
+* Irin
 * Toby Fox for Undertale
