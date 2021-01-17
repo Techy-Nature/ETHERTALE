@@ -19,7 +19,7 @@ Follow the instructions below in installing. Find index.html and run that on any
 
 ### Prerequisites
 
-You'll need the images, fonts and music to go with the HTML file. They are all bundled in the releases page. Twine games are generally pretty easy on the computer so all you'll really need is a browser of some sort that can display images and text effects, and you'll be good. Just get the most recent version of whatever browser you'll be using and you should be set.
+You'll need the images and fonts to go with the HTML file. They are all bundled in the releases page. Twine games are generally pretty easy on the computer so all you'll really need is a browser of some sort that can display images and text effects, and you'll be good. Just get the most recent version of whatever browser you'll be using and you should be set.
 
 ### Installing
 
@@ -27,7 +27,7 @@ You'll need the images, fonts and music to go with the HTML file. They are all b
 
 2. Extract the folder anywhere you please (just please don't rename the img and font files or move the font and image files outside of their folder structure okay? thanks!)
 
-3. Run index.html in any internet browser
+3. Run index.html in any relatively new internet browser
 
 4. Make sure **NOT** to use private mode while playing Twine games. *SAVES* will **NOT** work on that mode. Also don't erase your cache without first backing up your save externally.
 
