@@ -1,0 +1,38 @@
+:: Inventory [menuitem stoptime]
+
+//For later:
+/*You have <<print $duck.inv.length>> item<<if $duck.inv.length is 0>>s<<elseif $duck.inv.length gt 1>>s<<else>><</if>> in your backpack.
+/*<<if $duck.inv.length is 0 and $duck.inv.isEmpty is true>>You have nothing in your backpack right now.<</if>>
+
+<span id="invlink">[[Backpack Inventory|Inventory]]</span>
+
+You can carry <<print $duck.inv.length -= $duck.invSpace>> more items.*/
+
+You have: TODO (Use, drop, or transfer items)
+
+@@.onlylink;<<link "Return." $return>><</link>>@@*/
+
+:: Character Description [menuitem stoptime]
+
+My name is Frisk. I'm an orphan, so I don't know my parents' last name. I used to live on the streets of Earth.
+People tell me I'm "high functioning" autistic. I know a small amount of ASL (American Sign Language) from school before I ran away from there to learn by traveling rather than by what others tell me. I'm <<= $Frisk.age>> years of age, and my birthday is April 28th.
+
+@@.onlylink;<<link "Return." $return>><</link>>@@
+
+:: Controls [menuitem stoptime]
+
+KEY:
+Button = ThisLink (extra info)
+AND/OR
+Button&OtherButton/SameasOtherButton = ThisMenu
+---
+Ctrl = This Controls Menu
+; = Inventory Menu
+F4 = Character Description
+1 = clicking on the first link (when there's multiple links)
+2thru9 = Clicking on the other links (it only goes up to nine)
+SPACE&ENTER/RETURN = clicking on the only link on the page, or clicking on the first link
+---
+Links will let you continue through the story. If something is colored differently or the font is different, it's usually someone speaking, their intentions or thoughts. Thoughts are always <i>in italic,</i> no matter what font they are in. Other than that, gameplay is pretty easy! Have fun! ;)
+
+@@.onlylink;<<link "Return." $return>><</link>>@@
