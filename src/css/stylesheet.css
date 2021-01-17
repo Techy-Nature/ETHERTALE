@@ -17,8 +17,8 @@ body {
 	display: grid;
 	border: solid white medium;
 	float: left;
-	grid-template-columns: 25% 25%;
-	grid-row: 1;
+/*	grid-template-columns: 25% 25%;
+*/	grid-row: 1;
 }
 #story-title {
 	padding: 1%;
@@ -30,8 +30,10 @@ body {
 }
 
 #story-subtitle {
-background-color: inherit;
-grid-column: 5;
+	background-color: inherit;
+/*	grid-column: 5;
+*/	grid-row: 2;
+	padding: 3%;
 }
 #invlink a{
 	color: #ff0000;
@@ -46,7 +48,7 @@ grid-column: 5;
 }
 
 #passages {
-	width: 40%;
+	width: 50vw;
 	flex-flow: row nowrap;
 	display: grid;
 	padding: 2%;
@@ -62,77 +64,7 @@ grid-column: 5;
 	}
 }
 /* StoryInterface styling end */
-/* Text styling start */
-@font-face {
-font-family: comicsans;
-	src: url('fonts/comic.ttf') format:('truetype'),
-	src: url('fonts/comic.woff') format:('woff'),
-	src: url('fonts/comic.woff2') format:('woff2');
-}
-.comicsans {
-font-family: comicsans;
-}
-@font-face {
-font-family: Arial;
-	src: url('fonts/arial-webfont.woff2') format:('woff2'),
-	url('fonts/arial-webfont.woff') format:('woff'),
-	url('fonts/arial.ttf') format:('truetype');
-}
-.arial {
-	font-family: Arial;
-}
-@font-face {
-	font-family: 'dtm-mono';
-    src: url('fonts/dtm-mono-webfont.woff2') format:('woff2'),
-    url('fonts/dtm-mono-webfont.woff') format:('woff'),
-	url('fonts/DTM-mono.otf') format:('opentype');
-}
-.dtm-mono {
-	font-family: 'dtm-mono';
-}
 
-@font-face {
-font-family: 'dtm-sans';
-	src: url('fonts/DTM-sans.otf') format:('opentype'),
-	url('fonts/dtm-sans-webfont.woff2') format:('woff2'),
-	url('fonts/dtm-sans-webfont.woff') format:('woff');
-}
-.dtm-sans {
-	font-family: 'dtm-sans';
-}
-/* Define fonts. */
-@font-face {
-    font-family: 'New Aster';
-    src: url('fonts/new-aster.otf') format('opentype'),
-        url('fonts/new-aster-webfont.woff2') format('woff2'),
-        url('fonts/new-aster-webfont.woff') format('woff'),
-        url('fonts/new-aster.ttf') format('truetype');
-}
-@font-face {
-    font-family: 'Wingdings-Pixelated';
-    src: url('fonts/wingdings-pixelated.ttf') format('truetype'),
-        url('fonts/wingdings-pixelated-webfont.woff2') format('woff2'),
-        url('fonts/wingdings-pixelated-webfont.woff') format('woff'),
-        url('fonts/wingdings-pixelated-webfont.svg') format('svg'),
-        url('fonts/wingding.ttf') format('truetype');
-}
-@font-face {
-    font-family: 'Papyrus', Papyrus;
-    src: url('fonts/papyrus-webfont.ttf') format('truetype'),
-        url('fonts/papyrus-webfont.woff2') format('woff2'),
-        url('fonts/papyrus-webfont.woff') format('woff'),
-        url('fonts/papyrus-webfont.svg') format('svg');
-}
-/* Use our defined fonts. */
-.aster {
-    font-family: 'New Aster';
-}
-.wingdings {
-    font-family: 'Wingdings-Pixelated';
-}
-.papyrus {
-font-family: 'Papyrus', Papyrus;
-}
 .pcdarklink a {
 	color: grey;
 	font-weight: 50;
