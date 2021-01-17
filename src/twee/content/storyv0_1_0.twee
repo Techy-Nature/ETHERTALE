@@ -100,31 +100,29 @@ I enter the cargo hold<<if lastVisited("Explore Cargo") lte 2>> again<</if>>. I 
 <<if visited() is 1>>I creep into the engine room quietly.<<elseif visited() gt 1>>I find myself in the engine room again.<</if>> There isn't much to see here, other than lots of different sized vents and the boiler/heating and cooling system, the power source of the gravitational arrays, as well as the two giant, metal drums that house the rocket systems. I stay clear of those, as they are known to get very hot, at least when in use, which <<if $rocketsactive is true>>they are.<<elseif $rocketsactive is false>>they aren't.<<else>> <span id="glitch" data-text="Errors happened, please don't glitch the game.">Errors happened, please don't glitch the game.</span><</if>>
 
 *  <<if $linkclicked is undefined>><span class="linkcheck link1">[[Try to find a big enough vent to sleep in|Explore Engine Room]]</span><<elseif $linkclicked is true or hasVisited("Explore Engine Room") is true>>@@.link1;[[Decide to wait safely in the big vent that I found.|Waiting or Sleeping Vent 3]]@@<</if>>
-* @@.link2;[[Go back to the hallway and explore some more of the ship.|Starship hallway]]@@
-* <<if $linkclicked2 is undefined>><span class="linkcheck2"><span class="pcdarklink link3">[[Get Frisk to inspect the gravitational arrays|Player inspects Grav-Arrays]]</span></span><<elseif $linkclicked2 is true and hasVisited("Questions about Grav-array and ship") is true>><span class="pcdarklink link3">[[Ask more questions about the Gravitational Arrays|Questions about Grav-array and ship]]</span><</if>>
+* @@.link2;[[Go back to the hallway and explore some more of the ship.|Starship hallway]]@@<<if $linkclicked2 is undefined>>
+* <span class="linkcheck2"><span class="pcdarklink link3">[[Get Frisk to inspect the gravitational arrays|Player inspects Grav-Arrays]]</span></span><<elseif $linkclicked2 is true and hasVisited("Questions about Grav-array and ship") is true>><span class="pcdarklink link3">[[Ask more questions about the Gravitational Arrays|Questions about Grav-array and ship]]</span><</if>>
 
 :: Explore Engine Room
 
-I look around the slightly cramped Engine room. With all the wires and miscellaneous electronics covering the floor and walls, it's a wonder I can find any vents at all. I open a few of them up, but eventually find a really well hidden, giant vent sneakily placed tightly next to the rocket drums. I try out the vent, and find that it's huge width lends itself to stretching myself out easily. I decide to go deeper before finding that it actually gets even wider the deeper you go in, before eventually tightening up again. I can easily make myself at home when I feel the need to, but right now, I @@.onlylink;[[crawl out of the vent.|Engine room]]@@
+I look around the slightly cramped engine room. With all the wires and miscellaneous electronics covering the floor and walls, it's a wonder I can find any vents at all. I open a few of them up, but eventually find a really well hidden, giant vent sneakily placed tightly next to the rocket drums. I try out the vent, and find that its huge width lends itself to stretching myself out easily. I decide to go deeper before finding that it actually gets even wider the deeper you go in, before eventually tightening up again. I can easily make myself at home when I feel the need to, but right now, I @@.onlylink;[[crawl out of the vent.|Engine room]]@@
 
 :: Player inspects Grav-Arrays
 
 I jump, confused and startled at the gentle prodding of a voice inside my subconscious. I whisper incredibly quietly into the engine room.
+
 <<nobr>><<if $PCOffline is false>> <<Frisk-confuzzled-o>><span class="dtm-mono">Who are you? And how are you in my head?</span><</Frisk-confuzzled-o>>
 <<elseif $PCoffline is true or $PCoffline is undefined>> <<Frisk-confuzzled>><span class="dtm-mono">Who are you? And how are you in my head?</span><</Frisk-confuzzled>>
 <</if>><</nobr>>
-
-
 /* $pgen: 0 = male, 1 = female, 2 = gender neutral, 3 = no gender */
-<span class="pcdark">You're</span> <<textbox "$PCname" "Your first name, ex:Bianca">><span class="pcdark">, you go by <span class="pcdarklink"><<cycle "$pgen">><<option "she/her" 1>><<option "he/him" 0>><<option "they/them" 2>><<option "it/its" 3>><</cycle>></span>, and then you say-</span>
+<span class="pcdark">You're</span> <<textbox "$PCname" "Your first name, ex:Bianca">><span class="pcdark"> and you go by <span class="pcdarklink"><<cycle "$pgen">><<option "she/her" 1>><<option "he/him" 0>><<option "they/them" 2>><<option "it/its" 3>><</cycle>></span></span>.
+
+<span class="pcdark"><i>Telling them about how you're the player in this game will likely not be understood by them at this point in time. You say...</i></span>
 
 * <span class="pcdarklink link1">[[Uh... I can explain?|Then Explain, Frisk demands]]</span>
-
-* <span class="pcdarklink link2">[[Basically I'm a helper for you. I consciously make decisions for you. Wait-|I can imagine how that'll go down, badly]]</span>
-
+* <span class="pcdarklink link2">[[Basically, I'm a helper for you. I consciously make decisions for you. Wait--|I can imagine how that'll go down, badly]]</span>
 * <span class="pcdarklink link3">[[I'm your unconscious mind, and I'm going to be helping you to make choices.|Frisk will say Oh, okay]]</span>
-
-* <span class="pcdarklink link4">[[I guess I'm on this ride with you. Do you mind accepting my assistance?|Frisk will say Oh, okay]]</span> <span class="pcdark"><b><i>Telling them about how you're the player in this game will likely not be understood by them at this point in time.</i></b></span>
+* <span class="pcdarklink link4">[[I guess I'm on this ride with you. Do you mind accepting my assistance?|Frisk will say Oh, okay]]</span>
 
 :: I can imagine how that'll go down, badly
 
@@ -132,48 +130,46 @@ I jump, confused and startled at the gentle prodding of a voice inside my subcon
 
 :: Then Explain, Frisk demands
 
-I forego speech in favor of thinking to you, since you're already in my head. <i><span class="dtm-mono">Then please do, $PCname.</span></i> <span class="pcdark">You say...</span>
+I forego speech in favor of thinking to you, since you're already in my head. <i><span class="dtm-mono">Then please do, $PCname.</span></i>
 
-<span class="pcdarklink link1">[[I guess I'm on this ride with you, helping you along the way.|Frisk will say Oh, okay]]</span>
+<span class="pcdark">You say...</span>
 
-<span class="pcdarklink link3">[[I'm your unconscious mind, and I'm going to be helping you to make choices.|Frisk will say Oh, okay]]</span>
+* <span class="pcdarklink link1">[[I guess I'm on this ride with you, helping you along the way.|Frisk will say Oh, okay]]</span>
+* <span class="pcdarklink link3">[[I'm your unconscious mind, and I'm going to be helping you to make choices.|Frisk will say Oh, okay]]</span>
 
 :: Frisk will say Oh, okay
 
 I narrow my eyes even more in caution, then think to you, <i><span class="dtm-mono">Well... I guess that's fine? As long as you suggest to me what you think I should do, we shouldn't have a problem, right?</span></i>
-<span class="pcdarklink link1">[[Agreed. Now do they mind looking at those Grav-arrays?|Frisk Inspects Grav-Arrays]]</span>
 
-<span class="pcdarklink link2">[[Disagree-|I can imagine how that'll go down, badly]]</span>
+* <span class="pcdarklink link1">[[Agreed. Now do they mind looking at those Grav-arrays?|Frisk Inspects Grav-Arrays]]</span>
+* <span class="pcdarklink link2">[[Disagree-|I can imagine how that'll go down, badly]]</span>
 
 :: Frisk Inspects Grav-Arrays [slowtime]
 
-I walk over to the Grav arrays and look at them, following your suggestion. There are flashing blue lights and wires that seem to run the length of the ship, and they converge here to the power source in the engine room. The power source is a bright, neon blue orb that sits on a pedestal near the wall next to the rockets<<if hasVisited("Explore Engine room") is true>>(on the opposite side of where I found the vent, of course)<</if>>, with the wires connected through three-pronged power strips on the pedestal that connect to the orb with smaller, more delicate blue wires. It seems like a pretty elaborate setup.
+I walk over to the Grav arrays and look at them, following your suggestion. There are flashing blue lights and wires that seem to run the length of the ship, and they converge here to the power source in the engine room. The power source is a bright, neon blue orb that sits on a pedestal near the wall next to the rockets<<if hasVisited("Explore Engine room") is true>> (on the opposite side of where I found the vent, of course)<</if>>, with the wires connected through three-pronged power strips on the pedestal that connect to the orb with smaller, more delicate blue wires. It seems like a pretty elaborate setup.
 
 <i><span class="dtm-mono">Do you have any questions about this, <<print $PCname>>?</span></i> I wonder to you without speaking.
 
-<span class="pcdarklink link1">[[Nope!|Engine room]]</span>
-
-<span class="pcdarklink link2">[[Yes, I do.|Questions about Grav-array and ship]]</span>
+* <span class="pcdarklink link1">[[Nope!|Engine room]]</span>
+* <span class="pcdarklink link2">[[Yes, I do.|Questions about Grav-array and ship]]</span>
 
 :: Questions about Grav-array and ship [slowtime]
 
 <span class="pcdark">You ask...</span>
+
 * <span class="pcdarklink link1">[[How do the grav-arrays work?|Gravity on ship Explain]]</span>
-
 * <span class="pcdarklink link2">[[How do they plan on getting off the ship without the crew seeing them?|The non-existent Jump-ship Plan]]</span>
-
 * <span class="pcdarklink link3">[[Who figured out long-distance space travel?|W.D. Gaster]]<span>
-
-<span class="pcdarklink link4">[[You're done, that's all you wanted to know.|Engine room]]</span>
+* <span class="pcdarklink link4">[[You're done, that's all you wanted to know.|Engine room]]</span>
 
 
 :: Vent 1
 
-I<<if lastVisited("Footsteps") lte 2>> scrambled <<elseif lastVisited("Starship hallway") is 1>> climbed <</if>>into the vent. <<if lastVisited("Starship hallway") lte 3 and visited() is 1>> It's too dark to see past the first few feet, so I probably wouldn't be able to use these vents to transport myself, but they are good for hiding in. I <span class="link1">[[exit the vent.|Starship hallway]]</span><<elseif lastVisited("Footsteps") lte 1>>I quiet my breathing as the footsteps pass, trying not to shuffle uncomfortably in the tiny vent. <<timed 5s>>Once the danger passes, I <span class="link1">[[exit the vent|Starship hallway]]</span>.<</timed>><<else>>I then <span class="link1">[[remove myself from the vent.|Starship hallway]]</span> There's not much here to look at, after all.<</if>>
+I <<if lastVisited("Footsteps") lte 2>>scrambled<<elseif lastVisited("Starship hallway") is 1>>climbed<<else>><span id="glitch" data-text="Errors happened, please don't glitch the game.">Errors happened, please don't glitch the game.</span><</if>> into the vent. <<if lastVisited("Starship hallway") lte 3 and visited() is 1>> It's too dark to see past the first few feet, so I probably wouldn't be able to use these vents to transport myself, but they are good for hiding in. I <span class="link1">[[exit the vent.|Starship hallway]]</span><<elseif lastVisited("Footsteps") lte 1>>I quiet my breathing as the footsteps pass, trying not to shuffle uncomfortably in the tiny vent. <<timed 5s>>Once the danger passes, I <span class="link1">[[exit the vent|Starship hallway]]</span>.<</timed>><<else>>I then <span class="link1">[[remove myself from the vent.|Starship hallway]]</span> There's not much here to look at, after all.<</if>>
 
 :: Footsteps
 
-There are footsteps coming down the hallway! <<if lastVisited("Starship hallway")is 1>><span class="link1">[[I should probably hide|Vent 1]]</span><<elseif lastVisited("Bedrooms hallway") is 1>><span class="link1">[[I should probably hide|Vent 2]]</span><</if>>!
+There are footsteps coming down the hallway! <<if lastVisited("Starship hallway")is 1>><span class="link1">[[I should probably hide|Vent 1]]</span><<elseif lastVisited("Bedrooms hallway") is 1>><span class="link1">[[I should probably hide|Vent 2]]</span><<else>> <span id="glitch" data-text="Errors happened, please don't glitch the game.">Errors happened, please don't glitch the game.</span><</if>>!
 
 <<nobr>>
 <<timed 10s>> I should hurry! The footsteps are getting closer!
@@ -184,7 +180,8 @@ There are footsteps coming down the hallway! <<if lastVisited("Starship hallway"
 I end up cowering as a figure with a giant shadow tramps lazily down the hallway. But what ends up showing up is a short, blue-clad skeleton monster. Since I don't have a weapon equipped, I can't fight. I don't underestimate this one -- I run.
 
 But before I can get very far, my SOUL turns blue, and then I am lifted up --
-"Whuh-!"
+
+"Whuh--!"
 <<if $PCOffline is false>>
   <img src="https://64.media.tumblr.com/d49bfa4ea3e82e078cffe5ff9a84f1b4/38e5ea264066037a-6f/s1280x1920/62509708cf4939a306817d1ef8c54aab59e03ae4.png" alt="A shortstack skeleton shows himself, blue magic emenating from his eye." height="600">
 <<elseif $PCoffline is true or $PCoffline is undefined>>
@@ -200,17 +197,13 @@ I am confused as to this turn of events, but to say I am surprised to get caught
 <span class="onlylink">[[I watch the skeleton walk as I'm carried by my SOUL to the front of the ship, likely where the captain will be.|Hallway conversation]]</span>
 
 :: Hallway conversation
-
-<<if $PCOffline is false>>
-<span class="comicsans"><<sans-bluemagic-o>>welp, might as well tell you the name of your judge, huh, kid? i'm sans. sans the skeleton.<</sans-bluemagic-o>></span> 
+<<if $PCOffline is false>><span class="comicsans"><<sans-bluemagic-o>>welp, might as well tell you the name of your judge, huh, kid? i'm sans. sans the skeleton.<</sans-bluemagic-o>></span> 
 <<elseif $PCoffline is true or $PCoffline is undefined>>
 <span class="comicsans"><<sans-bluemagic>>welp, might as well tell you the name of your judge, huh, kid? i'm sans. sans the skeleton.<</sans-bluemagic>></span> 
 <</if>>The monster pauses, thoughtful.
 <<if $PCOffline is false>>
 <span class="comicsans"><<sans-bluemagic-o>>so uh... kid, I think you know the gig's up, right? you can't try to hide again after we know you're here, you'd just get caught again.<</sans-bluemagic-o>></span>
-<<elseif $PCoffline is true or $PCoffline is undefined>><span class="comicsans"><<sans-bluemagic>>so uh... kid, I think you know the gig's up, right? you can't try to hide again after we know you're here, you'd just get caught again.<</sans-bluemagic>></span>
-<</if>>
-
+<<elseif $PCoffline is true or $PCoffline is undefined>><span class="comicsans"><<sans-bluemagic>>so uh... kid, I think you know the gig's up, right? you can't try to hide again after we know you're here, you'd just get caught again.<</sans-bluemagic>></span><</if>>
 
 Do I...
 
@@ -235,9 +228,9 @@ Or, try to be friendly with my introduction in the hopes of being released, but 
 
 :: Conversation part 2
 
-Sans waits for an answer, but when he realizes I'm glaring defiantly at him he looks ahead and sighs ruefully. The rest of the walk to what I'm assuming is the Captain's Cabin is completely in silence.
+Sans waits for an answer, but when he realizes I'm glaring defiantly at him he looks ahead and sighs ruefully. The rest of the walk to what I'm assuming is the captain's cabin is completely in silence.
 
-At the end of the hallway there is a button-phone system for communicating with the captain and then with the rest of the crew. Sans lifts and then drops me into a specimen crate with glass sides and grated top with an outside fingerprint lock, and makes a call to his quote unquote, "<span class="comicsans">bro</span>" to make an announcement for the crew to meet in the Dining Lounge next to the Kitchen.
+At the end of the hallway there is a button-phone system for communicating with the captain and then with the rest of the crew. Sans lifts and then drops me into a specimen crate with glass sides and grated top with an outside fingerprint lock, and makes a call to his quote-unquote, "<span class="comicsans">bro</span>" to make an announcement for the crew to meet in the dining lounge next to the kitchen.
 
 Then he walks away with his phalanges deep in his pockets and his posture hunched over. He looks regretful, and I'm not surprised. No one likes jailing another sentient being.
 
@@ -290,12 +283,10 @@ I follow Sans towards another hallway, and we make our way to the <span class="o
 
 :: Nice Introduction but escapist Frisk
 
-
 Sans blinks in surprise at my apparent kindness and friendliness, but realises I'm not offering to skip out on trying to escape and shakes his head ruefully.
 <<if $PCOffline is false>><span class="comicsans"><<sans-thoughtful-o>>gee kid, i wish we could've met on better terms.<</sans-thoughtful-o>></span>
 <<elseif $PCoffline is true or $PCoffline is undefined>><span class="comicsans"><<sans-thoughtful>>gee kid, i wish we could've met on better terms.<</sans-thoughtful>></span>
 <</if>>
-
 
 <<if $PCOffline is false>><span class="comicsans"><<sans-serious-o>>unfortunately you seem dead set on escaping, and that's not going to get you very far with me or anyone else on this crew.<</sans-serious-o>></span>
 <<elseif $PCoffline is true or $PCoffline is undefined>><span class="comicsans"><<sans-serious>>unfortunately you seem dead set on escaping, and that's not going to get you very far with me or anyone else on this crew.<</sans-serious>></span>
