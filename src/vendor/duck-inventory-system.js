@@ -128,7 +128,7 @@ duck.itemdict = [
     "description": "A ripped piece of cloth, can be used for crafting. Whatever it once was a part of, you can't tell."
   }, 
   {
-   //id#15
+   // id#15
     "name": "Metal",
     "description": "A twisted piece of metal, can be used for crafting. Whatever it once was, it's unrecognizable."
   },
