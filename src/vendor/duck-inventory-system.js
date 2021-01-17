@@ -81,7 +81,7 @@ duck.itemdict = [
     "description": "a light blue and white bone patterned shirt with a name tag attached to the left lapel. The nametag reads \"Frisk - They/Them\"."
   },
   {
-	 //id#8
+    // id#8
     "name": "Ripped Blue Jeans",
     "type": "def",
     "points": 4,
