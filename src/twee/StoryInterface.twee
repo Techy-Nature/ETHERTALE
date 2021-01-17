@@ -1,0 +1,65 @@
+:: StoryTitle
+
+ETHERTALE
+
+:: Story-Display-Title [stoptime]
+
+<<if $PCOffline is false>>
+  <img src="https://64.media.tumblr.com/faa8605ab579b6873fda05032dc1cef4/a63caba7052a3a50-7a/s400x600/49e5982462a061a7f94b9a8a062538b9b9a65c8e.png" alt="ETHERTALE logo" height="200" width="290">
+<<elseif $PCoffline is true or $PCoffline is undefined>>
+  <img src="imgs/ETHERTALE.png" alt="ETHERTALE logo" height="200" width="290">
+<</if>>
+
+:: StorySubtitle [stoptime]
+Prologue: Starship Stowaway
+v.0.03.0beta
+
+Today is <<printfulldate>>.
+It is <<printtime12hr>>
+
+<span id="desclink">[[Character Description]]</span>
+
+@@.pcdarklink;[[Player Settings]]@@
+
+<span class="pcdarklink"><span id="ctrlslink">[[Controls]]</span></span>
+
+
+:: StoryInterface
+
+<div id="interface">
+<div id="sidebar">
+<div id="story-title" data-passage="Story-Display-Title"></div>
+	<div id="menu-story" data-passage="StoryMenu"></div>
+	<div id="story-subtitle" data-passage="StorySubtitle"></div></div><div id="passages"></div>
+	</div>
+
+:: StoryMenu [stoptime]
+
+<<link "RESET">><<set $resetcounter++>>
+<<run memorize('resets', $resetcounter)>><<run UI.restart()>><</link>>
+
+<<link "SAVE/LOAD">><<run UI.saves()>><</link>>
+
+
+:: Player Settings [stoptime menuitem]
+
+<span class="pcdarklink link1"><<if $PCOffline is false>>
+  <<link "Would you like to play offline?" 'Player Settings'>><<set $PCOffline to true>><<refresh>><</link>>
+<<else>>
+  <<link "Would you like to play online?" 'Player Settings'>><<set $PCOffline to false>><<refresh>><</link>>
+<</if>>
+<strong>WARNING: <i>If you're on Android, or any phone-like device, Online is the only way to play with pictures. Sorry about that.</i></strong>
+<<nobr>><<if hasVisited("Player inspects Grav-Arrays") is true>>
+/* $pgen: 0 = male, 1 = female, 2 = gender neutral, 3 = no gender */
+<<listbox "$pgen">>
+	<<option "Female, she/her" 1>>
+	<<option "Male, he/him" 0>>
+	<<option "Non-Gendered, it/its" 3>>
+	<<option "Androgynous, they/them" 2>>
+<</listbox>><</if>><</nobr>>
+
+<span class="pcdarklink link2"><<link "Return." $return>><<refresh>><</link>></span>
+
+:: PassageHeader [nobr]
+
+<<if tags().includes('stoptime') is false>><<addmins 2>><<elseif tags().includes('slowtime') is true>><<addmins 1>><</if>>
