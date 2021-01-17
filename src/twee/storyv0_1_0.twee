@@ -47,10 +47,6 @@ Template.add("Pal", function () { return ["Dude", "Chick", "Pal", "Pal"][State.v
 Template.add("Pals", function () { return ["Dudes", "Chicks", "Pals", "Pals"][State.variables.pgen]; });
 /* Pronoun Templates - End */
 
-:: PassageHeader [nobr]
-
-<<if tags().includes('stoptime') is false>><<addmins 2>><<elseif tags().includes('slowtime') is true>><<addmins 1>><</if>>
-
 :: Start-Intro
 
 <<fadein 500ms 300ms>>There was once a war between Humans and Monsters,<</fadein>>
