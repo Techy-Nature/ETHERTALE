@@ -73,8 +73,8 @@ I flinch.
 <<elseif $PCoffline is true or $PCoffline is undefined>><<Frisk-worried>><span class="dtm-mono">Umm-- uh- I-I don't know! I just-</span><</Frisk-worried>>
 <</if>>
 
-<<if $PCOffline is false>><<Frisk-angry-o>><span class="dtm-mono">I needed a ride, and it was right here, so I went ahead hitched one! I needed to get away!</span><</Frisk-angry-o>>
-<<elseif $PCoffline is true or $PCoffline is undefined>><<Frisk-angry>><span class="dtm-mono">I needed a ride, and it was right here, so I went ahead hitched one! I needed to get away!</span><</Frisk-angry>>
+<<if $PCOffline is false>><<Frisk-angry-o>><span class="dtm-mono">I needed a ride, and it was right here, so I went ahead hitched one! I needed to-</span><</Frisk-angry-o>>
+<<elseif $PCoffline is true or $PCoffline is undefined>><<Frisk-angry>><span class="dtm-mono">I needed a ride, and it was right here, so I went ahead hitched one! I needed to-</span><</Frisk-angry>>
 <</if>>
 
 Suddenly, alarms start blaring!
@@ -141,9 +141,8 @@ How should I react, do you think?
 <<if $PCOffline is false>><<Frisk-embarrased-o>><span class="link1 dtm-mono">[[Sure.|Following]]</span><</Frisk-embarrased-o>>
 <<elseif $PCoffline is true or $PCoffline is undefined>><<Frisk-embarrased>><span class="link1 dtm-mono">[[Sure.|Following]]</span><</Frisk-embarrased>><</if>>
 Then I nod meekly.
-<<if $PCOffline is false>>
-<<elseif $PCoffline is true or $PCoffline is undefined>><<Frisk-determined-o>><span class="link2 dtm-mono">[[Yeah, whatever you say Doc.|Sassy Follow]]</span><</Frisk-determined-o>><</if>> 
-<<Frisk-determined>><span class="link2 dtm-mono">[[Yeah, whatever you say Doc.|Sassy Follow]]</span><</Frisk-determined>><</if>> 
+<<if $PCOffline is false>><<Frisk-determined-o>><span class="link2 dtm-mono">[[Yeah, whatever you say Doc.|Sassy Follow]]</span><</Frisk-determined-o>>
+<<elseif $PCoffline is true or $PCoffline is undefined>><<Frisk-determined>><span class="link2 dtm-mono">[[Yeah, whatever you say Doc.|Sassy Follow]]</span><</Frisk-determined>><</if>> 
 Then shake my head defiantly.
 <<if $PCOffline is false>><<Frisk-bored-o>><span class="link3 dtm-mono">[[Sure, fine.|I've got a plan, but Follow]]</span><</Frisk-bored-o>>
 <<elseif $PCoffline is true or $PCoffline is undefined>><<Frisk-bored>><span class="link3 dtm-mono">[[Sure, fine.|I've got a plan, but Follow]]</span><</Frisk-bored>>
