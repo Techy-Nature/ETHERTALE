@@ -152,7 +152,8 @@ window.Inventory = class Inventory extends Array {
 	toJSON() {
 		// Return a code string that will create a new instance
 		// containing our current data.
-		let data = this;
+		const data = {};
+		Object.keys(this).forEach(pn => data[pn] = clone(this[pn]));
 		return JSON.reviveWrapper('new Inventory($ReviveData$)', data);
 	}
 		
