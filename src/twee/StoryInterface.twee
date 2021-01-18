@@ -62,4 +62,4 @@ It is <<printtime12hr>>
 
 :: PassageHeader [nobr]
 
-<<if tags().includes('stoptime') is false>><<addmins 2>><<elseif tags().includes('slowtime') is true>><<addmins 1>><</if>>
+<<if tags().includes('stoptime') is false>><<addmins 2>><<elseif tags().includes('slowtime') is true>><<addmins 1>><<elseif previous() is "Inventory" or previous() is "Character Description" or previous() is "Controls">><</if>>

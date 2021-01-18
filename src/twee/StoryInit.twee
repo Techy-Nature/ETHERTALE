@@ -158,7 +158,7 @@ again without the quotes.
 	<<trigger 'click' '.desclink a'>>
 	<<which 186>>
 	<<trigger 'click' '.invlink a'>>
-	<<which 17>>
+	<<which 67>>
 	<<trigger 'click' '.ctrlslink a'>>
 	<<which 16>>
 	<<trigger 'click' '#restartlink a'>>

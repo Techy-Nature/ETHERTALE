@@ -26,7 +26,7 @@ Button = ThisLink (extra info)
 AND/OR
 Button&OtherButton/SameasOtherButton = ThisMenu
 ---
-Ctrl = This Controls Menu
+c = This Controls Menu
 ; = Inventory Menu
 F4 = Character Description
 1 = clicking on the first link (when there's multiple links)
