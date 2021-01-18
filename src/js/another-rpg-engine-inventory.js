@@ -19,7 +19,6 @@ equippable -> object, must have a "slot" attribute; can also add data for restri
 			console.log(`WARNING: item ${name} does not have an onRemove`);
 		}
 		this.stock = stock;
-		this.maxstock = stock;
 
 		if (this.equippable !== undefined) {
 			this.modID = {};
@@ -132,55 +131,56 @@ equippable -> object, must have a "slot" attribute; can also add data for restri
 
 setup.STACK_SIZE = 5;
 
-window.Inventory = class Inventory extends Array {
-	constructor(ItemArray){
-		super(0);
+window.Inventory = class Inventory {
+	constructor(ItemArray,limit){
+		console.assert(Number.isInteger(limit) && limit > 0,`ERROR in Inventory constructor: no limit provided`);
+		console.log("Inventory constructor running");
+		this.sizeLimit = limit;
+		this.inventory = [];
 		for (var item of ItemArray) {
 			if (typeof(item) == "string") {
-				this.push(new Item(item));
+				this.inventory.push(new Item(item));
 			} else if (item instanceof Item) {
-				this.push(item);
+				this.inventory.push(item);
 			}
 		}
 	}
 
-	clone () {
-		// Return a new instance containing our current data.
-		let data = new Inventory([]);
-		Object.keys(this).forEach(pn => data[pn] = clone(this[pn]));
-		return data;
+	clone() {
+    return new Inventory(clone(this.inventory), this.sizeLimit);
 	}
 
 	toJSON() {
-		// Return a code string that will create a new instance
-		// containing our current data.
-		let data = new Inventory([]);
-		Object.keys(this).forEach(pn => data[pn] = clone(this[pn]));
-		return JSON.reviveWrapper('$ReviveData$', data);
+    // Return a code string that will create a new instance
+    // containing our current data.
+    return JSON.reviveWrapper(
+        'new Inventory($ReviveData$, ' + this.sizeLimit + ')',
+        clone(this.inventory)
+    );
 	}
-		
+
 	findItem (name) {
 		// This will only find THE FIRST INSTANCE of an item with the given name.
-		return this.find(function (x) { return x && x.name === name; });
+		return this.inventory.find(function (x) { return x && x.name === name; });
 	}
 
 	addItem (name,num) {
 		var amt = num;
 		console.assert(typeof(name) == "string",`ERROR in addItem: non-string name passed`);
-		
-		if (this.length >= this.sizeLimit) {
+
+		if (!Number.isInteger(amt)){
+			amt = 1;
+		}
+
+		if (this.inventory.length >= this.sizeLimit) {
 			// if inventory is full, don't add item
 			// decide what message you want to return here
 			// for now, return remaining amount of items (so you know how many were left over)
 			return amt;
 		}
-		
-		if (amt === undefined || !Number.isInteger(amt)){
-			amt = 1;
-		}
-		
+
 		var existingItem = this.findItem(name);
-		
+
 		if (existingItem instanceof Item && existingItem.stock < setup.STACK_SIZE) {
 			//	If a stack of the item-to-be-added already exists AND the stack is not full,
 			//	we want to modify the existing stack
@@ -202,12 +202,12 @@ window.Inventory = class Inventory extends Array {
 				//	If the number of new items will exceed the stack size,
 				//	add a new stack at the stack size, reduce amt by the stack size,
 				//	and call this function again (creating a new stack)
-				this.push(new Item(name,setup.STACK_SIZE));
+				this.inventory.push(new Item(name,setup.STACK_SIZE));
 				amt -= setup.STACK_SIZE;
 				this.addItem(name,amt);	//	RECURSIVE CALL, USE CAUTION
 				return true;
 			} else {
-				this.push(new Item(name,amt));
+				this.inventory.push(new Item(name,amt));
 				return true;
 			}
 		} else {
@@ -226,7 +226,7 @@ window.Inventory = class Inventory extends Array {
 			}
 			existingItem.stock -= amt;
 			if (existingItem.stock <= 0){
-				this.delete(existingItem);
+				this.inventory.delete(existingItem);
 			}
 			return;
 		} else {
