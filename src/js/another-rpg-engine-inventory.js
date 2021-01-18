@@ -171,7 +171,7 @@ window.Inventory = class Inventory extends Array {
 			return amt;
 		}
 		
-		if (amt === undefined){
+		if (amt === undefined || !Number.isInteger(amt)){
 			amt = 1;
 		}
 		
