@@ -1,21 +1,3 @@
-/*
-Customizable equipment:
-	If like FFX, equipment has N number of slots that can be filled by traits. Each trait is a distinct item with a specific name and property, e.g. Strength +5% always boosts physical attacks by 5%.
-
-	This could be handled with a trait database, with every trait having a unique description and onEquip functions.
-
-	So for instance...
-
-	"Red Ward": {
-		"augment": 0.5,
-		"desc": "Red resistance +"+this.augment*100+"%",	\\ no object so this won't work
-		"onApply": function (puppet) {
-			this.modID.blue = puppet.elements.addMod("red","Red Ward",this.augment,true,"flat");
-		}
-	}
-*/
-
-
 window.Item = class Item {
 /*
 Due to the way the Inventory class works (see below), subclass inheritance is not recommended for specialized items. Property flags are used instead.
