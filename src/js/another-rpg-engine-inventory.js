@@ -137,7 +137,7 @@ window.Inventory = class Inventory extends Array {
 		super(0);
 		for (var item of ItemArray) {
 			if (typeof(item) == "string") {
-				this.push(new Item(item);
+				this.push(new Item(item));
 			} else if (item instanceof Item) {
 				this.push(item);
 			}
