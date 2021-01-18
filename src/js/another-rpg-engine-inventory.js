@@ -158,6 +158,7 @@ window.Inventory = class Inventory extends Array {
 	}
 		
 	findItem (name) {
+		// This will only find THE FIRST INSTANCE of an item with the given name.
 		return this.find(function (x) { return x && x.name === name; });
 	}
 
