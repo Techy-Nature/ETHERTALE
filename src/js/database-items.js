@@ -2,168 +2,101 @@ setup.itemData = {
 
 	// CONSUMABLES
 
-	"Antidote": {
-		"usable": ["inbattle"],
-		"value": 2,
-		"info": "Cures Poisoned.",
-		"desc": "Isn't it convenient that everyone in the arena uses the exact same poison?"
+	"Apple": {
+		// id#0
+		"type": "hel",
+		"points": 15,
+		"desc": "Just a normal human apple. Monsters don't exactly need human food, but it definitely helps their stamina and physical constitution."
 	},
-
-	"Fire Extinguisher": {
-		"usable": ["inbattle"],
-		"value": 2,
-		"info": "Cures Burning.",
-		"desc": "...This is a bucket of water. MegaCorp are cheapskates."
+	"High Tech Knife": {
+		// id#1
+		"name": "High Tech Knife",
+		"type": "atk",
+		"points": 6,
+		"desc": "A multi-purpose knife, with a few different sized screwdrivers, a bottle-opener and tiny pair of scissors, as well as a ruler and a back and forward button that cycles the tools on the side."
 	},
-
-	"Canned Air": {
-		"usable": ["inbattle"],
-		"value": 2,
-		"info": "Cures Winded and restores 1 Energy.",
-		"desc": "Regular inhalers are too pedestrian for MegaCorp, apparently. You're not entirely sure what's in this, but it gives more of a kick than regular oxygen."
+	"Long Sharpened Knife": {
+		// id#2
+		"type": "atk",
+		"points": 10,
+		"desc": "A long, thick knife with no extra tools. The metal from the extra tools has been put to good use extending the knife, making a better handle and sharpening the blade."
 	},
-
-	"Healing Crystal": {
-		"usable": ["inbattle"],
-		"value": 2,
-		"info": "Cures Dizzy.",
-		"desc": "A magic crystal that supposedly absorbs feelings of confusion and disorientation from the mind. Amazingly, it actually works."
-	},
-
-	"Nanites": {
-		"usable": ["inbattle"],
-		"value": 2,
-		"info": "Cures Injury.",
-		"desc": "MegaCorp®’s patented nanobot surgery machines can fix any injury in a snap! They can fix so many things. They have so many wonderful ideas. Let them in. Let them fix you."
-	},
-
-	"Painkiller": {
-		"usable": ["inbattle"],
-		"value": 2,
-		"info": "Cures Pain.",
-		"desc": "Pain is just your body holding you back. Shut it up with MegaCorp® brand extra-strength painkillers. What does that old meat sack know anyway?"
-	},
-
-	"Asprin": {
-		"usable": ["inbattle"],
-		"value": 2,
-		"info": "Cures Headache.",
-		"desc": "Is it normal for asprin to cure a headache that fast? you think. Then you laugh. The headache is making you think such funny thoughts. The headache hurts so much. You would do anything to make it go away. Anything."
-	},
-
-	"Panacea": {
-		"usable": ["inbattle"],
-		"value": 10,
-		"info": "Cures all status ailments.",
-		"desc": "The mythical medicine has jumped out of the history books and onto your shelves! Don't ask how it's made. The answer would only upset you. But you'll take it anyway, won't you?"
-	},
-
-	"Bottled Chi": {
-		"usable": ["inbattle"],
-		"value": 2,
-		"info": "Bestows Chi Shield.",
-		"desc": "No need to spend a lifetime meditating on mountains – now you can buy enlightenment right off the shelves! Comes in lemon, berry, and ennui flavors."
-	},
-
-	"Stimulant": {
-		"usable": ["inbattle"],
-		"value": 5,
-		"info": "Restores 5 Energy.",
-		"desc": `Just "Stimulant". What kind? No need to trouble yourself. It keeps your puppets going, and that's all that matters, right?`
-	},
-
-	"Adrenaline": {
-		"usable": ["inbattle"],
-		"value": 3,
-		"info": "Bestows an ATK Boost.",
-		"desc": "A hormone that releases the body's stored sugars into the bloodstream, providing a boost in energy. At least, that's what normal adrenaline is. You can keep injecting MegaCorp's version all day without crashing. It could be something as innocuous as including extra sugars to replace the ones lost in the adrenaline rush. It could be."
-	},
-
-	"Stoneskin": {
-		"usable": ["inbattle"],
-		"value": 3,
-		"info": "Bestows a DEF Boost.",
-		"desc": "Lather yourself up with Stoneskin formula and watch the slings and arrows of misfortune bounce off your natural armor! Don't worry, there are no lasting side-effects anymore. Many, many test subjects valiantly donated their bodies to science to ensure your safety!"
-	},
-
-	"Nootropic": {
-		"usable": ["inbattle"],
-		"value": 3,
-		"info": "Bestows a SPC Boost.",
-		"desc": "Performance-enhancing drugs: not just for athletes! Put your mind into overdrive with MegaCorp®'s new brain-boosting formula."
-	},
-
-	"Throwing Knife": {
-		"usable": ["inbattle"],
-		"value": 3,
-		"info": "Inflicts high damage to one enemy.",
-		"desc": "Very different from an ordinary knife! The weight has to be balanced just so, and the cutting edge is dull -- more of a dart than a knife. But it'll fly straight and true."
-	},
-
-	"Powdered Glass": {
-		"usable": ["inbattle"],
-		"value": 4,
-		"info": "Damages and Stuns one enemy.",
-		"desc": "By crushing glass in just the right way, you can grind it into shards so tiny they look like grains of sand. Throw it into someone's eyes, and, well, you get the picture. They won't, because it's kind of hard to see with sharp things in your eyes."
-	},
-
-	"Grenade": {
-		"usable": ["inbattle"],
-		"value": 6,
-		"info": "Inflicts high damage to one enemy, remaining enemies take half damage.",
-		"desc": "It's just a grenade. Just a totally normal explosive powered by totally mundane chemical reactions. You're sure. You're pretty sure. You stare at it nervously, daring it to show you what dark arts MegaCorp used to make it."
-	},
-
-	"Flamethrower": {
-		"usable": ["inbattle"],
-		"value": 6,
-		"info": "Damages and Burns all enemies. Damage is greater against fewer enemies.",
-		"desc": "Have a burning need to burn your enemies to ash? Try the MegaCorp® Flamethrower 4000! No longer has the potential for those embarrassing backfire explosions you got with the 3000."
-	},
-
-	"Gas Bomb": {
-		"usable": ["inbattle"],
-		"value": 6,
-		"info": "Damages and Poisons all enemies. Damage is greater against fewer enemies.",
-		"desc": `You don't know what kind of "gas" is supposed to be in this. Perhaps it's better that way. The casing feels oddly soft, like rotting flesh.`
-	},
-
-	"Calamity Bomb": {
-		"usable": ["inbattle"],
-		"value": 6,
-		"info": "Damages an enemy and inflicts Injury, Pain, and Headache.",
-		"desc": "A small, strange explosive wrapped in cursed scrolls."
-	},
-
-	"Flashbang": {
-		"usable": ["inbattle"],
-		"value": 5,
-		"info": "Stuns all enemies.",
-		"desc": "This bomb contains chemicals that shine brightly instead of exploding. The flash is so bright it'll shock your foes' retinas into blindness, for a time."
-	},
-
-	"Smelling Salts": {
-		"usable": ["inbattle"],
-		"info": "Cures Asleep.",
-		"desc": "Resist the urge to sniff these, the pungent mix of ammonia and other nasty stuff won't be fragrant at all. This is designed to shock a body back into consciousness no matter how battered its state. It's jokingly said to be strong enough to wake the dead, but this is (currently) beyond MegaCorp's capabilities. It will, however, wake puppets from even magical sleep, so strong is the body's desire to escape the smell."
-	},
-
-	"Anti-Mineral Water": {
-		"usable": ["inbattle"],
-		"info": "Cures Petrification.",
-		"desc": `Takes the "in" out of "inorganic"! Using it on materials not originally organic is not recommended.`
-	},
-
-	"Apple of Life": {
-		"usable": ["inmenu"],
-		"onUse": function (puppet) {
-			puppet.maxhp += 100;
-			inv().decItem(this.name);
-			return;
-		},
-		"info": "Permanently increases max HP by 100.",
-		"desc": `The apple Adam and Eve didn't eat. It's lost much of its power, this far from the Garden, but it'll still make a puppet a little more vivacious than usual.`
-	},
+  "Electric Shortsword": {
+    // id#3
+    "type": "atk",
+    "points": 20,
+    "stunchance": 20,
+    "desc": "A small shortsword with circuitry making the edges of the blade electrified."
+  },
+  "Small Pistol": {
+    // id#4
+    "type": "atk",
+    "points": 12,
+    "desc": "A small pistol with a suppressor made for beginners to gunslinging."
+  },
+  "Laser Pistol": {
+    // id#5
+    "type": "atk",
+    "points": 15,
+    "burnchance": 30,
+    "desc": "A custom-upgraded pistol, with an added battery pack and a trigger-activated laser for short bursts of white-hot plasma."
+  },
+  "Space Suit": {
+    // id#6
+    "type": "def",
+    "points": 8,
+    "desc": "A heavy-duty space suit, with the same white and blue bone pattern as the ship on the heavy fabric. It also has a large air dome with an air tank attached via a plastic tube."
+  },
+  "Starship Bonetrousle Uniform": {
+    // id#7
+    "type": "def",
+    "points": 6,
+    "desc": "a light blue and white bone patterned shirt with a name tag attached to the left lapel. The nametag reads \"Frisk - They/Them\"."
+  },
+  "Ripped Blue Jeans": {
+    // id#8
+    "type": "def",
+    "points": 4,
+    "desc": "A somewhat beat-up pair of dark blue jeans. It has rips in the knees after being on the receiving end of many adventures."
+  },
+    "Blue Jeans": {
+    // id#9
+    "type": "def",
+    "points": 6,
+    "desc": "A normal pair of dark blue jeans."
+  },
+  "Light Blue Slacks": {
+    // id#10
+    "type": "def",
+    "points": 5,
+    "desc": "A pair of high quality light blue pants that were given to Frisk with the Starship Bonetrousle Uniform. They have an elastic band to keep them in place, as well as deep pockets and beltloops."
+  },
+    "Dark Brown Sneakers": {
+    // id#11
+    "type": "def",
+    "points": 2,
+    "desc": "A normal pair of breathable, flexible sneakers."
+  },
+  "M&M Cake": {
+    // id#12
+    "type": "hel",
+    "points": 10,
+    "desc": "The two Ms in this cake stand for Miniature and Monster. These cakes come in chocolate, vanilla and marbled, but always include chocolate frosting on top."
+  },
+  "Beast Jerky": {
+    // id#13
+    "type": "hel",
+    "points": 5,
+    "desc": "A monster version of beef jerky. The meat seems tougher than normal beef."
+  },
+  "Cloth": {
+    // id#14
+    "desc": "A ripped piece of cloth, can be used for crafting. Whatever it once was a part of, you can't tell."
+  },
+  "Metal": {
+    // id#15
+    "desc": "A twisted piece of metal, can be used for crafting. Whatever it once was, it's unrecognizable."
+  },
 
 	// EQUIPMENT
 
