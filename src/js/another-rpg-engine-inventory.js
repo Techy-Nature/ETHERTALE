@@ -108,6 +108,14 @@ equippable -> object, must have a "slot" attribute; can also add data for restri
 
 		return (this.itemData.fakeName || false);
 	}
+	
+	get type() {
+		return (this.itemData.type);
+	}
+	
+	get points() {
+		return (this.itemData.points);
+	}
 
 	checkRestriction (puppet) {
 		//	DEPRECIATED as of v1.18. Use the Actor version instead.
