@@ -2,11 +2,11 @@
 <span id="content" class="menu"><<nobr>>
 <<set $inventory = $Frisk.inv>>
 <<set _filter = "all">>
-<div id="itemdisplay">
-<<include "inventory item display">>
-</div>
 <div id="itemlist">
 <<include "inventory item list">>
+</div>
+<div id="itemdisplay">
+<<include "inventory item display">>
 </div>
 <</nobr>>
 </span>
