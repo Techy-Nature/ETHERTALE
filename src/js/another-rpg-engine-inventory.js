@@ -130,58 +130,99 @@ equippable -> object, must have a "slot" attribute; can also add data for restri
 	}
 };
 
-window.Inventory = class Inventory extends Map {
+setup.STACK_SIZE = 5;
+
+window.Inventory = class Inventory extends Array {
 	constructor(ItemArray){
-		var m = [];
-		ItemArray.forEach(function(item){
-			m.push([item.id,item]);
-		});
-		super(m);
+		super(0);
+		for (var item of ItemArray) {
+			if (typeof(item) == "string") {
+				this.push(new Item(item);
+			} else if (item instanceof Item) {
+				this.push(item);
+			}
+		}
 	}
 
 	clone () {
 		// Return a new instance containing our current data.
-		return new Inventory(Array.from(this.values()));
+		return new Inventory(this);
 	}
 
 	toJSON() {
 		// Return a code string that will create a new instance
 		// containing our current data.
-		let data = Array.from(this.values());
+		let data = this;
 		return JSON.reviveWrapper('new Inventory($ReviveData$)', data);
 	}
+		
+	findItem (name) {
+		return this.find(function (x) { return x && x.name === name; });
+	}
 
-	addItem (name,amt) {
+	addItem (name,num) {
+		var amt = num;
+		console.assert(typeof(name) == "string",`ERROR in addItem: non-string name passed`);
+		
+		if (this.length >= this.sizeLimit) {
+			// if inventory is full, don't add item
+			// decide what message you want to return here
+			// for now, return remaining amount of items (so you know how many were left over)
+			return amt;
+		}
+		
 		if (amt === undefined){
 			amt = 1;
 		}
-		if (this.has(name)){
-			if (this.get(name).stock + amt > setup.ITEM_MAX) {
-				let s = 1;
-				while (((this.get(name).stock + 1) < setup.ITEM_MAX) && s < amt) {
-					this.get(name).stock += 1;
-					s++;
-				}
-				return false;
+		
+		var existingItem = this.findItem(name);
+		
+		if (existingItem instanceof Item && existingItem.stock < setup.STACK_SIZE) {
+			//	If a stack of the item-to-be-added already exists AND the stack is not full,
+			//	we want to modify the existing stack
+			if (existingItem.stock + amt > setup.STACK_SIZE) {
+				//	If the amount of items we're adding will exceed the stack size,
+				//	max out the current item's stock, reduce amt by the difference,
+				//	and call this function again (creating a new stack)
+				amt -= setup.STACK_SIZE - existingItem.stock;
+				existingItem.stock = setup.STACK_SIZE;
+				this.addItem(name,amt);	//	RECURSIVE CALL, USE CAUTION
+				return true;
 			} else {
-				this.get(name).stock += amt;
+				existingItem.stock += amt;
+				return true;
+			}
+		} else if (amt > 0) {
+			//	Otherwise if amt is greater than 0, create a new stack
+			if (amt > setup.STACK_SIZE) {
+				//	If the number of new items will exceed the stack size,
+				//	add a new stack at the stack size, reduce amt by the stack size,
+				//	and call this function again (creating a new stack)
+				this.push(new Item(name,setup.STACK_SIZE));
+				amt -= setup.STACK_SIZE;
+				this.addItem(name,amt);	//	RECURSIVE CALL, USE CAUTION
+				return true;
+			} else {
+				this.push(new Item(name,amt));
 				return true;
 			}
 		} else {
-			this.set(name,new Item(name,amt));
-			return true;
+			//	Either we've run out of amt during a recursive call, or something weird happened; in any case, end the function silently.
+			return amt;
 		}
 	}
 
 	decItem (name,amt) {
-		if (this.has(name)){
-			if (amt === undefined){
+		//	Decreases the stock of the first instance of named item by amt.
+		//	THIS WILL NOT ROLL OVER IF amt IS LARGER THAN STACK SIZE
+		var existingItem = this.findItem(name);
+		if (existingItem instanceof Item){
+			if (amt === undefined || !Number.isInteger(amt)) {
 				amt = 1;
 			}
-			var v = this.get(name);
-			v.stock -= amt;
-			if (v.stock <= 0){
-				//this.delete(name);
+			existingItem.stock -= amt;
+			if (existingItem.stock <= 0){
+				this.delete(existingItem);
 			}
 			return;
 		} else {
