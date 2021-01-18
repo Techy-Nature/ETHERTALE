@@ -146,15 +146,17 @@ window.Inventory = class Inventory extends Array {
 
 	clone () {
 		// Return a new instance containing our current data.
-		return new Inventory(this);
+		let data = new Inventory([]);
+		Object.keys(this).forEach(pn => data[pn] = clone(this[pn]));
+		return data;
 	}
 
 	toJSON() {
 		// Return a code string that will create a new instance
 		// containing our current data.
-		const data = {};
+		let data = new Inventory([]);
 		Object.keys(this).forEach(pn => data[pn] = clone(this[pn]));
-		return JSON.reviveWrapper('new Inventory($ReviveData$)', data);
+		return JSON.reviveWrapper('$ReviveData$', data);
 	}
 		
 	findItem (name) {
