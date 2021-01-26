@@ -9,6 +9,7 @@
   float:left;
   margin-right:1em;
 }
+
 .say p:first-of-type {
   display: none;
 }
