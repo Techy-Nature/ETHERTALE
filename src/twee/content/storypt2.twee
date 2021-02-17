@@ -107,7 +107,7 @@ I jump into one of the many incredibly convenient vents, obscuring myself in sha
 <</if>>
 @@.dtm-sans;Hello?@@
 
-<i><span class="dtm-mono">Shit. They're on to us. And if I try to go deeper into the vents, no telling where I'll end up-</span></i>
+<i><span class="dtm-mono">Snap. They're on to us. And if I try to go deeper into the vents, no telling where I'll end up-</span></i>
 
 <<if $PCOffline is false>><<G-annoyed-o>><span class="wingdings">COME OUT, YOUNG ONE. WE KNOW YOU ARE THERE.</span><</G-annoyed-o>>
 <<elseif $PCoffline is true or $PCoffline is undefined>><<G-annoyed>><span class="wingdings">COME OUT, YOUNG ONE. WE KNOW YOU ARE THERE.</span><</G-annoyed>>

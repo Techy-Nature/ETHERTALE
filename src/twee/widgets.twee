@@ -64,6 +64,22 @@
 	<</switch>>
 <</nobr>><</widget>>
 /* /SetGender>> widget - End */
+// Extra custom pronouns widget by Jaden
+
+<<widget "they">><<if $custompronouns is true>><<print $ne>><<else>>?they<</if>><</widget>>
+<<widget "them">><<if $custompronouns is true>><<print $nem>><<else>>?them<</if>><</widget>>
+<<widget "their"<<if $custompronouns is true>><<print $nir>><<else>>?their<</if>><</widget>>
+<<widget "theirs">><<if $custompronouns is true>><<print $nirs>><<else>>?theirs<</if>><</widget>>
+<<widget $themself>><<if $custompronouns is true>><<print $nemself>><<else>>?themself<</if>><</widget>>
+<<widget "They">><<if $custompronouns is true>><<print $ne.toupperFirst()>><<else>>?They<</if>><</widget>>
+<<widget "Them">><<if $custompronouns is true>><<print $nem.toupperFirst()>><<else>>?Them<</if>><</widget>>
+<<widget "Their">><<if $custompronouns is true>><<print $nir.toupperFirst()>><<else>>?Their<</if>><</widget>>
+<<widget "Themself">><<if $custompronouns is true>><<print $nemself.toupperFirst()>><<else>>?Themself<</if>><</widget>>
+<<widget "THEY">><<if $custompronouns is true>><<print $ne.toUpperCase()>><<else>>?they.toupperCase<</if>><</widget>>
+<<widget "THEM">><<if $custompronouns is true>><<print $nem.toUpperCase()>><<else>>?them.toUpperCase()<</if>><</widget>>
+<<widget "THEIR">><<if $custompronouns is true>><<print $nir.toUpperCase()>><<else>>?they.toUpperCase()<</if>><</widget>>
+<<widget "THEIRS">><<if $custompronouns is true>><<print $nirs.toUpperCase>><<else>>?theirs.toUpperCase()<</if>><</widget>>
+<<widget "THEMSELF">><<if $custompronouns is true>><<print $nemself.toUpperCase()>><<else>>?themself.toUpperCase()<</if>><</widget>>
 
 /* /checkboxPlus>> widget by HiEv
 	This widget allows you to display a custom checkbox which sets a

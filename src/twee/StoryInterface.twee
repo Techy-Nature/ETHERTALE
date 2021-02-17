@@ -16,6 +16,10 @@ v.0.03.0beta
 
 Today is <<printfulldate>>.
 It is <<printtime12hr>>
+<<cycle "$debug">>
+<<option "Debug mode is off." false selected>>
+<<option "Debug mode is on." true>>
+<</cycle>>
 
 <span id="desclink">[[Character Description]]</span>
 
@@ -33,7 +37,7 @@ It is <<printtime12hr>>
 	<div id="story-subtitle" data-passage="StorySubtitle"></div></div><div id="passages"></div>
 	</div>
 
-:: StoryMenu [stoptime]
+:: StoryMenu [stoptime menuitem]
 
 <<link "RESET">><<set $resetcounter++>>
 <<run memorize('resets', $resetcounter)>><<run UI.restart()>><</link>>
@@ -49,17 +53,72 @@ It is <<printtime12hr>>
   <<link "Would you like to play online?" 'Player Settings'>><<set $PCOffline to false>><<refresh>><</link>>
 <</if>>
 <strong>WARNING: <i>If you're on Android, or any phone-like device, Online is the only way to play with pictures. Sorry about that.</i></strong>
-<<nobr>><<if hasVisited("Player inspects Grav-Arrays") is true>>
+
+<<nobr>><<if hasVisited("Player inspects Grav-Arrays") is true>> [[Can I go by a different set of pronouns?|Pronouns]]
+
+<<if $debug is true>>[[Test pronouns|Test pronouns room - Jaden]]<</if>>
+<</if>><</nobr>>
+
+<span class="pcdarklink link2"><<link "Return." $return>><<refresh>><</link>></span>
+
+:: Test pronouns room - Jaden [stoptime menuitem]
+
+Here, you can test your pronouns. Hopefully, errors won't abound.
+
+<<THEY>>
+<<They>>
+<<they>>
+
+<<THEM>>
+<<Them>>
+<<them>>
+
+<<THEIR>>
+<<Their>>
+<<their>>
+
+<<THEIRS>>
+<<Theirs>>
+<<theirs>>
+
+<<THEM>>
+<<Them>>
+<<them>>
+
+<<THEMSELF>>
+<<Themself>>
+<<themself>>
+
+<<<link "Return." $return>>>
+
+:: Pronouns [menu-item stoptime]
+
+@@.dtm-mono;Sure, $PCname. What would you like to go by? You can change them or keep them the same, but why would you ask me if you wanted to keep them?@@
 /* $pgen: 0 = male, 1 = female, 2 = gender neutral, 3 = no gender */
 <<listbox "$pgen">>
 	<<option "Female, she/her" 1>>
 	<<option "Male, he/him" 0>>
-	<<option "Non-Gendered, it/its" 3>>
+	<<option "Agender, it/its" 3>>
 	<<option "Androgynous, they/them" 2>>
-<</listbox>><</if>><</nobr>>
+<</listbox>>
+@@.pcdarklink;[[I don't like any of these.|Custom Pronouns]]@@
+<span class="pcdarklink"><<link "Thanks, Frisk. I'll go by these pronouns." $return>></span>
 
-<span class="pcdarklink link2"><<link "Return." $return>><<refresh>><</link>></span>
+:: Custom Pronouns [menu-item stoptime]
 
+@@.dtm-mono;<i>Alright. Well, make sure you tell me which ones you would like then.</i>@@
+<<cycle "$custompronouns">>
+<<option "Use custom pronouns." true selected>>
+<<option "Don't use custom pronouns." false>>
+<</cycle>>
+@@pcdark;If you want to not use custom pronouns anymore, you can tell Frisk with the link above.@@
+<<textbox "ne" "$ne">>
+<<textbox "nem" "$nem">>
+<<textbox "nir" "$nir">>
+<<textbox "nirs" "$nirs">>
+<<textbox "nemself" "$nemself">>
+
+<<link "Okay, these I like, thanks Frisk!" $return>>
 :: PassageHeader [nobr]
 
-<<if !tags().includes('stoptime')>><<addmins 2>><<elseif tags().includes('slowtime') is true>><<addmins 1>><<elseif !(passage().tags.includes('menu-item') or previous().tags.includes('menu-item'))>><</if>>
+<<if tags().includes('stoptime') is false>><<addmins 2>><<elseif tags().includes('slowtime')>><<addmins 1>><<elseif tags(previous()).includes('menu-item')>><</if>>
