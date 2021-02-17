@@ -121,4 +121,12 @@ Here, you can test your pronouns. Hopefully, errors won't abound.
 <<link "Okay, these I like, thanks Frisk!" $return>>
 :: PassageHeader [nobr]
 
+<<<<<<< Updated upstream
 <<if tags().includes('stoptime') is false>><<addmins 2>><<elseif tags().includes('slowtime')>><<addmins 1>><<elseif tags(previous()).includes('menu-item')>><</if>>
+=======
+<<if !tags().includes('stoptime')>><<addmins 2>><<elseif tags().includes('slowtime') is true>><<addmins 1>><<elseif !(passage().tags.includes('menu-item') or previous().tags.includes('menu-item'))>><</if>>
+
+<<if passage().tags.includes("room")>>
+  <<set $currentRoom = passage()>>
+<</if>>
+>>>>>>> Stashed changes
