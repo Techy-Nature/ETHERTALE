@@ -4,26 +4,6 @@
 <<set $now = new Date(2031, 4, 1, 14, 30, 0)>>
 
 /* Dukemz: In case my inventory system for some reason doesn't work as it should, I can re-paste it here in a script tag. */
-//Jaden's Item Controller Object
-{
-  "Starship": {
-    "Cargo Hold": ["High Tech Army Knife"],
-    "Engine Room": ["Metal"],
-	"Kitchen": ["Apple", "M&M Cake", "Beast Jerky"],
-	"Dining Lounge":[],
-	"Gaster's Lab": [],
-	"Alphys' Office":[],
-	"Navigation Room":[]
-	"Alphys's Bedroom":[]
-	"Gaster and Papyrus's Bedroom":[]
-	"Sans's Room":["Cloth"]
-	"Undyne's Training Room/Bedroom":[]
-	"Asgore's Bedroom":[]
-	"Toriel's Bedroom":[]
-	"Latrine":["Cloth"]
-	"Linen Closet":["Cloth", "Cloth", "Cloth"]
-  }
-}
 /*
 Jaden here. In Opera the shortcut for the Developer Console is Ctrl-Shift-J, but you can add more shortcuts through the settings.
 All I did was go to the settings and search up "keyboard" without the quotes, and it should find it. If that doesn't work, try "shortcuts,"

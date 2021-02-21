@@ -81,9 +81,9 @@ Here, you can test your pronouns. Hopefully, errors won't abound.
 <<Theirs>>
 <<theirs>>
 
-<<THEM>>
-<<Them>>
-<<them>>
+<<THEYRE>>
+<<Theyre>>
+<<theyre>>
 
 <<THEMSELF>>
 <<Themself>>
@@ -111,7 +111,7 @@ Here, you can test your pronouns. Hopefully, errors won't abound.
 <<option "Use custom pronouns." true selected>>
 <<option "Don't use custom pronouns." false>>
 <</cycle>>
-@@pcdark;If you want to not use custom pronouns anymore, you can tell Frisk with the link above.@@
+@@.pcdark;If you want to not use custom pronouns anymore, you can tell Frisk with the link above.@@
 <<textbox "ne" "$ne">>
 <<textbox "nem" "$nem">>
 <<textbox "nir" "$nir">>
@@ -123,6 +123,6 @@ Here, you can test your pronouns. Hopefully, errors won't abound.
 
 <<if !tags().includes('stoptime')>><<addmins 2>><<elseif tags().includes('slowtime') is true>><<addmins 1>><<elseif !(passage()).tags.includes('menu-item') or previous().tags.includes('menu-item'))>><</if>>
 
-<<if passage().tags.includes("room")>>
-  <<set $currentRoom = passage()>>
+<<if tags().includes("room")>>
+  <<set $currentRoom to passage()>>
 <</if>>

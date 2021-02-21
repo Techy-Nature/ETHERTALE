@@ -83,7 +83,8 @@ body {
 
 @font-face {
 font-family: papyrus;
-src: local("Papyrus Regular"),
+src: local("Undertale Papyrus Regular"),
+local("Papyrus Regular"),
 url('fonts/papyrus-webfont2.woff2'),
 url('fonts/papyrus-webfont1.woff') format("woff"),
 url('fonts/papyrus-webfont.ttf') format("truetype"),
@@ -125,7 +126,7 @@ url('fonts/papyrus-webfont-svg.svg') format("svg");
 }
 
 .comicsans {
-	  font-family: 'Comic Sans MS', 'Comic Sans', comicsans;  
+	  font-family: comicsans;  
 }
 
 .papyrus {
