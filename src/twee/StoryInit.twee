@@ -20,7 +20,7 @@ again without the quotes.
 <<set $Frisk.EXP to 0>>
 
 // Jaden's Item Controller Object
-{
+<<set $C = {
   "Starship": {
     "Cargo Hold": ["High Tech Army Knife"],
     "Engine Room": ["Metal"],
@@ -28,17 +28,17 @@ again without the quotes.
 	"Dining Lounge":[],
 	"Gaster's Lab": [],
 	"Alphys' Office":[],
-	"Navigation Room":[]
-	"Alphys's Bedroom":[]
-	"Gaster and Papyrus's Bedroom":[]
-	"Sans's Room":["Cloth"]
-	"Undyne's Training Room/Bedroom":[]
-	"Asgore's Bedroom":[]
-	"Toriel's Bedroom":[]
-	"Latrine":["Cloth"]
+	"Navigation Room":[],
+	"Alphys's Bedroom":[],
+	"Gaster and Papyrus's Bedroom":[],
+	"Sans's Room":["Cloth"],
+	"Undyne's Training Room/Bedroom":[],
+	"Asgore's Bedroom":[],
+	"Toriel's Bedroom":[],
+	"Latrine":["Cloth"],
 	"Linen Closet":["Cloth", "Cloth", "Cloth"]
   }
-}
+}>>
 // Jaden's Item Controller end
 // Jaden's talk macro setup
 // Sans talk macros
