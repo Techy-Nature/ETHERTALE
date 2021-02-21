@@ -1,4 +1,4 @@
-:: Start-Intro
+:: Start-Intro [stoptime]
 
 <<fadein 500ms 300ms>>There was once a war between Humans and Monsters,<</fadein>>
 
@@ -18,7 +18,7 @@
 
 <<fadein 4600ms 300ms>>they finally all made peace,<</fadein>> <<fadein 5200ms 300ms>><span class="pcdarklink">[[rather than war.|Aftermath]]</span><</fadein>>
 
-:: Aftermath
+:: Aftermath [stoptime]
 
 <<fadein 500ms 300ms>>It took a long time for Monsters and Humans to get along,<</fadein>> 
 
@@ -63,7 +63,7 @@ It is giant... Much bigger than I imagined it to be before.
 From behind the corner of the buildings 20 feet away, I marvel at the beautiful, shiny chrome ship, painted blue with a white bone stripe across the middle. Word on the street is, the ship has a crew of only eight. How it can function on that tiny of a crew is beyond me.
 Crouching behind a bush, I wait stealthily until a stray box is left outside the humongous ship on it's lonesome, then I jump from behind the bush, arms pumping, dark brown sneakers slapping on the dirt and later the metal landing platform. Then I open the box up, and, jumping inside it, close it up again. Afterwards I quickly cover myself with a felt packing blanket, @@.onlylink;[[and wait.|Intro the ship]]@@
 
-:: Intro the ship
+:: Intro the ship [CargoHold]
 <<nobr>><<addmins 4>><</nobr>>
 I hear heavy footsteps, but somehow they seem more strong and confident than anything intimidating... "<span class="dtm-sans">A'right, one more box left!</span>" an ambiguously feminine voice rings out as the box I'm in lifts off the ground in one fluid motion. "<span class="dtm-mono">Huh, this box is heavier than I thought it'd be. Welp, in it goes!</span>" The <<hovertip "Monsters are a seperate race from humans, but lived and evolved on the same planet.">>monster<</hovertip>> starts moving with the box. I'm hesitating to breathe- I try to breathe as quietly as possible. <i><span class="dtm-mono">This has to work...</span></i> I think desperately. <i><span class="dtm-mono">I can't stay on this planet any longer. I need a new start!</span></i>
 
@@ -74,34 +74,46 @@ I hear her footsteps fading away, then a yell, "<span class="dtm-mono">Hey, Pap!
 I hear a loud, "<span class="papyrus">OKAY, UNDYNE!</span>" over the ship's speakers, the floor rumbling as the old rockets <span class="link1">[[start up and stabilize.|Exit the crate]]</span>
 
 
-:: Exit the crate
+:: Exit the crate [CargoHold]
 <<nobr>><<set $rocketsactive to true>><<set $Frisk.onboardship to true>><</nobr>>
 <<if visited() is 1 and $resetcounter is 0>><span class="dtm-sans"><span class="glitch" data-text="Choose wisely.">Your first choice.</span></span><</if>>
 <<addmins 6>>
 After the footsteps die away through <span class="link1">[[a pressurized door,|Starship hallway]]</span> and later a second heavy rumbling signifies we've left the ground, I climb out of the crate. <<hovertip "The cargo hold. It's half-full of crates and other junk.">>The room I'm in<</hovertip>> is large, the size of a small ballroom really, but only half of it is filled with stuff. Maybe <span class="link2"><<hovertip "There might be something useful in here...">>[[exploring the cargo hold|Explore Cargo]]<</hovertip>></span> first before leaving might be a good idea?
 
-:: Explore Cargo
+:: Explore Cargo [CargoHold]
  <<if visited() is 1>>(TODO: Duke needs to add functionality to equip weapons and inventory management.)<<elseif $now.getHours gte 5 and $now.getHours lte 10 and visited() gt 1 and visited() lt 5>> I try to find something useful, and find a large crate of beast jerky. TODO:(Finish Functionality for taking inventory items)<<else>> There's not much here that I need right now. I've taken everything that was useful, sadly...<</if>>
 
 With that done, I <span class="onlylink">[[exit through the pressurized door to the hallway.|Starship hallway]]</span>
 
-:: Cargo Hold
+:: Cargo Hold [CargoHold]
 
 I enter the cargo hold<<if lastVisited("Explore Cargo") lte 2>> again<</if>>. I can <span class="link1">[[decide to look around|Explore Cargo]]</span> or I can <span class="link2">[[leave the way I came.|Starship hallway]]</span>
 
-:: Starship hallway
+:: Starship hallway [Corridor1stFloor]
 
-<<if lastVisited("Explore Cargo") is 1>>After exiting the cargo hold,<</if>> I enter a long, curved hallway. Should I go <span class="link1">[[left|Engine room]]</span> <span class="link2">[[right|Bedrooms hallway]]</span> or <span class="link3">[[try to find an air vent|Vent 1]]</span> to hide in? I can also go back into the <span class="link4">[[cargo hold.|Cargo Hold]]</span>
+<<if lastVisited("Explore Cargo") is 1>>After exiting the cargo hold,<</if>> I enter a long hallway. Should I go <span class="link1">[[right|Engine room]]</span>, head <span class="link2">[[left and go up the ladder|Ladder]]</span>, <span class="link3">[[to the Kitchen in front of me|Kitchen-sneaky]] <span class="link5">[[try to find an air vent|Vent 1]]</span> to hide in? I can also go back into the <span class="link6">[[cargo hold.|Cargo Hold]]</span>
 
 <<timed 15s>><<goto "Footsteps">><</timed>>
+
+:: Ladder [Ladder slowtime]
+
+I head towards the ladder and try to open the hatch at the top, but it seems I don't have a key or it's jammed- It won't open for me. I head back to [[the first hallway.|Starship hallway]]
 
 :: Vent 1
 
 I<<if lastVisited("Footsteps") lte 2>> scrambled <<elseif lastVisited("Starship hallway") is 1>> climbed <</if>>into the vent. <<if lastVisited("Starship hallway") lte 3 and visited() is 1>> It's too dark to see past the first few feet, so I probably wouldn't be able to use these vents to transport myself, but they are good for hiding in. I <span class="link1">[[exit the vent.|Starship hallway]]</span><<elseif lastVisited("Footsteps") lte 1>>I quiet my breathing as the footsteps pass, trying not to shuffle uncomfortably in the tiny vent. <<timed 5s>>Once the danger passes, I <span class="link1">[[exit the vent|Starship hallway]]</span>.<</timed>><<else>>I then <span class="link1">[[remove myself from the vent.|Starship hallway]]</span> There's not much here to look at, after all.<</if>>
 
-:: Footsteps
+:: Footsteps [Corridor1stFloor]
 
 There are footsteps coming down the hallway! <<if lastVisited("Starship hallway")is 1>><span class="link1">[[I should probably hide|Vent 1]]</span><<elseif lastVisited("Bedrooms hallway") is 1>><span class="link1">[[I should probably hide|Vent 2]]</span><</if>>!
+
+<<nobr>>
+<<timed 10s>> I should hurry! The footsteps are getting closer!
+<<next>><<goto "Caught by Sans!">><</timed>><</nobr>>
+
+:: Footsteps 2! [Corridor2ndFloor]
+
+There are footsteps coming down the hallway! [[I should probably hide!|Vent 2]]
 
 <<nobr>>
 <<timed 10s>> I should hurry! The footsteps are getting closer!
@@ -235,7 +247,7 @@ Then he walks away with his phalanges deep in his pockets and his posture hunche
 
 I slide my back down the glass as I sit down, then I pull up my legs and hug them, waiting for my inevitable fate.
 
-:: Dining Lounge
+:: Dining Lounge [DiningLounge]
 
 When we get there, Sans takes out a radio that was attached to his beltloop and sheepishly radios the other crewmembers, but before that he invites me to explore the common dining room. <<if $Frisk.exploredlounge is true>>I decline for now, and instead sit on the couch and half-listen to Sans argue with his cohorts.<<else>>I follow his suggestion and inspect the space. It's really pretty standard fare, a couple couches, a very comfortable looking recliner with a wooden plate that says, "Chairiel" on the back of it, a serving window that connects to the kitchen, and a table with ten cloth placesettings and ten high-tech revolving chairs. <span class="dtm-mono"><i>They must regularly have guests... hmm...</i></span> I think to myself curiously, as Sans talks to the other members of the crew in the background. I don't pay much attention to him... There's nothing really in here of interest other than Sans, except maybe the books on the ship shelf. I take a look at them while Sans argues with his cohorts.
 
@@ -294,14 +306,14 @@ End of this route! Thanks so much for playing! :)
 
 I <<if lastVisited("Footsteps") is 1>>climb quickly into<<else>>enter<</if>> the vent near the kitchens. <<if lastVisited("Bedrooms hallway") is 1>>This one is<<if hasVisited("Vent 1") is true>> also<</if>> dark, but beyond that it is incredibly steamy and full of fog, as this vent redirects steam from the kitchens' ovens and other gas-powered appliances to the heating systems to heat the cold areas of the ship. I @@.onlylink;[[climb out of the vent.|Bedrooms hallway]]@@<<elseif lastVisited("Footsteps") is 1>>I make like a mouse, quieting my breathing and trying not to create any noise as the shuffling footsteps pass. <<timed 5s>>Finally, after everything is safe for me outside, I clamber carefully @@.onlylink;[[back out of the vent.|Bedrooms hallway]]@@<</timed>><<elseif lastVisited("Footsteps") is 2>>I finish doing what I was doing in here and @@.onlylink;[[exit the vent.|Bedrooms hallway]]@@<<else>>I @@.onlylink;[[exit the vent|Bedrooms hallway]]@@ afterward. <i>@@.dtm-mono;Not much here to do,@@</i> I shrug to myself.<</if>>
 
-:: Kitchen-sneaky
+:: Kitchen-sneaky [Kitchen]
 
 I sneak into the kitchen, peeking through the double-door's windows before entering to make sure the coast is clear. I lean up on tip-toes and pull myself up to see through the tall windows, and when I see that no one is inside I go ahead and enter.
 
 [TODO: Fix inventory code and finish it.](You can take an apple from the counter, a mini monster cake from a box in the cupboard, or a beast jerky from another box next to the monster cakes.)
 
-/*For later:
-<<if duck.inv.length >= duck.invSpace>>You can't take anything else. Your backpack is completely full.<<else>>I can take an @@.link1;<<link "apple">><<run duck.addItem(0)>><</link>>@@ from the bowl on the counter, a @@.link2;<<link "mini monster cake">><<run duck.addItem(12)>><</link>>@@ from the cupboard, or a @@.link3;<<link "beast jerky">><<run duck.addItem(13)>><</link>>@@, from the box next to the monster cakes.<</if>>*/
+<<nobr>>/*For later:
+<<if duck.inv.length >= duck.invSpace>>You can't take anything else. Your backpack is completely full.<<else>>I can take an @@.link1;<<link "apple">><<run duck.addItem(0)>><</link>>@@ from the bowl on the counter, a @@.link2;<<link "mini monster cake">><<run duck.addItem(12)>><</link>>@@ from the cupboard, or a @@.link3;<<link "beast jerky">><<run duck.addItem(13)>><</link>>@@, from the box next to the monster cakes.<</if>>*/<</nobr>>
 <span class="onlylink">[[Leave the kitchen.|Bedrooms hallway]]</span>
 
 :: Dining Lounge-sneaky [nobr]
@@ -343,11 +355,11 @@ There's a book about constellations (no surprise there), a book about ship AIs w
 
 * <<if $linkclicked2 is undefined>><span class="linkcheck2"><span class="pcdarklink link3">[[Get Frisk to inspect the gravitational arrays|Player inspects Grav-Arrays]]</span></span><<elseif $linkclicked2 is true and hasVisited("Questions about Grav-array and ship") is true>><span class="pcdarklink link3">[[Ask more questions about the Gravitational Arrays|Questions about Grav-array and ship]]</span><</if>>
 
-:: Explore Engine Room
+:: Explore Engine Room [EngineRoom]
 
 I look around the slightly cramped Engine room. With all the wires and miscellaneous electronics covering the floor and walls, it's a wonder I can find any vents at all. I open a few of them up, but eventually find a really well hidden, giant vent sneakily placed tightly next to the rocket drums. I try out the vent, and find that it's huge width lends itself to stretching myself out easily. I decide to go deeper before finding that it actually gets even wider the deeper you go in, before eventually tightening up again. I can easily make myself at home when I feel the need to, but right now, I @@.onlylink;[[crawl out of the vent.|Engine room]]@@
 
-:: Player inspects Grav-Arrays
+:: Player inspects Grav-Arrays [EngineRoom]
 
 I jump, confused and startled at the gentle prodding of a voice inside my subconscious. I whisper incredibly quietly into the engine room.
 <<nobr>><<if $PCOffline is false>><span class="dtm-mono"><<Frisk-confuzzled-o>>Who are you? And how are you in my head?<</Frisk-confuzzled-o>></span>
@@ -356,7 +368,8 @@ I jump, confused and startled at the gentle prodding of a voice inside my subcon
 
 
 /* $pgen: 0 = male, 1 = female, 2 = gender neutral, 3 = no gender */
-<span class="pcdark">You're</span> <<textbox "$PCname" "Your first name, ex:Bianca">><span class="pcdark">, you go by <span class="pcdarklink"><<cycle "$pgen">><<option "she/her" 1>><<option "he/him" 0>><<option "they/them" 2>><<option "it/its" 3>><</cycle>></span>, and then you say-</span>
+<span class="pcdark">You're</span> <<textbox "$PCname" "Your first name, ex:Bianca">><span class="pcdark">, you go by <span class="pcdarklink"><<cycle "$pgen">><<option "she/her" 1>><<option "he/him" 0>><<option "they/them" 2>><<option "it/its" 3>><</cycle>></span>, and then you say...</span>
+<b><i>Telling them about how you're the player in this game will likely not be understood by them at this point in time.</i></b></span>
 
 * <span class="pcdarklink link1">[[Uh... I can explain?|Then Explain, Frisk demands]]</span>
 
@@ -364,13 +377,13 @@ I jump, confused and startled at the gentle prodding of a voice inside my subcon
 
 * <span class="pcdarklink link3">[[I'm your unconscious mind, and I'm going to be helping you to make choices.|Frisk will say Oh, okay]]</span>
 
-* <span class="pcdarklink link4">[[I guess I'm on this ride with you. Do you mind accepting my assistance?|Frisk will say Oh, okay]]</span> <span class="pcdark"><b><i>Telling them about how you're the player in this game will likely not be understood by them at this point in time.</i></b></span>
+* <span class="pcdarklink link4">[[I guess I'm on this ride with you. Do you mind accepting my assistance?|Frisk will say Oh, okay]]</span> <span class="pcdark">
 
 :: I can imagine how that'll go down, badly
 
 <span class="pcdark">Yeah, you're not saying that, but nice try. That will just end in them ignoring your advice for the rest of this playthrough. (In which case, the playthrough will end because you won't be able to interact with Frisk well anymore.)</span> <<if lastVisited("Player inspects Grav-Arrays") is 1>><span class="pcdarklink pcdarklinkhover link1">[[Go back to looking through the options.|Player inspects Grav-Arrays]]</span><<elseif lastVisited("Frisk will say Oh, okay") is 1>><span class="pcdarklink pcdarklinkhover link1">[[Try again with a different option.|Frisk will say Oh, okay]]</span><</if>>
 
-:: Then Explain, Frisk demands
+:: Then Explain, Frisk demands [EngineRoom]
 
 I forego speech in favor of thinking to you, since you're already in my head. <i><span class="dtm-mono">Then please do, $PCname.</span></i> <span class="pcdark">You say...</span>
 
@@ -385,7 +398,7 @@ I narrow my eyes even more in caution, then think to you, <i><span class="dtm-mo
 
 <span class="pcdarklink link2">[[Disagree-|I can imagine how that'll go down, badly]]</span>
 
-:: Frisk Inspects Grav-Arrays [slowtime]
+:: Frisk Inspects Grav-Arrays [slowtime EngineRoom]
 
 I walk over to the Grav arrays and look at them, following your suggestion. There are flashing blue lights and wires that seem to run the length of the ship, and they converge here to the power source in the engine room. The power source is a bright, neon blue orb that sits on a pedestal near the wall next to the rockets<<if hasVisited("Explore Engine room") is true>>(on the opposite side of where I found the vent, of course)<</if>>, with the wires connected through three-pronged power strips on the pedestal that connect to the orb with smaller, more delicate blue wires. It seems like a pretty elaborate setup.
 
@@ -397,7 +410,7 @@ I walk over to the Grav arrays and look at them, following your suggestion. Ther
 
 
 
-:: Questions about Grav-array and ship [slowtime]
+:: Questions about Grav-array and ship [slowtime EngineRoom]
 
 <span class="pcdark">You ask...</span>
 \* <span class="pcdarklink link1">[[How do the grav-arrays work?|Gravity on ship Explain]]</span>

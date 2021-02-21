@@ -36,7 +36,11 @@ again without the quotes.
 	"Asgore's Bedroom":[],
 	"Toriel's Bedroom":[],
 	"Latrine":["Cloth"],
-	"Linen Closet":["Cloth", "Cloth", "Cloth"]
+	"Linen Closet":["Cloth", "Cloth", "Cloth"],
+	"1st Floor Corridor":[],
+	"2nd Floor Corridor":[],
+	"Vent3":[],
+	"Ladder":[]
   }
 }>>
 // Jaden's Item Controller end
