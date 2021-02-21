@@ -108,11 +108,11 @@ equippable -> object, must have a "slot" attribute; can also add data for restri
 
 		return (this.itemData.fakeName || false);
 	}
-	
+
 	get type() {
 		return (this.itemData.type);
 	}
-	
+
 	get points() {
 		return (this.itemData.points);
 	}
@@ -142,7 +142,6 @@ setup.STACK_SIZE = 5;
 window.Inventory = class Inventory {
 	constructor(ItemArray,limit){
 		console.assert(Number.isInteger(limit) && limit > 0,`ERROR in Inventory constructor: no limit provided`);
-		console.log("Inventory constructor running");
 		this.sizeLimit = limit;
 		this.inventory = [];
 		for (var item of ItemArray) {
@@ -242,3 +241,14 @@ window.Inventory = class Inventory {
 		}
 	}
 };
+
+window.roomItems = function roomItems (room,area) {
+	if (room === undefined || typeof(room) != 'string') {
+		room = V().currentRoom;
+	}
+	if (area === undefined || typeof(area) != 'string') {
+		area = V().currentArea;
+	}
+
+	return V().C[area][room];
+}
