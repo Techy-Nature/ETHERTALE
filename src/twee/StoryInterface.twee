@@ -21,11 +21,11 @@ It is <<printtime12hr>>
 <<option "Debug mode is on." true>>
 <</cycle>>
 
-<span id="desclink">[[Character Description]]</span>
+<span id="desclink"><<link "Character Description">><<run Engine.play('Character Description', true)>><</link>></span>
 
-@@.pcdarklink;[[Player Settings]]@@
+@@.pcdarklink;<<link "Player Settings">><<run Engine.play('Player Settings', true)>><</link>>@@
 
-<span class="pcdarklink"><span id="ctrlslink">[[Controls]]</span></span>
+<span class="pcdarklink"><span id="ctrlslink"><<link "Controls">><<run Engine.play('titleOfYourPassageGoesHere', true)>><</link>></span></span>@@
 
 
 :: StoryInterface
@@ -119,6 +119,7 @@ Here, you can test your pronouns. Hopefully, errors won't abound.
 <<textbox "nemself" "$nemself">>
 
 <<link "Okay, these I like, thanks Frisk!" $return>>
+
 :: PassageHeader [nobr]
 
 <<if !tags().includes('stoptime')>><<addmins 2>><<elseif tags().includes('slowtime') is true>><<addmins 1>><<elseif !(passage()).tags.includes('menu-item') or previous().tags.includes('menu-item'))>><</if>>

@@ -1,17 +1,5 @@
 :: Inventory [menuitem stoptime]
 
-//For later:
-/*You have <<print $duck.inv.length>> item<<if $duck.inv.length is 0>>s<<elseif $duck.inv.length gt 1>>s<<else>><</if>> in your backpack.
-/*<<if $duck.inv.length is 0 and $duck.inv.isEmpty is true>>You have nothing in your backpack right now.<</if>>
-
-<span id="invlink">[[Backpack Inventory|Inventory]]</span>
-
-You can carry <<print $duck.inv.length -= $duck.invSpace>> more items.*/
-
-You have: TODO (Use, drop, or transfer items)
-
-@@.onlylink;<<link "Return." $return>><</link>>@@*/
-
 :: Character Description [menuitem stoptime]
 
 My name is Frisk. I'm an orphan, so I don't know my parents' last name. I used to live on the streets of Earth.

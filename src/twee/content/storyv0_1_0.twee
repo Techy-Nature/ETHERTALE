@@ -73,6 +73,8 @@ I hear her footsteps fading away, then a yell, "<span class="dtm-mono">Hey, Pap!
 
 I hear a loud, "<span class="papyrus">OKAY, UNDYNE!</span>" over the ship's speakers, the floor rumbling as the old rockets <span class="link1">[[start up and stabilize.|Exit the crate]]</span>
 
+[[Kitchen-sneaky]]
+
 
 :: Exit the crate [CargoHold]
 <<nobr>><<set $rocketsactive to true>><<set $Frisk.onboardship to true>><</nobr>>
@@ -97,7 +99,7 @@ I enter the cargo hold<<if lastVisited("Explore Cargo") lte 2>> again<</if>>. I 
 
 :: Ladder [Ladder slowtime]
 
-I head towards the ladder and try to open the hatch at the top, but it seems I don't have a key or it's jammed- It won't open for me. I head back to [[the first hallway.|Starship hallway]]
+I head towards the ladder, climb it, and try to open the hatch at the top, but it seems I don't have a key or it's jammed- It won't open for me. I head back to [[the first hallway.|Starship hallway]]
 
 :: Vent 1
 
@@ -304,7 +306,7 @@ End of this route! Thanks so much for playing! :)
 
 :: Vent 2
 
-I <<if lastVisited("Footsteps") is 1>>climb quickly into<<else>>enter<</if>> the vent near the kitchens. <<if lastVisited("Bedrooms hallway") is 1>>This one is<<if hasVisited("Vent 1") is true>> also<</if>> dark, but beyond that it is incredibly steamy and full of fog, as this vent redirects steam from the kitchens' ovens and other gas-powered appliances to the heating systems to heat the cold areas of the ship. I @@.onlylink;[[climb out of the vent.|Bedrooms hallway]]@@<<elseif lastVisited("Footsteps") is 1>>I make like a mouse, quieting my breathing and trying not to create any noise as the shuffling footsteps pass. <<timed 5s>>Finally, after everything is safe for me outside, I clamber carefully @@.onlylink;[[back out of the vent.|Bedrooms hallway]]@@<</timed>><<elseif lastVisited("Footsteps") is 2>>I finish doing what I was doing in here and @@.onlylink;[[exit the vent.|Bedrooms hallway]]@@<<else>>I @@.onlylink;[[exit the vent|Bedrooms hallway]]@@ afterward. <i>@@.dtm-mono;Not much here to do,@@</i> I shrug to myself.<</if>>
+I <<if lastVisited("Footsteps 1") is 1>>climb quickly into<<else>>enter<</if>> the vent near the kitchens. <<if lastVisited("Footsteps 2") is 1>>This one is<<if hasVisited("Vent 1") is true>> also<</if>> dark, but beyond that it is incredibly steamy and full of fog, as this vent redirects steam from the kitchens' ovens and other gas-powered appliances to the heating systems to heat the cold areas of the ship. I @@.onlylink;[[climb out of the vent.|Bedrooms hallway]]@@<<elseif lastVisited("Footsteps") is 1>>I make like a mouse, quieting my breathing and trying not to create any noise as the shuffling footsteps pass. <<timed 5s>>Finally, after everything is safe for me outside, I clamber carefully @@.onlylink;[[back out of the vent.|Bedrooms hallway]]@@<</timed>><<elseif lastVisited("Footsteps") is 2>>I finish doing what I was doing in here and @@.onlylink;[[exit the vent.|Bedrooms hallway]]@@<<else>>I @@.onlylink;[[exit the vent|Bedrooms hallway]]@@ afterward. <i>@@.dtm-mono;Not much here to do,@@</i> I shrug to myself.<</if>>
 
 :: Kitchen-sneaky [Kitchen]
 
