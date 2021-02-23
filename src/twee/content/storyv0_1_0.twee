@@ -73,8 +73,6 @@ I hear her footsteps fading away, then a yell, "<span class="dtm-mono">Hey, Pap!
 
 I hear a loud, "<span class="papyrus">OKAY, UNDYNE!</span>" over the ship's speakers, the floor rumbling as the old rockets <span class="link1">[[start up and stabilize.|Exit the crate]]</span>
 
-[[Kitchen-sneaky]]
-
 
 :: Exit the crate [CargoHold]
 <<nobr>><<set $rocketsactive to true>><<set $Frisk.onboardship to true>><</nobr>>
@@ -93,29 +91,28 @@ I enter the cargo hold<<if lastVisited("Explore Cargo") lte 2>> again<</if>>. I 
 
 :: Starship hallway [Corridor1stFloor]
 
-<<if lastVisited("Explore Cargo") is 1>>After exiting the cargo hold,<</if>> I enter a long hallway. Should I go <span class="link1">[[right|Engine room]]</span>, head <span class="link2">[[left and go up the ladder|Ladder]]</span>, <span class="link3">[[to the Kitchen in front of me|Kitchen-sneaky]] <span class="link5">[[try to find an air vent|Vent 1]]</span> to hide in? I can also go back into the <span class="link6">[[cargo hold.|Cargo Hold]]</span>
+<<if lastVisited("Explore Cargo") is 1>>After exiting the cargo hold,<</if>> I enter a long hallway. Should I go...
+
+\* <span class="link1">[[right|Engine room]]</span>
+\* head <span class="link2">[[left and go up the ladder|Ladder-sneaky]]</span>
+\* left but head into the [[Dining Lounge|Dining Lounge-sneaky]] 
+\* <<nobr>><<if visited() is 1>>@@.link3;<<hovertip "Maybe try to find some food?">>[[Go to the Kitchen directly in front of me.|Kitchen-sneaky]]<</hovertip>>@@<<else>>@@.link3;[[Go to the Kitchen.|Kitchen-sneaky]]@@<</if>><</nobr>> 
+\* <span class="link4">[[try to find an air vent|Vent 1]]</span> to hide in? 
+\* I can also go back into the <span class="link5">[[cargo hold.|Cargo Hold]]</span>
 
 <<timed 15s>><<goto "Footsteps">><</timed>>
 
-:: Ladder [Ladder slowtime]
+:: Ladder-sneaky [Ladder slowtime]
 
-I head towards the ladder, climb it, and try to open the hatch at the top, but it seems I don't have a key or it's jammed- It won't open for me. I head back to [[the first hallway.|Starship hallway]]
+I head towards the ladder, climb it, and try to open the hatch at the top, but it seems I don't have a key or it's jammed- It won't open for me. I climb back down and enter to [[the first hallway.|Starship hallway]]
 
 :: Vent 1
 
 I<<if lastVisited("Footsteps") lte 2>> scrambled <<elseif lastVisited("Starship hallway") is 1>> climbed <</if>>into the vent. <<if lastVisited("Starship hallway") lte 3 and visited() is 1>> It's too dark to see past the first few feet, so I probably wouldn't be able to use these vents to transport myself, but they are good for hiding in. I <span class="link1">[[exit the vent.|Starship hallway]]</span><<elseif lastVisited("Footsteps") lte 1>>I quiet my breathing as the footsteps pass, trying not to shuffle uncomfortably in the tiny vent. <<timed 5s>>Once the danger passes, I <span class="link1">[[exit the vent|Starship hallway]]</span>.<</timed>><<else>>I then <span class="link1">[[remove myself from the vent.|Starship hallway]]</span> There's not much here to look at, after all.<</if>>
 
-:: Footsteps [Corridor1stFloor]
+:: Footsteps
 
-There are footsteps coming down the hallway! <<if lastVisited("Starship hallway")is 1>><span class="link1">[[I should probably hide|Vent 1]]</span><<elseif lastVisited("Bedrooms hallway") is 1>><span class="link1">[[I should probably hide|Vent 2]]</span><</if>>!
-
-<<nobr>>
-<<timed 10s>> I should hurry! The footsteps are getting closer!
-<<next>><<goto "Caught by Sans!">><</timed>><</nobr>>
-
-:: Footsteps 2! [Corridor2ndFloor]
-
-There are footsteps coming down the hallway! [[I should probably hide!|Vent 2]]
+There are footsteps coming down the hallway! <<if lastVisited("Starship hallway")is 1>><span class="link1">[[I should probably hide|Vent 1]]</span><</if>>!
 
 <<nobr>>
 <<timed 10s>> I should hurry! The footsteps are getting closer!
@@ -140,7 +137,7 @@ I am confused as to this turn of events, but to say I am surprised to get caught
 
 <span class="onlylink">[[I watch the skeleton walk as I'm carried by my SOUL to the front of the ship, likely where the captain will be.|Hallway conversation]]</span>
 
-:: Hallway conversation
+:: Hallway conversation 
 
 <<if $PCOffline is false>>
 <span class="comicsans"><<sans-bluemagic-o>>welp, might as well tell you the name of your judge, huh, kid? i'm sans. sans the skeleton.<</sans-bluemagic-o>></span> 
@@ -174,7 +171,7 @@ Or, try to be friendly with my introduction in the hopes of being released, but 
 <<elseif $PCoffline is true or $PCoffline is undefined>><<Frisk-happy>>[[Nice to meet you, Sans. I'm Frisk!|Nice Introduction but escapist Frisk]]<</Frisk-happy>>
 <</if>>
 
-:: Conversation part 2
+:: Conversation part 2 
 
 Sans waits for an answer, but when he realizes I'm glaring defiantly at him he looks ahead and sighs ruefully. The rest of the walk to what I'm assuming is the Captain's Cabin is completely in silence.
 
@@ -293,20 +290,21 @@ End of this route's content! Thanks for playing!
 
 End of this route! Thanks so much for playing! :)
 
+:: Ladder [Ladder slowtime]
+
+<<if lastVisited("Starship hallway") is 1>>I [[climb up the ladder|Bedrooms hallway]], and using my ID I am able to open the hatch.<<elseif lastVisited("Bedrooms hallway") is 1>>Before climbing down the ladder, I open up the hatch with my ID. Then I [[lower myself down|Starship hallway]] onto the ladder.<</if>>
+
 :: Bedrooms hallway
 
-<<nobr>><<if lastVisited("Starship hallway") is 1>>I walk to the end of the right hallway. There were a lot of bedroom doors that I went past.<<elseif lastVisited("Kitchen-sneaky") is 1>> I exit the kitchen, making sure to peek over into the door's windows before doing so.<<else>>I find myself in the bedroom hallway.<</if>><</nobr>> Where should I go next?
+<<nobr>><<if lastVisited("Ladder") is 1>>I enter the hallway after climbing the ladder<<else>>. I find myself in the bedroom hallway.<</if>> This seems to be the sleeping quarters part of the ship, as I see a lot of bedroom doors <<if lastVisited("Ladder") is 1>>in front of<<else>>around<</if>> me...  Where should I go next?
 
-* <<nobr>><<if visited() is 1>>@@.link1;<<hovertip "Maybe try to find some food?">>[[Go to the Kitchen.|Kitchen-sneaky]]<</hovertip>>@@<<else>>@@.link1;[[Go to the Kitchen.|Kitchen-sneaky]]@@<</if>><</nobr>>
-* @@.link2;[[Go to the Dining Lounge.|Dining Lounge-sneaky]]@@
-* @@.link3;[[Go back to the other end of the hallway.|Starship hallway]]@@
-* @@.link4;[[Hide in a vent.|Vent 2]]@@
+\* [[Knock on Sans' bedroom door|Knock Knock. Sans. I'm Sansational.]]
+\* <<if visited() is 1>>[[Knock on Papyrus's bedroom door.|Knock Knock. NO!! I'M NOT GOING ALONG WITH YOUR SILLY JOKES, SANS!]]<<else>>[[Knock on Papyrus's/Gaster's door.|Pap's room]]<</if>>
+\* [[Knock on Undyne's door.|Undyne's training bedroom]]
+\* [[Knock on Toriel and Asgore's door.|Toriel knock]]
+\*
 
 <<timed 10s>><<goto "Footsteps">><</timed>>
-
-:: Vent 2
-
-I <<if lastVisited("Footsteps 1") is 1>>climb quickly into<<else>>enter<</if>> the vent near the kitchens. <<if lastVisited("Footsteps 2") is 1>>This one is<<if hasVisited("Vent 1") is true>> also<</if>> dark, but beyond that it is incredibly steamy and full of fog, as this vent redirects steam from the kitchens' ovens and other gas-powered appliances to the heating systems to heat the cold areas of the ship. I @@.onlylink;[[climb out of the vent.|Bedrooms hallway]]@@<<elseif lastVisited("Footsteps") is 1>>I make like a mouse, quieting my breathing and trying not to create any noise as the shuffling footsteps pass. <<timed 5s>>Finally, after everything is safe for me outside, I clamber carefully @@.onlylink;[[back out of the vent.|Bedrooms hallway]]@@<</timed>><<elseif lastVisited("Footsteps") is 2>>I finish doing what I was doing in here and @@.onlylink;[[exit the vent.|Bedrooms hallway]]@@<<else>>I @@.onlylink;[[exit the vent|Bedrooms hallway]]@@ afterward. <i>@@.dtm-mono;Not much here to do,@@</i> I shrug to myself.<</if>>
 
 :: Kitchen-sneaky [Kitchen]
 
@@ -316,9 +314,9 @@ I sneak into the kitchen, peeking through the double-door's windows before enter
 
 <<nobr>>/*For later:
 <<if duck.inv.length >= duck.invSpace>>You can't take anything else. Your backpack is completely full.<<else>>I can take an @@.link1;<<link "apple">><<run duck.addItem(0)>><</link>>@@ from the bowl on the counter, a @@.link2;<<link "mini monster cake">><<run duck.addItem(12)>><</link>>@@ from the cupboard, or a @@.link3;<<link "beast jerky">><<run duck.addItem(13)>><</link>>@@, from the box next to the monster cakes.<</if>>*/<</nobr>>
-<span class="onlylink">[[Leave the kitchen.|Bedrooms hallway]]</span>
+<span class="onlylink">[[Leave the kitchen.|Starship hallway]]</span>
 
-:: Dining Lounge-sneaky [nobr]
+:: Dining Lounge-sneaky [nobr Corridor1stFloor DiningLounge]
 
 <<switch random(0,6)>>
 <<case 0>>
@@ -348,7 +346,7 @@ There's a book about constellations (no surprise there), a book about ship AIs w
 <span id="glitch" data-text="Glitchy things happened, this shouldn't show unless there's been a glitch."> Glitchy things happened, this shouldn't show unless there's been a glitch.</span>
 <</switch>>
 
-:: Engine room
+:: Engine room [EngineRoom]
 <<if visited() is 1>>I creep into the engine room quietly.<<elseif visited() gt 1>>I find myself in the engine room again.<</if>> There isn't much to see here, other than lots of different sized vents and the boiler/heating and cooling system, the power source of the gravitational arrays, as well as the two giant, metal drums that house the rocket systems. I stay clear of those, as they are known to get very hot, at least when in use, which <<if $rocketsactive is true>>they are.<<elseif $rocketsactive is false>>they aren't.<<else>> <span id="glitch" data-text="Errors happened, please don't glitch the game.">Errors happened, please don't glitch the game.</span><</if>>
 
 *  <<if $linkclicked is undefined>><span class="linkcheck link1">[[Try to find a big enough vent to sleep in|Explore Engine Room]]</span><<elseif $linkclicked is true or hasVisited("Explore Engine Room") is true>>@@.link1;[[Decide to wait safely in the big vent that I found.|Waiting or Sleeping Vent 3]]@@<</if>>
@@ -412,7 +410,7 @@ I walk over to the Grav arrays and look at them, following your suggestion. Ther
 
 
 
-:: Questions about Grav-array and ship [slowtime EngineRoom]
+:: Questions about Grav-array and ship [slowtime]
 
 <span class="pcdark">You ask...</span>
 \* <span class="pcdarklink link1">[[How do the grav-arrays work?|Gravity on ship Explain]]</span>

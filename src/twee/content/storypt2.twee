@@ -1,4 +1,4 @@
-:: Waiting or Sleeping Vent 3 [stoptime]
+:: Waiting or Sleeping Vent 2 [stoptime Vent2]
 
 How long should I <<if $now.getHours() gte 20 or $now.getHours() lt 6>>sleep<<else>>wait<</if>> for?
 
@@ -48,11 +48,11 @@ How long should I <<if $now.getHours() gte 20 or $now.getHours() lt 6>>sleep<<el
 
 <i><span class="dtm-mono">Basically we end up in zero gravity until we touch down on the ceiling or another surface. This is pretty easily remedied, though. Usually space-farers just find an empty piece of wall and walk back to the ground from there.</span></i> I grin mischieviously. <i><span class="dtm-mono">It'd likely be an easy way to prank someone, though!</span></i> I snicker quietly, trying not to create too much noise. <i><span class="dtm-mono onlylink">[[Anyway, you have any other questions about this?|Gravity on ship Explain]]</span></i>
 
-:: W.D. Gaster [slowtime]
+:: W.D. Gaster [slowtime EngineRoom]
 
 I scrunch up my nose. <i><span class="dtm-mono onlylink">[[He really scares me. Even thinking about his name might draw his attention, as he can do many strange things no one else can.|Questions about Grav-array and ship]]</span> <span class="dtm-mono">He is on this ship, I saw him get on.</span></i> I shiver. <i><span class="dtm-mono">He has microphones everywhere, and cameras that help patrol the halls. I've seen them. Honestly I'm surprised he hasn't caught me yet. My saving grace, I think, has been that I've been pretty quiet so far.</span></i>
 
-:: The non-existent Jump-ship Plan [slowtime]
+:: The non-existent Jump-ship Plan [slowtime EngineRoom]
 
 <<if $PCOffline is false>><<Frisk-worried-o>><span class="dtm-mono">I-</span><</Frisk-worried-o>>
 <<elseif $PCoffline is true or $PCoffline is undefined>><<Frisk-worried>><span class="dtm-mono">I-</span><</Frisk-worried>>
@@ -92,7 +92,7 @@ I can hear you taking a deep, calming breath in my mind. <span class="pcdark"><i
 <i><b>@@.dtm-mono;.onlylink;[[Definitely.|Engine room]]@@</b></i>
 
 
-:: Power [slowtime]
+:: Power [slowtime EngineRoom]
 
 <span class="dtm-mono">Solar from us humans when possible, but otherwise we use fuel that was invented by the one who is listening for anyone who doesn't belong here. <<if hasVisited('W.D. Gaster') is false>>There's microphones pretty much everywhere on this ship, and cameras in the main hallways.<</if>></span>
 I pause, then ask,
@@ -234,3 +234,8 @@ End demo! Thanks for playing! :D
 :: Containment Chamber [slowtime]
 
 End demo. Thanks for playing!
+
+<<if $debug is true>>For later: 
+\* @@.link1;[[Knock on Gaster's laboratory door.|Knock Knock Gaster Lab]]@@
+\* @@.link2;[[Go back down the ladder.|Ladder]]@@
+\* Try to enter [[Alphys's Office.|Alphys's Office]]<</if>>

@@ -122,7 +122,7 @@ Here, you can test your pronouns. Hopefully, errors won't abound.
 
 :: PassageHeader [nobr]
 
-<<if !tags().includes('stoptime')>><<addmins 2>><<elseif tags().includes('slowtime') is true>><<addmins 1>><<elseif !(passage()).tags.includes('menu-item') or previous().tags.includes('menu-item'))>><</if>>
+<<if !tags().includes('stoptime')>><<addmins 2>><<elseif tags().includes('slowtime')>><<addmins 1>><<elseif !(tags().includes('menu-item') or tags(previous()).includes('menu-item'))>><</if>>
 
 <<if tags().includes("room")>>
   <<set $currentRoom to passage()>>
