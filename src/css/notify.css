@@ -16,3 +16,30 @@
     transition : right 0.3s;
 }
 #notify.open { right : 0; }
+
+#notify.invfull {
+    position : fixed;
+    display : block;
+    width : 16em;
+    right : -20em; top : 2em;
+    padding : 0.5em;
+    background-color : #ff0000;
+    color : #000;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-name: headShake;
+    animation-name: headShake;
+}
+#notify.invupdate {
+    position : fixed;
+    display : block;
+    width : 16em;
+    right : -20em; top : 2em;
+    padding : 0.5em;
+    background-color: #fff200;
+    color : #000;
+    -webkit-transition : right 0.3s;
+    -moz-transition : right 0.3s;
+    -o-transition : right 0.3s;
+    transition : right 0.3s;
+}

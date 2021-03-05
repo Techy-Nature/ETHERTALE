@@ -1,4 +1,6 @@
-:: Inventory [menuitem stoptime]
+:: Inventory Menu [menuitem stoptime]
+
+<<include "Menu: Inventory">>
 
 :: Character Description [menuitem stoptime]
 

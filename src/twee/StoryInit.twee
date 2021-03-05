@@ -19,26 +19,27 @@ again without the quotes.
 <<set $Frisk.LV to 0>>
 <<set $Frisk.EXP to 0>>
 
+
 // Jaden's Item Controller Object
 <<set $C = {
   "Starship": {
-    "Cargo Hold": ["High Tech Army Knife"],
-    "Engine Room": ["Metal"],
+    "CargoHold": ["High Tech Knife", "Beast Jerky", "Beast Jerky", "Beast Jerky", "Beast Jerky", "Beast Jerky"],
+    "EngineRoom": ["Metal"],
 	"Kitchen": ["Apple", "M&M Cake", "Beast Jerky"],
 	"Dining Lounge":[],
-	"Gaster's Lab": [],
-	"Alphys' Office":[],
-	"Navigation Room":[],
-	"Alphys's Bedroom":[],
-	"Gaster and Papyrus's Bedroom":[],
-	"Sans's Room":["Cloth"],
-	"Undyne's Training Room/Bedroom":[],
-	"Asgore's Bedroom":[],
-	"Toriel's Bedroom":[],
+	"Gaster'sLab": [],
+	"Alphys'Office":[],
+	"NavigationRoom":[],
+	"Alphys'Bedroom":[],
+	"Gaster_and_Papyrus's_Bedroom":[],
+	"Sans'Bedroom":["Cloth"],
+	"Undyne's_Training Room/Bedroom":[],
+	"Asgore's_Bedroom":[],
+	"Toriel's_Bedroom":[],
 	"Latrine":["Cloth"],
-	"Linen Closet":["Cloth", "Cloth", "Cloth"],
-	"1st Floor Corridor":[],
-	"2nd Floor Corridor":[],
+	"LinenCloset":["Cloth", "Cloth", "Cloth"],
+	"1stFloorCorridor":[],
+	"2ndFloorCorridor":[],
 	"Vent3":[],
 	"Ladder":[]
   }

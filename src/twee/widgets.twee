@@ -150,3 +150,10 @@
       <</if>>
   <</if>>
 <</widget>>
+
+/*For later 
+<<if def $args[1] && typeof($args[1]) == 'number'>>
+	<<set _amt = $args[1]>>
+<<else>>
+	<<set _amt = 1>>
+<</if>>*/

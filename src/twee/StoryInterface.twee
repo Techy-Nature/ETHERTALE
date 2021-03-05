@@ -25,7 +25,7 @@ It is <<printtime12hr>>
 
 @@.pcdarklink;<<link "Player Settings">><<run Engine.play('Player Settings', true)>><</link>>@@
 
-<span class="pcdarklink"><span id="ctrlslink"><<link "Controls">><<run Engine.play('titleOfYourPassageGoesHere', true)>><</link>></span></span>@@
+<span class="pcdarklink"><span id="ctrlslink"><<link "Controls">><<run Engine.play('', true)>><</link>></span></span>@@
 
 
 :: StoryInterface
@@ -42,7 +42,8 @@ It is <<printtime12hr>>
 <<link "RESET">><<set $resetcounter++>>
 <<run memorize('resets', $resetcounter)>><<run UI.restart()>><</link>>
 
-<<link "SAVE/LOAD">><<run UI.saves()>><</link>>
+<span class="save-point"><<link "SAVE/LOAD">><<run UI.saves()>><</link>></span>
+<<if hasVisited("Explore Cargo")>>@@.invlink;[[Inventory Menu]]@@<</if>>
 
 
 :: Player Settings [stoptime menuitem]
@@ -54,10 +55,10 @@ It is <<printtime12hr>>
 <</if>>
 <strong>WARNING: <i>If you're on Android, or any phone-like device, Online is the only way to play with pictures. Sorry about that.</i></strong>
 
-<<nobr>><<if hasVisited("Player inspects Grav-Arrays") is true>> [[Can I go by a different set of pronouns?|Pronouns]]
+<<nobr>><<if hasVisited("Player inspects Grav-Arrays") is true>> [[Can I go by a different set of pronouns?|Pronouns]]<</if>>
 
 <<if $debug is true>>[[Test pronouns|Test pronouns room - Jaden]]<</if>>
-<</if>><</nobr>>
+<</nobr>>
 
 <span class="pcdarklink link2"><<link "Return." $return>><<refresh>><</link>></span>
 
@@ -106,11 +107,11 @@ Here, you can test your pronouns. Hopefully, errors won't abound.
 
 :: Custom Pronouns [menu-item stoptime]
 
-@@.dtm-mono;<i>Alright. Well, make sure you tell me which ones you would like then.</i>@@
-<<cycle "$custompronouns">>
+@@.dtm-mono;<i>Alright. Well, make sure you tell me which ones you <i>would</i> like then.</i>@@
+<span class="pcdarklink link1"><<cycle "$custompronouns">>
 <<option "Use custom pronouns." true selected>>
 <<option "Don't use custom pronouns." false>>
-<</cycle>>
+<</cycle>></span>
 @@.pcdark;If you want to not use custom pronouns anymore, you can tell Frisk with the link above.@@
 <<textbox "ne" "$ne">>
 <<textbox "nem" "$nem">>
@@ -118,12 +119,15 @@ Here, you can test your pronouns. Hopefully, errors won't abound.
 <<textbox "nirs" "$nirs">>
 <<textbox "nemself" "$nemself">>
 
-<<link "Okay, these I like, thanks Frisk!" $return>>
+<span class="pcdarklink link2>"<<link "Okay, these I like. Thanks Frisk!" $return>><</link>></span>
 
 :: PassageHeader [nobr]
 
 <<if !tags().includes('stoptime')>><<addmins 2>><<elseif tags().includes('slowtime')>><<addmins 1>><<elseif !(tags().includes('menu-item') or tags(previous()).includes('menu-item'))>><</if>>
 
-<<if tags().includes("room")>>
+<<if tags().includes("CargoHold")>>
+  <<set $currentRoom to passage()>>
+<</if>>
+<<if tags().includes("Kitchen-sneaky")>>
   <<set $currentRoom to passage()>>
 <</if>>

@@ -81,7 +81,14 @@ I hear a loud, "<span class="papyrus">OKAY, UNDYNE!</span>" over the ship's spea
 After the footsteps die away through <span class="link1">[[a pressurized door,|Starship hallway]]</span> and later a second heavy rumbling signifies we've left the ground, I climb out of the crate. <<hovertip "The cargo hold. It's half-full of crates and other junk.">>The room I'm in<</hovertip>> is large, the size of a small ballroom really, but only half of it is filled with stuff. Maybe <span class="link2"><<hovertip "There might be something useful in here...">>[[exploring the cargo hold|Explore Cargo]]<</hovertip>></span> first before leaving might be a good idea?
 
 :: Explore Cargo [CargoHold]
- <<if visited() is 1>>(TODO: Duke needs to add functionality to equip weapons and inventory management.)<<elseif $now.getHours gte 5 and $now.getHours lte 10 and visited() gt 1 and visited() lt 5>> I try to find something useful, and find a large crate of beast jerky. TODO:(Finish Functionality for taking inventory items)<<else>> There's not much here that I need right now. I've taken everything that was useful, sadly...<</if>>
+
+ <<nobr>>
+ <<if visited() is 1>>I explore around, and find a crate of guns and other weapons. There's a few different types of guns, but I can't find any of them that I can use, really... The other side of the huge, tall crate is filled with different knives. I find one of those that I can use. I can pick up a <<linkreplace "High Tech Knife.">><<silently>><<pickUp "High Tech Knife">><</silently>>High Tech Knife, but I've already picked one up. I don't need another. I can look at my @@.link1;[[Inventory to equip it...|Inventory Menu]]@@ But do I really want to fight the crew? That might be a bad idea...<</linkreplace>>
+ <<elseif visited() gt 1 and visited() lte 6>> I try to find something useful, and find a small crate of <<link "beast jerky.">>
+  <<if $C.Starship.CargoHold.includes("Beast Jerky")>><<pickUp "Beast Jerky">><<notify 3s 'invupdate'>>You picked up a Beast Jerky.<</notify>><</link>>
+  <<else>>what was Beast Jerky, though it's empty now.<</if>>
+<<else>> There's not much here that I need right now. I've taken everything that was useful, sadly...<</if>>
+<</nobr>>
 
 With that done, I <span class="onlylink">[[exit through the pressurized door to the hallway.|Starship hallway]]</span>
 

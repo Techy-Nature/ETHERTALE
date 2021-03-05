@@ -75,26 +75,38 @@ setup.itemData = {
     // id#11
     "type": "def",
     "points": 2,
+    "desc": "A normal pair dark brown pants, with deep pockets and an elastic band to keep it in place on the waist."
+  },
+  "Dark Brown Pants": {
+    // id#12
+    "type": "def",
+    "points": 2,
     "desc": "A normal pair of breathable, flexible sneakers."
   },
+  "Blue and Purple Single-Striped Sweater": {
+    // id#11
+    "type": "def",
+    "points": 3,
+    "desc": " \"This is the lightweight, long-sleeved, singular purple-striped mostly light blue sweater that I usually wear.\" - Frisk"
+  },
   "M&M Cake": {
-    // id#12
+    // id#13
     "type": "hel",
     "points": 10,
     "desc": "The two Ms in this cake stand for Miniature and Monster. These cakes come in chocolate, vanilla and marbled, but always include chocolate frosting on top."
   },
   "Beast Jerky": {
-    // id#13
+    // id#14
     "type": "hel",
     "points": 5,
     "desc": "A monster version of beef jerky. The meat seems tougher than normal beef."
   },
   "Cloth": {
-    // id#14
-    "desc": "A ripped piece of cloth, can be used for crafting. Whatever it once was a part of, you can't tell."
+    // id#15
+    "desc": "A ripped piece of cloth, can be used for crafting. Whatever it once was a part of, I can't tell."
   },
   "Metal": {
-    // id#15
+    // id#16
     "desc": "A twisted piece of metal, can be used for crafting. Whatever it once was, it's unrecognizable."
   },
 
