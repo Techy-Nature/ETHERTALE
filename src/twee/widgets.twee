@@ -165,7 +165,7 @@
 <<widget "an">>
 <<run console.assert(typeof($args[0]) == "string",`ERROR in a/an widget: invalid argument`)>>
 <<set _word = $args[0].toLowerCase()>>
-<<switch _word>>
+<<switch _word.charAt(0)>>
 	<<case 'a' 'e' 'i' 'o' 'u'>>
 		<<print "an">>
 	<<default>>
