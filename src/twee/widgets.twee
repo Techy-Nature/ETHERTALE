@@ -135,6 +135,9 @@
       <<set _pickedUp = $Frisk.inv.addItem(_toPickUp)>>
       <<if _pickedUp === true>>
         <<set roomItems().deleteAt(roomItems().indexOf(_toPickUp))>>
+	<<notify 3s 'invupdate'>>You picked up <<an _toPickUp>> <<print _toPickUp>>.<</notify>>
+      <<else>>
+      	<<notify 3s 'invupdate'>>Your inventory is full!<</notify>>
       <</if>>
     <</if>>
   <</if>>
@@ -157,3 +160,17 @@
 <<else>>
 	<<set _amt = 1>>
 <</if>>*/
+
+:: Grammar Widgets [widget nobr]
+<<widget "an">>
+<<run console.assert(typeof($args[0]) == "string",`ERROR in a/an widget: invalid argument`)>>
+<<set _word = $args[0].toLowerCase()>>
+<<switch _word.charAt(0)>>
+	<<case 'a' 'e' 'i' 'o' 'u'>>
+		<<print "an">>
+	<<default>>
+		<<print "a">>
+<</switch>>
+<</widget>>
+
+
