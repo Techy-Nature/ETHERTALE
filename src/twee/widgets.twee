@@ -63,12 +63,12 @@
 			<<set $pgen = 0>>
 	<</switch>>
 <</nobr>><</widget>>
-/* /SetGender>> widget - End */
+/* <<SetGender>> widget - End */
 // Extra custom pronouns widget by Jaden
 
 <<widget "they">><<if $custompronouns is true>><<print $ne>><<else>>?they<</if>><</widget>>
 <<widget "them">><<if $custompronouns is true>><<print $nem>><<else>>?them<</if>><</widget>>
-<<widget "theyre"<<if $custompronouns is true>><<print $nir>><<else>>?theyre<</if>><</widget>>
+<<widget "theyre">><<if $custompronouns is true>><<print $nir>><<else>>?theyre<</if>><</widget>>
 <<widget "theirs">><<if $custompronouns is true>><<print $nirs>><<else>>?theirs<</if>><</widget>>
 <<widget "themself">><<if $custompronouns is true>><<print $nemself>><<else>>?themself<</if>><</widget>>
 <<widget "They">><<if $custompronouns is true>><<print $ne.toupperFirst()>><<else>>?They<</if>><</widget>>
@@ -82,7 +82,7 @@
 <<widget "THEIRS">><<if $custompronouns is true>><<print $nirs.toUpperCase>><<else>>?THEIRS<</if>><</widget>>
 <<widget "THEMSELF">><<if $custompronouns is true>><<print $nemself.toUpperCase()>><<else>>?THEMSELF<</if>><</widget>>
 
-/* /checkboxPlus>> widget by HiEv
+/* <<checkboxPlus>> widget by HiEv
 	This widget allows you to display a custom checkbox which sets a
 	SugarCube variable, displays a (clickable) label, and satisfies
 	accessibility guidelines for users with impairments (usable via the
@@ -90,7 +90,7 @@
 	also larger, to make them easier to see and to click on for mobile
 	devices.
 
-	Usage: /checkboxPlus "variableName" "text" ["className"]\
+	Usage: <<checkboxPlus "variableName" "text" ["className"]>>
 
 	The value of the checkbox would then be tied to a variable, which
 	is passed to the widget as a string.  All story variables passed to
@@ -124,12 +124,13 @@
 		</label>
 	</span>
 <</widget>> /*
-// /checkboxPlus/ Widget - End
+/* checkboxPlus Widget - End */
 
 :: Item Widgets [widget nobr]
+
 <<widget "pickUp">>
-  <<set _item = $args[0]>> /* this is a string name, not an Item object */
-  <<if def $currentArea && def $currentRoom>>
+  <<set _item = $args[0]>> /* this is a string name, not an Item object
+ */  <<if def $currentArea && def $currentRoom>>
     <<set _toPickUp = roomItems().find(function (i) { return i && i === _item })>>
     <<if def _toPickUp>>
       <<set _pickedUp = $Frisk.inv.addItem(_toPickUp)>>
@@ -137,14 +138,14 @@
         <<set roomItems().deleteAt(roomItems().indexOf(_toPickUp))>>
 	<<notify 3s 'invupdate'>>You picked up <<an _toPickUp>> <<print _toPickUp>>.<</notify>>
       <<else>>
-      	<<notify 3s 'invupdate'>>Your inventory is full!<</notify>>
+      	<<notify 3s 'invfull'>>Your inventory is full!<</notify>>
       <</if>>
     <</if>>
   <</if>>
 <</widget>>
 
 <<widget "dropItem">>
-  <<set _item = $args[0]>> /* this is a string name, not an Item object */
+  <<set _item = $args[0]>>  /* this is a string name, not an Item object */ 
   <<if def $currentArea && def $currentRoom>>
     <<set _toDrop = $Frisk.inv.findItem(_item)>>
       <<if def _toDrop>>
@@ -153,24 +154,4 @@
       <</if>>
   <</if>>
 <</widget>>
-
-/*For later 
-<<if def $args[1] && typeof($args[1]) == 'number'>>
-	<<set _amt = $args[1]>>
-<<else>>
-	<<set _amt = 1>>
-<</if>>*/
-
-:: Grammar Widgets [widget nobr]
-<<widget "an">>
-<<run console.assert(typeof($args[0]) == "string",`ERROR in a/an widget: invalid argument`)>>
-<<set _word = $args[0].toLowerCase()>>
-<<switch _word.charAt(0)>>
-	<<case 'a' 'e' 'i' 'o' 'u'>>
-		<<print "an">>
-	<<default>>
-		<<print "a">>
-<</switch>>
-<</widget>>
-
 

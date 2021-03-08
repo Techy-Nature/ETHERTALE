@@ -8,8 +8,8 @@
 Jaden here. In Opera the shortcut for the Developer Console is Ctrl-Shift-J, but you can add more shortcuts through the settings.
 All I did was go to the settings and search up "keyboard" without the quotes, and it should find it. If that doesn't work, try "shortcuts,"
 again without the quotes.
-*/
-// Jaden's code below
+---
+ Jaden's code below*/
 <<set $Frisk to {}>>
 <<set $Frisk.age to 16>>
 <<set $Frisk.Gold to 10>>
@@ -19,48 +19,47 @@ again without the quotes.
 <<set $Frisk.LV to 0>>
 <<set $Frisk.EXP to 0>>
 
-
-// Jaden's Item Controller Object
-<<set $C = {
+/*Jaden's Item Controller Object*/
+<<set $C to {
   "Starship": {
-    "CargoHold": ["High Tech Knife", "Beast Jerky", "Beast Jerky", "Beast Jerky", "Beast Jerky", "Beast Jerky"],
-    "EngineRoom": ["Metal"],
+    "Cargo Hold": ["High Tech Knife", "Beast Jerky", "Beast Jerky", "Beast Jerky", "Beast Jerky", "Beast Jerky"],
+    "Engine Room": ["Metal"],
 	"Kitchen": ["Apple", "M&M Cake", "Beast Jerky"],
 	"Dining Lounge":[],
-	"Gaster'sLab": [],
-	"Alphys'Office":[],
-	"NavigationRoom":[],
-	"Alphys'Bedroom":[],
-	"Gaster_and_Papyrus's_Bedroom":[],
+	"Gaster's Lab": [],
+	"Alphys's Office":[],
+	"Navigation Room":[],
+	"Alphys's Bedroom":[],
+	"Gaster and Papyrus's Bedroom":[],
 	"Sans'Bedroom":["Cloth"],
-	"Undyne's_Training Room/Bedroom":[],
-	"Asgore's_Bedroom":[],
-	"Toriel's_Bedroom":[],
+	"Undyne's Training Room/Bedroom":[],
+	"Asgore's Bedroom":[],
+	"Toriel's Bedroom":[],
 	"Latrine":["Cloth"],
-	"LinenCloset":["Cloth", "Cloth", "Cloth"],
-	"1stFloorCorridor":[],
-	"2ndFloorCorridor":[],
+	"Linen Closet":["Cloth", "Cloth", "Cloth"],
+	"1st Floor Corridor":[],
+	"2nd Floor Corridor":[],
 	"Vent3":[],
 	"Ladder":[]
   }
 }>>
-// Jaden's Item Controller end
-// Jaden's talk macro setup
-// Sans talk macros
+/*  Jaden's Item Controller end
+	Jaden's talk macro setup
+ Sans talk macros*/
 <<character "sans-thoughtful" "imgs/Talk/Sans/thoughtful.png">>
 <<character "sans-bluemagic" "imgs/Talk/Sans/angry-bluemagic.png">>
 <<character "sans-smile" "imgs/Talk/Sans/smile.png">>
 <<character "sans-winkysmile" "imgs/Talk/Sans/wink~.png">>
 <<character "sans-blushy" "imgs/Talk/Sans/blush.png">>
 <<character "sans-serious" "imgs/Talk/Sans/serious.png">>
-// Online Talk heads for sans
+/* Online Talk heads for sans*/
 <<character "sans-thoughtful-o" "https://1.bp.blogspot.com/-Eg9Ykka4KgU/X9FReLD9NvI/AAAAAAAAAQM/NZoqnRHuHxYsOdwRzQy64NE5ulfj06lWACLcBGAsYHQ/s450/thoughtful.png">>
 <<character "sans-bluemagic-o" "https://1.bp.blogspot.com/-X9jL_BrXIVo/X9FRdlp6sgI/AAAAAAAAAQA/IJ7GA_Bnv3gk66xUDwxPhTasEQPRcxe5QCLcBGAsYHQ/s450/angry-bluemagic.png">>
 <<character "sans-smile-o" "https://1.bp.blogspot.com/-4CQLrDcCzrM/X9FRd44pPFI/AAAAAAAAAQI/pVuPgvoBC0k8fjhXjyr6HV3-mAyBv0VUACLcBGAsYHQ/s450/smile.png">>
 <<character "sans-winkysmile-o" "https://1.bp.blogspot.com/-exMXd8kROWQ/X9FRe7UYzHI/AAAAAAAAAQQ/yFJDTVoSIMAX4vj69yYRu3eo-rpIcUjbwCLcBGAsYHQ/s450/wink%257E.png">>
 <<character "sans-blushy-o" "https://1.bp.blogspot.com/-WU2lvQS6mPE/X9FRdh6ugII/AAAAAAAAAQE/BlqHJ96JVWsmy-9LcOn0a9KUW9VWvVe-gCLcBGAsYHQ/s450/blush.png">>
 <<character "sans-serious-o" "https://1.bp.blogspot.com/-SlrS2jPwGPI/X9FRdp5L9MI/AAAAAAAAAP8/avxbP2VI6tg6Yb8m28wXk19yggVWFNM5ACLcBGAsYHQ/s450/serious.png.png">>
-// Gaster talk macros
+/* Gaster talk macros  */
 <<character "G-annoyed" "imgs/Talk/Gaster/annoyed.png">>
 <<character "G-bored" "imgs/Talk/Gaster/bored.png">>
 <<character "G-determined" "imgs/Talk/Gaster/determined.png">>
@@ -72,7 +71,7 @@ again without the quotes.
 <<character "G-worried" "imgs/Talk/Gaster/worried.png">>
 <<character "G-blush" "imgs/Talk/Gaster/blushy.png">>
 <<character "G-embarrased" "imgs/Talk/Gaster/embarrassed.png">>
-//Online Gaster heads
+ /*Online Gaster heads*/
 <<character "G-annoyed-o" "https://1.bp.blogspot.com/-JqZCDI0-hqc/X9FUjBlJVEI/AAAAAAAAASA/bd9UQhyrIh0Ru1kLFJoLJdB2dDSY9AWbQCLcBGAsYHQ/s700/annoyed.png">>
 <<character "G-bored-o" "https://1.bp.blogspot.com/-k_AkWP-oM5E/X9FUjMWty0I/AAAAAAAAASE/KOEGCdLZ_vUibGOztY-FqAIuYo3UBFt3QCLcBGAsYHQ/s700/bored.png">>
 <<character "G-determined-o" "https://1.bp.blogspot.com/-LaKSCS9yhNU/X9FUkTx1O8I/AAAAAAAAASU/kAZFYYRJbR4Hf7TJdM2XlJ90-gvkZlgtACLcBGAsYHQ/s700/determined.png">>
@@ -84,8 +83,7 @@ again without the quotes.
 <<character "G-worried-o" "https://1.bp.blogspot.com/-GKnY2LhSmEU/X9FUmjhBFyI/AAAAAAAAASw/0Pz3mdDZDl4JX7cfEs1B4sCu3QOPVtaiQCLcBGAsYHQ/s700/worried.png">>
 <<character "G-blush-o" "https://1.bp.blogspot.com/-rtzq9bEnjtg/X9FUjd5nyNI/AAAAAAAAASI/HNVBANbULhMwEJIZFzFz8f6b96PWj5LMwCLcBGAsYHQ/s700/blushy.png">>
 <<character "G-embarrased-o" "https://1.bp.blogspot.com/-PCmW3q6-KS4/X9FUkuvVPPI/AAAAAAAAASY/R8OCMEQXmOYBkHqip48jS5kEc-6lDrOngCLcBGAsYHQ/s700/embarrassed.png">>
-
-// Frisk Talk macros
+/*Frisk Talk macros*/
 <<character "Frisk-determined" "imgs/Talk/Frisk/Frisk_Determined.png">>
 <<character "Frisk-furious" "imgs/Talk/Frisk/Frisk_Furious.png">>
 <<character "Frisk-angry" "imgs/Talk/Frisk/Frisk_Angry.png">>
@@ -97,7 +95,7 @@ again without the quotes.
 <<character "Frisk-worried" "imgs/Talk/Frisk/Frisk_Worried.png">>
 <<character "Frisk-surprised" "imgs/Talk/Frisk/Frisk_Surprised.png">>
 <<character "Frisk-confuzzled" "imgs/Talk/Frisk/Frisk_Confused.png">>
-// Frisk Online Talk heads
+/*Frisk Online Talk heads*/
 <<character "Frisk-determined-o" "https://raw.githubusercontent.com/Techy-Nature/ETHERTALE/master/src/imgs/Talk/Frisk/Frisk_Determined.png">>
 <<character "Frisk-furious-o" "https://raw.githubusercontent.com/Techy-Nature/ETHERTALE/master/src/imgs/Talk/Frisk/Frisk_Furious.png">>
 <<character "Frisk-angry-o" "https://github.com/Techy-Nature/ETHERTALE/blob/master/src/imgs/Talk/Frisk/Frisk_Angry.png?raw=true">>
@@ -109,7 +107,7 @@ again without the quotes.
 <<character "Frisk-worried-o" "https://github.com/Techy-Nature/ETHERTALE/blob/master/src/imgs/Talk/Frisk/Frisk_Worried.png?raw=true">>
 <<character "Frisk-surprised-o" "https://github.com/Techy-Nature/ETHERTALE/blob/master/src/imgs/Talk/Frisk/Frisk_Surprised.png?raw=true">>
 <<character "Frisk-confuzzled-o" "https://github.com/Techy-Nature/ETHERTALE/blob/master/src/imgs/Talk/Frisk/Frisk_Confused.png?raw=true">>
-//HP Meter setup
+/*HP Meter setup*/
 <<newmeter "Frisk-HP" $Frisk.HP>>
 <<sizing 10% 10em>>
 <<animation false>>
@@ -195,5 +193,7 @@ again without the quotes.
 
 {
 		"ifid": "2FBC0655-AEE8-4AE6-AEA1-FE7A9EED763E",
-		"start": "Start-Intro"
+		"start": "Start-Intro",
+		"format": "SugarCube",
+		"format-version": "2.34.0"
 }

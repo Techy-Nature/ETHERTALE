@@ -90,7 +90,7 @@ Here, you can test your pronouns. Hopefully, errors won't abound.
 <<Themself>>
 <<themself>>
 
-<<<link "Return." $return>>>
+<<<link "Return." $return>><</link>>
 
 :: Pronouns [menu-item stoptime]
 
@@ -103,7 +103,7 @@ Here, you can test your pronouns. Hopefully, errors won't abound.
 	<<option "Androgynous, they/them" 2>>
 <</listbox>>
 @@.pcdarklink;[[I don't like any of these.|Custom Pronouns]]@@
-<span class="pcdarklink"><<link "Thanks, Frisk. I'll go by these pronouns." $return>></span>
+<span class="pcdarklink"><<link "Thanks, Frisk. I'll go by these pronouns." $return>></span><</link>>
 
 :: Custom Pronouns [menu-item stoptime]
 

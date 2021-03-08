@@ -33,6 +33,8 @@ Template.add("GeneralPerson", function () { return ["Guy", "Girl", "Guy", "Guy"]
 Template.add("GeneralPeople", function () { return ["Guys", "Girls", "Guys", "Guys"][State.variables.pgen]; });
 Template.add("Pal", function () { return ["Dude", "Chick", "Pal", "Pal"][State.variables.pgen]; });
 Template.add("Pals", function () { return ["Dudes", "Chicks", "Pals", "Pals"][State.variables.pgen]; });
+
+/* Uppercase version added by Jaden */
 Template.add("THEIR", function () { return ["HIS", "HER", "THEIR", "ITS"][State.variables.pgen]; });
 Template.add("THEIRS", function () { return ["HIS", "HERS", "THEIRS", "ITS"][State.variables.pgen]; });
 Template.add("THEYRE", function () { return ["He's", "SHE'S", "THEY'RE", "IT'S"][State.variables.pgen]; });
@@ -40,7 +42,7 @@ Template.add("YOUNGPERSON", function () { return ["BOY", "GIRL", "KID", "CHILD"]
 Template.add("YOUNGPEOPLE", function () { return ["BOYS", "GIRLS", "KIDS", "CHILDREN"][State.variables.pgen]; });
 Template.add("ADULTPERSON", function () { return ["MAN", "WOMAN", "PERSON", "PERSON"][State.variables.pgen]; });
 Template.add("ADULTPEOPLE", function () { return ["MEN", "WOMEN", "PEOPLE", "PEOPLE"][State.variables.pgen]; });
-Template.add("GENERALPERSON", function () { return ["GUY", "GIRL", "PEEPS", "PEEPS"][State.variables.pgen]; });
+Template.add("GENERALPERSON", function () { return ["GUY", "GIRL", "PERSON", "PERSON"][State.variables.pgen]; });
 Template.add("GENERALPEOPLE", function () { return ["GUYS", "GIRLS", "PEEPS", "PEEPS"][State.variables.pgen];})
 Template.add("PAL", function () { return ["DUDE", "CHICK", "PAL", "PAL"][State.variables.pgen]; });
 Template.add("PALS", function () { return ["DUDES", "CHICKS", "PALS", "PALS"][State.variables.pgen]; });

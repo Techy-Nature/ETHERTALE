@@ -84,9 +84,8 @@ After the footsteps die away through <span class="link1">[[a pressurized door,|S
 
  <<nobr>>
  <<if visited() is 1>>I explore around, and find a crate of guns and other weapons. There's a few different types of guns, but I can't find any of them that I can use, really... The other side of the huge, tall crate is filled with different knives. I find one of those that I can use. I can pick up a <<linkreplace "High Tech Knife.">><<silently>><<pickUp "High Tech Knife">><</silently>>High Tech Knife, but I've already picked one up. I don't need another. I can look at my @@.link1;[[Inventory to equip it...|Inventory Menu]]@@ But do I really want to fight the crew? That might be a bad idea...<</linkreplace>>
- <<elseif visited() gt 1 and visited() lte 6>> I try to find something useful, and find a small crate of <<link "beast jerky.">>
-  <<if $C.Starship.CargoHold.includes("Beast Jerky")>><<pickUp "Beast Jerky">><<notify 3s 'invupdate'>>You picked up a Beast Jerky.<</notify>><</link>>
-  <<else>>what was Beast Jerky, though it's empty now.<</if>>
+ <<elseif visited() gt 1 and visited() lte 6>> I look around the Cargo Hold, searching in several different crates. I find...
+<<include "Room Item List">>
 <<else>> There's not much here that I need right now. I've taken everything that was useful, sadly...<</if>>
 <</nobr>>
 
@@ -111,7 +110,7 @@ I enter the cargo hold<<if lastVisited("Explore Cargo") lte 2>> again<</if>>. I 
 
 :: Ladder-sneaky [Ladder slowtime]
 
-I head towards the ladder, climb it, and try to open the hatch at the top, but it seems I don't have a key or it's jammed- It won't open for me. I climb back down and enter to [[the first hallway.|Starship hallway]]
+I head towards the ladder, climb it, and try to open the hatch at the top, but it seems I don't have a key or it's jammed, as it won't open for me. I climb back down and enter to [[the first hallway.|Starship hallway]]
 
 :: Vent 1
 
@@ -303,7 +302,7 @@ End of this route! Thanks so much for playing! :)
 
 :: Bedrooms hallway
 
-<<nobr>><<if lastVisited("Ladder") is 1>>I enter the hallway after climbing the ladder<<else>>. I find myself in the bedroom hallway.<</if>> This seems to be the sleeping quarters part of the ship, as I see a lot of bedroom doors <<if lastVisited("Ladder") is 1>>in front of<<else>>around<</if>> me...  Where should I go next?
+<<nobr>><<if lastVisited("Ladder") is 1>>I enter the hallway after climbing the ladder<<else>>. I find myself in the bedroom hallway.<</if>> This seems to be the sleeping quarters part of the ship, as I see a lot of bedroom doors <<if lastVisited("Ladder") is 1>>in front of<<else>>around<</if>> me...  Where should I go next?<</nobr>>
 
 \* [[Knock on Sans' bedroom door|Knock Knock. Sans. I'm Sansational.]]
 \* <<if visited() is 1>>[[Knock on Papyrus's bedroom door.|Knock Knock. NO!! I'M NOT GOING ALONG WITH YOUR SILLY JOKES, SANS!]]<<else>>[[Knock on Papyrus's/Gaster's door.|Pap's room]]<</if>>
@@ -356,15 +355,19 @@ There's a book about constellations (no surprise there), a book about ship AIs w
 :: Engine room [EngineRoom]
 <<if visited() is 1>>I creep into the engine room quietly.<<elseif visited() gt 1>>I find myself in the engine room again.<</if>> There isn't much to see here, other than lots of different sized vents and the boiler/heating and cooling system, the power source of the gravitational arrays, as well as the two giant, metal drums that house the rocket systems. I stay clear of those, as they are known to get very hot, at least when in use, which <<if $rocketsactive is true>>they are.<<elseif $rocketsactive is false>>they aren't.<<else>> <span id="glitch" data-text="Errors happened, please don't glitch the game.">Errors happened, please don't glitch the game.</span><</if>>
 
-*  <<if $linkclicked is undefined>><span class="linkcheck link1">[[Try to find a big enough vent to sleep in|Explore Engine Room]]</span><<elseif $linkclicked is true or hasVisited("Explore Engine Room") is true>>@@.link1;[[Decide to wait safely in the big vent that I found.|Waiting or Sleeping Vent 3]]@@<</if>>
+\*  <<if $linkclicked is undefined>><span class="linkcheck link1">[[Try to find a big enough vent to sleep in|Explore Engine Room]]</span><<elseif $linkclicked is true or hasVisited("Explore Engine Room") is true>>@@.link1;[[Decide to wait safely in the big vent that I found.|Waiting or Sleeping Vent 3]]@@<</if>>
 
-* @@.link2;[[Go back to the hallway and explore some more of the ship.|Starship hallway]]@@
+\* @@.link2;[[Go back to the hallway and explore some more of the ship.|Starship hallway]]@@
 
-* <<if $linkclicked2 is undefined>><span class="linkcheck2"><span class="pcdarklink link3">[[Get Frisk to inspect the gravitational arrays|Player inspects Grav-Arrays]]</span></span><<elseif $linkclicked2 is true and hasVisited("Questions about Grav-array and ship") is true>><span class="pcdarklink link3">[[Ask more questions about the Gravitational Arrays|Questions about Grav-array and ship]]</span><</if>>
+\* <<if $linkclicked2 is undefined>><span class="linkcheck2"><span class="pcdarklink link3">[[Get Frisk to inspect the gravitational arrays|Player inspects Grav-Arrays]]</span></span><<elseif $linkclicked2 is true and hasVisited("Questions about Grav-array and ship") is true>><span class="pcdarklink link3">[[Ask more questions about the Gravitational Arrays|Questions about Grav-array and ship]]</span><</if>>
 
-:: Explore Engine Room [EngineRoom]
+\* <<linkreplace "Look around the Engine room for something useful?">>I found something!
+<<include "Room Item List">>
+
+:: Explore Engine Room
 
 I look around the slightly cramped Engine room. With all the wires and miscellaneous electronics covering the floor and walls, it's a wonder I can find any vents at all. I open a few of them up, but eventually find a really well hidden, giant vent sneakily placed tightly next to the rocket drums. I try out the vent, and find that it's huge width lends itself to stretching myself out easily. I decide to go deeper before finding that it actually gets even wider the deeper you go in, before eventually tightening up again. I can easily make myself at home when I feel the need to, but right now, I @@.onlylink;[[crawl out of the vent.|Engine room]]@@
+
 
 :: Player inspects Grav-Arrays [EngineRoom]
 

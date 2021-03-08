@@ -235,7 +235,7 @@ End demo! Thanks for playing! :D
 
 End demo. Thanks for playing!
 
-<<if $debug is true>>For later: 
-\* @@.link1;[[Knock on Gaster's laboratory door.|Knock Knock Gaster Lab]]@@
-\* @@.link2;[[Go back down the ladder.|Ladder]]@@
-\* Try to enter [[Alphys's Office.|Alphys's Office]]<</if>>
+<<if $debug is true>>For later (code in comments): 
+/* @@.link1;[[Knock on Gaster's laboratory door.|Knock Knock Gaster Lab]]@@
+ @@.link2;[[Go back down the ladder.|Ladder]]@@
+ Try to enter [[Alphys's Office.|Alphys's Office]]<</if>> */

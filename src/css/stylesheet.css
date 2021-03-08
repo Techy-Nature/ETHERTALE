@@ -1,6 +1,10 @@
 /* Jaden's code for styling - start*/
 
 /* StoryInterface styling */
+
+::marker {
+content: "\*";
+}
 body, tw-story {
 	font-size: 16px;
 	color: white;
@@ -47,7 +51,9 @@ body {
 	grid-column: 5;
 	grid-row: 2;
 }
-
+#save-point {
+color: #fff200;
+}
 #passages {
 	width: 50vw;
 	flex-flow: row nowrap;

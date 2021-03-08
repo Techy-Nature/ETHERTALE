@@ -1,0 +1,11 @@
+:: Room Item List
+
+<ul>
+<<for _item range roomItems()>>
+  <li>
+  <<link _item>>
+    <<pickUp _item>>
+  <</link>>
+  </li>
+<</for>>
+</ul>
