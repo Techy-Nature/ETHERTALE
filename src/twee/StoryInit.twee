@@ -18,7 +18,10 @@ again without the quotes.
 <<set $Frisk.HP to 20>>
 <<set $Frisk.LV to 0>>
 <<set $Frisk.EXP to 0>>
-
+<<set $Frisk.inv to []>>
+<<set $Frisk.legs to $Setup.itemdata{"Dark Brown Pants"}>>
+<<set $Frisk.torso to $Setup.itemdata{"Blue and Purple Striped Sweater"}>>
+<<set $Frisk.feet to $Setup.itemdata{"Dark Brown Sneakers"}>>
 /*Jaden's Item Controller Object*/
 <<set $C to {
   "Starship": {

@@ -1,4 +1,4 @@
-:: Menu: Inventory[menu battle noreturn]
+:: Menu: Inventory [menu battle noreturn]
 <span id="content" class="menu"><<nobr>>
 <<set $inventory = $Frisk.inv>>
 <<set _filter = "all">>
@@ -41,7 +41,7 @@
 <br/>
 <div class="itemcontainer">
 <<set _p = 2>>
-<<for _item range $inventory.inventory>>
+<<for _item range $Frisk.inv>>
 	<<if _filter == "all" || (_filter == "usable" && _item.usable.includes("inmenu")) || (_filter == "equipment" && _item.equippable)>>
 	<<if _p == 1>>
 		<<set _p = 2>>

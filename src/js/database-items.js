@@ -4,6 +4,7 @@ setup.itemData = {
 
 	"Apple": {
 		// id#0
+		"useable": ["inmenu"],
 		"type": "hel",
 		"points": 15,
 		"desc": "Just a normal human apple. Monsters don't exactly need human food, but it definitely helps their stamina and physical constitution."
@@ -11,18 +12,21 @@ setup.itemData = {
 	"High Tech Knife": {
 		// id#1
 		"name": "High Tech Knife",
+		"equippable": {slot: "Weapon"},
 		"type": "atk",
 		"points": 6,
 		"desc": "A multi-purpose knife, with a few different sized screwdrivers, a bottle-opener and tiny pair of scissors, as well as a ruler and a back and forward button that cycles the tools on the side."
 	},
 	"Long Sharpened Knife": {
 		// id#2
+		"equippable": {slot: "Weapon"},
 		"type": "atk",
 		"points": 10,
 		"desc": "A long, thick knife with no extra tools. The metal from the extra tools has been put to good use extending the knife, making a better handle and sharpening the blade."
 	},
   "Electric Shortsword": {
-    // id#3
+	  //id#3
+	"equippable": {slot: "Weapon"},
     "type": "atk",
     "points": 20,
     "stunchance": 20,
@@ -30,12 +34,14 @@ setup.itemData = {
   },
   "Small Pistol": {
     // id#4
+	"equippable": {slot: "Weapon"},
     "type": "atk",
     "points": 12,
     "desc": "A small pistol with a suppressor made for beginners to gunslinging."
   },
   "Laser Pistol": {
     // id#5
+	"equippable": {slot: "Weapon"},
     "type": "atk",
     "points": 15,
     "burnchance": 30,
@@ -43,60 +49,70 @@ setup.itemData = {
   },
   "Space Suit": {
     // id#6
+	"equippable": {slot: "Torso"},
     "type": "def",
     "points": 8,
     "desc": "A heavy-duty space suit, with the same white and blue bone pattern as the ship on the heavy fabric. It also has a large air dome with an air tank attached via a plastic tube."
   },
   "Starship Bonetrousle Uniform": {
     // id#7
+	"equippable": {slot: "Torso"},
     "type": "def",
     "points": 6,
     "desc": "a light blue and white bone patterned shirt with a name tag attached to the left lapel. The nametag reads \"Frisk - They/Them\"."
   },
   "Ripped Blue Jeans": {
     // id#8
+	"equippable": {slot: "Legs"},
     "type": "def",
     "points": 4,
     "desc": "A somewhat beat-up pair of dark blue jeans. It has rips in the knees after being on the receiving end of many adventures."
   },
     "Blue Jeans": {
     // id#9
+	"equippable": {slot: "Legs"},
     "type": "def",
     "points": 6,
     "desc": "A normal pair of dark blue jeans."
   },
   "Light Blue Slacks": {
     // id#10
+	"equippable": {slot: "Legs"},
     "type": "def",
     "points": 5,
     "desc": "A pair of high quality light blue pants that were given to Frisk with the Starship Bonetrousle Uniform. They have an elastic band to keep them in place, as well as deep pockets and beltloops."
   },
-    "Dark Brown Sneakers": {
+    "Dark Brown Pants": {
     // id#11
+	"equippable": {slot: "Feet"},
     "type": "def",
     "points": 2,
     "desc": "A normal pair dark brown pants, with deep pockets and an elastic band to keep it in place on the waist."
   },
-  "Dark Brown Pants": {
+  "Dark Brown Sneakers": {
     // id#12
+	"equippable": {slot: "Legs"},
     "type": "def",
     "points": 2,
     "desc": "A normal pair of breathable, flexible sneakers."
   },
-  "Blue and Purple Single-Striped Sweater": {
+  "Blue and Purple Striped Sweater": {
     // id#11
+	"equippable": {slot: "Torso"},
     "type": "def",
     "points": 3,
     "desc": " \"This is the lightweight, long-sleeved, singular purple-striped mostly light blue sweater that I usually wear.\" - Frisk"
   },
   "M&M Cake": {
     // id#13
+	"useable": ["inmenu"],
     "type": "hel",
     "points": 10,
     "desc": "The two Ms in this cake stand for Miniature and Monster. These cakes come in chocolate, vanilla and marbled, but always include chocolate frosting on top."
   },
   "Beast Jerky": {
     // id#14
+	"useable": ["inmenu"],
     "type": "hel",
     "points": 5,
     "desc": "A monster version of beef jerky. The meat seems tougher than normal beef."
