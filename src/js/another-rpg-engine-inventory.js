@@ -249,6 +249,9 @@ window.roomItems = function roomItems (room,area) {
 	if (area === undefined || typeof(area) != 'string') {
 		area = variables().currentArea;
 	}
+	console.log("currentRoom = "+variables().currentArea);
+	console.log("currentRoom = "+variables().currentRoom);
+	console.log("roomItems returning object"); console.log(variables().C[area][room]);
 
 	return variables().C[area][room];
 };

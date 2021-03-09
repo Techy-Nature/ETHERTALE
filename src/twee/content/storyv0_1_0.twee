@@ -7,7 +7,7 @@
 <<fadein 1600ms 300ms>>The cause was anyone's guess,<</fadein>>
 
 <<fadein 2100ms 300ms>>but unfortunately the bloodshed and dust was a mess.<</fadein>>
- 
+
 <<fadein 2600ms 300ms>>When they all realized they could take no more of this,<</fadein>>
 
 <<fadein 3100ms 300ms>>they all gathered together, and realized they could make a promise.<</fadein>>
@@ -20,7 +20,7 @@
 
 :: Aftermath [stoptime]
 
-<<fadein 500ms 300ms>>It took a long time for Monsters and Humans to get along,<</fadein>> 
+<<fadein 500ms 300ms>>It took a long time for Monsters and Humans to get along,<</fadein>>
 
 <<fadein 1200ms 300ms>>but the determination of the Humans and the peaceable nature of the Monsters had them in song before long.<</fadein>>
 
@@ -58,7 +58,7 @@ It is giant... Much bigger than I imagined it to be before.
 
 @@.onlylink;[[The Starship Bonetrousle.|Starship Bonetrousle]]@@
 
-:: Starship Bonetrousle
+:: Starship Bonetrousle [Starship]
 
 From behind the corner of the buildings 20 feet away, I marvel at the beautiful, shiny chrome ship, painted blue with a white bone stripe across the middle. Word on the street is, the ship has a crew of only eight. How it can function on that tiny of a crew is beyond me.
 Crouching behind a bush, I wait stealthily until a stray box is left outside the humongous ship on it's lonesome, then I jump from behind the bush, arms pumping, dark brown sneakers slapping on the dirt and later the metal landing platform. Then I open the box up, and, jumping inside it, close it up again. Afterwards I quickly cover myself with a felt packing blanket, @@.onlylink;[[and wait.|Intro the ship]]@@
@@ -101,9 +101,9 @@ I enter the cargo hold<<if lastVisited("Explore Cargo") lte 2>> again<</if>>. I 
 
 \* <span class="link1">[[right|Engine room]]</span>
 \* head <span class="link2">[[left and go up the ladder|Ladder-sneaky]]</span>
-\* left but head into the [[Dining Lounge|Dining Lounge-sneaky]] 
-\* <<nobr>><<if visited() is 1>>@@.link3;<<hovertip "Maybe try to find some food?">>[[Go to the Kitchen directly in front of me.|Kitchen-sneaky]]<</hovertip>>@@<<else>>@@.link3;[[Go to the Kitchen.|Kitchen-sneaky]]@@<</if>><</nobr>> 
-\* <span class="link4">[[try to find an air vent|Vent 1]]</span> to hide in? 
+\* left but head into the [[Dining Lounge|Dining Lounge-sneaky]]
+\* <<nobr>><<if visited() is 1>>@@.link3;<<hovertip "Maybe try to find some food?">>[[Go to the Kitchen directly in front of me.|Kitchen-sneaky]]<</hovertip>>@@<<else>>@@.link3;[[Go to the Kitchen.|Kitchen-sneaky]]@@<</if>><</nobr>>
+\* <span class="link4">[[try to find an air vent|Vent 1]]</span> to hide in?
 \* I can also go back into the <span class="link5">[[cargo hold.|Cargo Hold]]</span>
 
 <<timed 15s>><<goto "Footsteps">><</timed>>
@@ -143,12 +143,12 @@ I am confused as to this turn of events, but to say I am surprised to get caught
 
 <span class="onlylink">[[I watch the skeleton walk as I'm carried by my SOUL to the front of the ship, likely where the captain will be.|Hallway conversation]]</span>
 
-:: Hallway conversation 
+:: Hallway conversation
 
 <<if $PCOffline is false>>
-<span class="comicsans"><<sans-bluemagic-o>>welp, might as well tell you the name of your judge, huh, kid? i'm sans. sans the skeleton.<</sans-bluemagic-o>></span> 
+<span class="comicsans"><<sans-bluemagic-o>>welp, might as well tell you the name of your judge, huh, kid? i'm sans. sans the skeleton.<</sans-bluemagic-o>></span>
 <<elseif $PCoffline is true or $PCoffline is undefined>>
-<span class="comicsans"><<sans-bluemagic>>welp, might as well tell you the name of your judge, huh, kid? i'm sans. sans the skeleton.<</sans-bluemagic>></span> 
+<span class="comicsans"><<sans-bluemagic>>welp, might as well tell you the name of your judge, huh, kid? i'm sans. sans the skeleton.<</sans-bluemagic>></span>
 <</if>>The monster pauses, thoughtful.
 <<if $PCOffline is false>>
 <span class="comicsans"><<sans-bluemagic-o>>so uh... kid, I think you know the gig's up, right? you can't try to hide again after we know you're here, you'd just get caught again.<</sans-bluemagic-o>></span>
@@ -167,7 +167,7 @@ Completely ignore the question and introduce myself instead.
 @@.link3;.dtm-mono;<<Frisk-determined-o>>[[Terrible to meet you, Sans. I'm Frisk! Also, doesn't Sans mean without? Unfortunate name if you ask me.|Rude Introduction]]<</Frisk-determined-o>>@@
 <<elseif $PCoffline is true or $PCoffline is undefined>>@@.link3;.dtm-mono;<<Frisk-determined>>[[Terrible to meet you, Sans. I'm Frisk! Also, doesn't Sans mean without? Unfortunate name if you ask me.|Rude Introduction]]<</Frisk-determined>>@@
 <</if>>
-Or, try to be friendly with my introduction in the hopes of being released, and resolve to stay put. 
+Or, try to be friendly with my introduction in the hopes of being released, and resolve to stay put.
 <<if $PCOffline is false>><<Frisk-happy-o>>@@.link4;[[Nice to meet you, Sans. I'm Frisk! Also, I agree, it would be wasted effort on both of our parts if I tried to run again.|Nice Introduction]]@@<</Frisk-happy-o>>
 <<elseif $PCoffline is true or $PCoffline is undefined>>
 <<Frisk-happy>>@@.link4;[[Nice to meet you, Sans. I'm Frisk! Also, I agree, it would be wasted effort on both of our parts if I tried to run again.|Nice Introduction]]@@<</Frisk-happy>><</if>>
@@ -177,7 +177,7 @@ Or, try to be friendly with my introduction in the hopes of being released, but 
 <<elseif $PCoffline is true or $PCoffline is undefined>><<Frisk-happy>>[[Nice to meet you, Sans. I'm Frisk!|Nice Introduction but escapist Frisk]]<</Frisk-happy>>
 <</if>>
 
-:: Conversation part 2 
+:: Conversation part 2
 
 Sans waits for an answer, but when he realizes I'm glaring defiantly at him he looks ahead and sighs ruefully. The rest of the walk to what I'm assuming is the Captain's Cabin is completely in silence.
 
@@ -206,7 +206,7 @@ I stand and watch him leave, then sit down and pull my legs up to my chest, wait
 Sans' eyes darken, his face looking very depressed and furious for the moment. I can tell he's trying to get his emotions under control. I must have pushed a bunch of his buttons all at once.
 <<if $PCOffline is false>><<sans-serious-o>><span class="comicsans">yeah. frisk. got it. never going to use it.</span><</sans-serious-o>>
 <<elseif $PCoffline is true or $PCoffline is undefined>><<sans-serious>><span class="comicsans">yeah. frisk. got it. never going to use it.</span><</sans-serious>>
-<</if>> 
+<</if>>
 Sans grumbles only half-coherently as we make our way to the end of the hallway. He then finds a metal specimen crate (with glass sides, a fingerprint lock, and a grated top) for my jail. He both moves the grate, and drops me inside with blue magic, being careful not to let me go before locking the grate back to the top of it with the numberpad key.
 
 The shape of the crate is an upright cylinder, the numberpad key being on the outside and far from the grate. The keypad is connected through wiring on the outside of the crate, so it's completely impossible to open it from the inside. I can just stand up in it, it seems. My arms can reach out and stretch completely to the sides, but not upright- the grate is in the way.
