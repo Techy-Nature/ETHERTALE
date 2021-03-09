@@ -18,16 +18,18 @@ All I did was go to the settings and search up "keyboard" without the quotes, an
 <<set $Frisk.LV to 0>>
 <<set $Frisk.EXP to 0>>
 <<set $Frisk.inv to []>>
-/*<<set $Frisk.legs to $Setup.itemdata{"Dark Brown Pants"}>>
-<<set $Frisk.torso to $Setup.itemdata{"Blue and Purple Striped Sweater"}>>
-<<set $Frisk.feet to $Setup.itemdata{"Dark Brown Sneakers"}>> */
+<<set $Frisk.legs to new Item("Dark Brown Pants")>>
+<<set $Frisk.torso to new Item("Blue and Purple Striped Sweater")>>
+<<set $Frisk.feet to new Item("Dark Brown Sneakers")>> 
+<<set $Frisk.head to undefined>>
 /*Jaden's Item Controller Object*/
+<<set $currentArea to "Starship">>
 <<set $C to {
   "Starship": {
     "Cargo Hold": ["High Tech Knife", "Beast Jerky", "Beast Jerky", "Beast Jerky", "Beast Jerky", "Beast Jerky"],
     "Engine Room": ["Metal"],
 	"Kitchen": ["Apple", "M&M Cake", "Beast Jerky"],
-	"Dining Lounge":[],
+	"Dining_Lounge":[],
 	"Gaster's Lab": [],
 	"Alphys's Office":[],
 	"Navigation Room":[],
@@ -109,6 +111,19 @@ All I did was go to the settings and search up "keyboard" without the quotes, an
 <<character "Frisk-worried-o" "Frisk" "https://github.com/Techy-Nature/ETHERTALE/blob/master/src/imgs/Talk/Frisk/Frisk_Worried.png?raw=true">>
 <<character "Frisk-surprised-o" "Frisk" "https://github.com/Techy-Nature/ETHERTALE/blob/master/src/imgs/Talk/Frisk/Frisk_Surprised.png?raw=true">>
 <<character "Frisk-confuzzled-o" "Frisk" "https://github.com/Techy-Nature/ETHERTALE/blob/master/src/imgs/Talk/Frisk/Frisk_Confused.png?raw=true">>
+/* Undyne speech widgets */
+/* Undyne in offline mode */
+<<character "U-determined" "Undyne" "imgs/Talk/Undyne/U-Determined.png">>
+<<character "U-angry" "Undyne" "imgs/Talk/Undyne/U-Angry.png">>
+<<character "U-worried" "Undyne" "imgs/Talk/Undyne/U-Worried.png">>
+<<character "U-furious" "Undyne" "imgs/Talk/Undyne/U-Furious.png">>
+<<character "U-happy" "Undyne" "imgs/Talk/Undyne/U-Happy.png">>
+/* Undyne in online mode */
+<<character "U-determined-o" "Undyne" "https://raw.githubusercontent.com/Techy-Nature/ETHERTALE/master/src/imgs/Talk/Undyne/U_Determined.png">>
+<<character "U-angry-o" "Undyne" "https://raw.githubusercontent.com/Techy-Nature/ETHERTALE/master/src/imgs/Talk/Undyne/U_Angry.png">>
+<<character "U-worried-o" "Undyne" "https://raw.githubusercontent.com/Techy-Nature/ETHERTALE/master/src/imgs/Talk/Undyne/U_Worried.png">>
+<<character "U-furious-o" "Undyne" "https://raw.githubusercontent.com/Techy-Nature/ETHERTALE/master/src/imgs/Talk/Undyne/U_Furious.png">>
+<<character "U-happy-o" "Undyne" "https://raw.githubusercontent.com/Techy-Nature/ETHERTALE/master/src/imgs/Talk/Undyne/U_Happy.png">>
 /*HP Meter setup*/
 <<newmeter "Frisk-HP" $Frisk.HP>>
 <<sizing 10% 10em>>

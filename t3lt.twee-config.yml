@@ -4,5 +4,3 @@ sugarcube-2:
       name: 
     pickUp:
       name: pickUp
-  widgets:
-    name: character

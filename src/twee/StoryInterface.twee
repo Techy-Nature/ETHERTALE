@@ -125,9 +125,12 @@ Here, you can test your pronouns. Hopefully, errors won't abound.
 
 <<if !tags().includes('stoptime')>><<addmins 2>><<elseif tags().includes('slowtime')>><<addmins 1>><<elseif !(tags().includes('menu-item') or tags(previous()).includes('menu-item'))>><</if>>
 
-<<if tags().includes("CargoHold")>>
-  <<set $currentRoom to passage()>>
+<<if tags().includes("room") && typeof(tags()[1]) == "Kitchen")>>
+  <<set $currentRoom = tags()[1].split("_").join(" ")>>
 <</if>>
-<<if tags().includes("Kitchen-sneaky")>>
-  <<set $currentRoom to passage()>>
+<<if tags().includes("room") && typeof(tags()[1]) == "Cargo_Hold")>>
+  <<set $currentRoom = tags()[1].split("_").join(" ")>>
+<</if>>
+<<if tags().includes("areaChange") && typeof(tags()[1]) == "Planet 1")>>
+  <<set $currentArea = tags()[1].split("_").join(" ")>>
 <</if>>

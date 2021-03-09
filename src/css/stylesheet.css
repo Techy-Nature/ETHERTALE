@@ -6,6 +6,7 @@
 content: "\*";
 font-weight: bold;
 color: white;
+font-size: 18px; 
 }
 body, tw-story {
 	font-size: 16px;
@@ -139,6 +140,8 @@ url('fonts/papyrus-webfont-svg.svg') format("svg");
 
 .papyrus {
 	font-family: papyrus;
+	-webkit-text-fill-color:white;
+	-webkit-text-stroke-color: white;
 }
 
 .arial {

@@ -155,7 +155,7 @@ I tense up, but before I can do anything to defend myself, a voice from above sp
 <<nobr>><<if $PCOffline is false>><<G-furious-o>><span class="aster"><b>Undyne!</b></span><</G-furious-o>>
 <<elseif $PCoffline is true or $PCoffline is undefined>><<G-furious>><span class="aster"><b>Undyne!</b></span><</G-furious>><</if>><</nobr>>
 
-	The fishy woman's hand slowly withdraws. "<span class="dtm-sans">What?</span>"
+	The fishy woman's hand slowly withdraws. <<nobr>><<if $PCOffline is false>><<U-angry-o>><span class="dtm-sans">What?</span><</U-angry-o>><<elseif $PCOffline is true>><<U-angry>><span class="dtm-sans">What?</span><</U-angry>><</if><</nobr>>
 <<nobr>><<if $PCOffline is false>><<G-determined-o>><span class="aster">I do believe this calls for a more delicate word.</span><</G-determined-o>>
 <<elseif $PCoffline is true or $PCoffline is undefined>><<G-determined>><span class="aster">I do believe this calls for a more delicate word.</span><</G-determined>>
 <</if>><</nobr>>
@@ -193,10 +193,12 @@ He grimaces wider, pulling slightly at his turtleneck.
 <<elseif $PCoffline is true or $PCoffline is undefined>><<G-worried>><span class="aster">...But we need to put cuffs on you for the time being. We'll make sure they aren't too tight, isn't that right, Undyne?</span><</G-worried>>
 <</if>><</nobr>>
 
-Undyne just rolls her eyes. "<span class="dtm-sans">You haven't even introduced yourself yet, you old bag of bones!</span>" Undyne then turns to me, a grin on her face, while the skeleton in question's face turns indignant. Before he can get a word in edgewise, Undyne introduces him. "<span class="dtm-sans">This skeleton is Wing Din Gaster.</span>" She gestures to him. "<span class="dtm-sans">He doesn't care much for fame, despite being FAMOUS, which is why he didn't introduce himself. You probably already know his name!</span>"
+Undyne just rolls her eyes. <<if $PCOffline is true>><<U-determined>><span class="dtm-sans">You haven't even introduced yourself yet, you old bag of bones!</span><</U-determined>><<elseif $PCOffline is false>><<U-determined-o>><span class="dtm-sans">You haven't even introduced yourself yet, you old bag of bones!</span><</U-determined-o>> Undyne then turns to me, while the skeleton in question's face turns indignant. Before he can get a word in edgewise, Undyne introduces him. <<if $PCOffline is false>><<U-happy-o>><span class="dtm-sans">This skeleton is Wing Din Gaster.</span><</U-happy-o>><<elseif $PCOffline is true>><<U-happy-o>><span class="dtm-sans">This skeleton is Wing Din Gaster.</span></<U-happy-o>> 
+She gestures to him, slightly exasperated. 
+<<if $PCOffline is false<<U-determined-o>><span class="dtm-sans">He doesn't care much for fame, despite being FAMOUS, which is why he didn't introduce himself. You probably already know his name!</span><</U-determined-o>><<elseif $PCOffline is true>><<U-determined>><span class="dtm-sans">He doesn't care much for fame, despite being FAMOUS, which is why he didn't introduce himself. You probably already know his name!</span><</U-determined>>
 I nod, smirking. <span class="pcdarklink"><<linkreplace "You express confusion to me...">>I explain to you in my mind that Wing Din Gaster is the inventor of the ultra-efficient fuel that made space-travel possible. <span class="pcdark">You make a sound that is the equivalent of a nod and an impressed gasp in my mind.</span><</linkreplace>></span>
 
-A couple minutes later the cuffs are on and I am prodded along by Undyne as I follow Gaster, exiting @@.onlylink;[[to the hallway.|Following Gaster]]@@
+During the explanation, Gaster is completely silent,  an annoyed look on his face as he puts on my cuffs. A minute later the cuffs are on and I am prodded along by Undyne as I follow Gaster, exiting @@.onlylink;[[to the hallway.|Following Gaster]]@@
 
 :: Following Gaster
 
@@ -213,8 +215,8 @@ In the time between learning my fate, which hasn't happened yet, and being lead 
 <</if>>
 
 Gaster nods in agreement but says, 
-<<if $PCOffline is false>><<G-bored-o>><span class="aster">We're almost there. The <i>Bonetrousle</i> isn't that big on the inside, as it's mostly cargo space, and the lab and the computer rooms are fairly large, as well. You'll be fine until we get there, then I'll take them off when everyone is around and you're in a containment chamber.</span><</G-bored-o>>
-<<elseif $PCoffline is true or $PCoffline is undefined>><<G-bored>><span class="aster">We're almost there. The <i>Bonetrousle</i> isn't that big on the inside, as it's mostly cargo space, and the lab and the computer rooms are fairly large, as well. You'll be fine until we get there, then I'll take them off when everyone is around and you're in a containment chamber.</span><</G-bored>>
+<<if $PCOffline is false>><<G-bored-o>><span class="aster">We're almost there. The <i>Bonetrousle</i> isn't that big on the inside, as it's mostly cargo space, but the dining lounge, kitchen and the computer rooms are fairly large besides. You'll be fine until we get there, then I'll take them off when everyone is around and you're in a containment chamber.</span><</G-bored-o>>
+<<elseif $PCoffline is true or $PCoffline is undefined>><<G-bored>><span class="aster">We're almost there. The <i>Bonetrousle</i> isn't that big on the inside, as it's mostly cargo space, but the dining lounge, kitchen and the computer rooms are fairly large besides. You'll be fine until we get there, then I'll take them off when everyone is around and you're in a containment chamber.</span><</G-bored>>
 <</if>>
 
 <i><span class="dtm-mono">Oh. Great. I'm going to jail.</span></i> I think to myself sarcastically. At least I know where I'm going now, even if it isn't going to be pleasant. I dejectedly lower my head, watching the floor as we @@.onlylink;[[walk along.|Containment Chamber]]@@ The tenseness in my arms and shoulders bleeds out into the air, following us at our heels. It then dissipates behind us. The tense energy that once was instead turns to a crestfallen, disappointed feeling.
@@ -237,5 +239,5 @@ End demo. Thanks for playing!
 
 <<if $debug is true>>For later (code in comments): 
 /* @@.link1;[[Knock on Gaster's laboratory door.|Knock Knock Gaster Lab]]@@
- @@.link2;[[Go back down the ladder.|Ladder]]@@
- Try to enter [[Alphys's Office.|Alphys's Office]]<</if>> */
+ @@.link2;[[Go up the ladder.|Ladder]]@@
+ Try to enter [[Alphys's Office.|Alphys's Office]]*/<</if>> 
