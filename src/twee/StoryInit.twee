@@ -22,6 +22,7 @@ All I did was go to the settings and search up "keyboard" without the quotes, an
 <<set $Frisk.torso to new Item("Blue and Purple Striped Sweater")>>
 <<set $Frisk.feet to new Item("Dark Brown Sneakers")>> 
 <<set $Frisk.head to undefined>>
+<<set $Frisk.weapon to undefined>>
 /*Jaden's Item Controller Object*/
 <<set $currentArea to "Starship">>
 <<set $C to {
@@ -31,11 +32,11 @@ All I did was go to the settings and search up "keyboard" without the quotes, an
 	"Kitchen": ["Apple", "M&M Cake", "Beast Jerky"],
 	"Dining_Lounge":[],
 	"Gaster's Lab": [],
-	"Alphys's Office":[],
+	"Alphys' Office":[],
 	"Navigation Room":[],
-	"Alphys's Bedroom":[],
+	"Alphys' Bedroom":[],
 	"Gaster and Papyrus's Bedroom":[],
-	"Sans'Bedroom":["Cloth"],
+	"Sans' Bedroom":["Cloth"],
 	"Undyne's Training Room/Bedroom":[],
 	"Asgore's Bedroom":[],
 	"Toriel's Bedroom":[],
@@ -43,7 +44,8 @@ All I did was go to the settings and search up "keyboard" without the quotes, an
 	"Linen Closet":["Cloth", "Cloth", "Cloth"],
 	"1st Floor Corridor":[],
 	"2nd Floor Corridor":[],
-	"Vent3":[],
+	"Vent 2":[],
+	"Vent 1":[],
 	"Ladder":[]
   }
 }>>

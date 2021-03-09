@@ -64,7 +64,7 @@
 	<</switch>>
 <</nobr>><</widget>>
 /* <<SetGender>> widget - End */
-// Extra custom pronouns widget by Jaden
+/* Extra custom pronouns widget by Jaden */
 
 <<widget "they">><<if $custompronouns is true>><<print $ne>><<else>>?they<</if>><</widget>>
 <<widget "them">><<if $custompronouns is true>><<print $nem>><<else>>?them<</if>><</widget>>
@@ -79,7 +79,7 @@
 <<widget "THEY">><<if $custompronouns is true>><<print $ne.toUpperCase()>><<else>>?THEY<</if>><</widget>>
 <<widget "THEM">><<if $custompronouns is true>><<print $nem.toUpperCase()>><<else>>?THEM<</if>><</widget>>
 <<widget "THEYRE">><<if $custompronouns is true>><<print $nir.toUpperCase()>><<else>>?THEYRE<</if>><</widget>>
-<<widget "THEIRS">><<if $custompronouns is true>><<print $nirs.toUpperCase>><<else>>?THEIRS<</if>><</widget>>
+<<widget "THEIRS">><<if $custompronouns is true>><<print $nirs.toUpperCase()>><<else>>?THEIRS<</if>><</widget>>
 <<widget "THEMSELF">><<if $custompronouns is true>><<print $nemself.toUpperCase()>><<else>>?THEMSELF<</if>><</widget>>
 
 /* <<checkboxPlus>> widget by HiEv
