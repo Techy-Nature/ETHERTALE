@@ -111,6 +111,9 @@ I enter the cargo hold<<if lastVisited("Explore Cargo") lte 2>> again<</if>>. I 
 :: Ladder-sneaky [room Ladder slowtime]
 
 I head towards the ladder, climb it, and try to open the hatch at the top, but it seems I don't have a key or it's jammed, as it won't open for me. I climb back down and enter to [[the first hallway.|Starship hallway]]
+<<if $C.Starship["Ladder"].length is 0>>There's nothing here to see, after all.<<elseif $C.Starship["Ladder"].length gt 1>>There's some stuff here I can pick up...
+<<include "Room Item List">><<elseif $C.Starship["Ladder"].length is 1>>There's something here I can pick up...
+<<include "Room Item List">><</if>>
 
 :: Vent 1 [room Vent_1]
 
@@ -316,7 +319,7 @@ End of this route! Thanks so much for playing! :)
 :: Kitchen-sneaky [room Kitchen]
 
 I sneak into the kitchen, peeking through the double-door's windows before entering to make sure the coast is clear. I lean up on tip-toes and pull myself up to see through the tall windows, and when I see that no one is inside I go ahead and enter.
-<<if $Frisk.exploredKitchen is undefined>>* <<linkreplace "Look around and try to find some food?">><<nobr>><<set $Frisk.exploredKitchen to true>><<if visited() is 1>>Hey, I found some!<</if>>* I can pick up...<</nobr>>
+<<if $Frisk.exploredKitchen is undefined>>* <<linkreplace "Look around and try to find some food?">><<nobr>><<set $Frisk.exploredKitchen to true>><<if visited() is 1>>I found some!<</if>>* I can pick up...<</nobr>>
 <<include "Room Item List">>
 <</linkreplace>><<nobr>><<elseif $Frisk.exploredKitchen is true>>* I can pick up...<</nobr>>
 <<include "Room Item List">>
