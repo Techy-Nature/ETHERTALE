@@ -136,7 +136,7 @@
       <<set _pickedUp = $Frisk.inv.addItem(_toPickUp)>>
       <<if _pickedUp === true>>
         <<set roomItems().deleteAt(roomItems().indexOf(_toPickUp))>>
-	<<notify 3s 'invupdate'>>You picked up <<an _toPickUp>> <<print _toPickUp>>.<</notify>>
+	<<notify 3s 'invupdate'>>You picked up <<an _toPickUp>>.<</notify>>
       <<else>>
       	<<notify 3s 'invfull'>>Your inventory is full!<</notify>>
       <</if>>
