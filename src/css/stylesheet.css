@@ -3,8 +3,13 @@
 /* StoryInterface styling */
 
 ::marker {
-content: "\*";
+	content: "\*";
 }
+
+li {
+	padding-left: 10px;
+}
+
 body, tw-story {
 	font-size: 16px;
 	color: white;
