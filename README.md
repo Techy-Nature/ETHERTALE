@@ -10,6 +10,9 @@ A coming of age adventure CYOA UNDERTALE AU that will have space travel, invento
 You don't have to, but I'd really appreciate it if you did. :) It helps me get better artwork, music and possibly coding help as well. 
 
 [Donate! Every dollar helps!](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=JQ9BXNQUQS5NQ&currency_code=USD)
+Bitcoin/My Monero donationS
+!(Monero request QR codes)[https://64.media.tumblr.com/fa1cdf3e2a8db0e2ef95834f398a5aaa/e637204a645e7333-c1/s250x400/3ea440c213d77dbd48b20a4e8630e9f8e8da8227.png]
+If you'd rather you can also send it directly to "47ntPeRSKfpbQBdziwTZ8q5HNuCybTLuQZ3ZGmHtht3HMYwJi3YW4Cr1YECv2JfzwqJKebRVz27QzXkoLmadFdg2Rsfa1jx", without the quotes.
 
 Thanks so much if you donate, or if you share this page or the [Tumblr dev blog](https://ethertale-fangame.tumblr.com) around!
 
@@ -19,7 +22,7 @@ Follow the instructions below in installing. Find index.html and run that on any
 
 ### Prerequisites
 
-You'll need the images and fonts to go with the HTML file. They are all bundled in the releases page. Twine games are generally pretty easy on the computer so all you'll really need is a browser of some sort that can display images and text effects, and you'll be good. Just get the most recent version of whatever browser you'll be using and you should be set.
+You'll need the images, fonts and music to go with the HTML file. They are all bundled in the releases page. Twine games are generally pretty easy on the computer so all you'll really need is a browser of some sort that can display images and text effects, and you'll be good. Just get the most recent version of whatever browser you'll be using and you should be set.
 
 ### Installing
 
@@ -27,7 +30,7 @@ You'll need the images and fonts to go with the HTML file. They are all bundled 
 
 2. Extract the folder anywhere you please (just please don't rename the img and font files or move the font and image files outside of their folder structure okay? thanks!)
 
-3. Run index.html in any relatively new internet browser
+3. Run index.html in any internet browser
 
 4. Make sure **NOT** to use private mode while playing Twine games. *SAVES* will **NOT** work on that mode. Also don't erase your cache without first backing up your save externally.
 
@@ -42,7 +45,6 @@ You'll need the images and fonts to go with the HTML file. They are all bundled 
 * **Billie Thompson** - *Initial README file template* - [PurpleBooth](https://github.com/PurpleBooth)
 * **Duke** - [Dukemz](https://github.com/Dukemz)
 * **Jaden** - [Techy-Nature](https://github.com/Techy-Nature)
-* **Irin** - [AFriendlyIrin](https://github.com/AFriendlyIrin)
 
 See also the list of [contributors](https://github.com/Techy-girl/ETHERTALE/contributors) who participated in this project.
 
@@ -57,5 +59,4 @@ This project is licensed under the GNUvrs.3 License - see the [LICENSE.md](https
 ## Credits/Acknowledgments
 
 * Dukemz
-* Irin
 * Toby Fox for Undertale
