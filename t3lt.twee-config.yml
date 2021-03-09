@@ -1,0 +1,8 @@
+sugarcube-2:
+  macros:
+    character:
+      name: 
+    pickUp:
+      name: pickUp
+  widgets:
+    name: character

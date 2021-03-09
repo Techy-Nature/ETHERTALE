@@ -4,6 +4,8 @@
 
 ::marker {
 content: "\*";
+font-weight: bold;
+color: white;
 }
 body, tw-story {
 	font-size: 16px;
