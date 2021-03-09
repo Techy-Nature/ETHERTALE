@@ -1,4 +1,4 @@
-:: Room Item List
+:: Room Item List [nobr]
 
 <ul>
 <<for _item range roomItems()>>
