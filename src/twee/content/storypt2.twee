@@ -32,7 +32,7 @@ How long should I <<if $now.getHours() gte 20 or $now.getHours() lt 6>>sleep<<el
 <</switch>>
 <<if $now.getHours() gte 20 or $now.getHours() lt 6>><span class="link2">[[Exit the large vent.|Engine room]]</span><<else>><span class="link6">[[Exit the large vent.|Engine room]]</span><</if>>
 
-<<if $C.Starship["Vent 3"].length is 0>>There's nothing stored here right now, but you've got extra space if you need to [[store things here.|inventory-menu]]<<elseif>>You've stored, and can pick back up...
+<<if $C.Starship["Vent 3"].length is 0>>There's nothing stored here right now, but you've got extra space if you need to [[store things here.|Menu: Inventory]]<<elseif>>You've stored, and can pick back up...
 
 <<include "Room Item List">><</if>>
 
@@ -52,11 +52,11 @@ How long should I <<if $now.getHours() gte 20 or $now.getHours() lt 6>>sleep<<el
 
 <i><span class="dtm-mono">Basically we end up in zero gravity until we touch down on the ceiling or another surface. This is pretty easily remedied, though. Usually space-farers just find an empty piece of wall and walk back to the ground from there.</span></i> I grin mischieviously. <i><span class="dtm-mono">It'd likely be an easy way to prank someone, though!</span></i> I snicker quietly, trying not to create too much noise. <i><span class="dtm-mono onlylink">[[Anyway, you have any other questions about this?|Gravity on ship Explain]]</span></i>
 
-:: W.D. Gaster [room Engine_Room slowtime]
+:: W.D. Gaster [cutscene slowtime]
 
 I scrunch up my nose. <i><span class="dtm-mono onlylink">[[He really scares me. Even thinking about his name might draw his attention, as he can do many strange things no one else can.|Questions about Grav-array and ship]]</span> <span class="dtm-mono">He is on this ship, I saw him get on.</span></i> I shiver. <i><span class="dtm-mono">He has microphones everywhere, and cameras that help patrol the halls. I've seen them. Honestly I'm surprised he hasn't caught me yet. My saving grace, I think, has been that I've been pretty quiet so far.</span></i>
 
-:: The non-existent Jump-ship Plan [slowtime cutscene]
+:: The non-existent Jump-ship Plan [cutscene slowtime]
 
 <<if $PCOffline is false>><<Frisk-worried-o>><span class="dtm-mono">I-</span><</Frisk-worried-o>>
 <<elseif $PCoffline is true or $PCoffline is undefined>><<Frisk-worried>><span class="dtm-mono">I-</span><</Frisk-worried>>
@@ -171,6 +171,8 @@ I tense up, but before I can do anything to defend myself, a voice from above sp
 <</if>>
 
 A skeleton taller than the woman crouches down in front of me, keeping his balance with four phalanges on a rare patch of empty wall above him. He's wearing a dark grey turtle-neck and a white, pristine lab-coat with black slacks, along with black dress shoes. The labcoat's tails billow out behind him as he crouches down, then they rest on the floor of the engine room.
+
+
 I glare downwards after sizing him up and glancing into his white eyelight (his right eye must have been injured, as it droops to thepoint where his other eyelight can't form), afterwards fiddling with a stray wire sticking out of the entrance to the vent.
 He pauses to take a deep, calming breath through his nose, then explains his intentions. 
 <<if $PCOffline is false>><<G-bored-o>><span class="aster">I don't intend to harm you, however, we will need to figure out how you're going to repay us for hitching a ride uninvited. If you try to leave through the vents- I know this ship inside and out, you'll only come upon the fans and filters that circulate and purify air inside the ship.</span><</G-bored-o>>

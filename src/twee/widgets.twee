@@ -151,6 +151,7 @@
       <<if def _toDrop>>
         <<set $FriskInventory.decItem(_item)>>
         <<set roomItems().push(_item)>>
+		<<refresh>>
       <</if>>
   <</if>>
 <</widget>>
