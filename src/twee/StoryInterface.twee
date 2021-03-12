@@ -123,10 +123,10 @@ Here, you can test your pronouns. Hopefully, errors won't abound.
 
 :: PassageHeader [nobr]
 
-<<if !tags().includes('stoptime')>><<addmins 2>><<elseif tags().includes('slowtime')>><<addmins 1>><<elseif !(tags().includes('menu-item') or tags(previous()).includes('menu-item'))>><</if>>
+<<if !tags().includes('stoptime')>><<addmins 2>><<elseif tags().includes('slowtime')>><<addmins 1>><<elseif (tags().includes('menu-item') or tags(previous()).includes('menu-item'))>><</if>>
 
 <<if tags().includes("room") && typeof(tags()[1]) == ("Kitchen")>>
-  <<set $currentRoom = tags()[1].split("_").join(" ")>>
+  <<set $currentRoom = tags()[1]>>
 <</if>>
 <<if tags().includes("room") && typeof(tags()[1]) == ("Cargo_Hold")>>
   <<set $currentRoom = tags()[1].split("_").join(" ")>>
@@ -138,17 +138,17 @@ Here, you can test your pronouns. Hopefully, errors won't abound.
   <<set $currentRoom = tags()[1].split("_").join(" ")>>
 <</if>>
 <<if tags().includes("room") && typeof(tags()[1]) == ("Ladder")>>
-  <<set $currentRoom = tags()[1].split("_").join(" ")>>
+  <<set $currentRoom = tags()[1]>>
 <</if>>
 <<if tags().includes("room") && typeof(tags()[1]) == ("Dining_Lounge")>>
   <<set $currentRoom = tags()[1].split("_").join(" ")>>
-<</if>>
-<<if tags().includes("areaChange") && typeof(tags()[1]) == ("Planet_1")>>
-  <<set $currentArea = tags()[1].split("_").join(" ")>>
 <</if>>
 <<if tags().includes("room") && typeof(tags()[1]) == ("2nd_Floor_Corridor")>>
   <<set $currentRoom = tags()[1].split("_").join(" ")>>
 <</if>>
 <<if tags().includes("room") && typeof(tags()[1]) == ("1st_Floor_Corridor")>>
   <<set $currentRoom = tags()[1].split("_").join(" ")>>
+<</if>>
+<<if tags().includes("areaChange") && typeof(tags()[1]) == ("Planet_1")>>
+  <<set $currentArea = tags()[1].split("_").join(" ")>>
 <</if>>

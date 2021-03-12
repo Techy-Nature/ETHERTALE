@@ -10,15 +10,13 @@ A coming of age adventure CYOA UNDERTALE AU that will have space travel, invento
 You don't have to, but I'd really appreciate it if you did. :) It helps me get better artwork, music and possibly coding help as well. 
 
 [Donate! Every dollar helps!](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=JQ9BXNQUQS5NQ&currency_code=USD)
-Bitcoin/My Monero donationS
-!(Monero request QR codes)[https://64.media.tumblr.com/fa1cdf3e2a8db0e2ef95834f398a5aaa/e637204a645e7333-c1/s250x400/3ea440c213d77dbd48b20a4e8630e9f8e8da8227.png]
-If you'd rather you can also send it directly to "47ntPeRSKfpbQBdziwTZ8q5HNuCybTLuQZ3ZGmHtht3HMYwJi3YW4Cr1YECv2JfzwqJKebRVz27QzXkoLmadFdg2Rsfa1jx", without the quotes.
+Bitcoin/My Monero donations send to: 47ntPeRSKfpbQBdziwTZ8q5HNuCybTLuQZ3ZGmHtht3HMYwJi3YW4Cr1YECv2JfzwqJKebRVz27QzXkoLmadFdg2Rsfa1jx
 
 Thanks so much if you donate, or if you share this page or the [Tumblr dev blog](https://ethertale-fangame.tumblr.com) around!
 
 ## Getting Started
 
-Follow the instructions below in installing. Find index.html and run that on any browser after extracting the zip file, and you should be ready to play! Make sure to keep the files in the same arrangement and the same file names as they came in.
+Follow the instructions below in installing. Find index.html and run that on any recently updated browser after extracting the zip file, and you should be ready to play! Make sure to keep the files in the same arrangement and the same file names as they came in.
 
 ### Prerequisites
 
