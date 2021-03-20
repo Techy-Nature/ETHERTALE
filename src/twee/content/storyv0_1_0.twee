@@ -1,5 +1,6 @@
 :: Start-Intro [stoptime]
 
+<<nobr>><<audio "bgm_OUAET" play loop>><</nobr>>
 <<fadein 500ms 300ms>>There was once a war between Humans and Monsters,<</fadein>>
 
 <<fadein 1200ms 300ms>>that caused both races to be all a-fluster, <</fadein>>

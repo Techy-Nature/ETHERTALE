@@ -134,8 +134,8 @@ An arm moves in, webbed fingers reaching in to grab me. What do I do?!
 I flinch as the hands grab me, then haul me out by my arms. Blinking as the lights blind me and I'm hauled from the darkness of the vent and into the engine room, I see two monsters. One is the famous biochemist skeleton who invented the fuel for hyper-efficient space-travel, the other a fishy looking monster. The latter is the one who hauled me out.
 
 A pair of high-tech hand-cuffs are snapped onto my wrists, then skeleton man makes a speech. <<G-content-o>><span class="aster">I don't intend to harm you, however, we will need to figure out how you're going to repay us for hitching a ride uninvited. Just come along quietly, please.</span><</G-content-o>> A slight smile graces his skull, tugging lightly at his turtleneck.
-<<if $PCOffline is false>><img src="https://github.com/Techy-Nature/ETHERTALE/blob/master/src/imgs/WDgaster_by_inviseri-daf-Recolored_by_Jaden-Smile.png?raw=true" alt="Image of the skeletal chemistry scientist slightly smiling, right phalanges pulling at the neck of his turtleneck." height="700">
-<<elseif $PCoffline is true or $PCoffline is undefined>><img src="imgs/WDgaster_by_inviseri-daf-Recolored_by_Jaden-Smile.png" alt="Image of the skeletal chemistry scientist slightly smiling, right phalanges pulling at the neck of his turtleneck." height="700">
+<<if $PCOffline is false>><img src="https://raw.githubusercontent.com/Techy-Nature/ETHERTALE/master/src/imgs/Gaster%20smile%20by%20Jaden.png" alt="Image of the skeletal chemistry scientist slightly smiling, right phalanges pulling at the neck of his turtleneck." height="700">
+<<elseif $PCoffline is true or $PCoffline is undefined>><img src="imgs/Gaster smile by Jaden.png" alt="Image of the skeletal chemistry scientist slightly smiling, his hands in his coat pockets." height="700">
 <</if>>
 
 How should I react, do you think?
@@ -191,7 +191,7 @@ The skeletal man stands up and steps back, waiting for me to exit. <span class="
 <<elseif $PCoffline is true or $PCoffline is undefined>><<G-worried>>@@.aster;Now that you're up and out of there, I hope you'll forgive me...@@<</G-worried>>
 <</if>>
 He grimaces wider, pulling slightly at his turtleneck.
-<<if $PCOffline is false>><img src="https://github.com/Techy-Nature/ETHERTALE/blob/master/src/imgs/WDGaster_by_inviseri-daf_Recolored_Grimace.png?raw=true" alt="Image of the skeletal chemistry scientist turning his skull to a wide grimace, phalanges pulling at the neck of his turtleneck." height="700">
+<<if $PCOffline is false>><img src="https://raw.githubusercontent.com/Techy-Nature/ETHERTALE/master/src/imgs/Gaster%20frown%20by%20Jaden.png" alt="ID: Image of the skeletal chemistry scientist turning his skull to a wide grimace, phalanges in his pockets." height="700">
 <<elseif $PCoffline is true or $PCoffline is undefined>><img src="imgs/WDGaster_by_inviseri-daf_Recolored_Grimace.png" alt="Image of the skeletal chemistry scientist turning his skull to a wide grimace, phalanges pulling at the neck of his turtleneck." height="700">
 <</if>>
 
