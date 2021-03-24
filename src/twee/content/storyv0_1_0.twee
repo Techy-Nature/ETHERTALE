@@ -1,5 +1,7 @@
 :: Start-Intro [stoptime]
+<span class="pcdarklink"><<if $audio is "muted">><<link "Turn music on?">><<set $audio to "unmuted">><<masteraudio unmute>><<refresh>><</link>><<elseif $audio is "unmuted">><<link "Turn music off?">><<masteraudio mute>><<set $audio to "muted">><<refresh>><</link>><</if>></span>
 
+<span class="pcdarklink"><<if $bgm_audio is "muted">><<link "Turn background audio on?">><<playlist "bgm_E-T" unmute>><<set $bgm_audio to "unmuted">><<refresh>><</link>><<elseif $bgm_audio is "unmuted">><<link "Turn background music off?">><<playlist "bgm_E-T" mute>><<set $bgm_audio to "muted">><<refresh>><</link>><</if>></span>
 <<nobr>><<audio "bgm_OUAET" play loop>><</nobr>>
 <<fadein 500ms 300ms>>There was once a war between Humans and Monsters,<</fadein>>
 

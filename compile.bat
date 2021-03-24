@@ -1,1 +1,1 @@
-tweego -f sugarcube-2 -o --head=C:\Users\Joy\Documents\GitHub\ETHERTALE\src\head-html\favicons.html index.html src
+tweego -f sugarcube-2 --head=C:\Users\Joy\Documents\GitHub\ETHERTALE\export\head-html\favicons.html -o index.html src
