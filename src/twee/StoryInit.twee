@@ -134,12 +134,12 @@ All I did was go to the settings and search up "keyboard" without the quotes, an
 <<label "HP: $Frisk.HP" white left>>
 <</newmeter>>
 /*Music setup time! Sincerely, Jaden */
-<<cacheaudio "bgm_OUAET" "/sounds/bgm/Once_Upon_An_EtherTale.mp3">>
-<<cacheaudio "bgm_Friendly" "/sounds/bgm/Friendly.mp3">>
-<<cacheaudio "bgm_M-Space" "/sounds/bgm/Mysterious_Space.mp3">>
-<<cacheaudio "bgm_Sneaking" "/sounds/bgm/Sneaking.mp3">>
-<<cacheaudio "bgm_Star_Ship_B" "/sounds/bgm/Star_Ship_B.mp3">>
-<<cacheaudio "bgm_Ship_Ruins" "/sounds/bgm/Ship_Ruins.mp3">>
+<<cacheaudio "bgm_OUAET" "sounds/bgm/Once_Upon_An_EtherTale.mp3">>
+<<cacheaudio "bgm_Friendly" "sounds/bgm/Friendly.mp3">>
+<<cacheaudio "bgm_M-Space" "sounds/bgm/Mysterious_Space.mp3">>
+<<cacheaudio "bgm_Sneaking" "sounds/bgm/Sneaking.mp3">>
+<<cacheaudio "bgm_Star_Ship_B" "sounds/bgm/Star_Ship_B.mp3">>
+<<cacheaudio "bgm_Ship_Ruins" "sounds/bgm/Ship_Ruins.mp3">>
 <<createplaylist "bgm_E-T">>
 	<<track "bgm_OUAET">>
 	<<track "bgm_Friendly">>
