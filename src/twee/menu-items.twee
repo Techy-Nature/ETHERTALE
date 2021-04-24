@@ -19,6 +19,7 @@ Button&OtherButton/SameasOtherButton = ThisMenu
 c = This Controls Menu
 ; = Inventory Menu
 F4 = Character Description
+v = Volume Settings
 1 = clicking on the first link (when there's multiple links)
 2thru9 = Clicking on the other links (it only goes up to nine)
 SPACE&ENTER/RETURN = clicking on the only link on the page, or clicking on the first link

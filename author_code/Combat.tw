@@ -1,0 +1,6 @@
+:: FIGHT!
+
+<<if !previous()>>The <<if previous().tags.includes("room")>>room<<elseif $Frisk.onboardship is false>>immediate area<</if>> darkens as $enemy pulls you into a fight.<<else>> I am in a battle with $enemy.<</if>>
+
+
+

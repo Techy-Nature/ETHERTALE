@@ -2,7 +2,7 @@
 <span class="pcdarklink"><<if $audio is "muted">><<link "Turn music on?">><<set $audio to "unmuted">><<masteraudio unmute>><<refresh>><</link>><<elseif $audio is "unmuted">><<link "Turn music off?">><<masteraudio mute>><<set $audio to "muted">><<refresh>><</link>><</if>></span>
 
 <span class="pcdarklink"><<if $bgm_audio is "muted">><<link "Turn background audio on?">><<playlist "bgm_E-T" unmute>><<set $bgm_audio to "unmuted">><<refresh>><</link>><<elseif $bgm_audio is "unmuted">><<link "Turn background music off?">><<playlist "bgm_E-T" mute>><<set $bgm_audio to "muted">><<refresh>><</link>><</if>></span>
-<<nobr>><<audio "bgm_OUAET" play loop>><</nobr>>
+<<nobr>><audio "bgm_OUAET" play loop>><</nobr>>
 <<fadein 500ms 300ms>>There was once a war between Humans and Monsters,<</fadein>>
 
 <<fadein 1200ms 300ms>>that caused both races to be all a-fluster, <</fadein>>
@@ -55,6 +55,7 @@
 
 :: Start [stoptime]
 
+<<audio "bgm_OUAET" fadeout>>
 <<if visited() is 1 and $resetcounter is 0>><span class="dtm-mono"><span class="glitch" data-text="You need to help Frisk and I.">You are the only one who can direct us.</span></span><</if>>
 
 It is giant... Much bigger than I imagined it to be before.
@@ -62,6 +63,7 @@ It is giant... Much bigger than I imagined it to be before.
 @@.onlylink;[[The Starship Bonetrousle.|Starship Bonetrousle]]@@
 
 :: Starship Bonetrousle [cutscene]
+<<audio "bgm_Sneaking" play loop>>
 
 From behind the corner of the buildings 20 feet away, I marvel at the beautiful, shiny chrome ship, painted blue with a white bone stripe across the middle. Word on the street is, the ship has a crew of only eight. How it can function on that tiny of a crew is beyond me.
 Crouching behind a bush, I wait stealthily until a stray box is left outside the humongous ship on it's lonesome, then I jump from behind the bush, arms pumping, dark brown sneakers slapping on the dirt and later the metal landing platform. Then I open the box up, and, jumping inside it, close it up again. Afterwards I quickly cover myself with a felt packing blanket, @@.onlylink;[[and wait.|Intro the ship]]@@
@@ -102,20 +104,20 @@ I enter the cargo hold<<if lastVisited("Explore Cargo") lte 2>> again<</if>>. I 
 
 <<if lastVisited("Explore Cargo") is 1>>After exiting the cargo hold,<</if>> I enter a long hallway. Should I go...
 
-\* <span class="link1">[[right|Engine room]]</span>
-\* head <span class="link2">[[left and go up the ladder|Ladder-sneaky]]</span>
-\* left but head into the [[Dining Lounge|Dining Lounge-sneaky]] 
-\* <<nobr>><<if visited() is 1>>@@.link3;<<hovertip "Maybe try to find some food?">>[[Go to the Kitchen directly in front of me.|Kitchen-sneaky]]<</hovertip>>@@<<else>>@@.link3;[[Go to the Kitchen.|Kitchen-sneaky]]@@<</if>><</nobr>> 
-\* <span class="link4">[[try to find an air vent|Vent 1]]</span> to hide in? 
-\* I can also go back into the <span class="link5">[[cargo hold.|Cargo Hold]]</span>
+* <span class="link1">[[right|Engine room]]</span>
+* head <span class="link2">[[left and go up the ladder|Ladder-sneaky]]</span>
+* left but head into the [[Dining Lounge|Dining Lounge-sneaky]] 
+* <<nobr>><<if visited() is 1>>@@.link3;<<hovertip "Maybe try to find some food?">>[[Go to the Kitchen directly in front of me.|Kitchen-sneaky]]<</hovertip>>@@<<else>>@@.link3;[[Go to the Kitchen.|Kitchen-sneaky]]@@<</if>><</nobr>> 
+* <span class="link4">[[try to find an air vent|Vent 1]]</span> to hide in? 
+* I can also go back into the <span class="link5">[[cargo hold.|Cargo Hold]]</span>
 
 <<timed 15s>><<goto "Footsteps">><</timed>>
 
 :: Ladder-sneaky [room Ladder slowtime]
 
-I head towards the ladder, climb it, and try to open the hatch at the top, but it seems I don't have a key or it's jammed, as it won't open for me. I climb back down and enter to [[the first hallway.|Starship hallway]]
-<<if $C.Starship["Ladder"].length is 0>>There's nothing here to see, after all.<<elseif $C.Starship["Ladder"].length gt 1>>There's some stuff here I can pick up...
-<<include "Room Item List">><<elseif $C.Starship["Ladder"].length is 1>>There's something here I can pick up...
+I head towards the ladder, climb it, and try to open the hatch at the top, but it seems I don't have a key or it's jammed, as it won't open for me. I climb back down and enter back into [[the first hallway.|Starship hallway]]
+<<if $C.Starship["Ladder"].length is 0>>There's nothing here to see, after all.<<elseif $C.Starship["Ladder"].length gt 1>>* There's some stuff here I can pick up...
+<<include "Room Item List">><<elseif $C.Starship["Ladder"].length is 1>>* There's something here I can pick up...
 <<include "Room Item List">><</if>>
 
 :: Vent 1 [room Vent_1]
@@ -314,10 +316,10 @@ End of this route! Thanks so much for playing! :)
 
 <<nobr>><<if lastVisited("Ladder") is 1>>I enter the hallway after climbing the ladder<<else>>. I find myself in the bedroom hallway.<</if>> This seems to be the sleeping quarters part of the ship, as I see a lot of bedroom doors <<if lastVisited("Ladder") is 1>>in front of<<else>>around<</if>> me...  Where should I go next?<</nobr>>
 
-\* [[Knock on Sans' bedroom door|Knock Knock. Sans. I'm Sansational.]]
-\* <<if visited() is 1>>[[Knock on Papyrus's bedroom door.|Knock Knock. NO!! I'M NOT GOING ALONG WITH YOUR SILLY JOKES, SANS!]]<<else>>[[Knock on Papyrus's door.|Pap's room]]<</if>>
-\* [[Knock on Undyne's door.|Undyne's training bedroom]]
-\* [[Knock on Toriel and Asgore's door.|Toriel knock]]
+* [[Knock on Sans' bedroom door|Knock Knock. Sans. I'm Sansational.]]
+* <<if visited() is 1>>[[Knock on Papyrus's bedroom door.|Knock Knock. NO!! I'M NOT GOING ALONG WITH YOUR SILLY JOKES, SANS!]]<<else>>[[Knock on Papyrus's door.|Pap's room]]<</if>>
+* [[Knock on Undyne's door.|Undyne's training bedroom]]
+* [[Knock on Toriel and Asgore's door.|Toriel knock]]
 
 :: Kitchen-sneaky [room Kitchen]
 
@@ -387,24 +389,24 @@ I jump, confused and startled at the gentle prodding of a voice inside my subcon
 
 
 /* $pgen: 0 = male, 1 = female, 2 = gender neutral, 3 = no gender */
-<span class="pcdark">You're</span> <<textbox "$PCname" "Your first name, ex:Bianca">><span class="pcdark">, you go by <span class="pcdarklink"><<cycle "$pgen">><<option "she/her" 1>><<option "he/him" 0>><<option "they/them" 2>><<option "it/its" 3>><</cycle>></span>, and then you say...</span>
+<span class="pcdark">You're</span> <<textbox "$PCname" "Your first name, ex:Bianca">><span class="pcdark">, you go by <span class="pcdarklink link1"><<cycle "$pgen">><<option "she/her" 1>><<option "he/him" 0>><<option "they/them" 2>><<option "it/its" 3>><</cycle>></span>, and then you say...</span>
 <b><i>Telling them about how you're the player in this game will likely not be understood by them at this point in time.</i></b></span>
 
-* <span class="pcdarklink link1">[[Uh... I can explain?|Then Explain, Frisk demands]]</span>
+* <span class="pcdarklink link2">[[Uh... I can explain?|Then Explain, Frisk demands]]</span>
 
-* <span class="pcdarklink link2">[[Basically I'm a helper for you. I consciously make decisions for you. Wait-|I can imagine how that'll go down, badly]]</span>
+* <span class="pcdarklink link3">[[Basically I'm a helper for you. I consciously make decisions for you. Wait-|I can imagine how that'll go down, badly]]</span>
 
-* <span class="pcdarklink link3">[[I'm your unconscious mind, and I'm going to be helping you to make choices.|Frisk will say Oh, okay]]</span>
+* <span class="pcdarklink link4">[[I'm your unconscious mind, and I'm going to be helping you to make choices.|Frisk will say Oh, okay]]</span>
 
-* <span class="pcdarklink link4">[[I guess I'm on this ride with you. Do you mind accepting my assistance?|Frisk will say Oh, okay]]</span> <span class="pcdark">
+* <span class="pcdarklink link5">[[I guess I'm on this ride with you. Do you mind accepting my assistance?|Frisk will say Oh, okay]]</span> <span class="pcdark">
 
 :: I can imagine how that'll go down, badly [cutscene]
 
-<span class="pcdark">Yeah, you're not saying that, but nice try. That will just end in them ignoring your advice for the rest of this playthrough. (In which case, the playthrough will end because you won't be able to interact with Frisk well anymore.)</span> <<if lastVisited("Player inspects Grav-Arrays") is 1>><span class="pcdarklink pcdarklinkhover link1">[[Go back to looking through the options.|Player inspects Grav-Arrays]]</span><<elseif lastVisited("Frisk will say Oh, okay") is 1>><span class="pcdarklink pcdarklinkhover link1">[[Try again with a different option.|Frisk will say Oh, okay]]</span><</if>>
+<span class="pcdark">Yeah, you're not saying that, but nice try. That will just end in them ignoring your advice for the rest of this playthrough. (In which case, the playthrough will end because you won't be able to interact with Frisk well anymore.)</span> <<if lastVisited("Player inspects Grav-Arrays") is 1>><span class="pcdarklink pcdarklinkhover link1">[[Go back to looking through the options.|Player inspects Grav-Arrays]]</span><<elseif lastVisited("Frisk will say Oh, okay") is 1>><span class="pcdarklink pcdarklinkhover link1">[[Try to explain with a different option.|Then Explain, Frisk Demands]]</span><</if>>
 
 :: Then Explain, Frisk demands [cutscene]
 
-I forego speech in favor of thinking to you, since you're already in my head. <i><span class="dtm-mono">Then please do, $PCname.</span></i> <span class="pcdark">You say...</span>
+I forego speech in favor of thinking to you, since you're already in my head. <i><span class="dtm-mono">Then please do<<if lastVisited("I can imagine how that'll go down, badly") is 1>> explain</if>>, $PCname.</span></i> <span class="pcdark">You say...</span>
 
 <span class="pcdarklink link1">[[I guess I'm on this ride with you, helping you along the way.|Frisk will say Oh, okay]]</span>
 

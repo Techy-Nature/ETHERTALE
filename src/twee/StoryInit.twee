@@ -140,15 +140,15 @@ All I did was go to the settings and search up "keyboard" without the quotes, an
 <<cacheaudio "bgm_Sneaking" "sounds/bgm/Sneaking.mp3">>
 <<cacheaudio "bgm_Star_Ship_B" "sounds/bgm/Star_Ship_B.mp3">>
 <<cacheaudio "bgm_Ship_Ruins" "sounds/bgm/Ship_Ruins.mp3">>
-<<createplaylist "bgm_E-T">>
-	<<track "bgm_OUAET">>
+<<createaudiogroup ":bgm">>
 	<<track "bgm_Friendly">>
 	<<track "bgm_M-Space">>
 	<<track "bgm_Sneaking">>
 	<<track "bgm_Star_Ship_B">>
 	<<track "bgm_Ship_Ruins">>
-<</createplaylist>>
-<<set $audio to "muted">><<set $bgm_audio to "muted">><<masteraudio mute>><<playlist "bgm_E-T" mute>>
+	<<track "bgm_OUAET">>
+<</createaudiogroup>>
+<<set $audio to "muted">><<set $bgm_audio to "muted">><<masteraudio mute>><<audio ":bgm" mute>>
 /* Will add more songs later */
 /* Chapelr's code below */
 <<set
@@ -222,6 +222,8 @@ All I did was go to the settings and search up "keyboard" without the quotes, an
 	<<trigger 'click' '.ctrlslink a'>>
 	<<which 16>>
 	<<trigger 'click' '#restartlink a'>>
+	<<which 86>>
+	<<trigger 'click' '#volsettinglink a'>>
 	<</event>>
 	/* Event setup finished */
 	

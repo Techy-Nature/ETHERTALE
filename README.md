@@ -43,6 +43,7 @@ You'll need the images, fonts and music to go with the HTML file. They are all b
 * **Billie Thompson** - *Initial README file template* - [PurpleBooth](https://github.com/PurpleBooth)
 * **Duke** - [Dukemz](https://github.com/Dukemz)
 * **Jaden** - [Techy-Nature](https://github.com/Techy-Nature)
+* **Irin** - [AFriendlyIrin](https://github.com/AFriendlyIrin)
 
 See also the list of [contributors](https://github.com/Techy-girl/ETHERTALE/contributors) who participated in this project.
 
