@@ -23,7 +23,7 @@ It is <<printtime12hr>>
 <</cycle>>
 <<if hasVisited("Aftermath")>><span class="pcdarklink"><<if $audio is "muted">><<link "Turn music on?">><<set $audio to "unmuted">><<masteraudio unmute>><<refresh>><</link>><<elseif $audio is "unmuted">><<link "Turn music off?">><<masteraudio mute>><<set $audio to "muted">><<refresh>><</link>></span><</if>>
 <span class="pcdarklink"><<if $bgm_audio is "muted">><<link "Turn background audio on?">><<playlist "bgm_E-T" unmute>><<set $bgm_audio to "unmuted">><<refresh>><</link>><<elseif $bgm_audio is "unmuted">><<link "Turn background music off?">><<playlist "bgm_E-T" mute>><<set $bgm_audio to "muted">><<refresh>><</link>><</if>></span><</if>>
-<<nobr>>/*<<if $battle_audio is "muted">><<link "Turn battle audio on?">><<playlist "bgm_E-T" unmute>><<refresh>><</link>><<elseif $battle_audio is "unmuted">><<link "Turn background music off?">><<playlist "bgm_E-T" mute>><<refresh>><</link>><</if>>*/<</nobr>>
+<<nobr>>/*<<if $battle_audio is "muted">><<link "Turn battle audio on?">><<playlist "bgm_E-T" unmute>><<refresh>><</link>><<elseif $battle_audio is "unmuted">><<link "Turn background music off?">><<playlist "bgm_E-T" mute>><<refresh>><</link>><</if>><</nobr>>
 
 <span id="desclink"><<link "Character Description">><<run Engine.play('Character Description', true)>><</link>></span>
 

@@ -49,14 +49,15 @@ Setting.addRange("bgmVolume", {
 
 function bgmMuteHandler() {
     SimpleAudio.select(":bgm").mute(settings.bgmMute);
-}
+};
 Setting.addToggle("bgmMute", {
     label    : "BGM Mute.",
     desc     : "Mute control for background audio.",
-    onInit   : bgmMuteHandler,
+    onInit   : function () {
+        setTimeout(bgmMuteHandler, 0);
+    },
     onChange : bgmMuteHandler
 });
-
 /*function SFXMuteHandler() {
     SimpleAudio.select(":sfx").mute(settings.SFXMute);
 }

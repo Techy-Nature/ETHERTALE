@@ -1,8 +1,9 @@
 :: Start-Intro [stoptime]
 <span class="pcdarklink"><<if $audio is "muted">><<link "Turn music on?">><<set $audio to "unmuted">><<masteraudio unmute>><<refresh>><</link>><<elseif $audio is "unmuted">><<link "Turn music off?">><<masteraudio mute>><<set $audio to "muted">><<refresh>><</link>><</if>></span>
 
-<span class="pcdarklink"><<if $bgm_audio is "muted">><<link "Turn background audio on?">><<playlist "bgm_E-T" unmute>><<set $bgm_audio to "unmuted">><<refresh>><</link>><<elseif $bgm_audio is "unmuted">><<link "Turn background music off?">><<playlist "bgm_E-T" mute>><<set $bgm_audio to "muted">><<refresh>><</link>><</if>></span>
-<<nobr>><audio "bgm_OUAET" play loop>><</nobr>>
+<span class="pcdarklink"><<if $bgm_audio is "muted">><<link "Turn background audio on?">><<audio ":bgm" unmute>><<set $bgm_audio to "unmuted">><<refresh>><</link>><<elseif $bgm_audio is "unmuted">><<link "Turn background music off?">><<audio ":bgm" mute>><<set $bgm_audio to "muted">><<refresh>><</link>><</if>></span>
+<<nobr>><<audio "bgm_OUAET" play loop>><</nobr>>
+
 <<fadein 500ms 300ms>>There was once a war between Humans and Monsters,<</fadein>>
 
 <<fadein 1200ms 300ms>>that caused both races to be all a-fluster, <</fadein>>
@@ -104,12 +105,12 @@ I enter the cargo hold<<if lastVisited("Explore Cargo") lte 2>> again<</if>>. I 
 
 <<if lastVisited("Explore Cargo") is 1>>After exiting the cargo hold,<</if>> I enter a long hallway. Should I go...
 
-* <span class="link1">[[right|Engine room]]</span>
-* head <span class="link2">[[left and go up the ladder|Ladder-sneaky]]</span>
-* left but head into the [[Dining Lounge|Dining Lounge-sneaky]] 
-* <<nobr>><<if visited() is 1>>@@.link3;<<hovertip "Maybe try to find some food?">>[[Go to the Kitchen directly in front of me.|Kitchen-sneaky]]<</hovertip>>@@<<else>>@@.link3;[[Go to the Kitchen.|Kitchen-sneaky]]@@<</if>><</nobr>> 
-* <span class="link4">[[try to find an air vent|Vent 1]]</span> to hide in? 
-* I can also go back into the <span class="link5">[[cargo hold.|Cargo Hold]]</span>
+*  <span class="link1">[[right,|Engine room]]</span>
+*  head <span class="link2">[[left and try to go up the ladder|Ladder-sneaky]]</span>
+*  left but head into the [[Dining Lounge|Dining Lounge-sneaky]] 
+*  <<nobr>><<if visited() is 1>>@@.link3;<<hovertip "Maybe try to find some food?">>[[Go to the Kitchen directly in front of me.|Kitchen-sneaky]]<</hovertip>>@@<<else>>@@.link3;[[Go to the Kitchen.|Kitchen-sneaky]]@@<</if>><</nobr>> 
+*  <span class="link4">[[try to find an air vent|Vent 1]]</span> to hide in? 
+*  I can also go back into the <span class="link5">[[cargo hold.|Cargo Hold]]</span>
 
 <<timed 15s>><<goto "Footsteps">><</timed>>
 
@@ -364,7 +365,7 @@ There's a book about constellations (no surprise there), a book about ship AIs w
 
 <<if visited() is 1>>I creep into the engine room quietly.<<elseif visited() gt 1>>I find myself in the engine room again.<</if>> There isn't much to see here, other than lots of different sized vents and the boiler/heating and cooling system, the power source of the gravitational arrays, as well as the two giant, metal drums that house the rocket systems. I stay clear of those, as they are known to get very hot, at least when in use, which <<if $rocketsactive is true>>they are.<<elseif $rocketsactive is false>>they aren't.<<else>> <span id="glitch" data-text="Errors happened, please don't glitch the game.">Errors happened, please don't glitch the game or try to play just one specific passage...</span> Play the game in order, thanks.<</if>>
 
-*  <<if $linkclicked is undefined>><span class="linkcheck link1">[[Try to find a big enough vent to sleep in|Explore Engine Room]]</span><<elseif $linkclicked is true or hasVisited("Explore Engine Room") is true>>@@.link1;[[Decide to wait safely in the big vent that I found.|Waiting or Sleeping Vent 3]]@@<</if>>
+*  <<if $linkclicked is undefined>><span class="linkcheck link1">[[Try to find a big enough vent to sleep in|Explore Engine Room]]</span><<elseif $linkclicked is true or hasVisited("Explore Engine Room") is true>>@@.link1;[[Decide to wait safely in the big vent that I found.|Waiting or Sleeping Vent 2]]@@<</if>>
 
 * @@.link2;[[Go back to the hallway and explore some more of the ship.|Starship hallway]]@@
 
