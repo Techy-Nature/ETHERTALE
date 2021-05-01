@@ -2,7 +2,7 @@
 <<set $resetcounter to recall('resets', 0)>>
 <<set $PCOffline to true>>
 <<set $now = new Date(2031, 4, 1, 14, 30, 0)>>
-
+<<if $debug is true>><<run Config.passages.displayTitles = true>><<refresh>><<else>><</if>>
 /* Dukemz: In case my inventory system for some reason doesn't work as it should, I can re-paste it here in a script tag. */
 /*
 Jaden here. In Opera the shortcut for the Developer Console is Ctrl-Shift-J, but you can add more shortcuts through the settings.
@@ -17,12 +17,13 @@ All I did was go to the settings and search up "keyboard" without the quotes, an
 <<set $Frisk.HP to 20>>
 <<set $Frisk.LV to 0>>
 <<set $Frisk.EXP to 0>>
-<<set $Frisk.inv to []>>
-<<set $Frisk.legs to new Item("Dark Brown Pants")>>
-<<set $Frisk.torso to new Item("Blue and Purple Striped Sweater")>>
-<<set $Frisk.feet to new Item("Dark Brown Sneakers")>> 
-<<set $Frisk.head to undefined>>
-<<set $Frisk.weapon to undefined>>
+<<set $Frisk.inv = new Inventory()>>
+<<run $Frisk.bday = new Date(3 12 2015)>>
+<<set $Frisk.Legs to new Item("Dark Brown Pants")>>
+<<set $Frisk.Torso to new Item("Blue and Purple Striped Sweater")>>
+<<set $Frisk.Feet to new Item("Dark Brown Sneakers")>> 
+<<set $Frisk.Head to undefined>>
+<<set $Frisk.Weapon to undefined>>
 /*Jaden's Item Controller Object*/
 <<set $currentArea to "Starship">>
 <<set $C to {
@@ -140,7 +141,9 @@ All I did was go to the settings and search up "keyboard" without the quotes, an
 <<cacheaudio "bgm_Sneaking" "sounds/bgm/Sneaking.mp3">>
 <<cacheaudio "bgm_Star_Ship_B" "sounds/bgm/Star_Ship_B.mp3">>
 <<cacheaudio "bgm_Ship_Ruins" "sounds/bgm/Ship_Ruins.mp3">>
+<<cacheaudio "bgm_Hiding" "sounds/bgm/Hiding.mp3">>
 <<createaudiogroup ":bgm">>
+	<<track "bgm_Hiding">>
 	<<track "bgm_Friendly">>
 	<<track "bgm_M-Space">>
 	<<track "bgm_Sneaking">>
@@ -153,11 +156,11 @@ All I did was go to the settings and search up "keyboard" without the quotes, an
 /* Chapelr's code below */
 <<set
 	window.GameDays to [
-		"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"
+		"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
 	];
 	window.GameMonths to [
-		"Jan", "Feb", "Mar", "Apr", "May", "Jun",
-		"Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+		"January", "Februrary", "March", "April", "May", "June",
+		"July", "August", "September", "October", "November", "December"
 	];>>
 	/* Chapelr's code end */ 
 	/* Keyboard Event setup by Jaden*/

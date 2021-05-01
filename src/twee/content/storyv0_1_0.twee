@@ -107,10 +107,10 @@ I enter the cargo hold<<if lastVisited("Explore Cargo") lte 2>> again<</if>>. I 
 
 *  <span class="link1">[[right,|Engine room]]</span>
 *  head <span class="link2">[[left and try to go up the ladder|Ladder-sneaky]]</span>
-*  left but head into the [[Dining Lounge|Dining Lounge-sneaky]] 
-*  <<nobr>><<if visited() is 1>>@@.link3;<<hovertip "Maybe try to find some food?">>[[Go to the Kitchen directly in front of me.|Kitchen-sneaky]]<</hovertip>>@@<<else>>@@.link3;[[Go to the Kitchen.|Kitchen-sneaky]]@@<</if>><</nobr>> 
-*  <span class="link4">[[try to find an air vent|Vent 1]]</span> to hide in? 
-*  I can also go back into the <span class="link5">[[cargo hold.|Cargo Hold]]</span>
+*  left but head into the <span class="link3">[[Dining Lounge|Corridor_1st_Floor_sneaky]]</span>
+*  <<nobr>><<if visited() is 1>>@@.link4;<<hovertip "Maybe try to find some food?">>[[Go to the Kitchen directly in front of me.|Kitchen-sneaky]]<</hovertip>>@@<<else>>@@.link4;[[Go to the Kitchen.|Kitchen-sneaky]]@@<</if>><</nobr>> 
+*  <span class="link5">[[try to find an air vent|Vent 1]]</span> to hide in? 
+*  I can also go back into the <span class="link6">[[cargo hold.|Cargo Hold]]</span>
 
 <<timed 15s>><<goto "Footsteps">><</timed>>
 
@@ -407,7 +407,7 @@ I jump, confused and startled at the gentle prodding of a voice inside my subcon
 
 :: Then Explain, Frisk demands [cutscene]
 
-I forego speech in favor of thinking to you, since you're already in my head. <i><span class="dtm-mono">Then please do<<if lastVisited("I can imagine how that'll go down, badly") is 1>> explain</if>>, $PCname.</span></i> <span class="pcdark">You say...</span>
+I forego speech in favor of thinking to you, since you're already in my head. <i><span class="dtm-mono">Then please do<<if lastVisited("I can imagine how that'll go down, badly") is 1>> explain<</if>>, $PCname.</span></i> <span class="pcdark">You say...</span>
 
 <span class="pcdarklink link1">[[I guess I'm on this ride with you, helping you along the way.|Frisk will say Oh, okay]]</span>
 

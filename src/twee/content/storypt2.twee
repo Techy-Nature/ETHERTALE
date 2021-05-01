@@ -103,13 +103,14 @@ I pause, then ask,
  <i><span class="dtm-mono onlylink">[[Any other questions?|Questions about Grav-array and ship]]</span></i>
 
 :: Hide! [cutscene]
-<<addmins 2>>
+<<nobr>><<addmins 2>><<audio "bgm_Sneaking" fadeout>><<audio "bgm_Hiding" fadein play loop>><</nobr>>
+
 I jump into one of the many incredibly convenient vents, obscuring myself in shadow. Heavy footsteps, the same as those that carried the box to the cargo hold, and another set of controlled, light footsteps, walk into the engine room. I try to quiet my breathing as much as possible, breathing through my mouth rather than my nose. Two voices call out in unison in the light-flashing orange-tinged darkness.
 
 <<if $PCOffline is false>><<G-worried-o>>@@.aster;Hello?@@<</G-worried-o>>
 <<elseif $PCoffline is true or $PCoffline is undefined>><<G-worried>>@@.aster;Hello?@@<</G-worried>>
 <</if>>
-@@.dtm-sans;Hello?@@
+<<if PCOffline is false>><<U-worried-o>>@@.dtm-sans;Hello?@@<</U-worried-o>><<elseif $PCOffline is true>><<U-worried>>@@.dtm-sans;Hello?@@<</U-worried>><</if>>
 
 <i><span class="dtm-mono">Snap. They're on to us. And if I try to go deeper into the vents, no telling where I'll end up-</span></i>
 
@@ -133,9 +134,9 @@ An arm moves in, webbed fingers reaching in to grab me. What do I do?!
 
 I flinch as the hands grab me, then haul me out by my arms. Blinking as the lights blind me and I'm hauled from the darkness of the vent and into the engine room, I see two monsters. One is the famous biochemist skeleton who invented the fuel for hyper-efficient space-travel, the other a fishy looking monster. The latter is the one who hauled me out.
 
-A pair of high-tech hand-cuffs are snapped onto my wrists, then skeleton man makes a speech. <<G-content-o>><span class="aster">I don't intend to harm you, however, we will need to figure out how you're going to repay us for hitching a ride uninvited. Just come along quietly, please.</span><</G-content-o>> A slight smile graces his skull, tugging lightly at his turtleneck.
-<<if $PCOffline is false>><img src="https://raw.githubusercontent.com/Techy-Nature/ETHERTALE/master/src/imgs/Gaster%20smile%20by%20Jaden.png" alt="Image of the skeletal chemistry scientist slightly smiling, phalanges in his lab coat pockets." height="700">
-<<elseif $PCoffline is true or $PCoffline is undefined>><img src="imgs/Gaster smile by Jaden.png" alt="Image of the skeletal chemistry scientist slightly smiling, his hands in his coat pockets." height="700">
+A pair of high-tech hand-cuffs are snapped onto my wrists, then skeleton man makes a speech. <<G-content-o>><span class="aster">I don't intend to harm you, however, we will need to figure out how you're going to repay us for hitching a ride uninvited. Just come along quietly, please.</span><</G-content-o>> A slight smile graces his skull, his hands shoved into his pockets.
+<<if $PCOffline is false>><img src="https://raw.githubusercontent.com/Techy-Nature/ETHERTALE/master/src/imgs/Gaster%20smile%20by%20Jaden.png" alt="id: Image of the skeletal chemistry scientist slightly smiling, phalanges in his lab coat pockets." height="700">
+<<elseif $PCoffline is true or $PCoffline is undefined>><img src="imgs/Gaster smile by Jaden.png" alt="id: Image of the skeletal chemistry scientist slightly smiling, his hands in his coat pockets." height="700">
 <</if>>
 
 How should I react, do you think?
@@ -159,7 +160,7 @@ I tense up, but before I can do anything to defend myself, a voice from above sp
 <<nobr>><<if $PCOffline is false>><<G-furious-o>><span class="aster"><b>Undyne!</b></span><</G-furious-o>>
 <<elseif $PCoffline is true or $PCoffline is undefined>><<G-furious>><span class="aster"><b>Undyne!</b></span><</G-furious>><</if>><</nobr>>
 
-	The fishy woman's hand slowly withdraws. <<nobr>><<if $PCOffline is false>><<U-angry-o>><span class="dtm-sans">What?</span><</U-angry-o>><<elseif $PCOffline is true>><<U-angry>><span class="dtm-sans">What?</span><</U-angry>><</if><</nobr>>
+	The fishy woman's hand slowly withdraws. <<nobr>><<if $PCOffline is false>><<U-angry-o>><span class="dtm-sans">What?</span><</U-angry-o>><<elseif $PCOffline is true>><<U-angry>><span class="dtm-sans">What?</span><</U-angry>><</if>><</nobr>>
 <<nobr>><<if $PCOffline is false>><<G-determined-o>><span class="aster">I do believe this calls for a more delicate word.</span><</G-determined-o>>
 <<elseif $PCoffline is true or $PCoffline is undefined>><<G-determined>><span class="aster">I do believe this calls for a more delicate word.</span><</G-determined>>
 <</if>><</nobr>>
@@ -171,7 +172,6 @@ I tense up, but before I can do anything to defend myself, a voice from above sp
 <</if>>
 
 A skeleton taller than the woman crouches down in front of me, keeping his balance with four phalanges on a rare patch of empty wall above him. He's wearing a dark grey turtle-neck and a white, pristine lab-coat with black slacks, along with black dress shoes. The labcoat's tails billow out behind him as he crouches down, then they rest on the floor of the engine room.
-
 
 I glare downwards after sizing him up and glancing into his white eyelight (his right eye must have been injured, as it droops to thepoint where his other eyelight can't form), afterwards fiddling with a stray wire sticking out of the entrance to the vent.
 He pauses to take a deep, calming breath through his nose, then explains his intentions. 
@@ -199,12 +199,12 @@ He grimaces wider, pulling slightly at his turtleneck.
 <<elseif $PCoffline is true or $PCoffline is undefined>><<G-worried>><span class="aster">...But we need to put cuffs on you for the time being. We'll make sure they aren't too tight, isn't that right, Undyne?</span><</G-worried>>
 <</if>><</nobr>>
 
-Undyne just rolls her eyes. <<if $PCOffline is true>><<U-determined>><span class="dtm-sans">You haven't even introduced yourself yet, you old bag of bones!</span><</U-determined>><<elseif $PCOffline is false>><<U-determined-o>><span class="dtm-sans">You haven't even introduced yourself yet, you old bag of bones!</span><</U-determined-o>> Undyne then turns to me, while the skeleton in question's face turns indignant. Before he can get a word in edgewise, Undyne introduces him. <<if $PCOffline is false>><<U-happy-o>><span class="dtm-sans">This skeleton is Wing Din Gaster.</span><</U-happy-o>><<elseif $PCOffline is true>><<U-happy-o>><span class="dtm-sans">This skeleton is Wing Din Gaster.</span></<U-happy-o>> 
+Undyne just rolls her eyes. <<if $PCOffline is true>><<U-determined>><span class="dtm-sans">You haven't even introduced yourself yet, you old bag of bones!</span><</U-determined>><<elseif $PCOffline is false>><<U-determined-o>><span class="dtm-sans">You haven't even introduced yourself yet, you old bag of bones!</span><</U-determined-o>><</if>> Undyne then turns to me, while the skeleton in question's face turns indignant. Before he can get a word in edgewise, Undyne introduces him. <<if $PCOffline is false>><<U-happy-o>><span class="dtm-sans">This skeleton is Wing Ding Gaster.</span><</U-happy-o>><<elseif $PCOffline is true>><<U-happy-o>><span class="dtm-sans">This skeleton is Wing Ding Gaster.</span></<U-happy-o>><</if>> 
 She gestures to him, slightly exasperated. 
-<<if $PCOffline is false<<U-determined-o>><span class="dtm-sans">He doesn't care much for fame, despite being FAMOUS, which is why he didn't introduce himself. You probably already know his name!</span><</U-determined-o>><<elseif $PCOffline is true>><<U-determined>><span class="dtm-sans">He doesn't care much for fame, despite being FAMOUS, which is why he didn't introduce himself. You probably already know his name!</span><</U-determined>>
+<<if $PCOffline is false>><<U-determined-o>><span class="dtm-sans">He doesn't care much for fame, despite being FAMOUS, which is why he didn't introduce himself. You probably already know his name!</span><</U-determined-o>><<elseif $PCOffline is true>><<U-determined>><span class="dtm-sans">He doesn't care much for fame, despite being FAMOUS, which is why he didn't introduce himself. You probably already know his name!</span><</U-determined>><</if>>
 I nod, smirking. <span class="pcdarklink"><<linkreplace "You express confusion to me...">>I explain to you in my mind that Wing Ding Gaster is the inventor of the ultra-efficient fuel that made space-travel possible. <span class="pcdark">You make a sound that is the equivalent of a nod and an impressed gasp in my mind.</span><</linkreplace>></span>
 
-During the explanation, Gaster is completely silent,  an annoyed look on his face as he puts on my cuffs. A minute later the cuffs are on and I am prodded along by Undyne as I follow Gaster, exiting @@.onlylink;[[to the hallway.|Following Gaster]]@@
+During the explanation, Gaster is completely silent, an annoyed look on his face as he puts on my cuffs. A minute later the cuffs are on and I am prodded along by Undyne as I follow Gaster, exiting @@.onlylink;[[to the hallway.|Following Gaster]]@@
 
 :: Following Gaster [cutscene]
 
@@ -241,7 +241,12 @@ End demo! Thanks for playing! :D
 
 :: Containment Chamber [cutscene slowtime]
 
-End demo. Thanks for playing!
+After we arrive at the Cargo Hold, the "containment chambers" as they are evidently called, are unlocked by Gaster. Undyne prods me into one, and unlocks my cuffs. 
+But before that, Gaster stops my SOUL from moving with blue magic, then puts me into the containment chamber while he locks it back up with a keycard and the number pad.
+The chamber is big enough for me to stretch my arms out, but not up. There is a metal grate in the way of me moving. 
+I can see Gaster telepathically letting everyone on the ship know that he and Undyne have found a stowaway. His concentration is not broken by me banging on the glass. I sigh, and slump to the floor after he's done, figuring my fate is inevitable. 
+
+Undyne waits by my cell as a guard, as Gaster goes outside the sliding door to talk with his crewmates about what to do with me. I sit back, and wait, knowing I can't do much about anything at the moment.
 
 <<if $debug is true>>For later (code in comments): 
 /* @@.link1;[[Knock on Gaster's laboratory door.|Knock Knock Gaster Lab]]@@
