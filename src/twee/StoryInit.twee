@@ -13,7 +13,6 @@ All I did was go to the settings and search up "keyboard" without the quotes, an
 <<set $Frisk.age to 16>>
 <<set $Frisk.Gold to 10>>
 <<set $Frisk.resetcounter to 0>>
-<<set $Frisk.maxHP to 120>>
 <<set $Frisk.HP to 20>>
 <<set $Frisk.LV to 0>>
 <<set $Frisk.EXP to 0>>
