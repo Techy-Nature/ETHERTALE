@@ -1,5 +1,3 @@
-setup.PUPPET_HP = 1000;
-
 setup.puppetData = {
 
 	"Example": {
@@ -15,7 +13,7 @@ setup.puppetData = {
 	
 	"Frisk": {
 		"gender": 'N',
-		"hp": 10,
+		"hp": 20,
 		"stats": {
 			"Attack"	: 10,
 			"Defense"	: 10

@@ -68,17 +68,18 @@
 
 <<widget "they">><<if $custompronouns is true>><<print $ne>><<else>>?they<</if>><</widget>>
 <<widget "them">><<if $custompronouns is true>><<print $nem>><<else>>?them<</if>><</widget>>
-<<widget "theyre">><<if $custompronouns is true>><<print $nir>><<else>>?theyre<</if>><</widget>>
+<<widget "theyre">><<if $custompronouns is true>><<print $nir + "\'re">><<else>>?theyre<</if>><</widget>>
+<<widget "their">><<if $custompronouns is true>><<print $nir>><<else>>?their<</if>><</widget>>
 <<widget "theirs">><<if $custompronouns is true>><<print $nirs>><<else>>?theirs<</if>><</widget>>
 <<widget "themself">><<if $custompronouns is true>><<print $nemself>><<else>>?themself<</if>><</widget>>
 <<widget "They">><<if $custompronouns is true>><<print $ne.toupperFirst()>><<else>>?They<</if>><</widget>>
 <<widget "Them">><<if $custompronouns is true>><<print $nem.toupperFirst()>><<else>>?Them<</if>><</widget>>
-<<widget "Theyre">><<if $custompronouns is true>><<print $nir.toupperFirst()>><<else>>?Theyre<</if>><</widget>>
+<<widget "Theyre">><<if $custompronouns is true>><<print $nir.toupperFirst() + "\'re">><<else>>?Theyre<</if>><</widget>>
 <<widget "Theirs">><<if $custompronouns is true>><<print $nirs.toupperFirst>><<else>>?theirs<</if>><</widget>>
 <<widget "Themself">><<if $custompronouns is true>><<print $nemself.toupperFirst()>><<else>>?Themself<</if>><</widget>>
 <<widget "THEY">><<if $custompronouns is true>><<print $ne.toUpperCase()>><<else>>?THEY<</if>><</widget>>
 <<widget "THEM">><<if $custompronouns is true>><<print $nem.toUpperCase()>><<else>>?THEM<</if>><</widget>>
-<<widget "THEYRE">><<if $custompronouns is true>><<print $nir.toUpperCase()>><<else>>?THEYRE<</if>><</widget>>
+<<widget "THEYRE">><<if $custompronouns is true>><<print $nir.toUpperCase() + "\'RE">><<else>>?THEYRE<</if>><</widget>>
 <<widget "THEIRS">><<if $custompronouns is true>><<print $nirs.toUpperCase()>><<else>>?THEIRS<</if>><</widget>>
 <<widget "THEMSELF">><<if $custompronouns is true>><<print $nemself.toUpperCase()>><<else>>?THEMSELF<</if>><</widget>>
 

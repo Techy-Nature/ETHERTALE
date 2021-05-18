@@ -4,18 +4,18 @@ ETHERTALE
 
 :: Story-Display-Title [stoptime]
 
-<<if $PCOffline is false>>
+@@.nohide;<<if $PC.Offline is false>>
   <img src="https://64.media.tumblr.com/faa8605ab579b6873fda05032dc1cef4/a63caba7052a3a50-7a/s400x600/49e5982462a061a7f94b9a8a062538b9b9a65c8e.png" alt="ETHERTALE logo" height="200" width="290">
-<<elseif $PCoffline is true or $PCoffline is undefined>>
+<<elseif $PC.Offline is true or $PC.Offline is undefined>>
   <img src="imgs/ETHERTALE.png" alt="ETHERTALE logo" height="200" width="290">
-<</if>>
+<</if>>@@
 
 
 :: StorySubtitle [stoptime]
 
 Prologue: Starship Stowaway
-v.0.03.0beta
-<<if $debug is true>>The passage name where you're at is <<print passage()>>.<<else>><</if>>
+v.0.03.01beta
+<<if $debug is true>>The passage you're in is <<print passage()>>.<<else>><</if>>
 Today is <<printfulldate>>.
 It is <<printtime12hr>>
 
@@ -40,8 +40,8 @@ It is <<printtime12hr>>
 
 :: StoryMenu [stoptime menuitem]
 
-<<link "RESET">><<set $resetcounter++>>
-<<run memorize('resets', $resetcounter)>><<run UI.restart()>><</link>>
+<<link "RESET">><<set $PC.resetcounter++>>
+<<run memorize('resets', $PC.resetcounter)>><<run UI.restart()>><</link>>
 <span class="pcdarklink" id="volsettinglink"><<link "Volume Settings">><<run UI.settings()>><</link>></span>
 
 <span class="save-point"><<link "SAVE/LOAD">><<run UI.saves()>><</link>></span>
@@ -49,28 +49,31 @@ It is <<printtime12hr>>
 
 :: Player Settings [stoptime menuitem]
 
-<span class="pcdarklink link1"><<if $PCOffline is false>>
-  <<link "Would you like to play offline?" 'Player Settings'>><<set $PCOffline to true>><<refresh>><</link>>
+<span class="pcdarklink link1"><<if $PC.Offline is false>>
+  <<link "Would you like to play offline?" 'Player Settings'>><<set $PC.Offline to true>><<refresh>><</link>>
 <<else>>
-  <<link "Would you like to play online?" 'Player Settings'>><<set $PCOffline to false>><<refresh>><</link>>
+  <<link "Would you like to play online?" 'Player Settings'>><<set $PC.Offline to false>><<refresh>><</link>>
 <</if>>
-<strong>WARNING: <i>If you're on Android, or any phone-like device, Online is the only way to play with pictures. Sorry about that.</i></strong>
+<<nobr>>/* You can do <<run toggleImg()>> to toggle the display of images,
+		<<run toggleImg(true)>> to hide images,
+		and <<run toggleImg(false)>> to show images. */<</nobr>>
+<strong>WARNING: <i>If you're on Android, or any phone-like device, Online is the only way to play with pictures. Sorry about this.</i></strong>
+If you'd rather @@.PCdarklink.link2;<<if $PC.imagesHidden is false>><<link "disable images">><<set $PC.imagesHidden to true>><<run toggleImg(true)>><<refresh>><</link>><<elseif PC.imagesHidden is true>><<link "enable images">><<set $PC.imageshidden to false>><<run ToggleImg(false)>><<refresh>><</link>><</if>>@@, Jade won't pass any blame.
 
-<<if $debug is false>>
+@@.link3.PCdarklink;<<if $debug is false>>
   <<link "Turn on debug mode?" 'Player Settings'>><<set $debug to true>><<refresh>><</link>>
 <<else>>
   <<link "Turn off debug mode?" 'Player Settings'>><<set $debug to false>><<refresh>><</link>>
-<</if>>
+<</if>>@@
 If debug is on, be prepared for spoilers that are unwanted.
 
-<<nobr>><<if hasVisited("Player inspects Grav-Arrays") is true>> [[Can I go by a different set of pronouns?|Pronouns]]<</if>>
+@@.link4.PCdarklink;<<nobr>><<if hasVisited("Player inspects Grav-Arrays") is true>> [[Can I go by a different set of pronouns?|Pronouns]]<</if>><</nobr>>
+<<nobr>><<if $debug is true>>[[Test pronouns|Test pronouns room - debug]]<</if>>
+<</nobr>>@@
 
-<<if $debug is true>>[[Test pronouns|Test pronouns room - Jaden]]<</if>>
-<</nobr>>
+<span class="pcdarklink link5"><<link "Return." $return>><<refresh>><</link>></span>
 
-<span class="pcdarklink link2"><<link "Return." $return>><<refresh>><</link>></span>
-
-:: Test pronouns room - Jaden [stoptime menuitem]
+:: Test pronouns room - debug [stoptime menuitem]
 
 Here, you can test your pronouns. Hopefully, errors won't abound.
 
@@ -98,11 +101,11 @@ Here, you can test your pronouns. Hopefully, errors won't abound.
 <<Themself>>
 <<themself>>
 
-<<<link "Return." $return>><</link>>
+<span class="pcdarklink onlylink" ><<link "Return." $return>><</link>></span>
 
 :: Pronouns [menu-item stoptime]
 
-@@.dtm-mono;Sure, $PCname. What would you like to go by? You can change them or keep them the same, but why would you ask me if you wanted to keep them?@@
+@@.dtm-mono;Sure, $PC.name. What would you like to go by? You can change them or keep them the same, but why would you ask me if you wanted to keep them?@@
 /* $pgen: 0 = male, 1 = female, 2 = gender neutral, 3 = no gender */
 <<listbox "$pgen">>
 	<<option "Female, she/her" 1>>
@@ -110,18 +113,18 @@ Here, you can test your pronouns. Hopefully, errors won't abound.
 	<<option "Agender, it/its" 3>>
 	<<option "Androgynous, they/them" 2>>
 <</listbox>>
-@@.pcdarklink;[[I don't like any of these.|Custom Pronouns]]@@
+@@.pcdarklink.link2;[[I don't like any of these.|Custom Pronouns]]@@
 
-<span class="pcdarklink"><<link "Thanks, Frisk. I'll go by these pronouns." $return>></span><</link>>
+<span class="pcdarklink link1"><<link "Thanks, Frisk. I'll go by these pronouns." $return>></span><</link>>
 
 :: Custom Pronouns [menu-item stoptime]
 
 @@.dtm-mono;<i>Alright. Well, make sure you tell me which ones you <i>would</i> like then.</i>@@
 <span class="pcdarklink link1"><<cycle "$custompronouns">>
-<<option "Use custom pronouns." true selected>>
+<<option "Use custom pronouns." true>>
 <<option "Don't use custom pronouns." false>>
 <</cycle>></span>
-@@.pcdark;If you want to not use custom pronouns anymore, you can tell Frisk with the link above.@@
+If you want to not use custom pronouns anymore, you can tell Frisk with the link above.
 <<textbox "ne" "$ne">>
 <<textbox "nem" "$nem">>
 <<textbox "nir" "$nir">>

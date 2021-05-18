@@ -7,33 +7,57 @@ setup.itemData = {
 		"useable": ["inmenu"],
 		"type": "hel",
 		"special": 15,
-		"desc": "Just a normal human apple. Monsters don't exactly need human food, but it definitely helps their stamina and physical constitution."
+		"desc": "Just a normal human apple. Monsters don't exactly need human food, but it definitely helps their stamina and physical constitution.",
 		"onUse": function (puppet) {
 			puppet.hp += this.special
 			inv().decItem(this.name);
 			return;
 		}
+  },
+  "M&M Cake": {
+    // id#13
+	"useable": ["inmenu"],
+    "type": "hel",
+    "special": 10,
+    "desc": "The two Ms in this cake stand for Miniature and Monster. These cakes come in chocolate, vanilla and marbled, but always include chocolate frosting on top.",
+	"onUse": function (puppet) {
+		puppet.hp += this.special
+		inv().decItem(this.name);
+		return;
 	},
+  "Beast Jerky": {
+    // id#14
+	"useable": ["inmenu"],
+    "type": "hel",
+    "special": 5,
+    "desc": "A monster version of beef jerky. The meat seems tougher than normal beef.",
+	"onUse": function (puppet) {
+		puppet.hp += this.special
+		inv().decItem(this.name);
+		return;
+	}
+	//Equppables and Crafting supplies
+  },
 	"High Tech Knife": {
 		// id#1
 		"name": "High Tech Knife",
 		"equippable": {slot: "Weapon"},
 		"type": "atk",
 		"special": 6,
-		"desc": "A multi-purpose knife, with a few different sized screwdrivers, a bottle-opener and tiny pair of scissors, as well as a ruler and a back and forward button that cycles the tools on the side."
+		"desc": "A multi-purpose knife, with a few different sized screwdrivers, a bottle-opener and tiny pair of scissors, as well as a ruler and a back and forward button that cycles the tools on the side.",
 		"onEquip": function (puppet) {
 			puppet.stats["Attack"].addMod("HT Knife",6,true);
 		},
 		"onRemove": function (puppet) {
 			puppet.stats["Attack"].removeMod("HT Knife");
-		},
+		}
 	},
 	"Long Sharpened Knife": {
 		// id#2
 		"equippable": {slot: "Weapon"},
 		"type": "atk",
 		"special": 10,
-		"desc": "A long, thick knife with no extra tools. The metal from the extra tools has been put to good use extending the knife, making a better handle and sharpening the blade."
+		"desc": "A long, thick knife with no extra tools. The metal from the extra tools has been put to good use extending the knife, making a better handle and sharpening the blade.",
 		"onEquip": function (puppet) {
 			puppet.stats["Attack"].addMod("LS Knife",10,true);
 		},
@@ -47,7 +71,7 @@ setup.itemData = {
     "type": "atk",
     "special": 20,
     "stunchance": 20,
-    "desc": "A small shortsword with circuitry making the edges of the blade electrified."
+    "desc": "A small shortsword with circuitry making the edges of the blade electrified.",
 	"onEquip": function (puppet) {
 		puppet.stats["Attack"].addMod("Electric Sword",20,true);
 	},
@@ -60,7 +84,7 @@ setup.itemData = {
 	"equippable": {slot: "Weapon"},
     "type": "atk",
     "special": 12,
-    "desc": "A small pistol with a suppressor made for beginners to gunslinging."
+    "desc": "A small pistol with a suppressor made for beginners to gunslinging.",
 	"onEquip": function (puppet) {
 		puppet.stats["Attack"].addMod("Sm. Pistol",12,true);
 	},
@@ -74,7 +98,7 @@ setup.itemData = {
     "type": "atk",
     "special": 15,
     "burnchance": 30,
-    "desc": "A custom-upgraded pistol, with an added battery pack and a trigger-activated laser for short bursts of white-hot plasma."
+    "desc": "A custom-upgraded pistol, with an added battery pack and a trigger-activated laser for short bursts of white-hot plasma.",
 	"onEquip": function (puppet) {
 		puppet.stats["Attack"].addMod("Laser Pistol",15,true);
 	},
@@ -83,11 +107,11 @@ setup.itemData = {
 	},
   },
   "Space Suit": {
-    // id#6
+
 	"equippable": {slot: "Torso"},
     "type": "def",
     "special": 8,
-    "desc": "A heavy-duty space suit, with the same white and blue bone pattern as the ship on the heavy fabric. It also has a large air dome with an air tank attached via a plastic tube."
+    "desc": "A heavy-duty space suit, with the same white and blue bone pattern as the ship on the heavy fabric. It also has a large air dome with an air tank attached via a plastic tube.",
 	"onEquip": function (puppet) {
 		puppet.stats["Defense"].addMod("Sp. Suit",8,true);
 	},
@@ -96,11 +120,10 @@ setup.itemData = {
 	},
   },
   "Starship Bonetrousle Uniform": {
-    // id#7
 	"equippable": {slot: "Torso"},
     "type": "def",
     "special": 6,
-    "desc": "a light blue and white bone patterned shirt with a name tag attached to the left lapel. The nametag reads \"Frisk - They/Them\"."
+    "desc": "a light blue and white bone patterned shirt with a name tag attached to the left lapel. The nametag reads \"Frisk - They/Them\".",
 	"onEquip": function (puppet) {
 		puppet.stats["Defense"].addMod("SB Uniform",6,true);
 	},
@@ -109,11 +132,10 @@ setup.itemData = {
 	},
   },
   "Ripped Blue Jeans": {
-    // id#8
 	"equippable": {slot: "Legs"},
     "type": "def",
     "special": 4,
-    "desc": "A somewhat beat-up pair of dark blue jeans. It has rips in the knees after being on the receiving end of many adventures."
+    "desc": "A somewhat beat-up pair of dark blue jeans. It has rips in the knees after being on the receiving end of many adventures.",
 	"onEquip": function (puppet) {
 		puppet.stats["Defense"].addMod("Rip.Bl. Jeans",4,true);
 	},
@@ -122,11 +144,10 @@ setup.itemData = {
 	},
   },
     "Blue Jeans": {
-    // id#9
 	"equippable": {slot: "Legs"},
     "type": "def",
     "special": 6,
-    "desc": "A normal pair of dark blue jeans."
+    "desc": "A normal pair of dark blue jeans.",
 	"onEquip": function (puppet) {
 		puppet.stats["Defense"].addMod("Bl. Jeans",6,true);
 	},
@@ -135,11 +156,10 @@ setup.itemData = {
 	},
   },
   "Light Blue Slacks": {
-    // id#10
 	"equippable": {slot: "Legs"},
     "type": "def",
     "special": 5,
-    "desc": "A pair of high quality light blue pants that were given to Frisk with the Starship Bonetrousle Uniform. They have an elastic band to keep them in place, as well as deep pockets and beltloops."
+    "desc": "A pair of high quality light blue pants that were given to Frisk with the Starship Bonetrousle Uniform. They have an elastic band to keep them in place, as well as deep pockets and beltloops.",
 	"onEquip": function (puppet) {
 		puppet.stats["Defense"].addMod("L.Bl Slacks",5,true);
 	},
@@ -148,11 +168,11 @@ setup.itemData = {
 	},
   },
     "Dark Brown Pants": {
-    // id#11
+
 	"equippable": {slot: "Feet"},
     "type": "def",
     "special": 2,
-    "desc": "A normal pair dark brown pants, with deep pockets and an elastic band to keep it in place on the waist."
+    "desc": "A normal pair dark brown pants, with deep pockets and an elastic band to keep it in place on the waist.",
 	"onEquip": function (puppet) {
 		puppet.stats["Defense"].addMod("DB Pants",2,true);
 	},
@@ -161,62 +181,35 @@ setup.itemData = {
 	},
   },
   "Dark Brown Sneakers": {
-    // id#12
 	"equippable": {slot: "Legs"},
     "type": "def",
     "special": 2,
-    "desc": "A normal pair of breathable, flexible sneakers."
+    "desc": "A normal pair of breathable, flexible sneakers.",
 	"onEquip": function (puppet) {
 		puppet.stats["Defense"].addMod("LB Sneakers",2,true);
 	},
 	"onRemove": function (puppet) {
 		puppet.stats["Defense"].removeMod("DB Sneakers");
-	},
+	}
   },
   "Blue and Purple Striped Sweater": {
-    // id#11
 	"equippable": {slot: "Torso"},
     "type": "def",
     "special": 3,
-    "desc": " \"This is the lightweight, long-sleeved, singular purple-striped mostly light blue sweater that I usually wear.\" - Frisk"
+    "desc": " \"This is the lightweight, long-sleeved, singular purple-striped mostly light blue sweater that I usually wear.\" - Frisk",
 	"onEquip": function (puppet) {
 		puppet.stats["Defense"].addMod("Bl.Prpl. Striped Sweater",3,true);
 	},
 	"onRemove": function (puppet) {
 		puppet.stats["Defense"].removeMod("Bl.Prpl. Striped Sweater");
-	},
-  },
-  "M&M Cake": {
-    // id#13
-	"useable": ["inmenu"],
-    "type": "hel",
-    "special": 10,
-    "desc": "The two Ms in this cake stand for Miniature and Monster. These cakes come in chocolate, vanilla and marbled, but always include chocolate frosting on top."
-	"onUse": function (puppet) {
-		puppet.hp += this.special
-		inv().decItem(this.name);
-		return;
 	}
-  },
-  "Beast Jerky": {
-    // id#14
-	"useable": ["inmenu"],
-    "type": "hel",
-    "special": 5,
-    "desc": "A monster version of beef jerky. The meat seems tougher than normal beef."
-	"onUse": function (puppet) {
-		puppet.hp += this.special
-		inv().decItem(this.name);
-		return;
-	}
-  },
+},
+
   "Cloth": {
-    // id#15
     "desc": "A ripped piece of cloth, can be used for crafting. Whatever it once was a part of, I can't tell."
   },
   "Metal": {
-    // id#16
-    "desc": "A twisted piece of metal, can be used for crafting. Whatever it once was, it's unrecognizable."
+    "desc": "A twisted piece of metal, can be used for crafting. Whatever it once was, it's unrecognizable.",
   },
 
 	// EQUIPMENT
@@ -299,4 +292,4 @@ setup.itemData = {
 			return (item.known) ? "CURSED | ATK -1" : "It's a mystery!";
 		}
 	}
-};
+}};

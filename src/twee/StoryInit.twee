@@ -1,8 +1,8 @@
 :: StoryInit [nobr]
-<<set $resetcounter to recall('resets', 0)>>
-<<set $PCOffline to true>>
+<<set $PC = {}>>
+<<set $PC.resetcounter to recall('resets', 0)>>
+<<set $PC.Offline to true>>
 <<set $now = new Date(2031, 4, 1, 14, 30, 0)>>
-<<if $debug is true>><<run Config.passages.displayTitles = true>><<refresh>><<else>><</if>>
 /* Dukemz: In case my inventory system for some reason doesn't work as it should, I can re-paste it here in a script tag. */
 /*
 Jaden here. In Opera the shortcut for the Developer Console is Ctrl-Shift-J, but you can add more shortcuts through the settings.
@@ -12,12 +12,11 @@ All I did was go to the settings and search up "keyboard" without the quotes, an
 <<set $Frisk to {}>>
 <<set $Frisk.age to 16>>
 <<set $Frisk.Gold to 10>>
-<<set $Frisk.resetcounter to 0>>
 <<set $Frisk.HP to 20>>
 <<set $Frisk.LV to 0>>
 <<set $Frisk.EXP to 0>>
 <<set $Frisk.inv = new Inventory()>>
-<<run $Frisk.bday = new Date(3 12 2015)>>
+<<set $Frisk.bday = new Date(3 12)>>
 <<set $Frisk.Legs to new Item("Dark Brown Pants")>>
 <<set $Frisk.Torso to new Item("Blue and Purple Striped Sweater")>>
 <<set $Frisk.Feet to new Item("Dark Brown Sneakers")>> 
