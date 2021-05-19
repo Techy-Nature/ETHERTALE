@@ -20,12 +20,12 @@ Today is <<printfulldate>>.
 It is <<printtime12hr>>
 
 <<if hasVisited("Aftermath")>><span class="pcdarklink"><<if $audio is "muted">><<link "Turn music on?">><<set $audio to "unmuted">><<masteraudio unmute>><<refresh>><</link>><<elseif $audio is "unmuted">><<link "Turn music off?">><<masteraudio mute>><<set $audio to "muted">><<refresh>><</link>></span><</if>>
-<span class="pcdarklink"><<if $bgm_audio is "muted">><<link "Turn background audio on?">><<playlist "bgm_E-T" unmute>><<set $bgm_audio to "unmuted">><<refresh>><</link>><<elseif $bgm_audio is "unmuted">><<link "Turn background music off?">><<playlist "bgm_E-T" mute>><<set $bgm_audio to "muted">><<refresh>><</link>><</if>></span><</if>>
-<<nobr>>/*<<if $battle_audio is "muted">><<link "Turn battle audio on?">><<playlist "bgm_E-T" unmute>><<refresh>><</link>><<elseif $battle_audio is "unmuted">><<link "Turn background music off?">><<playlist "bgm_E-T" mute>><<refresh>><</link>><</if>>*/<</nobr>>
+<span class="pcdarklink"><<if $bgm_audio is "muted">><<link "Turn background audio on?">><<audio ":bgm" unmute>><<set $bgm_audio to "unmuted">><<refresh>><</link>><<elseif $bgm_audio is "unmuted">><<link "Turn background music off?">><<audio ":bgm" mute>><<set $bgm_audio to "muted">><<refresh>><</link>><</if>></span><</if>>
+<<nobr>>/*<<if $battle_audio is "muted">><<link "Turn battle music on?">><<playlist "bgm_E-T" unmute>><<refresh>><</link>><<elseif $battle_audio is "unmuted">><<link "Turn battle music off?">><<playlist "bgm_E-T" mute>><<refresh>><</link>><</if>>*/<</nobr>>
 
 <span id="desclink"><<link "Character Description">><<run Engine.play('Character Description', true)>><</link>></span>
 
-@@.pcdarklink;<<link "Player Settings">><<run Engine.play('Player Settings', true)>><</link>>@@
+@@.pcdarklink;#pcsetting;<<link "Player Settings">><<run Engine.play('Player Settings', true)>><</link>>@@
 
 <span class="pcdarklink"><span id="ctrlslink"><<link "Controls">><<run Engine.play('', true)>><</link>></span></span>@@
 
@@ -45,7 +45,7 @@ It is <<printtime12hr>>
 <span class="pcdarklink" id="volsettinglink"><<link "Volume Settings">><<run UI.settings()>><</link>></span>
 
 <span class="save-point"><<link "SAVE/LOAD">><<run UI.saves()>><</link>></span>
-<<if hasVisited("Explore Cargo")>>@@.invlink;[[Inventory Menu]]@@<</if>>
+<<if hasVisited("Explore Cargo")>>@@#invlink;[[Inventory Menu]]@@<</if>>
 
 :: Player Settings [stoptime menuitem]
 
@@ -58,7 +58,7 @@ It is <<printtime12hr>>
 		<<run toggleImg(true)>> to hide images,
 		and <<run toggleImg(false)>> to show images. */<</nobr>>
 <strong>WARNING: <i>If you're on Android, or any phone-like device, Online is the only way to play with pictures. Sorry about this.</i></strong>
-If you'd rather @@.PCdarklink.link2;<<if $PC.imagesHidden is false>><<link "disable images">><<set $PC.imagesHidden to true>><<run toggleImg(true)>><<refresh>><</link>><<elseif PC.imagesHidden is true>><<link "enable images">><<set $PC.imageshidden to false>><<run ToggleImg(false)>><<refresh>><</link>><</if>>@@, Jade won't pass any blame.
+If you'd rather @@.PCdarklink.link2;<<if $PC.imagesHidden is false>><<link "disable images">><<set $PC.imagesHidden to true>><<run toggleImg(true)>><<refresh>><</link>><<elseif $PC.imagesHidden is true>><<link "enable images">><<set $PC.imageshidden to false>><<run ToggleImg(false)>><<refresh>><</link>><</if>>@@, we won't pass any blame.
 
 @@.link3.PCdarklink;<<if $debug is false>>
   <<link "Turn on debug mode?" 'Player Settings'>><<set $debug to true>><<refresh>><</link>>
@@ -103,7 +103,10 @@ Here, you can test your pronouns. Hopefully, errors won't abound.
 
 <span class="pcdarklink onlylink" ><<link "Return." $return>><</link>></span>
 
-:: Pronouns [menu-item stoptime]
+Testing with sentences: Hello, I go by <<they>>/<<them>> pronouns. Can you pass me the butter? Thanks a lot! 
+<<Theyre>> going to be sad if <<their>> food is taken away. That's <<Theirs>>. <<They>> should be about done, it's been a half-hour. Can you go check on <<them>>? Just don't take <<their>> food away. <<Their>> food is <<theirs>>.
+
+:: Pronouns [stoptime menuitem]
 
 @@.dtm-mono;Sure, $PC.name. What would you like to go by? You can change them or keep them the same, but why would you ask me if you wanted to keep them?@@
 /* $pgen: 0 = male, 1 = female, 2 = gender neutral, 3 = no gender */
@@ -117,50 +120,50 @@ Here, you can test your pronouns. Hopefully, errors won't abound.
 
 <span class="pcdarklink link1"><<link "Thanks, Frisk. I'll go by these pronouns." $return>></span><</link>>
 
-:: Custom Pronouns [menu-item stoptime]
+:: Custom Pronouns [stoptime menuitem]
 
 @@.dtm-mono;<i>Alright. Well, make sure you tell me which ones you <i>would</i> like then.</i>@@
-<span class="pcdarklink link1"><<cycle "$custompronouns">>
+<span class="pcdarklink link1"><<cycle "$PC.custompronouns">>
 <<option "Use custom pronouns." true>>
 <<option "Don't use custom pronouns." false>>
 <</cycle>></span>
 If you want to not use custom pronouns anymore, you can tell Frisk with the link above.
-<<textbox "ne" "$ne">>
-<<textbox "nem" "$nem">>
-<<textbox "nir" "$nir">>
-<<textbox "nirs" "$nirs">>
-<<textbox "nemself" "$nemself">>
+<<textbox "$ne" "ne">>
+<<textbox "$nem" "nem" >>
+<<textbox "$nir" "nir">>
+<<textbox "$nirs" "nirs">>
+<<textbox "$nemself" "nemself">>
 
-<span class="pcdarklink link2>"<<link "Okay, these I like. Thanks Frisk!" $return>><</link>></span>
+<span class="pcdarklink link2"><<link "Okay, these I like. Thanks Frisk!" $return>><</link>></span>
 
 :: PassageHeader [nobr]
 
 <<if !tags().includes('stoptime')>><<addmins 2>><<elseif tags().includes('slowtime')>><<addmins 1>><<elseif (tags().includes('menu-item') or tags(previous()).includes('menu-item'))>><</if>>
 
-<<if tags().includes("room") && typeof(tags()[1]) == ("Kitchen")>>
+<<if tags().includes("room") && tags().includes(typeof(tags()[1]) == ("Kitchen"))>>
   <<set $currentRoom = tags()[1]>>
 <</if>>
-<<if tags().includes("room") && typeof(tags()[1]) == ("Cargo_Hold")>>
+<<if tags().includes("room") && tags().includes(typeof(tags()[1]) == ("Cargo_Hold"))>>
   <<set $currentRoom = tags()[1].split("_").join(" ")>>
 <</if>>
-<<if tags().includes("room") && typeof(tags()[1]) == ("Vent_1")>>
+<<if tags().includes("room") && tags().includes(typeof(tags()[1]) == ("Vent_1"))>>
   <<set $currentRoom = tags()[1].split("_").join(" ")>>
 <</if>>
-<<if tags().includes("room") && typeof(tags()[1]) == ("Vent_2")>>
+<<if tags().includes("room") && tags().includes(typeof(tags()[1]) == ("Vent_2"))>>
   <<set $currentRoom = tags()[1].split("_").join(" ")>>
 <</if>>
-<<if tags().includes("room") && typeof(tags()[1]) == ("Ladder")>>
+<<if tags().includes("room") && tags().includes(typeof(tags()[1]) == ("Ladder"))>>
   <<set $currentRoom = tags()[1]>>
 <</if>>
-<<if tags().includes("room") && typeof(tags()[1]) == ("Dining_Lounge")>>
+<<if tags().includes("room") && tags().includes(typeof(tags()[1]) == ("Dining_Lounge"))>>
   <<set $currentRoom = tags()[1].split("_").join(" ")>>
 <</if>>
-<<if tags().includes("room") && typeof(tags()[1]) == ("2nd_Floor_Corridor")>>
+<<if tags().includes("room") && tags().includes(typeof(tags()[1]) == ("2nd_Floor_Corridor"))>>
   <<set $currentRoom = tags()[1].split("_").join(" ")>>
 <</if>>
-<<if tags().includes("room") && typeof(tags()[1]) == ("1st_Floor_Corridor")>>
+<<if tags().includes("room") && tags().includes(typeof(tags()[1]) == ("1st_Floor_Corridor"))>>
   <<set $currentRoom = tags()[1].split("_").join(" ")>>
 <</if>>
-<<if tags().includes("areaChange") && typeof(tags()[1]) == ("Planet_1")>>
+<<if tags().includes("areaChange") && tags().includes(typeof(tags()[1]) == ("Planet_1"))>>
   <<set $currentArea = tags()[1].split("_").join(" ")>>
 <</if>>

@@ -1,7 +1,9 @@
 :: StoryInit [nobr]
-<<set $PC = {}>>
+<<set $PC to {}>>
 <<set $PC.resetcounter to recall('resets', 0)>>
 <<set $PC.Offline to true>>
+<<set $PC.imagesHidden to false>>
+<<set $PC.custompronouns to false>>
 <<set $now = new Date(2031, 4, 1, 14, 30, 0)>>
 /* Dukemz: In case my inventory system for some reason doesn't work as it should, I can re-paste it here in a script tag. */
 /*
@@ -9,14 +11,15 @@ Jaden here. In Opera the shortcut for the Developer Console is Ctrl-Shift-J, but
 All I did was go to the settings and search up "keyboard" without the quotes, and it should find it. If that doesn't work, try "shortcuts," again without the quotes.
 ---
  Jaden's code below*/
+ 
 <<set $Frisk to {}>>
 <<set $Frisk.age to 16>>
 <<set $Frisk.Gold to 10>>
 <<set $Frisk.HP to 20>>
 <<set $Frisk.LV to 0>>
 <<set $Frisk.EXP to 0>>
-<<set $Frisk.inv = new Inventory()>>
-<<set $Frisk.bday = new Date(3 12)>>
+<<set $Frisk.inv = new Inventory(10)>>
+<<set $Frisk.bday = new Date('April 22, 2015')>>
 <<set $Frisk.Legs to new Item("Dark Brown Pants")>>
 <<set $Frisk.Torso to new Item("Blue and Purple Striped Sweater")>>
 <<set $Frisk.Feet to new Item("Dark Brown Sneakers")>> 
@@ -216,15 +219,17 @@ All I did was go to the settings and search up "keyboard" without the quotes, an
 	<</event>>
 	<<event keydown>>
 	<<which 115>>
-	<<trigger 'click' '.desclink a'>>
+	<<trigger 'click' '#desclink a'>>
 	<<which 186>>
-	<<trigger 'click' '.invlink a'>>
-	<<which 67>>
-	<<trigger 'click' '.ctrlslink a'>>
-	<<which 16>>
+	<<trigger 'click' '#invlink a'>>
+	<<which 17>>
+	<<trigger 'click' '#ctrlslink a'>>
+	<<which 18>>
 	<<trigger 'click' '#restartlink a'>>
-	<<which 86>>
+	<<which 113>>
 	<<trigger 'click' '#volsettinglink a'>>
+	<<which 118>>
+	<<trigger 'click' '#pcsetting a'>>
 	<</event>>
 	/* Event setup finished */
 	

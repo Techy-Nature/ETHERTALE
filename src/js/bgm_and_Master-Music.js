@@ -58,12 +58,3 @@ Setting.addToggle("bgmMute", {
     },
     onChange : bgmMuteHandler
 });
-/*function SFXMuteHandler() {
-    SimpleAudio.select(":sfx").mute(settings.SFXMute);
-}
-Setting.addToggle("SFXMute", {
-    label    : "SFX Mute.",
-    desc     : "Mute control for Sound Effects.",
-    onInit   : battlesfxMuteHandler,
-    onChange : battlesfxMuteHandler
-});*/

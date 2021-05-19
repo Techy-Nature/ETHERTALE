@@ -35,15 +35,18 @@ Template.add("Pal", function () { return ["Dude", "Chick", "Pal", "Pal"][State.v
 Template.add("Pals", function () { return ["Dudes", "Chicks", "Pals", "Pals"][State.variables.pgen]; });
 
 /* Uppercase version added by Jaden */
+Template.add("THEY", function () { return ["HE", "SHE", "THEY", "IT"][State.variables.pgen]; });
+Template.add("THEM", function () { return ["HIM", "HER", "THEM", "ITS"][State.variables.pgen]; });
 Template.add("THEIR", function () { return ["HIS", "HER", "THEIR", "ITS"][State.variables.pgen]; });
 Template.add("THEIRS", function () { return ["HIS", "HERS", "THEIRS", "ITS"][State.variables.pgen]; });
 Template.add("THEYRE", function () { return ["He's", "SHE'S", "THEY'RE", "IT'S"][State.variables.pgen]; });
+Template.add("THEMSELF", function () { return ["HIMSELF", "HERSELF", "THEMSELF", "ITSELF"][State.variables.pgen]; });
 Template.add("YOUNGPERSON", function () { return ["BOY", "GIRL", "KID", "CHILD"][State.variables.pgen]; });
 Template.add("YOUNGPEOPLE", function () { return ["BOYS", "GIRLS", "KIDS", "CHILDREN"][State.variables.pgen]; });
 Template.add("ADULTPERSON", function () { return ["MAN", "WOMAN", "PERSON", "PERSON"][State.variables.pgen]; });
 Template.add("ADULTPEOPLE", function () { return ["MEN", "WOMEN", "PEOPLE", "PEOPLE"][State.variables.pgen]; });
 Template.add("GENERALPERSON", function () { return ["GUY", "GIRL", "ENBY", "ENBY"][State.variables.pgen]; });
 Template.add("GENERALPEOPLE", function () { return ["GUYS", "GIRLS", "ENBYS", "ENBYS"][State.variables.pgen];})
-Template.add("PAL", function () { return ["DUDE", "CHICK", "PAL", "PAL"][State.variables.pgen]; });
-Template.add("PALS", function () { return ["DUDES", "CHICKS", "PALS", "PALS"][State.variables.pgen]; });
+Template.add("PAL", function () { return ["DUDE", "CHICK", "FRIEND", "FRIEND"][State.variables.pgen]; });
+Template.add("PALS", function () { return ["DUDES", "CHICKS", "FRIENDS", "FRIENDS"][State.variables.pgen]; });
 /* Pronoun Templates - End */

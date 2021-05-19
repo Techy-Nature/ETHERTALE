@@ -21,9 +21,25 @@
 	GameDays[$now.getDay()],
 	GameMonths[$now.getMonth()],
 	$now.getDate(),
-	$now.getFullYear()
-)>>
-<</widget>>
+	$now.getFullYear())
+>><</widget>>
+
+<<widget "printFullFriskbday">>/*Prints Frisk's Birthday, including the weekday. */
+<<print String.format("{0} {1} {2}, {3}",
+	GameDays[$Frisk.bday.getDay()],
+	GameMonths[$Frisk.bday.getMonth()],
+	$Frisk.bday.getDate(),
+	$Frisk.bday.getFullYear())
+>><</widget>>
+/* Prints Frisk's birthday, without the weekday. */
+<<widget "printFriskbday">><<print String.format("{0} {2}, {3}",
+GameMonths[$Frisk.bday.getMonth()],
+	$Frisk.bday.getDate(),
+	$Frisk.bday.getFullYear())>><</widget>>
+/* Prints Frisk's birth month. The same for the date and weekday with the other widgets.*/
+<<widget "Friskbmonth">><<= GameMonths[$Frisk.bday.getMonth()]>><</widget>>
+<<widget "Friskbdate">><<= $Frisk.bday.getDate()>><</widget>>
+<<widget "printFriskbweekday">><<= GameDays[$Frisk.bday.getDay()]>><</widget>>
 
 /* Prints the current time (12H). */
 <<widget "printtime12hr">>
@@ -66,22 +82,24 @@
 /* <<SetGender>> widget - End */
 /* Extra custom pronouns widget by Jaden */
 
-<<widget "they">><<if $custompronouns is true>><<print $ne>><<else>>?they<</if>><</widget>>
-<<widget "them">><<if $custompronouns is true>><<print $nem>><<else>>?them<</if>><</widget>>
-<<widget "theyre">><<if $custompronouns is true>><<print $nir + "\'re">><<else>>?theyre<</if>><</widget>>
-<<widget "their">><<if $custompronouns is true>><<print $nir>><<else>>?their<</if>><</widget>>
-<<widget "theirs">><<if $custompronouns is true>><<print $nirs>><<else>>?theirs<</if>><</widget>>
-<<widget "themself">><<if $custompronouns is true>><<print $nemself>><<else>>?themself<</if>><</widget>>
-<<widget "They">><<if $custompronouns is true>><<print $ne.toupperFirst()>><<else>>?They<</if>><</widget>>
-<<widget "Them">><<if $custompronouns is true>><<print $nem.toupperFirst()>><<else>>?Them<</if>><</widget>>
-<<widget "Theyre">><<if $custompronouns is true>><<print $nir.toupperFirst() + "\'re">><<else>>?Theyre<</if>><</widget>>
-<<widget "Theirs">><<if $custompronouns is true>><<print $nirs.toupperFirst>><<else>>?theirs<</if>><</widget>>
-<<widget "Themself">><<if $custompronouns is true>><<print $nemself.toupperFirst()>><<else>>?Themself<</if>><</widget>>
-<<widget "THEY">><<if $custompronouns is true>><<print $ne.toUpperCase()>><<else>>?THEY<</if>><</widget>>
-<<widget "THEM">><<if $custompronouns is true>><<print $nem.toUpperCase()>><<else>>?THEM<</if>><</widget>>
-<<widget "THEYRE">><<if $custompronouns is true>><<print $nir.toUpperCase() + "\'RE">><<else>>?THEYRE<</if>><</widget>>
-<<widget "THEIRS">><<if $custompronouns is true>><<print $nirs.toUpperCase()>><<else>>?THEIRS<</if>><</widget>>
-<<widget "THEMSELF">><<if $custompronouns is true>><<print $nemself.toUpperCase()>><<else>>?THEMSELF<</if>><</widget>>
+<<widget "they">><<if $PC.custompronouns is true>><<print $ne>><<else>>?they<</if>><</widget>>
+<<widget "them">><<if $PC.custompronouns is true>><<print $nem>><<else>>?them<</if>><</widget>>
+<<widget "theyre">><<if $PC.custompronouns is true>><<print $nir + " is">><<else>>?theyre<</if>><</widget>>
+<<widget "their">><<if $PC.custompronouns is true>><<print $nir>><<else>>?their<</if>><</widget>>
+<<widget "theirs">><<if $PC.custompronouns is true>><<print $nirs>><<else>>?theirs<</if>><</widget>>
+<<widget "themself">><<if $PC.custompronouns is true>><<print $nemself>><<else>>?themself<</if>><</widget>>
+<<widget "They">><<if $PC.custompronouns is true>><<print $ne.toUpperFirst()>><<else>>?They<</if>><</widget>>
+<<widget "Them">><<if $PC.custompronouns is true>><<print $nem.toUpperFirst()>><<else>>?Them<</if>><</widget>>
+<<widget "Theyre">><<if $PC.custompronouns is true>><<print $nir.toUpperFirst() + " is">><<else>>?Theyre<</if>><</widget>>
+<<widget "Theirs">><<if $PC.custompronouns is true>><<print $nirs.toUpperFirst()>><<else>>?Theirs<</if>><</widget>>
+<<widget "Their">><<if $PC.custompronouns is true>><<print $nir.toUpperFirst()>><<else>>?Their<</if>><</widget>>
+<<widget "Themself">><<if $PC.custompronouns is true>><<print $nemself.toUpperFirst()>><<else>>?Themself<</if>><</widget>>
+<<widget "THEY">><<if $PC.custompronouns is true>><<print $ne.toUpperCase()>><<else>>?THEY<</if>><</widget>>
+<<widget "THEM">><<if $PC.custompronouns is true>><<print $nem.toUpperCase()>><<else>>?THEM<</if>><</widget>>
+<<widget "THEYRE">><<if $PC.custompronouns is true>><<print $nir.toUpperCase() + " IS">><<else>>?THEYRE<</if>><</widget>>
+<<widget "THEIR">><<if $PC.custompronouns is true>><<print $nir.toUpperCase()>><<else>>?THEIR<</if>><</widget>>
+<<widget "THEIRS">><<if $PC.custompronouns is true>><<print $nirs.toUpperCase()>><<else>>?THEIRS<</if>><</widget>>
+<<widget "THEMSELF">><<if $PC.custompronouns is true>><<print $nemself.toUpperCase()>><<else>>?THEMSELF<</if>><</widget>>
 
 /* <<checkboxPlus>> widget by HiEv
 	This widget allows you to display a custom checkbox which sets a
@@ -150,7 +168,7 @@
   <<if def $currentArea && def $currentRoom>>
     <<set _toDrop = $Frisk.inv.findItem(_item)>>
       <<if def _toDrop>>
-        <<set $FriskInventory.decItem(_item)>>
+        <<set $Frisk.inv.decItem(_item)>>
         <<set roomItems().push(_item)>>
 		<<refresh>>
       <</if>>

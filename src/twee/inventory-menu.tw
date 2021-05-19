@@ -12,6 +12,7 @@
 </span>
 
 :: inventory item list[nobr]
+
 <div style="display:flex; justify-content:space-evenly;">
 <<if _filter == "all">>
 	<b>All</b>

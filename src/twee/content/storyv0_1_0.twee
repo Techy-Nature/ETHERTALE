@@ -116,14 +116,14 @@ I enter the cargo hold<<if lastVisited("Explore Cargo") lte 2>> again<</if>>. I 
 
 :: Ladder-sneaky [room Ladder slowtime]
 
-I head towards the ladder, climb it, and try to open the hatch at the top, but it seems I don't have a key or it's jammed, as it won't open for me. I climb back down and enter back into [[the first hallway.|Starship hallways]]
+I head towards the ladder, climb it, and try to open the hatch at the top, but it seems I don't have a key or it's jammed, as it won't open for me. I climb back down and enter back into [[the first hallway.|Starship hallway]]
 <<if $C.Starship["Ladder"].length is 0>>There's nothing here to see, after all.<<elseif $C.Starship["Ladder"].length gt 1>>* There's some stuff here I can pick up...
 <<include "Room Item List">><<elseif $C.Starship["Ladder"].length is 1>>* There's something here I can pick up...
 <<include "Room Item List">><</if>>
 
 :: Vent 1 [room Vent_1]
 
-I<<if lastVisited("Footsteps") lte 2>> scrambled <<elseif lastVisited("Starship hallway") is 1>> climbed <</if>>into the vent. <<if lastVisited("Starship hallway") lte 3 and visited() is 1>> It's too dark to see past the first few feet, so I probably wouldn't be able to use these vents to transport myself, but they are good for hiding in. I <span class="link1">[[exit the vent.|Starship hallway]]</span><<elseif lastVisited("Footsteps") lte 1>>I quiet my breathing as the footsteps pass, trying not to shuffle uncomfortably in the tiny vent. <<timed 5s>>Once the danger passes, I <span class="link1">[[exit the vent|Starship hallway]]</span>.<</timed>><<else>>I then <span class="link1">[[remove myself from the vent.|Starship hallway]]</span> <<if $C.Starship["Vent 1"].length is 0>>There's not much here to look at, after all.<<</if>><</if>>
+I<<if lastVisited("Footsteps") lte 2>> scrambled <<elseif lastVisited("Starship hallway") lte 2>> climbed <</if>>into the vent. <<if lastVisited("Starship hallway") lte 2 and visited() is 1>> It's too dark to see past the first few feet, so I probably wouldn't be able to use these vents to transport myself, but they are good for hiding in. I <span class="link1">[[exit the vent.|Starship hallway]]<</if>><<if lastVisited("Footsteps") lte 1>>I quiet my breathing as the footsteps pass, trying not to shuffle uncomfortably in the tiny vent. <<timed 5s>>Once the danger passes, I <span class="link1">[[exit the vent.|Starship hallway]]<</timed>><</if>></span>> <<if $C.Starship["Vent 1"].length is 0>>There's not much here to look at, after all.<<</if>>
 <<if $C.Starship["Vent 1"].length gt 0>>* I can pick up...
 
 <<include "Room Item List">><</if>>
@@ -312,24 +312,23 @@ End of this route! Thanks so much for playing! :)
 :: Ladder [room Ladder slowtime]
 
 <<if lastVisited("Starship hallway") is 1>>I [[climb up the ladder|Bedrooms hallway]], and using my ID I am able to open the hatch.<<elseif lastVisited("Bedrooms hallway") is 1>>Before climbing down the ladder, I open up the hatch with my ID. Then I [[lower myself down|Starship hallway]] onto the ladder.<</if>>
-
-/* :: Bedrooms hallway [room 2nd_Floor_Corridor]
+<<nobr>>/* :: Bedrooms hallway [room 2nd_Floor_Corridor]
 
 <<nobr>><<if lastVisited("Ladder") is 1>>I enter the hallway after climbing the ladder<<else>>. I find myself in the bedroom hallway.<</if>> This seems to be the sleeping quarters part of the ship, as I see a lot of bedroom doors <<if lastVisited("Ladder") is 1>>in front of<<else>>around<</if>> me...  Where should I go next?<</nobr>>
 
 * [[Knock on Sans' bedroom door|Knock Knock. Sans. I'm Sansational.]]
 * <<if visited() is 1>>[[Knock on Papyrus's bedroom door.|Knock Knock. NO!! I'M NOT GOING ALONG WITH YOUR SILLY JOKES, SANS!]]<<else>>[[Knock on Papyrus's door.|Pap's room]]<</if>>
 * [[Knock on Undyne's door.|Undyne's training bedroom]]
-* [[Knock on Toriel and Asgore's door.|Toriel knock]]*/
+* [[Knock on Toriel and Asgore's door.|Toriel knock]]*/<</nobr>>
 
 :: Kitchen-sneaky [room Kitchen]
 
 I sneak into the kitchen, peeking through the double-door's windows before entering to make sure the coast is clear. I lean up on tip-toes and pull myself up to see through the tall windows, and when I see that no one is inside I go ahead and enter.
-<<if $Frisk.exploredKitchen is undefined>>* <<linkreplace "Look around and try to find some food?">><<nobr>><<set $Frisk.exploredKitchen to true>><<if visited() is 1>>I found some!<</if>>* I can pick up...<</nobr>>
+<<nobr>><<if $Frisk.exploredKitchen is undefined>>* <<linkreplace "Look around and try to find some food?">><<set $Frisk.exploredKitchen to true>><<if visited() is 1>>I found some!<</if>>* I can pick up...
 <<include "Room Item List">>
-<</linkreplace>><<nobr>><<elseif $Frisk.exploredKitchen is true>>* I can pick up...<</nobr>>
-<<include "Room Item List">>
-<</if>>
+<</linkreplace>><<elseif $Frisk.exploredKitchen is true>>* I can pick up...<</if>><</nobr>>
+<<if $Frisk.exploredKitchen is true>><<include "Room Item List">><</if>>
+
 <span class="onlylink">[[Leave the kitchen.|Starship hallway]]</span>
 
 :: Corridor_1st_Floor_sneaky [room Corridor_1st_Floor nobr]
@@ -369,9 +368,9 @@ There's a book about constellations (no surprise there), a book about ship AIs w
 
 * @@.link2;[[Go back to the hallway and explore some more of the ship.|Starship hallway]]@@
 
-* <<if $linkclicked2 is undefined>><span class="linkcheck2"><span class="pcdarklink link3">[[Get Frisk to inspect the gravitational arrays|Player inspects Grav-Arrays]]</span></span><<elseif $linkclicked2 is true and hasVisited("Questions about Grav-array and ship") is true>><span class="pcdarklink link3">[[Ask more questions about the Gravitational Arrays|Questions about Grav-array and ship]]</span><</if>>
+* <<nobr>><<if $linkclicked2 is undefined>><span class="linkcheck2"><span class="pcdarklink link3">[[Get Frisk to inspect the gravitational arrays|Player inspects Grav-Arrays]]</span></span><</if>><<if $linkclicked2 is true and hasVisited("Frisk Inspects Grav-Arrays") is true>><span class="pcdarklink link3">[[Ask some questions about the Gravitational Arrays|Questions about Grav-array and ship]]</span><<elseif $linkclicked2 is true and hasVisited("Questions about Grav-array and ship") is true>><span class="pcdarklink link3">[[Ask some more questions about the Gravitational Arrays|Questions about Grav-array and ship]]</span><</if>><</nobr>>
 
-* <<if $Frisk.exploredEngineRoom is undefined>><<linkreplace "Look around the Engine room for something useful?">><<set $Frisk.exploredEngineRoom to true>>I found something! I can pick up...
+* <<if $Frisk.exploredEngineRoom is undefined>><<linkreplace "Look around the engine room for something useful?">><<set $Frisk.exploredEngineRoom to true>>I found something! I can pick up...
 
 <<include "Room Item List">><</linkreplace>><<elseif $Frisk.exploredEngineRoom is true>>I can pick up...
 <<include "Room Item List">><</if>>
@@ -391,7 +390,7 @@ I jump, confused and startled at the gentle prodding of a voice inside my subcon
 
 /* $pgen: 0 = male, 1 = female, 2 = gender neutral, 3 = no gender */
 <span class="pcdark">You're</span> <<textbox "$PC.name" "Your first name, ex:Bianca">><span class="pcdark">, you go by <span class="pcdarklink link1"><<cycle "$pgen">><<option "she/her" 1>><<option "he/him" 0>><<option "they/them" 2>><<option "it/its" 3>><</cycle>></span>, and then you say...</span>
-<b><i>Telling them about how you're the player in this game will likely not be understood by them at this point in time.</i></b></span>
+<span class="pcdark"><b><i>Telling them about how you're the player in this game will likely not be understood by them at this point in time.</i></b></span>
 
 * <span class="pcdarklink link2">[[Uh... I can explain?|Then Explain, Frisk demands]]</span>
 
@@ -399,7 +398,7 @@ I jump, confused and startled at the gentle prodding of a voice inside my subcon
 
 * <span class="pcdarklink link4">[[I'm your unconscious mind, and I'm going to be helping you to make choices.|Frisk will say Oh, okay]]</span>
 
-* <span class="pcdarklink link5">[[I guess I'm on this ride with you. Do you mind accepting my assistance?|Frisk will say Oh, okay]]</span> <span class="pcdark">
+* <span class="pcdarklink link5">[[I guess I'm on this ride with you. Do you mind accepting my assistance?|Frisk will say Oh, okay]]</span>
 
 :: I can imagine how that'll go down, badly [cutscene]
 
@@ -407,7 +406,7 @@ I jump, confused and startled at the gentle prodding of a voice inside my subcon
 
 :: Then Explain, Frisk demands [cutscene]
 
-I forego speech in favor of thinking to you, since you're already in my head. <i><span class="dtm-mono">Then please do<<if lastVisited("I can imagine how that'll go down, badly") is 1>> explain<</if>>, $PCname.</span></i> <span class="pcdark">You say...</span>
+I forego speech in favor of thinking to you, since you're already in my head. <i><span class="dtm-mono">Then please do<<if lastVisited("I can imagine how that'll go down, badly") is 1>> explain<</if>>, $PC.name.</span></i> <span class="pcdark">You say...</span>
 
 <span class="pcdarklink link1">[[I guess I'm on this ride with you, helping you along the way.|Frisk will say Oh, okay]]</span>
 
@@ -424,7 +423,7 @@ I narrow my eyes even more in caution, then think to you, <i><span class="dtm-mo
 
 I walk over to the Grav arrays and look at them, following your suggestion. There are flashing blue lights and wires that seem to run the length of the ship, and they converge here to the power source in the engine room. The power source is a bright, neon blue orb that sits on a pedestal near the wall next to the rockets<<if hasVisited("Explore Engine room") is true>>(on the opposite side of where I found the vent, of course)<</if>>, with the wires connected through three-pronged power strips on the pedestal that connect to the orb with smaller, more delicate blue wires. It seems like a pretty elaborate setup.
 
-<i><span class="dtm-mono">Do you have any questions about this, <<print $PCname>>?</span></i> I wonder to you without speaking.
+<i><span class="dtm-mono">Do you have any questions about this, <<print $PC.name>>?</span></i> I wonder to you without speaking.
 
 <span class="pcdarklink link1">[[Nope!|Engine room]]</span>
 
