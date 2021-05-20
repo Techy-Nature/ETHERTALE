@@ -1,6 +1,6 @@
 :: Start-Intro [stoptime]
-<span class="pcdarklink"><<if $audio is "muted">><<link "Turn music on?">><<set $audio to "unmuted">><<masteraudio unmute>><<refresh>><</link>><<elseif $audio is "unmuted">><<link "Turn music off?">><<masteraudio mute>><<set $audio to "muted">><<refresh>><</link>><</if>></span>
-
+<<nobr>><span class="pcdarklink"><<if $audio is "muted">><<link "Turn music on?">><<set $audio to "unmuted">><<masteraudio unmute>><<refresh>><</link>><<elseif $audio is "unmuted">><<link "Turn music off?">><<masteraudio mute>><<set $audio to "muted">><<refresh>><</link>><</if>></span><</nobr>>
+<<set $CurrentArea to "Starship">>
 <span class="pcdarklink"><<if $bgm_audio is "muted">><<link "Turn background audio on?">><<audio ":bgm" unmute>><<set $bgm_audio to "unmuted">><<refresh>><</link>><<elseif $bgm_audio is "unmuted">><<link "Turn background music off?">><<audio ":bgm" mute>><<set $bgm_audio to "muted">><<refresh>><</link>><</if>></span>
 <<nobr>><<audio "bgm_OUAET" play loop>><</nobr>>
 
@@ -70,6 +70,7 @@ From behind the corner of the buildings 20 feet away, I marvel at the beautiful,
 Crouching behind a bush, I wait stealthily until a stray box is left outside the humongous ship on it's lonesome, then I jump from behind the bush, arms pumping, dark brown sneakers slapping on the dirt and later the metal landing platform. Then I open the box up, and, jumping inside it, close it up again. Afterwards I quickly cover myself with a felt packing blanket, @@.onlylink;[[and wait.|Intro the ship]]@@
 
 :: Intro the ship [cutscene]
+
 <<nobr>><<addmins 4>><</nobr>>
 I hear heavy footsteps, but somehow they seem more strong and confident than anything intimidating... "<span class="dtm-sans">A'right, one more box left!</span>" an ambiguously feminine voice rings out as the box I'm in lifts off the ground in one fluid motion. "<span class="dtm-mono">Huh, this box is heavier than I thought it'd be. Welp, in it goes!</span>" The <<hovertip "Monsters are a seperate race from humans, but lived and evolved on the same planet.">>monster<</hovertip>> starts moving with the box. I'm hesitating to breathe- I try to breathe as quietly as possible. <i><span class="dtm-mono">This has to work...</span></i> I think desperately. <i><span class="dtm-mono">I can't stay on this planet any longer. I need a new start!</span></i>
 
@@ -87,7 +88,7 @@ I hear a loud, "<span class="papyrus">OKAY, UNDYNE!</span>" over the ship's spea
 After the footsteps die away through <span class="link1">[[a pressurized door,|Starship hallway]]</span> and later a second heavy rumbling signifies we've left the ground, I climb out of the crate. <<hovertip "The cargo hold. It's half-full of crates and other junk.">>The room I'm in<</hovertip>> is large, the size of a small ballroom really, but only half of it is filled with stuff. Maybe <span class="link2"><<hovertip "There might be something useful in here...">>[[exploring the cargo hold|Explore Cargo]]<</hovertip>></span> first before leaving might be a good idea?
 
 :: Explore Cargo [room Cargo_Hold]
-
+<<run console.log(currentRoom)>>
  <<nobr>>
  <<if visited() is 1>>I explore around, and find a crate of guns and other weapons. There's a few different types of guns, but I can't find any of them that I can use, really... The other side of the huge, tall crate is filled with different knives. I find one of those that I can use. I can pick up a <<linkreplace "High Tech Knife.">><<silently>><<pickUp "High Tech Knife">><</silently>>High Tech Knife, but I've already picked one up. I don't need another. I can look at my @@.link1;[[Inventory to equip it...|Inventory Menu]]@@ But do I really want to fight the crew? That might be a bad idea...<</linkreplace>>
  <<elseif visited() gt 1 and visited() lte 6>> I look around the Cargo Hold, searching in several different crates. I find...
@@ -123,7 +124,7 @@ I head towards the ladder, climb it, and try to open the hatch at the top, but i
 
 :: Vent 1 [room Vent_1]
 
-I<<if lastVisited("Footsteps") lte 2>> scrambled <<elseif lastVisited("Starship hallway") lte 2>> climbed <</if>>into the vent. <<if lastVisited("Starship hallway") lte 2 and visited() is 1>> It's too dark to see past the first few feet, so I probably wouldn't be able to use these vents to transport myself, but they are good for hiding in. I <span class="link1">[[exit the vent.|Starship hallway]]<</if>><<if lastVisited("Footsteps") lte 1>>I quiet my breathing as the footsteps pass, trying not to shuffle uncomfortably in the tiny vent. <<timed 5s>>Once the danger passes, I <span class="link1">[[exit the vent.|Starship hallway]]<</timed>><</if>></span>> <<if $C.Starship["Vent 1"].length is 0>>There's not much here to look at, after all.<<</if>>
+I<<nobr>><<if lastVisited("Footsteps") lte 2>> scrambled <<elseif lastVisited("Starship hallway") lte 2>> climbed <</if>>into the vent. <<if lastVisited("Starship hallway") lte 2 and visited() is 1>> It's too dark to see past the first few feet, so I probably wouldn't be able to use these vents to transport myself, but they are good for hiding in. I <span class="link1">[[exit the vent.|Starship hallway]]<</if>><<if lastVisited("Footsteps") lte 1>>I quiet my breathing as the footsteps pass, trying not to shuffle uncomfortably in the tiny vent. <<timed 5s>>Once the danger passes, I <span class="link1">[[exit the vent.|Starship hallway]]<</timed>><</if>></span>> <<if $C.Starship["Vent 1"].length is 0>>There's not much here to look at, after all.<<</if>><</nobr>>
 <<if $C.Starship["Vent 1"].length gt 0>>* I can pick up...
 
 <<include "Room Item List">><</if>>

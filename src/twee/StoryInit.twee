@@ -18,7 +18,7 @@ All I did was go to the settings and search up "keyboard" without the quotes, an
 <<set $Frisk.HP to 20>>
 <<set $Frisk.LV to 0>>
 <<set $Frisk.EXP to 0>>
-<<set $Frisk.inv = new Inventory(10)>>
+<<set $Frisk.inv = new Inventory([],10)>>
 <<set $Frisk.bday = new Date('April 22, 2015')>>
 <<set $Frisk.Legs to new Item("Dark Brown Pants")>>
 <<set $Frisk.Torso to new Item("Blue and Purple Striped Sweater")>>
