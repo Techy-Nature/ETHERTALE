@@ -88,7 +88,7 @@ I hear a loud, "<span class="papyrus">OKAY, UNDYNE!</span>" over the ship's spea
 After the footsteps die away through <span class="link1">[[a pressurized door,|Starship hallway]]</span> and later a second heavy rumbling signifies we've left the ground, I climb out of the crate. <<hovertip "The cargo hold. It's half-full of crates and other junk.">>The room I'm in<</hovertip>> is large, the size of a small ballroom really, but only half of it is filled with stuff. Maybe <span class="link2"><<hovertip "There might be something useful in here...">>[[exploring the cargo hold|Explore Cargo]]<</hovertip>></span> first before leaving might be a good idea?
 
 :: Explore Cargo [room Cargo_Hold]
-<<run console.log(currentRoom)>>
+<<run console.log(variables().currentRoom)>>
  <<nobr>>
  <<if visited() is 1>>I explore around, and find a crate of guns and other weapons. There's a few different types of guns, but I can't find any of them that I can use, really... The other side of the huge, tall crate is filled with different knives. I find one of those that I can use. I can pick up a <<linkreplace "High Tech Knife.">><<silently>><<pickUp "High Tech Knife">><</silently>>High Tech Knife, but I've already picked one up. I don't need another. I can look at my @@.link1;[[Inventory to equip it...|Inventory Menu]]@@ But do I really want to fight the crew? That might be a bad idea...<</linkreplace>>
  <<elseif visited() gt 1 and visited() lte 6>> I look around the Cargo Hold, searching in several different crates. I find...
@@ -359,7 +359,7 @@ Hey, the Dining Lounge is empty! Not for long though. [[Looks like I can go in t
 <<set $Frisk.exploredlounge to true>>
 <p>I can see that whoever was in there left through another entryway. I enter through the door closest to me, then inspect the space. It's really pretty standard fare, a couple couches, a very comfortable looking recliner with a wooden plate that says, "Chairiel" on the back of it, a serving window from the kitchen, and a table with ten cloth placesettings and ten high-tech revolving chairs. <span class="dtm-mono"><i>They must regularly have guests... hmm...</i></span> I think to myself curiously. There's nothing really in here of interest, except maybe the books on the ship shelf. There's a lot of them, though, and I don't know when whoever was in here will be back, so I take a quick glance and plan to move on as quickly as possible.</p>
 <br>
-There's a book about constellations (no surprise there), a book about ship AIs with an incredibly long, needlessly complicated name, a reference book of 5 different alien languages, and a mechanical journal with scribblings about Starship Mechanics on the front. After hearing footsteps coming from a back hallway, I quickly @@.onlylink;[[make my escape.|Bedrooms hallway]]@@
+There's a book about constellations (no surprise there), a book about ship AIs with an incredibly long, needlessly complicated name, a reference book of 5 different alien languages, and a mechanical journal with scribblings about Starship Mechanics on the front. After hearing footsteps coming from a back hallway, I quickly @@.onlylink;[[make my escape.|Starship hallway]]@@
 
 :: Engine room [room Engine_Room]
 
