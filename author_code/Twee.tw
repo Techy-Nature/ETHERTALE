@@ -1,0 +1,44 @@
+	<<switch $Ptags>>
+	<<case "Cargo_Hold">>
+	<<set $currentRoom to "Cargo Hold">>
+	<<case "Engine_Room">>
+	<<set $currentRoom to "Engine Room">>
+	<<case "Kitchen">>
+	<<set $currentRoom to "Kitchen">>
+	<<case "Dining_Lounge">>
+	<<set $currentRoom to "Dining Lounge">>
+	<<case "Gaster's_Lab">>
+	<<set $currentRoom to "Gaster's Lab">>
+	<<case "Alphys_Lab">>
+	<<set $currentRoom to "Alphys' Lab">>
+	<<case "Gaster_and_Papyrus's_Bedroom">>
+	<<set $currentRoom to "Gaster and Papyrus's Bedroom">>
+	<<case "Sans_Bedroom">>
+	<<set $currentRoom to "Sans' Bedroom">>
+	<<case "Nav_Room">>
+	<<set $currentRoom to "Navigation Room">>
+	<<case "Asgore's_Bedroom">>
+	<<set $currentRoom to "Asgore's Bedroom">>
+	<<case "Toriel's_Bedroom">>
+	<<set $currentRoom to "Toriel's Bedroom">>
+	<<case "Undyne's_Room">>
+	<<set $currentRoom to "Undyne's Training Room/Bedroom">>
+	<<case "Latrine">>
+	<<set $currentRoom to "Latrine">>
+	<<case "Linen_Closet">>
+	<<set $currentRoom to "Linen Closet">>
+	<<case "1st_Floor_Corridor">>
+	<<set $currentRoom to "1st Floor Corridor">>
+	<<case "2nd_Floor_Corridor">>
+	<<set $currentRoom to "2nd Floor Corridor">>
+	<<case "Vent_1">>
+	<<set $currentRoom to "Vent 1">>
+	<<case "Vent_2">>
+	<<set $currentRoom to "Vent 2">>
+	<<case "Ladder">>
+	<<set $currentRoom to "Ladder">>
+	<<default>>
+	 <<if $debug is true>><b>The switch statement didn't work for the inventory system.</b><</if>>
+	<</switch>>
+
+	/* This code doesn't work in the place I need to use it in, but I still might need it later. Once we get the inventory code completely working, I won't need this file anymore. -Jaden*/

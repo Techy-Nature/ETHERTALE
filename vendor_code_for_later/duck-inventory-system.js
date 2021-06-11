@@ -75,7 +75,7 @@ duck.itemdict = [
   },
   {
     // id#7
-    "name": "Starship Bonetrousle Uniform",
+    "name": "Starship-Bonetrousle Uniform",
     "type": "def",
     "points": 6,
     "description": "a light blue and white bone patterned shirt with a name tag attached to the left lapel. The nametag reads \"Frisk - They/Them\"."
@@ -99,7 +99,7 @@ duck.itemdict = [
     "name": "Light Blue Slacks",
     "type": "def",
     "points": 5,
-    "description": "A pair of high quality light blue pants that were given to Frisk with the Starship Bonetrousle Uniform. They have an elastic band to keep them in place, as well as deep pockets and beltloops."
+    "description": "A pair of high quality light blue pants that were given to Frisk with the Starship-Bonetrousle Uniform. They have an elastic band to keep them in place, as well as deep pockets and beltloops."
   },
   {
     // id#11

@@ -159,7 +159,7 @@ setup.itemData = {
 	"equippable": {slot: "Legs"},
     "type": "def",
     "special": 5,
-    "desc": "A pair of high quality light blue pants that were given to Frisk with the Starship Bonetrousle Uniform. They have an elastic band to keep them in place, as well as deep pockets and beltloops.",
+    "desc": "A pair of high quality light blue pants that were given to Frisk with the Starship-Bonetrousle Uniform. They have an elastic band to keep them in place, as well as deep pockets and beltloops.",
 	"onEquip": function (puppet) {
 		puppet.stats["Defense"].addMod("L.Bl Slacks",5,true);
 	},

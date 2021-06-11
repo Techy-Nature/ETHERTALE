@@ -1,4 +1,4 @@
-:: Waiting or Sleeping Vent 2 [stoptime Vent_2]
+:: Waiting or Sleeping Vent 2 [Vent_2 stoptime]
 
 How long should I <<if $now.getHours() gte 20 or $now.getHours() lt 6>>sleep<<else>>wait<</if>> for?
 

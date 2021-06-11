@@ -2,7 +2,7 @@
 
 <<include "Menu: Inventory">>
 
-@@.onlylink.dtm-mono;<<link "Return." $return>><</link>>@@
+<<link "Return." $return>><</link>>
 
 :: Character Description [menuitem stoptime]
 
@@ -23,7 +23,7 @@ Alt = RESTART
 ; = Inventory Menu
 F4 = Character Description
 F2 = Volume Settings
-F1 = Player Settings
+F7 = Player-Settings
 1 = clicking on the first link (when there's multiple links)
 2thru9 = Clicking on the other links (it only goes up to nine)
 SPACE&ENTER/RETURN = clicking on the only link on the page, or clicking on the first link

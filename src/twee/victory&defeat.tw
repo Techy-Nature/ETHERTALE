@@ -79,9 +79,12 @@
 <</if>>
 
 :: Defeat
-You lost! You can add a special defeat message here.
+<span class="8bit-wonder">Game Over</span>
+[img[imgs/broken.gif]]
 
->[[Retry this battle|Preparation]]
->[[Return|Start]]
+@@.dtm-mono;Don't give up yet! I know we can do it if we work together! Maybe if we Restart, we can try something different-?@@
+
+* @@.pcdarklink;[[Retry the battle|Preparation]]@@
+* [[Restart|Intro-Start]]
 
 <<endofbattle>>

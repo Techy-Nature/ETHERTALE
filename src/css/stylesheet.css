@@ -108,6 +108,14 @@ url('fonts/papyrus-webfont-svg.svg') format("svg");
 	url('fonts/dtm-sans-webfont.woff2') format("woff2"),
     url('fonts/dtm-sans-webfont.woff') format("woff");
 }
+@font-face {
+	font-family: eight-bit-wonder;
+	src: local("8_bit_wonder-webfont") format("woff"),
+	url('fonts/8_bit_wonder.ttf') format('truetype'),
+	url('fonts/8_bit_wonder-webfont.woff') format('woff'),
+	url('fonts/8_bit_wonder-webfont2.woff2') format('woff2'),
+	url('fonts/8_bit_wonder-svg.svg') format("svg");
+}
 
 @font-face {
 	font-family: Aster;
@@ -168,8 +176,9 @@ url('fonts/papyrus-webfont-svg.svg') format("svg");
 	font-family: Cambria;
 }
 
-body, tw-story {
-	font-size: 16px;
+.eight-bit-wonder { 
+	font-family: eight-bit-wonder;
+	font-size: 18px;
 }
 
 .pcdark {
@@ -184,7 +193,7 @@ body, tw-story {
 }
 
 .pcdarklink a {
-	color: grey;
+	color: rgb(75, 75, 75);
 	font-weight: 50;
 	color: transparent;
 	text-shadow:
@@ -201,12 +210,4 @@ body, tw-story {
 		-0.2em 0em 0.5em  rgba(255,255,255,0.5),
 		0.2em  0em 0.5em  rgba(255,255,255,0.5);
 }
-.pcdark {
-	color: grey;
-	font-weight: 30;
-	color: transparent;
-	text-shadow:
-		0em    0em 0.02em rgba(255,255,255,0.75),
-		-0.2em 0em 0.5em  rgba(255,255,255,0.5),
-		0.2em  0em 0.5em  rgba(255,255,255,0.5);
-}
+

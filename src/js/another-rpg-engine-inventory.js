@@ -243,10 +243,10 @@ window.Inventory = class Inventory {
 };
 
 window.roomItems = function roomItems (room,area) {
-	if (room === undefined || variables().currentRoom !== undefined) {
+	if (room === undefined || typeof(tags) != 'string') {
 		room = variables().currentRoom;
 	}
-	if (area === undefined || variables().currentRoom !== undefined) {
+	if (area === undefined || typeof(area) != 'string') {
 		area = variables().currentArea;
 	}
 	if (variables().C[area][room] === undefined) {
