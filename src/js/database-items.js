@@ -123,7 +123,7 @@ setup.itemData = {
 	"equippable": {slot: "Torso"},
     "type": "def",
     "special": 6,
-    "desc": "a light blue and white bone patterned shirt with a name tag attached to the left lapel. The nametag reads \"Frisk - They/Them\".",
+    "desc": "a light blue and white bone patterned shirt with a name tag attached to the left lapel. The nametag reads \"Frisk - They/Them\" The nametag also doubles as an ID passcard into the upper levels of the Starship Bonetrousle.",
 	"onEquip": function (puppet) {
 		puppet.stats["Defense"].addMod("SB Uniform",6,true);
 	},

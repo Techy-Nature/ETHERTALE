@@ -1,5 +1,5 @@
 :: StoryInit [nobr]
-<<set $Ptags to []>>
+<<set $PtagsInit to []>>
 <<set $PC to {}>>
 <<set $PC.resetcounter to recall('resets', 0)>>
 <<set $PC.Offline to true>>

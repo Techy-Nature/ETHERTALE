@@ -5,6 +5,7 @@
   <li>
   <<link _item>>
     <<pickUp _item>>
+    <<refresh>>
   <</link>>
   </li>
 <</for>>

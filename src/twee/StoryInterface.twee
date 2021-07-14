@@ -42,8 +42,8 @@ It is <<printtime12hr>>
 
 :: StoryMenu [stoptime menuitem]
 
-<<link "RESET">><<set $PC.resetcounter++>>
-<<run memorize('resets', $PC.resetcounter)>><<run UI.restart()>><</link>>
+<span class="restartlink"><<link "RESET">><<set $PC.resetcounter++>>
+<<run memorize('resets', $PC.resetcounter)>><<run UI.restart()>><</link>></span>
 <span class="pcdarklink" id="volsettinglink"><<link "Volume Settings">><<run UI.settings()>><</link>></span>
 
 <span class="save-point"><<link "SAVE/LOAD">><<run UI.saves()>><</link>></span>

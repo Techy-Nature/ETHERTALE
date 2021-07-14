@@ -1,9 +1,3 @@
-:: Inventory Menu [menuitem stoptime]
-
-<<include "Menu: Inventory">>
-
-<<link "Return." $return>><</link>>
-
 :: Character Description [menuitem stoptime]
 
 My name is Frisk. I'm an orphan, so I don't know my parents' last name. I used to live on the streets of Earth.
