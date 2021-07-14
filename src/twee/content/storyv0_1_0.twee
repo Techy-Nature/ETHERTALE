@@ -82,13 +82,12 @@ I hear a loud, "<span class="papyrus">OKAY, UNDYNE!</span>" over the ship's spea
 
 
 :: Exit-the-crate [Cargo_Hold room]
-<<nobr>><<set $rocketsactive to true>><<set $Frisk.onboardship to true>><</nobr>>
+<<nobr>><<set $rocketsactive to true>><<set $Frisk.onboardship to true>><<set $currentRoom to "Cargo Hold">><</nobr>>
 <<if visited() is 1 and $resetcounter is 0>><span class="dtm-sans"><span class="glitch" data-text="Choose wisely.">Your first choice.</span></span><</if>>
 <<addmins 6>>
 After the footsteps die away through <span class="link1">[[a pressurized door,|Starship hallway]]</span> and later a second heavy rumbling signifies we've left the ground, I climb out of the crate. <<hovertip "The cargo hold. It's half-full of crates and other junk.">>The room I'm in<</hovertip>> is large, the size of a small ballroom really, but only half of it is filled with stuff. Maybe <span class="link2"><<hovertip "There might be something useful in here...">>[[exploring the cargo hold|Explore Cargo]]<</hovertip>></span> first before leaving might be a good idea?
 
 :: Explore Cargo [Cargo_Hold room]
-<<if $debug is true>>the tags on this passage are <<print tags(passage())>>, and {{{$Ptags}}} is set to $Ptags.<</if>>
 
 <<run console.log(variables().currentRoom)>>
  <<nobr>>
@@ -101,11 +100,11 @@ After the footsteps die away through <span class="link1">[[a pressurized door,|S
 With that done, I <span class="onlylink">[[exit through the pressurized door to the hallway.|Starship hallway]]</span>
 
 :: Cargo-Hold [Cargo_Hold room]
-
+<<nobr>><<if previous() isnot "Explore Cargo">><<set $currentRoom to "Cargo Hold">><</if>><</nobr>>
 I enter the cargo hold<<if lastVisited("Explore Cargo") lte 2>> again<</if>>. I can <span class="link1">[[decide to look around|Explore Cargo]]</span> or I can <span class="link2">[[leave the way I came.|Starship hallway]]</span>
 
 :: Starship hallway [1st_Floor_Corridor room]
-
+<<nobr>><<set $currentRoom to "1st Floor Corridor">><</nobr>>
 <<if lastVisited("Explore Cargo") is 1>>After exiting the cargo hold,<</if>> I enter a long hallway. Should I go...
 
 *  <span class="link1">[[right,|Engine room]]</span>
@@ -118,13 +117,14 @@ I enter the cargo hold<<if lastVisited("Explore Cargo") lte 2>> again<</if>>. I 
 <<timed 15s>><<goto "Footsteps">><</timed>>
 
 :: Ladder-sneaky [Ladder room slowtime]
+<<nobr>><<set $currentRoom to "Ladder">><</nobr>>
 I head towards the ladder, climb it, and try to open the hatch at the top, but it seems I don't have a key or it's jammed, as it won't open for me. I climb back down and enter back into [[the first hallway.|Starship hallway]]
 <<if $C.Starship["Ladder"].length is 0>>There's nothing here to see, after all.<<elseif $C.Starship["Ladder"].length gt 1>>* There's some stuff here I can pick up...
 <<include "Room Item List">><<elseif $C.Starship.Ladder.length is 1>>* There's something here I can pick up....
 <<include "Room Item List">><</if>>
 
 :: Vent 1 [Vent_1 room]
-
+<<nobr>><<set $currentRoom to "Vent 1">><</nobr>>
 I<<nobr>><<if lastVisited("Footsteps") lt 2>> scrambled <<elseif lastVisited("Starship hallway") lt 2>>  climbed <</if>>into the vent. <<if lastVisited("Starship hallway") lte 2 and visited() is 1>> It's too dark to see past the first few feet, so I probably wouldn't be able to use these vents to transport myself, but they are good for hiding in. I <span class="link1">[[exit the vent.|Starship hallway]]<</if>><<if lastVisited("Footsteps") lte 1>>I quiet my breathing as the footsteps pass, trying not to shuffle uncomfortably in the tiny vent. <<timed 5s>>Once the danger passes, I <span class="link1">[[exit the vent.|Starship hallway]]<</timed>><</if>></span>> <<if $C.Starship["Vent 1"].length is 0>>There's not much here to look at, after all.<<</if>><</nobr>>
 <<if $C.Starship["Vent 1"].length gt 0>>* I can pick up...
 
@@ -266,6 +266,7 @@ Then he walks away with his phalanges deep in his pockets and his posture hunche
 I slide my back down the glass as I sit down, then I pull up my legs and hug them, waiting for my inevitable fate.
 
 :: Dining Lounge [Dining_Lounge room]
+<<nobr>><<set $currentRoom to "Dining Lounge">><</nobr>>
 
 When we get there, Sans takes out a radio that was attached to his beltloop and sheepishly radios the other crewmembers, but before that he invites me to explore the common dining room. <<if $Frisk.exploredlounge is true>>I decline for now, and instead sit on the couch and half-listen to Sans argue with his cohorts.<<else>>I follow his suggestion and inspect the space. It's really pretty standard fare, a couple couches, a very comfortable looking recliner with a wooden plate that says, "Chairiel" on the back of it, a serving window that connects to the kitchen, and a table with ten cloth placesettings and ten high-tech revolving chairs. <span class="dtm-mono"><i>They must regularly have guests... hmm...</i></span> I think to myself curiously, as Sans talks to the other members of the crew in the background. I don't pay much attention to him... There's nothing really in here of interest other than Sans, except maybe the books on the ship shelf. I take a look at them while Sans argues with his cohorts.
 
@@ -322,7 +323,7 @@ End of this route! Thanks so much for playing! :)
 * [[Knock on Toriel and Asgore's door.|Toriel knock]]*/<</nobr>>
 
 :: Kitchen-sneaky [Kitchen room]
-
+<<nobr>><<set $currentRoom to "Kitchen">><</nobr>>
 I sneak into the kitchen, peeking through the double-door's windows before entering to make sure the coast is clear. I lean up on tip-toes and pull myself up to see through the tall windows, and when I see that no one is inside I go ahead and enter.
 <<nobr>><<if $Frisk.exploredKitchen is undefined>>* <<linkreplace "Look around and try to find some food?">><<set $Frisk.exploredKitchen to true>><<if visited() is 1>>I found some!<</if>>* I can pick up...
 <<include "Room Item List">>
@@ -360,7 +361,7 @@ Hey, the Dining Lounge is empty! Not for long though. [[Looks like I can go in t
 There's a book about constellations (no surprise there), a book about ship AIs with an incredibly long, needlessly complicated name, a reference book of 5 different alien languages, and a mechanical journal with scribblings about Starship Mechanics on the front. After hearing footsteps coming from a back hallway, I quickly @@.onlylink;[[make my escape.|Starship hallway]]@@
 
 :: Engine room [Engine_Room room]
-
+<<nobr>><<set $currentRoom to "Engine Room">><</nobr>>
 <<if visited() is 1>>I creep into the engine room quietly.<<elseif visited() gt 1>>I find myself in the engine room again.<</if>> There isn't much to see here, other than lots of different sized vents and the boiler/heating and cooling system, the power source of the gravitational arrays, as well as the two giant, metal drums that house the rocket systems. I stay clear of those, as they are known to get very hot, at least when in use, which <<if $rocketsactive is true>>they are.<<elseif $rocketsactive is false>>they aren't.<<else>> <span id="glitch" data-text="Errors happened, please don't glitch the game.">Errors happened, please don't glitch the game or try to play just one specific passage...</span> Play the game in order, thanks.<</if>>
 
 *  <<if $linkclicked is undefined>><span class="linkcheck link1">[[Try to find a big enough vent to sleep in|Explore Engine Room]]</span><<elseif $linkclicked is true or hasVisited("Explore Engine Room") is true>>@@.link1;[[Decide to wait safely in the big vent that I found.|Waiting or Sleeping Vent 2]]@@<</if>>
@@ -375,7 +376,7 @@ There's a book about constellations (no surprise there), a book about ship AIs w
 <<include "Room Item List">><</if>>
 
 :: Explore Engine Room [Vent_2 room]
-
+<<nobr>><<set $currentRoom to "Vent 2">><</nobr>>
 I look around the slightly cramped Engine room. With all the wires and miscellaneous electronics covering the floor and walls, it's a wonder I can find any vents at all. I open a few of them up, but eventually find a really well hidden, giant vent sneakily placed tightly next to the rocket drums. I try out the vent, and find that it's huge width lends itself to stretching myself out easily. I decide to go deeper before finding that it actually gets even wider the deeper you go in, before eventually tightening up again. I can easily make myself at home when I feel the need to, but right now, I @@.onlylink;[[crawl out of the vent.|Engine room]]@@
 
 
@@ -419,7 +420,7 @@ I narrow my eyes even more in caution, then think to you, <i><span class="dtm-mo
 
 <span class="pcdarklink link2">[[Disagree-|I can imagine how that'll go down, badly]]</span>
 
-:: Frisk Inspects Grav-Arrays [Engine_Room slowtime]
+:: Frisk Inspects Grav-Arrays [cutscene slowtime]
 
 I walk over to the Grav arrays and look at them, following your suggestion. There are flashing blue lights and wires that seem to run the length of the ship, and they converge here to the power source in the engine room. The power source is a bright, neon blue orb that sits on a pedestal near the wall next to the rockets<<if hasVisited("Explore Engine room") is true>>(on the opposite side of where I found the vent, of course)<</if>>, with the wires connected through three-pronged power strips on the pedestal that connect to the orb with smaller, more delicate blue wires. It seems like a pretty elaborate setup.
 

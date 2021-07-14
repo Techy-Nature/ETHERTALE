@@ -1,5 +1,5 @@
-:: Waiting or Sleeping Vent 2 [Vent_2 stoptime]
-
+:: Waiting or Sleeping Vent 2 [Vent_2 room stoptime]
+<<nobr>><<set $currentRoom to "Vent 2">><</nobr>>
 How long should I <<if $now.getHours() gte 20 or $now.getHours() lt 6>>sleep<<else>>wait<</if>> for?
 
 <<switch $now.getHours()>>
@@ -32,7 +32,7 @@ How long should I <<if $now.getHours() gte 20 or $now.getHours() lt 6>>sleep<<el
 <</switch>>
 <<if $now.getHours() gte 20 or $now.getHours() lt 6>><span class="link2">[[Exit the large vent.|Engine room]]</span><<else>><span class="link6">[[Exit the large vent.|Engine room]]</span><</if>>
 
-<<if $C.Starship["Vent 3"].length is 0>>There's nothing stored here right now, but you've got extra space if you need to [[store things here.|Menu: Inventory]]<<elseif>>You've stored, and can pick back up...
+<<if $C.Starship["Vent 3"].length is 0>>There's nothing stored here right now, but you've got extra space if you need to [[store things here.|Inventory Menu]]<<elseif>>You've stored, and can pick back up...
 
 <<include "Room Item List">><</if>>
 
