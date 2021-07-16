@@ -161,6 +161,28 @@ equippable -> object, must have a "slot" attribute; can also add data for restri
 	}
 };
 
+window.Filler = class Filler {
+	constructor(name) {
+		this.id = name;
+	}
+
+	toString () {
+		return "&mdash;&mdash;";
+	}
+
+	clone () {
+		// Return a new instance containing our current data.
+		return new Filler(this.id);
+	}
+
+	toJSON () {
+		// Return a code string that will create a new instance
+		// containing our current data.
+		let data = this.id;
+		return JSON.reviveWrapper('new Filler($ReviveData$)', data);
+	}
+};
+
 setup.STACK_SIZE = 5;
 
 window.Inventory = class Inventory {
