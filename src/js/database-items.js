@@ -204,6 +204,10 @@ setup.itemData = {
 		puppet.stats["Defense"].removeMod("Bl.Prpl. Striped Sweater");
 	}
 },
+	  
+	"Space Suit": {
+		"equippable": {slot: new Set(["Head","Torso","Legs"])}
+	},
 
   "Cloth": {
     "desc": "A ripped piece of cloth, can be used for crafting. Whatever it once was a part of, I can't tell."
