@@ -54,6 +54,7 @@ window.Actor = class Actor {
 			this.protectedBy = null;
 			this.effects = [];
 			this.onHit = [];
+			this.lastDmg = 0;
 
 			this.equipment = new Map();
 			var equipData;
@@ -62,7 +63,7 @@ window.Actor = class Actor {
 				: equipData = setup.DEFAULT_EQUIP_SLOTS;
 
 			for (let [pn,v] of Object.entries(equipData)) {
-				(v > 1) ? this.equipment.set(pn,new Array(v).fill(null)) : this.equipment.set(pn,null);
+				this.equipment.set(pn,new Array(v).fill(null));
 			}
 		}
 		else if (name !== "Dummy") {
@@ -186,6 +187,23 @@ window.Actor = class Actor {
 		return this.effects.find(function(eff) { return eff && eff.uncontrollable });
 	}
 
+	get skillLock () {
+		//	Checks if the Actor is under a skill-locking effect (e.g. Dizzy)
+		//	If skillLock effect found, will return a truthy value, else will return a falsy value.
+
+		return this.effects.find(function(eff) { return eff && eff.skillLock });
+	}
+
+	get shieldHits () {
+		//	Returns the number of blocks from shield effects on this character, if they have any
+
+		var hits = 0;
+		this.effects.filter(function (eff) {return eff && eff.shield }).forEach(function (shield) {
+			hits += shield.uses;
+		});
+		return hits;
+	}
+
 	get hp () {
 		return this._hp;
 	}
@@ -203,6 +221,13 @@ window.Actor = class Actor {
 
 	set maxhp (amt) {
 		this._maxhp.base = amt;
+	}
+
+	updateHP () {
+		// used for matching current HP to changes in max HP, e.g. HP-boosting equipment
+		if (!(this instanceof Puppet && V().lastingDamage)) {
+			this.hp = this.maxhp;
+		}
 	}
 
 	get HPregen () {
@@ -231,6 +256,15 @@ window.Actor = class Actor {
 
 	set displayHP (amt) {
 		this._displayHP = Math.clamp(amt,0,this.maxhp);
+	}
+
+	get lastDmg () {
+		return this._lastDmg;
+	}
+
+	set lastDmg (val) {
+		console.assert(typeof(val) == "number",`ERROR: lastDmg must be number`);
+		this._lastDmg = val;
 	}
 
 	// Respawn functions. These assume respawn time is a FillStat.
@@ -335,6 +369,14 @@ window.Actor = class Actor {
 
 	setBase (k,v){
 		this.stats[k].base = v;
+	}
+
+	addMod (key, id, mod, equipment) {
+		return this.stats[key].addMod(id,mod,equipment);
+	}
+
+	removeMod (key, id, index) {
+		this.stats[key].removeMod(id, index);
 	}
 
 	setTemp (k,v,abs){
@@ -469,114 +511,116 @@ window.Actor = class Actor {
 
 	// EQUIPMENT FUNCTIONS
 
-	unequip (slot,index,mods) {
-		mods = (mods || {});
-		if (this.equipment.has(slot)) {
-			var item = null;
-			if (this.equipment.get(slot) instanceof Array) {
-				if (typeof(index) == 'number') {
-					item = this.equipment.get(slot)[index];
-				} else { console.log("ERROR in unequip: Invalid item index."); return; }
-			} else {
-				item = this.equipment.get(slot);
+	unequip (slot,index = 0,mods = {}) {
+		console.assert(typeof(slot) == "string",`ERROR in unequip: slot must be string`);
+		console.assert(Number.isInteger(index) && index >= 0,"ERROR in unequip: index must be whole integer");
+		console.assert(this.equipment.has(slot),`ERROR in unequip: attempted to unequip nonexistent slot`);
+
+		console.log("unequip running");
+		var item = this.equipment.get(slot)[index];
+		if (item !== null && (!item.sticky || mods.unsticky === true)){
+			if (item.default === undefined && mods.destroy !== true) {
+				inv().addItem(item.id);
 			}
-			if (item !== null && (!item.sticky || mods.unsticky === true)){
-				if (item.default === undefined && mods.destroy !== true) {
-					inv().addItem(item.id);
+			if (item.onRemove !== undefined) {
+				item.onRemove(this);
+			}
+			this.equipment.get(slot)[index] = null;
+
+			// If your system always has to read something in an equipment slot, such as if you wish to calculate equipment effects through a call function or iterator, define default item names in DEFAULT_EQUIPMENT. Remember to define default equipment in the items database.
+			if (typeof(setup.DEFAULT_EQUIPMENT) === "object") {
+				console.assert(typeof(setup.DEFAULT_EQUIPMENT[slot]) === "string","ERROR in unequip: no default equipment specified for "+slot);
+				this.equipment.get(slot)[index] = new Item(setup.DEFAULT_EQUIPMENT[slot]);
+			}
+
+			if (item.equippable.slot instanceof Set) {
+				// If item was equipped to multiple slots, we have to clear all the other slots it covered.
+				for (let slotName of item.equippable.slot) {
+					var pos = this.equipment.get(slotName);
+					for (let i = 0; i < pos.length; i++) {
+						pos[i] = null;
+					}
 				}
-				if (item.onRemove !== undefined) {
-					item.onRemove(this);
-				}
-				(this.equipment.get(slot) instanceof Array) ? this.equipment.get(slot)[index] = null : this.equipment.set(slot,null);
-				// If your system always has to read something in an equipment slot, such as if you wish to calculate equipment effects through a call function or iterator, replace the above line with the one below. Remember to define default equipment in the items database.
-				//this.equipment.set(slot,new Item("Default "+slot));
 			}
 		}
-		else { console.log("Attempted to unequip nonexistent slot."); return; }
 	}
 
 	unequipAll (mods) {
-		this.equipment.forEach(function (item,slot) {
-			if (item instanceof Array) {
-				item.forEach(function(subslot,index) {
-					this.unequip(slot,index,mods);
-				}, this);
-			}
-			else {
-				this.unequip(slot,0,mods);
-			}
+		this.equipment.forEach(function (slot,name) {
+			slot.forEach(function(subslot,index) {
+				this.unequip(name,index,mods);
+			}, this);
 		}, this);
 	}
 
 	equip (item) {
 		// To equip an item, we also have to de-equip the existing item and return it to the inventory (unless you want players to lose replaced equipment). This function checks that the equipment slot exists and that it's filled by something. If it is, the current equipment is extracted and added to the inventory before we set the new equipment.
 		// If the item has any special equipment functionality, such as modifying stats, its onEquip function is passed the actor to modify.
-		if (this.equipment.has(item.equippable.slot)) {
+		console.assert(typeof(item.equippable) == "object","ERROR in equip: Item has no equippable property");
+		if (item.equippable.slot instanceof Set) {
+			var slotList = item.equippable.slot;
+			for (let slot of slotList) {
+				console.assert(this.equipment.has(slot),"ERROR in equip: Equipment type not recognized");
+			}
+			for (let slot of slotList) {
+				var pos = this.equipment.get(slot);
+				for (let i = 0; i < pos.length; i++) {
+					this.unequip(slot,i);
+					pos[i] = item;
+				}
+			}
+		} else {
+			console.assert(this.equipment.has(item.equippable.slot),"ERROR in equip: Equipment type not recognized");
 			var slot = this.equipment.get(item.equippable.slot);
 			var existing = null;
-			var subslot = undefined;
-			if (slot instanceof Array) {
-				for (let i = 0; i < slot.length; i++) {
-					if (slot[i] === null) {
-						subslot = i;
-						break;
-					}
-				}
-				if (subslot === undefined) {
-					subslot = slot.length-1;
-					existing = slot[subslot];
+			var subslot = -1;
+			// Run over the equipment subslots and find the first one that is empty (contains null)
+			for (let i = 0; i < slot.length; i++) {
+				if (slot[i] === null) {
+					subslot = i;
+					break;
 				}
 			}
-			else {
-				existing = slot;
+			// If no empty subslot found (still -1), all subslots are occupied. Grab the item in the last subslot so we can unequip it.
+			if (subslot === -1) {
+				subslot = slot.length-1;
+				existing = slot[subslot];
 			}
-			if (existing !== null){
-				this.unequip(item.equippable.slot,subslot);
-			}
-			(slot instanceof Array) ? slot[subslot] = item : this.equipment.set(item.equippable.slot,item);
-			if (item.onEquip !== undefined){
-				item.onEquip(this);
-			}
-			if (inv() !== undefined && inv().has(item.id)){
-				inv().decItem(item.id);
-			}
-		} else { console.log("ERROR: Equipment type not recognized"); return; }
+			// If an item is already equipped in this slot, unequip it.
+			if (existing !== null) this.unequip(item.equippable.slot,subslot);
+
+			// Assign the item to the slot.
+			slot[subslot] = item;
+		}
+
+		if (item.onEquip !== undefined){
+			item.onEquip(this);
+		}
+		if (inv() instanceof Inventory && inv().has(item.id)){
+			inv().decItem(item.id);
+		}
 	}
 
 	hasEquipped (name) {
 		var result = false;
 		this.equipment.forEach(function (item,slot) {
-			if (item instanceof Array) {
-				item.forEach(function (subitem) {
-					if (subitem !== null && subitem.id == name) {
-						result = true;
-					}
-				});
-			}
-			else {
-				if (item !== null && item.id == name) {
-					result = true;
+			item.forEach(function (subitem) {
+				if (subitem !== null && subitem.id == name) {
+					return true;
 				}
-			}
+			});
 		});
 		return result;
 	}
 
 	hasCursedItem () {
 		var result = false;
-		this.equipment.forEach(function (item,slot) {
-			if (item instanceof Array) {
-				item.forEach(function (subitem) {
-					if (subitem !== null && subitem.sticky === true) {
-						result = true;
-					}
-				});
-			}
-			else {
-				if (item !== null && item.sticky === true) {
+		this.equipment.forEach(function (slot,name) {
+			slot.forEach(function (subitem) {
+				if (subitem !== null && subitem.sticky === true) {
 					result = true;
 				}
-			}
+			});
 		});
 		return result;
 	}
@@ -597,8 +641,8 @@ window.Actor = class Actor {
 		}
 	}
 
-	decTol (k) {
-		this.tolerances.get(k).currentVal--;
+	decTol (key, amt = 1) {
+		this.tolerances.get(key).currentVal -= amt;
 	}
 
 	resetTol (key) {
@@ -616,43 +660,128 @@ window.Actor = class Actor {
 
 	// GRID FUNCTIONS
 
+	set row (num) {
+		console.assert(Number.isInteger(num),`ERROR in row setter: row must be integer`);
+		console.assert(num > 0,`ERROR in row setter: row must be positive`);
+		console.assert(num <= setup.COLUMN_SIZE,`ERROR in row setter: row cannot be greater than column size`);
+		this._row = num;
+	}
+
 	get row () {
-		if (setup.BATTLE_GRID === true) {
-			var party;
-			if (this instanceof Enemy) {
-				party = V().enemies;
-			} else if (this instanceof Puppet) {
-				party = V().puppets;
-			}
-			for (var i = 1; i <	setup.COLUMN_SIZE; i++) {
-				if (party.indexOf(this) < i * setup.ROW_SIZE) {
-					return i;
-				}
-			}
-			console.log("ERROR in row getter: could not find row");
-			return 0;
-		} else {
-			return undefined;
-		}
+		return (this._row || 1);
+	}
+
+	set col (num) {
+		console.assert(Number.isInteger(num),`ERROR in column setter: column must be integer`);
+		console.assert(num > 0,`ERROR in column setter: column must be positive`);
+		console.assert(num <= setup.ROW_SIZE,`ERROR in column setter: column cannot be greater than row size`);
+		this._col = num;
 	}
 
 	get col () {
-		if (setup.BATTLE_GRID === true) {
-			var party;
-			if (this instanceof Enemy) {
-				party = V().enemies;
-			} else if (this instanceof Puppet) {
-				party = V().puppets;
-			}
-			for (var i = 1; i <	setup.ROW_SIZE; i++) {
-				if (party.indexOf(this) % setup.COLUMN_SIZE == (i-1)) {
-					return i;
-				}
-			}
-			console.log("ERROR in column getter: could not find column");
-			return 0;
+		return (this._col || this.ownParty.indexOf(this) + 1);
+	}
+
+	get gridArea () {
+		//	For use with CSS styling.
+		if (this instanceof Enemy) {
+			return `grid-area: ${setup.COLUMN_SIZE - this.row + 1} / ${this.col}`;
 		} else {
-			return undefined;
+			return `grid-area: ${this.row} / ${this.col}`;
+		}
+	}
+
+	get position () {
+		//	Returns this character's cell in the grid object.
+		//	Note this does NOT return the cell's contents, but the cell itself.
+		var grid;
+		if (V().inbattle === true) {
+			switch (this.id.charAt(0)) {
+				case 'p':
+					grid = V().puppetGrid;
+					break;
+				case 'e':
+					grid = V().enemyGrid;
+					break;
+			}
+		} else {
+			grid = V().grid;
+		}
+		console.assert(grid instanceof Array,`ERROR in position getter: grid does not exist or is not array`);
+		return grid[this.row-1][this.col-1];
+	}
+
+	set position (pos) {
+		//	Adjusts row and column simultaneously and automatically swaps with the contents of the new cell.
+		//	pos = array of 2 positive integers, [row,col]
+		console.assert(pos instanceof Array && pos.length >= 2,`ERROR in position setter: pos must be array with 2 elements`);
+		console.assert(pos[0] > 0 && pos[1] > 0,`ERROR in position setter: pos must be positive`);
+		console.assert(pos[0] <= setup.COLUMN_SIZE,`ERROR in position setter: row cannot be greater than column size`);
+		console.assert(pos[1] <= setup.ROW_SIZE,`ERROR in position setter: column cannot be greater than row size`);
+		var org;
+		try {
+			org = this.position;
+		} catch (e) {
+			org = this.ownParty.find(function (a) { return a && a.row === pos[0] && a.col === pos[1] });
+		}
+		var row = this.row;
+		var col = this.col;
+		this.row = pos[0];
+		this.col = pos[1];
+		// hold the contents of the cell that will be at the actor's new position
+		var holder;
+		try {
+			holder = this.position.contents;
+		} catch (e) {
+			holder = org;
+		}
+		if (holder instanceof Actor) {
+			holder.row = row;
+			holder.col = col;
+		}
+		try {
+			// populate the new cell with this character
+			this.position.contents = this;
+			// move the held contents to the original position
+			org.contents = holder;
+		} catch (e) {
+			// if no grid defined, further adjustments unnecessary; end here
+		}
+	}
+
+	get guardBreak () {
+		//	Boolean. If true, this character will not guard characters behind them.
+		//	By default, dead characters will automatically return true.
+
+		return (this.dead || this.effects.find(function(eff) { return eff && eff.guardBreak }));
+	}
+
+	get guarded () {
+		//	Boolean. Returns true if guardCheck returns a different target, and false otherwise.
+
+		var newTarget = Hitlist.guardCheck(this);
+		return newTarget === this ? false : true;
+	}
+
+	numAdjacent (area) {
+		//	Integer. Returns the number of OTHER characters in the group specified; does not include calling character
+		//	area: string; corresponds to one of the AoE types
+		console.assert(typeof(area) === "string",`ERROR in numAdjacent: area must be string`);
+
+		switch (area) {
+			case 'col':
+			case 'column':
+				return this.ownParty.filter(function (a) { return a && a.id !== this.id && a.col === this.col }).length;
+			case 'row':
+				return this.ownParty.filter(function (a) { return a && a.id !== this.id && a.row === this.row }).length;
+			case '+':
+			case 'adjacent':
+				return this.ownParty.filter(function (a) { return a && a.id === target().id && (
+					(a.col === target().col && (a.row === target().row + 1 || a.row === target().row - 1)) ||
+					(a.row === target().row && (a.col === target().col + 1 || a.col === target().col - 1))
+				)}).length;
+			default:
+				return 0;
 		}
 	}
 
@@ -666,7 +795,7 @@ window.Actor = class Actor {
 		if (gain === 0) {
 			return;
 		}
-		this.hp += gain;
+		this.hp = Math.max(this.hp + gain,1);		//	HP degen cannot take HP below 1
 		if (gain > 0) {
 			mod = "truegreen";
 			gain = "+"+gain;
@@ -683,6 +812,12 @@ window.Actor = class Actor {
 		return;
 	}
 
+	hasEffect (name) {
+		//	name = string or array, name of effect to check
+
+		return this.effects.map(function (e) { return e.name }).includesAny(name);
+	}
+
 	get actionReady () {
 		//	Returns true if actor has a valid delayed action stored,
 		//	and they can perform it (not dead/held/uncontrollable, or delayPersist)
@@ -692,11 +827,98 @@ window.Actor = class Actor {
 				!(this.dead || this.fakedeath || this.noact || this.uncontrollable)));
 	}
 
-	effectCount (type) {
+	get immortal () {
+		var val = this._immortal;
+		if (val === undefined) {
+			val = this.data.immortal;
+		}
+		if (val === undefined) {
+			val = false
+		}
+		return val;
+	}
+
+	set immortal (flag) {
+		this._immortal = flag;
+	}
+
+	get large () {
+		var val = this._large;
+		if (val === undefined) {
+			val = this.data.large;
+		}
+		if (val === undefined) {
+			val = false
+		}
+		return val;
+	}
+
+	set large (flag) {
+		this._large = flag;
+	}
+
+	get maskhp () {
+		var val = this._maskhp;
+		if (val === undefined) {
+			val = this.data.maskhp;
+		}
+		if (val === undefined) {
+			val = false
+		}
+		return val;
+	}
+
+	set maskhp (flag) {
+		this._maskhp = flag;
+	}
+
+	get loadBearing () {
+		//	Boolean. If true, defeating this character will instantly end the encounter.
+
+		var val = this._loadBearing;
+		if (val === undefined) {
+			val = this.data.loadBearing;
+		}
+		if (val === undefined) {
+			val = false
+		}
+		return val;
+	}
+
+	set loadBearing (flag) {
+		this._loadBearing = flag;
+	}
+
+	get uncounted () {
+		//	Boolean. If true, this character does not need to be defeated to end an encounter.
+
+		var val = this._uncounted;
+		if (val === undefined) {
+			val = this.data.uncounted;
+		}
+		if (val === undefined) {
+			val = false
+		}
+		return val;
+	}
+
+	set uncounted (flag) {
+		this._uncounted = flag;
+	}
+
+	effectCount (type,mods) {
+		//	Returns the number of instances of the named effect currently posessed by this actor.
+		//	Can search for specific effects or classes of effect: buffs, ailments, DoTs, holds, blocks, shields, or all.
+		//	Note that unlike for other effect functions, you must specify if you do NOT want stickies counted.
+		//	mods is an array of strings.
+		//		"nosticky": effects will not count if they are sticky
+
 		console.assert(typeof(type) == "string",`ERROR in effectCount: non-string passed`);
+		mods = (mods || []);
 		let count = 0;
 		this.effects.forEach(function (effect) {
-				if (effect.name == type ||
+				if (!(effect.sticky && mods.includes("nosticky")) &&
+						effect.name == type ||
 						type == "all" ||
 						type == "buff" && effect.buff ||
 						type == "ailment" && !effect.buff ||
@@ -704,54 +926,16 @@ window.Actor = class Actor {
 						type == "hold" && effect.hold ||
 						type == "block" && effect.block ||
 						type == "shield" && effect.shield) {
-							count++;
+							if (mods.includes("threat")) {
+								count += effect.threat;
+							} else {
+								count++;
+							}
 				}
 			});
 
 		return count;
 	}
-
-/*
-	setTol (k, v) {
-		// DEPRECIATED as of version 1.08. Tolerances are now tied to the Tolerance object and function like Stats.
-
-		// This function works for both creation and modification (such as from equipment). Tolerances are objects with 3 attributes: current value, maximum value, and immune flag. If "immune" is true, the character has total immunity and cur/max are ignored. To set an immunity, pass "true" as the v argument. To remove an existing immunity, pass "false" as the v argument; previous tolerance values will still remain. To increment or reduce a tolerance value, pass a number as the v argument.
-		// This function will do nothing if you pass an argument that is not a boolean or integer. To reduce potential clutter on the status screen, it is also not possible to make useless tolerance (0 points and false immunity).
-		if (this.tolerances.has(k)){
-			if (typeof(v) == 'boolean'){
-				this.tolerances.get(k).immune = v;
-			} else if (Number.isInteger(v)){
-				this.tolerances.get(k).max += v;
-				this.resetTol(k);
-			}
-			if (this.tolerances.get(k).immune === false && this.tolerances.get(k).max <= 0){
-				this.tolerances.delete(k);
-			}
-		} else {
-			var tol;
-			if (Number.isInteger(v)){
-				tol = {cur: v, max: v, immune: false};
-			} else if (v === true){
-				tol = {cur: 0, max: 0, immune: v};
-			} else {
-				return "ERROR in setTol: non-integer or non-Boolean value passed\n";
-			}
-			this.tolerances.set(k, tol);
-		}
-	}
-*/
-
-	/* Relic of a time when effective stats were stored as an actual attribute. Easier to just calculate them every time with get(). */
-	/*
-	calcStats (){
-		this.stats.forEach( (v,k) => {
-			v.Eff = v.Base + v.bonus + v.Temp;
-			if (v.Eff < 0 && !(k == "Defense" && this.forsaken)){
-				v.Eff = 0;
-			}
-		} );
-	}
-	*/
 
 	clone () {
 		// Return a new instance containing our current data.
