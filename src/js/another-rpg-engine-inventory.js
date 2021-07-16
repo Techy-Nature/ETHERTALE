@@ -122,7 +122,7 @@ equippable -> object, must have a "slot" attribute; can also add data for restri
 		// Shorthand for checking equipment restrictions. Returns true if puppet's name is in the restricted listing or if the restricted listing is empty.
 		return (this.equippable.restrictedTo.length == 0 || this.equippable.restrictedTo.includes(puppet.name));
 	}
-	
+
 	toString () {
 		var text = `<span class="item-name">${this.name}</span>`;
 		text += `<span class="action-tags">(${this.stock})</span>`;
@@ -203,12 +203,16 @@ window.Inventory = class Inventory {
 			amt = 1;
 		}
 
+		console.log("addItem running for "+name);
+
 		if (this.inventory.length >= this.sizeLimit) {
 			// if inventory is full, don't add item
 			// decide what message you want to return here
 			// for now, return remaining amount of items (so you know how many were left over)
 			return amt;
 		}
+
+		console.log("inventory not full");
 
 		var existingItem = this.findItem(name);
 
@@ -229,6 +233,7 @@ window.Inventory = class Inventory {
 			}
 		} else if (amt > 0) {
 			//	Otherwise if amt is greater than 0, create a new stack
+			console.log("item not present, create new stack");
 			if (amt > setup.STACK_SIZE) {
 				//	If the number of new items will exceed the stack size,
 				//	add a new stack at the stack size, reduce amt by the stack size,
