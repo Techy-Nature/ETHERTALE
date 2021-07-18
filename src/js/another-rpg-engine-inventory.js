@@ -123,6 +123,30 @@ equippable -> object, must have a "slot" attribute; can also add data for restri
 		return (this.equippable.restrictedTo.length == 0 || this.equippable.restrictedTo.includes(puppet.name));
 	}
 
+	toString () {
+		var text = `<span class="item-name">${this.name}</span>`;
+		text += `<span class="action-tags">(${this.stock})</span>`;
+		if (this.equippable) {
+			if (this.equippable.slot instanceof Set) {
+				text += `<div class="item-equippable">`;
+				var array = Array.from(this.equippable.slot).entries();
+				for (let [s,slot] of array) {
+					console.log(slot); console.log(s);
+					text += slot;
+					if (s < this.equippable.slot.size-1) text += " + ";
+				}
+				text += `</div>`;
+			} else {
+				text += `<div class="item-equippable">${this.equippable.slot}</div>`;
+			}
+		}
+		text += `<div id="display-content">`;
+		text += `<div class="action-info">${this.info}</div>`;
+		text += `<div class="action-desc">${this.desc}</div>`;
+		text += `</div>`;
+		return text;
+	}
+
 	clone () {
 		// Return a new instance containing our current data.
 		return new Item(this);
@@ -134,6 +158,28 @@ equippable -> object, must have a "slot" attribute; can also add data for restri
 		const data = {};
 		Object.keys(this).forEach(pn => data[pn] = clone(this[pn]));
 		return JSON.reviveWrapper('new Item($ReviveData$)', data);
+	}
+};
+
+window.Filler = class Filler {
+	constructor(name) {
+		this.id = name;
+	}
+
+	toString () {
+		return "&mdash;&mdash;";
+	}
+
+	clone () {
+		// Return a new instance containing our current data.
+		return new Filler(this.id);
+	}
+
+	toJSON () {
+		// Return a code string that will create a new instance
+		// containing our current data.
+		let data = this.id;
+		return JSON.reviveWrapper('new Filler($ReviveData$)', data);
 	}
 };
 
@@ -179,12 +225,16 @@ window.Inventory = class Inventory {
 			amt = 1;
 		}
 
+		console.log("addItem running for "+name);
+
 		if (this.inventory.length >= this.sizeLimit) {
 			// if inventory is full, don't add item
 			// decide what message you want to return here
 			// for now, return remaining amount of items (so you know how many were left over)
 			return amt;
 		}
+
+		console.log("inventory not full");
 
 		var existingItem = this.findItem(name);
 
@@ -205,6 +255,7 @@ window.Inventory = class Inventory {
 			}
 		} else if (amt > 0) {
 			//	Otherwise if amt is greater than 0, create a new stack
+			console.log("item not present, create new stack");
 			if (amt > setup.STACK_SIZE) {
 				//	If the number of new items will exceed the stack size,
 				//	add a new stack at the stack size, reduce amt by the stack size,
