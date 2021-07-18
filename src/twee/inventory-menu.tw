@@ -1,4 +1,10 @@
-:: Inventory Menu [menu battle noreturn]
+:: Inventory Menu
+
+<<include "Inventory">>
+
+<<link "Return." $return>><</link>>
+
+:: Inventory [menu battle noreturn]
 <span id="content" class="menu"><<nobr>>
 <<set $inventory = $Frisk.inv>>
 <<set _filter = "all">>

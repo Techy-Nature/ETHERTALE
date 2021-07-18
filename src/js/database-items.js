@@ -3,7 +3,6 @@ setup.itemData = {
 	// CONSUMABLES
 
 	"Apple": {
-		// id#0
 		"useable": ["inmenu"],
 		"type": "hel",
 		"special": 15,
@@ -15,7 +14,6 @@ setup.itemData = {
 		}
   },
   "M&M Cake": {
-    // id#13
 	"useable": ["inmenu"],
     "type": "hel",
     "special": 10,
@@ -26,7 +24,6 @@ setup.itemData = {
 		return;
 	},
   "Beast Jerky": {
-    // id#14
 	"useable": ["inmenu"],
     "type": "hel",
     "special": 5,
@@ -39,8 +36,7 @@ setup.itemData = {
 	//Equppables and Crafting supplies
   },
 	"High Tech Knife": {
-		// id#1
-		"name": "High Tech Knife",
+		"useable": ["inmenu"],
 		"equippable": {slot: "Weapon"},
 		"type": "atk",
 		"special": 6,
@@ -52,8 +48,8 @@ setup.itemData = {
 			puppet.stats["Attack"].removeMod("HT Knife");
 		}
 	},
-	"Long Sharpened Knife": {
-		// id#2
+	"Long Sharpened Knife":{
+		"useable": ["inmenu"],
 		"equippable": {slot: "Weapon"},
 		"type": "atk",
 		"special": 10,
@@ -66,7 +62,8 @@ setup.itemData = {
 		},
 	},
   "Electric Shortsword": {
-	  //id#3
+	"useable": ["inmenu"],
+	  "name":"Electric Shortsword",
 	"equippable": {slot: "Weapon"},
     "type": "atk",
     "special": 20,
@@ -80,7 +77,7 @@ setup.itemData = {
 	},
   },
   "Small Pistol": {
-    // id#4
+	"useable": ["inmenu"],
 	"equippable": {slot: "Weapon"},
     "type": "atk",
     "special": 12,
@@ -93,7 +90,7 @@ setup.itemData = {
 	},
   },
   "Laser Pistol": {
-    // id#5
+	"useable": ["inmenu"],
 	"equippable": {slot: "Weapon"},
     "type": "atk",
     "special": 15,
@@ -107,7 +104,7 @@ setup.itemData = {
 	},
   },
   "Space Suit": {
-
+	"useable": ["inmenu"],
 	"equippable": {slot: "Torso"},
     "type": "def",
     "special": 8,
@@ -120,6 +117,7 @@ setup.itemData = {
 	},
   },
   "Starship Bonetrousle Uniform": {
+	"useable": ["inmenu"],
 	"equippable": {slot: "Torso"},
     "type": "def",
     "special": 6,
@@ -132,6 +130,7 @@ setup.itemData = {
 	},
   },
   "Ripped Blue Jeans": {
+	"useable": ["inmenu"],
 	"equippable": {slot: "Legs"},
     "type": "def",
     "special": 4,
@@ -144,6 +143,7 @@ setup.itemData = {
 	},
   },
     "Blue Jeans": {
+	"useable": ["inmenu"],
 	"equippable": {slot: "Legs"},
     "type": "def",
     "special": 6,
@@ -156,6 +156,7 @@ setup.itemData = {
 	},
   },
   "Light Blue Slacks": {
+	"useable": ["inmenu"],
 	"equippable": {slot: "Legs"},
     "type": "def",
     "special": 5,
@@ -168,7 +169,7 @@ setup.itemData = {
 	},
   },
     "Dark Brown Pants": {
-
+	"useable": ["inmenu"],
 	"equippable": {slot: "Feet"},
     "type": "def",
     "special": 2,
@@ -181,6 +182,7 @@ setup.itemData = {
 	},
   },
   "Dark Brown Sneakers": {
+	"useable": ["inmenu"],
 	"equippable": {slot: "Legs"},
     "type": "def",
     "special": 2,
@@ -193,6 +195,7 @@ setup.itemData = {
 	}
   },
   "Blue and Purple Striped Sweater": {
+	"useable": ["inmenu"],
 	"equippable": {slot: "Torso"},
     "type": "def",
     "special": 3,
@@ -206,7 +209,7 @@ setup.itemData = {
 },
 
   "Cloth": {
-    "desc": "A ripped piece of cloth, can be used for crafting. Whatever it once was a part of, I can't tell."
+    "desc": "A ripped piece of cloth, can be used for crafting. Whatever it once was a part of, no one can tell."
   },
   "Metal": {
     "desc": "A twisted piece of metal, can be used for crafting. Whatever it once was, it's unrecognizable.",
