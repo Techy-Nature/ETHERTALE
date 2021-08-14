@@ -1,0 +1,111 @@
+#actFlavor {
+  border: solid;
+  border-radius: 16px;
+  padding: 1em;
+  order: 1;
+}
+
+#useText {
+  text-align: center;
+  font-weight: bold;
+}
+
+#actEffect, .actEffect {
+  color: gray;
+  font-style: italic;
+  border: solid;
+  border-radius: 16px;
+  padding: 1em;
+  order: 3;
+}
+
+.interruption {
+  display: block;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+#actionList {
+	overflow-y: auto;
+	padding-right: 1em;
+	max-height: 350px;
+}
+
+#actionList.compressed {
+	display: grid;
+	grid-template-columns: repeat(2,1fr);
+	column-gap: 2em;
+	max-height: 250px;
+}
+
+#actionBox {
+	visibility: hidden;
+	position: absolute;
+	border: solid 1px;
+	min-height: 100px;
+	width: 500px;
+	padding: 1em;
+	font-weight: normal;
+	max-height: 90vh;
+	overflow: hidden;
+	background-color: white;
+	color: black;
+  z-index: 100;
+}
+
+.actionDisplay {
+	margin-bottom: 1.5em;
+}
+
+.compressed .actionDisplay {
+	margin-bottom: 0.5em;
+}
+
+.action-name, .item-name {
+  font-weight: bold;
+}
+
+.action-tags {
+  float: right;
+  margin-left: 0.5em;
+}
+
+.action-info {
+
+}
+
+.action-desc {
+  color: gray;
+  font-style: italic;
+  font-size: 12px;
+}
+
+.action-uses {
+	font-size: 11pt;
+	margin-left: 1em;
+}
+
+.action-cooldown {
+  color: gray;
+  font-weight: bold;
+}
+
+.preview {
+  color: gray;
+  font-style: italic;
+}
+
+.action-lock {
+  color: gray;
+  font-style: italic;
+}
+
+.default-link {
+  font-size: 9pt;
+}
+
+.actionBoxHelp {
+  text-align: center;
+  line-height: 90px;
+  color: gray;
+}

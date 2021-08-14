@@ -50,6 +50,7 @@ equippable -> object, must have a "slot" attribute; can also add data for restri
   }
 
   get desc() {
+		console.log("Accessing desc for "+this.id); console.log(setup.itemData);
       var val = (this.itemData.desc || "Description pending.");
 			return (val instanceof Function) ? val(this) : val;
   }

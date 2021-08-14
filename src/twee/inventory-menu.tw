@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 :: Inventory Menu
 
 <<include "Inventory">>
@@ -5,19 +6,29 @@
 <<link "Return." $return>><</link>>
 
 :: Inventory [menu battle noreturn]
+=======
+:: Inventory Menu[menu battle noreturn]
+>>>>>>> Stashed changes
 <span id="content" class="menu"><<nobr>>
 <<set $inventory = $Frisk.inv>>
 <<set _filter = "all">>
+<div id="menu-display" class="relative">
+<<include "inventory item display">>
+</div>
 <div id="itemlist">
 <<include "inventory item list">>
 </div>
-<div id="menu-display">
+<<<<<<< Updated upstream
+<div id="itemdisplay">
 <<include "inventory item display">>
 </div>
+=======
+>>>>>>> Stashed changes
 <</nobr>>
 </span>
 
 :: inventory item list[nobr]
+
 <div style="display:flex; justify-content:space-evenly;">
 <<if _filter == "all">>
 	<b>All</b>
@@ -47,7 +58,11 @@
 <br/>
 <div class="itemcontainer">
 <<set _p = 2>>
-<<for _item range inv()>>
+<<<<<<< Updated upstream
+<<for _item range $Frisk.inv>>
+=======
+<<for _name, _item range inv()>>
+>>>>>>> Stashed changes
 	<<if _filter == "all" || (_filter == "usable" && _item.usable.includes("inmenu")) || (_filter == "equipment" && _item.equippable)>>
 	<<if _p == 1>>
 		<<set _p = 2>>
@@ -59,7 +74,7 @@
 	<<capture _item>>
 	<<link _item.name>>
 		<<set _display = _item>>
-		<<replace "#menu-display">><<include "inventory item display">><</replace>>
+		<<replace "#itemdisplay">><<include "inventory item display">><</replace>>
 	<</link>>
 	<</capture>>
 	</b> <span class="itemstock">(_item.stock)</span>
@@ -70,30 +85,33 @@
 
 :: inventory item display[nobr]
 <<if ndef _display || _display === null>>
-	<div class="centered" style="color: gray">Click on an item to see info</div>
+	<div style="text-align: center; line-height: 70px; color: gray">Click on an item to see info</div>
 <<else>>
-	<<print _display>>
-	<<if _display.usable.includes('inmenu') || _display.equippable>>
-	<div class="item-buttons">
-		<<set _b = 0>>
-		<<if _display.usable.includes('inmenu') && _display.stock > 0>>
-			<<set _b++>>
-			<span @id="'button'+_b">
-				<span id="usebutton">
-				<<include "inventory use button">>
-				</span>
+<b>_display.name</b><br/>
+<<if def _display.equippable>><i style="font-size:12px"><<print _display.equippable.slot>></i><br/><</if>>
+_display.info<br/>
+<div class="actdesc">_display.desc</div>
+<<if _display.usable.includes('inmenu') || _display.equippable>>
+<div style="display: flex; justify-content: space-evenly">
+	<<set _b = 0>>
+	<<if _display.usable.includes('inmenu') && _display.stock > 0>>
+		<<set _b++>>
+		<span @id="'button'+_b">
+			<span id="usebutton">
+			<<include "inventory use button">>
 			</span>
-		<</if>>
-		<<if _display.equippable && _display.stock > 0>>
-			<<set _b++>>
-			<span @id="'button'+_b">
-				<span id="equipbutton">
-				<<include "equip button">>
-				</span>
-			</span>
-		<</if>>
-	</div>
+		</span>
 	<</if>>
+	<<if _display.equippable && _display.stock > 0>>
+		<<set _b++>>
+		<span @id="'button'+_b">
+			<span id="equipbutton">
+			<<include "equip button">>
+			</span>
+		</span>
+	<</if>>
+</div>
+<</if>>
 <</if>>
 
 :: equip button[nobr]
@@ -111,14 +129,10 @@
 
 :: inventory use button[nobr]
 <<button "USE">>
-	<<if _display.instantUse === true>>
-		<<run _display.onUse()>>
-	<<else>>
-		<<set _event = "use">>
-		<<if document.getElementById("usebutton")>><<replace "#usebutton">><<include "inventory cancel button">><</replace>><</if>>
-		<<if document.getElementById("equipbutton")>><<replace "#equipbutton">><<include "equip button">><</replace>><</if>>
-		<<replace "#itemlist">><<include "inventory puppets">><</replace>>
-	<</if>>
+	<<set _event = "use">>
+	<<if document.getElementById("usebutton")>><<replace "#usebutton">><<include "inventory cancel button">><</replace>><</if>>
+	<<if document.getElementById("equipbutton")>><<replace "#equipbutton">><<include "equip button">><</replace>><</if>>
+	<<replace "#itemlist">><<include "inventory puppets">><</replace>>
 <</button>>
 <span class="monospace" style="font-size:85%">[Q]</span>
 
