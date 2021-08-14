@@ -3,7 +3,12 @@ setup.itemData = {
 	// CONSUMABLES
 
 	"Apple": {
+<<<<<<< Updated upstream
 		"useable": ["inmenu"],
+=======
+		// id#0
+		"usable": ["inmenu"],
+>>>>>>> Stashed changes
 		"type": "hel",
 		"special": 15,
 		"desc": "Just a normal human apple. Monsters don't exactly need human food, but it definitely helps their stamina and physical constitution.",
@@ -14,26 +19,36 @@ setup.itemData = {
 		}
   },
   "M&M Cake": {
+<<<<<<< Updated upstream
 	"useable": ["inmenu"],
+=======
+    // id#13
+		"usable": ["inmenu"],
+>>>>>>> Stashed changes
     "type": "hel",
     "special": 10,
     "desc": "The two Ms in this cake stand for Miniature and Monster. These cakes come in chocolate, vanilla and marbled, but always include chocolate frosting on top.",
-	"onUse": function (puppet) {
-		puppet.hp += this.special
-		inv().decItem(this.name);
-		return;
+		"onUse": function (puppet) {
+			puppet.hp += this.special
+			inv().decItem(this.name);
+			return;
+		}
 	},
   "Beast Jerky": {
+<<<<<<< Updated upstream
 	"useable": ["inmenu"],
+=======
+    // id#14
+		"usable": ["inmenu"],
+>>>>>>> Stashed changes
     "type": "hel",
     "special": 5,
     "desc": "A monster version of beef jerky. The meat seems tougher than normal beef.",
-	"onUse": function (puppet) {
-		puppet.hp += this.special
-		inv().decItem(this.name);
-		return;
-	}
-	//Equppables and Crafting supplies
+		"onUse": function (puppet) {
+			puppet.hp += this.special
+			inv().decItem(this.name);
+			return;
+		}
   },
 	"High Tech Knife": {
 		"useable": ["inmenu"],
@@ -59,150 +74,204 @@ setup.itemData = {
 		},
 		"onRemove": function (puppet) {
 			puppet.stats["Attack"].removeMod("LS Knife");
-		},
+		}
 	},
   "Electric Shortsword": {
+<<<<<<< Updated upstream
 	"useable": ["inmenu"],
 	  "name":"Electric Shortsword",
 	"equippable": {slot: "Weapon"},
+=======
+	  //id#3
+		"equippable": {slot: "Weapon"},
+>>>>>>> Stashed changes
     "type": "atk",
     "special": 20,
     "stunchance": 20,
     "desc": "A small shortsword with circuitry making the edges of the blade electrified.",
-	"onEquip": function (puppet) {
-		puppet.stats["Attack"].addMod("Electric Sword",20,true);
-	},
-	"onRemove": function (puppet) {
-		puppet.stats["Attack"].removeMod("Electric Sword");
-	},
+		"onEquip": function (puppet) {
+			puppet.stats["Attack"].addMod("Electric Sword",20,true);
+		},
+		"onRemove": function (puppet) {
+			puppet.stats["Attack"].removeMod("Electric Sword");
+		}
   },
   "Small Pistol": {
+<<<<<<< Updated upstream
 	"useable": ["inmenu"],
 	"equippable": {slot: "Weapon"},
+=======
+    // id#4
+		"equippable": {slot: "Weapon"},
+>>>>>>> Stashed changes
     "type": "atk",
     "special": 12,
     "desc": "A small pistol with a suppressor made for beginners to gunslinging.",
-	"onEquip": function (puppet) {
-		puppet.stats["Attack"].addMod("Sm. Pistol",12,true);
-	},
-	"onRemove": function (puppet) {
-		puppet.stats["Attack"].removeMod("Sm. Pistol");
-	},
+		"onEquip": function (puppet) {
+			puppet.stats["Attack"].addMod("Sm. Pistol",12,true);
+		},
+		"onRemove": function (puppet) {
+			puppet.stats["Attack"].removeMod("Sm. Pistol");
+		}
   },
   "Laser Pistol": {
+<<<<<<< Updated upstream
 	"useable": ["inmenu"],
 	"equippable": {slot: "Weapon"},
+=======
+    // id#5
+		"equippable": {slot: "Weapon"},
+>>>>>>> Stashed changes
     "type": "atk",
     "special": 15,
     "burnchance": 30,
     "desc": "A custom-upgraded pistol, with an added battery pack and a trigger-activated laser for short bursts of white-hot plasma.",
-	"onEquip": function (puppet) {
-		puppet.stats["Attack"].addMod("Laser Pistol",15,true);
-	},
-	"onRemove": function (puppet) {
-		puppet.stats["Attack"].removeMod("Laser Pistol");
-	},
+		"onEquip": function (puppet) {
+			puppet.stats["Attack"].addMod("Laser Pistol",15,true);
+		},
+		"onRemove": function (puppet) {
+			puppet.stats["Attack"].removeMod("Laser Pistol");
+		}
   },
   "Space Suit": {
+<<<<<<< Updated upstream
 	"useable": ["inmenu"],
 	"equippable": {slot: "Torso"},
+=======
+
+		"equippable": {slot: new Set(["Head","Torso","Legs"])},
+>>>>>>> Stashed changes
     "type": "def",
     "special": 8,
     "desc": "A heavy-duty space suit, with the same white and blue bone pattern as the ship on the heavy fabric. It also has a large air dome with an air tank attached via a plastic tube.",
-	"onEquip": function (puppet) {
-		puppet.stats["Defense"].addMod("Sp. Suit",8,true);
-	},
-	"onRemove": function (puppet) {
-		puppet.stats["Defense"].removeMod("Sp. Suit");
-	},
+		"onEquip": function (puppet) {
+			puppet.stats["Defense"].addMod("Sp. Suit",8,true);
+		},
+		"onRemove": function (puppet) {
+			puppet.stats["Defense"].removeMod("Sp. Suit");
+		}
   },
   "Starship Bonetrousle Uniform": {
+<<<<<<< Updated upstream
 	"useable": ["inmenu"],
 	"equippable": {slot: "Torso"},
+=======
+		"equippable": {slot: "Torso"},
+>>>>>>> Stashed changes
     "type": "def",
     "special": 6,
     "desc": "a light blue and white bone patterned shirt with a name tag attached to the left lapel. The nametag reads \"Frisk - They/Them\" The nametag also doubles as an ID passcard into the upper levels of the Starship Bonetrousle.",
-	"onEquip": function (puppet) {
-		puppet.stats["Defense"].addMod("SB Uniform",6,true);
-	},
-	"onRemove": function (puppet) {
-		puppet.stats["Defense"].removeMod("SB Uniform");
-	},
+		"onEquip": function (puppet) {
+			puppet.stats["Defense"].addMod("SB Uniform",6,true);
+		},
+		"onRemove": function (puppet) {
+			puppet.stats["Defense"].removeMod("SB Uniform");
+		}
   },
   "Ripped Blue Jeans": {
+<<<<<<< Updated upstream
 	"useable": ["inmenu"],
 	"equippable": {slot: "Legs"},
+=======
+		"equippable": {slot: "Legs"},
+>>>>>>> Stashed changes
     "type": "def",
     "special": 4,
     "desc": "A somewhat beat-up pair of dark blue jeans. It has rips in the knees after being on the receiving end of many adventures.",
-	"onEquip": function (puppet) {
-		puppet.stats["Defense"].addMod("Rip.Bl. Jeans",4,true);
-	},
-	"onRemove": function (puppet) {
-		puppet.stats["Defense"].removeMod("Rip.Bl. Jeans");
-	},
+		"onEquip": function (puppet) {
+			puppet.stats["Defense"].addMod("Rip.Bl. Jeans",4,true);
+		},
+		"onRemove": function (puppet) {
+			puppet.stats["Defense"].removeMod("Rip.Bl. Jeans");
+		}
   },
     "Blue Jeans": {
+<<<<<<< Updated upstream
 	"useable": ["inmenu"],
 	"equippable": {slot: "Legs"},
+=======
+			"equippable": {slot: "Legs"},
+>>>>>>> Stashed changes
     "type": "def",
     "special": 6,
     "desc": "A normal pair of dark blue jeans.",
-	"onEquip": function (puppet) {
-		puppet.stats["Defense"].addMod("Bl. Jeans",6,true);
-	},
-	"onRemove": function (puppet) {
-		puppet.stats["Defense"].removeMod("Bl.Jeans");
-	},
+		"onEquip": function (puppet) {
+			puppet.stats["Defense"].addMod("Bl. Jeans",6,true);
+		},
+		"onRemove": function (puppet) {
+			puppet.stats["Defense"].removeMod("Bl.Jeans");
+		}
   },
   "Light Blue Slacks": {
+<<<<<<< Updated upstream
 	"useable": ["inmenu"],
 	"equippable": {slot: "Legs"},
+=======
+		"equippable": {slot: "Legs"},
+>>>>>>> Stashed changes
     "type": "def",
     "special": 5,
     "desc": "A pair of high quality light blue pants that were given to Frisk with the Starship-Bonetrousle Uniform. They have an elastic band to keep them in place, as well as deep pockets and beltloops.",
-	"onEquip": function (puppet) {
-		puppet.stats["Defense"].addMod("L.Bl Slacks",5,true);
-	},
-	"onRemove": function (puppet) {
-		puppet.stats["Defense"].removeMod("L.Bl Slacks");
-	},
+		"onEquip": function (puppet) {
+			puppet.stats["Defense"].addMod("L.Bl Slacks",5,true);
+		},
+		"onRemove": function (puppet) {
+			puppet.stats["Defense"].removeMod("L.Bl Slacks");
+		}
   },
+<<<<<<< Updated upstream
     "Dark Brown Pants": {
 	"useable": ["inmenu"],
 	"equippable": {slot: "Feet"},
+=======
+  "Dark Brown Pants": {
+		"equippable": {slot: "Feet"},
+>>>>>>> Stashed changes
     "type": "def",
     "special": 2,
     "desc": "A normal pair dark brown pants, with deep pockets and an elastic band to keep it in place on the waist.",
-	"onEquip": function (puppet) {
-		puppet.stats["Defense"].addMod("DB Pants",2,true);
-	},
-	"onRemove": function (puppet) {
-		puppet.stats["Defense"].removeMod("DB Pants");
-	},
+		"onEquip": function (puppet) {
+			puppet.stats["Defense"].addMod("DB Pants",2,true);
+		},
+		"onRemove": function (puppet) {
+			puppet.stats["Defense"].removeMod("DB Pants");
+		}
   },
   "Dark Brown Sneakers": {
+<<<<<<< Updated upstream
 	"useable": ["inmenu"],
 	"equippable": {slot: "Legs"},
+=======
+		"equippable": {slot: "Legs"},
+>>>>>>> Stashed changes
     "type": "def",
     "special": 2,
     "desc": "A normal pair of breathable, flexible sneakers.",
-	"onEquip": function (puppet) {
-		puppet.stats["Defense"].addMod("LB Sneakers",2,true);
-	},
-	"onRemove": function (puppet) {
-		puppet.stats["Defense"].removeMod("DB Sneakers");
-	}
+		"onEquip": function (puppet) {
+			puppet.stats["Defense"].addMod("LB Sneakers",2,true);
+		},
+		"onRemove": function (puppet) {
+			puppet.stats["Defense"].removeMod("DB Sneakers");
+		}
   },
   "Blue and Purple Striped Sweater": {
+<<<<<<< Updated upstream
 	"useable": ["inmenu"],
 	"equippable": {slot: "Torso"},
+=======
+		"equippable": {slot: "Torso"},
+>>>>>>> Stashed changes
     "type": "def",
     "special": 3,
     "desc": " \"This is the lightweight, long-sleeved, singular purple-striped mostly light blue sweater that I usually wear.\" - Frisk",
-	"onEquip": function (puppet) {
-		puppet.stats["Defense"].addMod("Bl.Prpl. Striped Sweater",3,true);
+		"onEquip": function (puppet) {
+			puppet.stats["Defense"].addMod("Bl.Prpl. Striped Sweater",3,true);
+		},
+		"onRemove": function (puppet) {
+			puppet.stats["Defense"].removeMod("Bl.Prpl. Striped Sweater");
+		}
 	},
+<<<<<<< Updated upstream
 	"onRemove": function (puppet) {
 		puppet.stats["Defense"].removeMod("Bl.Prpl. Striped Sweater");
 	}
@@ -214,6 +283,16 @@ setup.itemData = {
   "Metal": {
     "desc": "A twisted piece of metal, can be used for crafting. Whatever it once was, it's unrecognizable.",
   },
+=======
+
+	"Cloth": {
+	  "desc": "A ripped piece of cloth, can be used for crafting. Whatever it once was a part of, I can't tell."
+	},
+
+	"Metal": {
+	  "desc": "A twisted piece of metal, can be used for crafting. Whatever it once was, it's unrecognizable.",
+	},
+>>>>>>> Stashed changes
 
 	// EQUIPMENT
 
@@ -295,4 +374,4 @@ setup.itemData = {
 			return (item.known) ? "CURSED | ATK -1" : "It's a mystery!";
 		}
 	}
-}};
+};

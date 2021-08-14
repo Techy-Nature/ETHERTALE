@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 :: Inventory Menu
 
 <<include "Inventory">>
@@ -5,15 +6,24 @@
 <<link "Return." $return>><</link>>
 
 :: Inventory [menu battle noreturn]
+=======
+:: Inventory Menu[menu battle noreturn]
+>>>>>>> Stashed changes
 <span id="content" class="menu"><<nobr>>
 <<set $inventory = $Frisk.inv>>
 <<set _filter = "all">>
+<div id="menu-display" class="relative">
+<<include "inventory item display">>
+</div>
 <div id="itemlist">
 <<include "inventory item list">>
 </div>
+<<<<<<< Updated upstream
 <div id="itemdisplay">
 <<include "inventory item display">>
 </div>
+=======
+>>>>>>> Stashed changes
 <</nobr>>
 </span>
 
@@ -48,7 +58,11 @@
 <br/>
 <div class="itemcontainer">
 <<set _p = 2>>
+<<<<<<< Updated upstream
 <<for _item range $Frisk.inv>>
+=======
+<<for _name, _item range inv()>>
+>>>>>>> Stashed changes
 	<<if _filter == "all" || (_filter == "usable" && _item.usable.includes("inmenu")) || (_filter == "equipment" && _item.equippable)>>
 	<<if _p == 1>>
 		<<set _p = 2>>
