@@ -55,23 +55,31 @@ equippable -> object, must have a "slot" attribute; can also add data for restri
   }
 
 	get special() {
-      return (this.itemData.special || 0);
+    return (this.itemData.special || 0);
   }
 
 	get value() {
-			let r = (this.itemData.value || 0);
-			console.assert(Number.isInteger(r),`ERROR in value getter for ${this.name}: non-integer value`);
+		let r = (this.itemData.value || 0);
+		r = (r instanceof Function) ? r(this) : r;
+		console.assert(Number.isInteger(r),`ERROR in value getter for ${this.name}: non-integer value`);
 
-      return (this.itemData.value || 0);
+    return r;
   }
 
   get usable() {
-      return (this.itemData.usable || []);
+    return (this.itemData.usable || []);
   }
 
 	get onUse() {
-      return (this.itemData.onUse || undefined);
+    return (this.itemData.onUse || undefined);
   }
+
+	get instantUse() {
+		//	Boolean. If true, the item's onUse will be executed immediately, instead of requiring a target.
+		//	This is useful for e.g. items that affect the whole party or call up another passage for more detailed interaction.
+
+		return (this.itemData.instantUse || false);
+	}
 
 	get equippable() {
       return (this.itemData.equippable || undefined);
@@ -109,12 +117,11 @@ equippable -> object, must have a "slot" attribute; can also add data for restri
 		return (this.itemData.fakeName || false);
 	}
 
-	get type() {
-		return (this.itemData.type);
-	}
+	get stackSize() {
+		//	Integer. Maximum number of copies that can exist in an inventory.
+		//	Defaults to ITEM_MAX.
 
-	get points() {
-		return (this.itemData.points);
+		return (this.itemData.stackSize || setup.ITEM_MAX);
 	}
 
 	checkRestriction (puppet) {
@@ -125,13 +132,12 @@ equippable -> object, must have a "slot" attribute; can also add data for restri
 
 	toString () {
 		var text = `<span class="item-name">${this.name}</span>`;
-		text += `<span class="action-tags">(${this.stock})</span>`;
+		text += `<span class="action-tags">x${this.stock}</span>`;
 		if (this.equippable) {
 			if (this.equippable.slot instanceof Set) {
 				text += `<div class="item-equippable">`;
 				var array = Array.from(this.equippable.slot).entries();
 				for (let [s,slot] of array) {
-					console.log(slot); console.log(s);
 					text += slot;
 					if (s < this.equippable.slot.size-1) text += " + ";
 				}
@@ -139,10 +145,18 @@ equippable -> object, must have a "slot" attribute; can also add data for restri
 			} else {
 				text += `<div class="item-equippable">${this.equippable.slot}</div>`;
 			}
+			if (this.restrictedTo.length > 0) {
+				text += `<div class="item-equippable">Restriction:`
+				for (let [n,name] of this.restrictedTo) {
+					text += ` ${name}`;
+					if (n < this.restrictedTo.length-1) text += ",";
+				}
+				text += `</div>`;
+			}
 		}
 		text += `<div id="display-content">`;
 		text += `<div class="action-info">${this.info}</div>`;
-		text += `<div class="action-desc">${this.desc}</div>`;
+		if (this.desc !== null) text += `<div class="action-desc">${this.desc}</div>`;
 		text += `</div>`;
 		return text;
 	}
@@ -225,16 +239,12 @@ window.Inventory = class Inventory {
 			amt = 1;
 		}
 
-		console.log("addItem running for "+name);
-
 		if (this.inventory.length >= this.sizeLimit) {
 			// if inventory is full, don't add item
 			// decide what message you want to return here
 			// for now, return remaining amount of items (so you know how many were left over)
 			return amt;
 		}
-
-		console.log("inventory not full");
 
 		var existingItem = this.findItem(name);
 
@@ -255,7 +265,6 @@ window.Inventory = class Inventory {
 			}
 		} else if (amt > 0) {
 			//	Otherwise if amt is greater than 0, create a new stack
-			console.log("item not present, create new stack");
 			if (amt > setup.STACK_SIZE) {
 				//	If the number of new items will exceed the stack size,
 				//	add a new stack at the stack size, reduce amt by the stack size,
