@@ -13,6 +13,7 @@ You don't have to, but I'd really appreciate it if you did. :) It helps me get b
 Bitcoin/My Monero donations send to: 47ntPeRSKfpbQBdziwTZ8q5HNuCybTLuQZ3ZGmHtht3HMYwJi3YW4Cr1YECv2JfzwqJKebRVz27QzXkoLmadFdg2Rsfa1jx
 
 This is the QR Code for the Monero Request.
+
 ![My Monero Request](https://64.media.tumblr.com/fa1cdf3e2a8db0e2ef95834f398a5aaa/e637204a645e7333-c1/s250x400/3ea440c213d77dbd48b20a4e8630e9f8e8da8227.png)
 
 Thanks so much if you donate, or if you share this page or the [Tumblr dev blog](https://ethertale-fangame.tumblr.com) around!
