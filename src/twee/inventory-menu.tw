@@ -7,6 +7,7 @@
 :: Inventory [menu battle noreturn]
 <span id="content" class="menu"><<nobr>>
 <<set $inventory = $Frisk.inv>>
+<<run console.log(inv())>>
 <<set _filter = "all">>
 <div id="itemlist">
 <<include "inventory item list">>
@@ -47,7 +48,9 @@
 <br/>
 <div class="itemcontainer">
 <<set _p = 2>>
+<<run console.log("starting item list")>>
 <<for _item range inv()>>
+	<<run console.log(_item)>>
 	<<if _filter == "all" || (_filter == "usable" && _item.usable.includes("inmenu")) || (_filter == "equipment" && _item.equippable)>>
 	<<if _p == 1>>
 		<<set _p = 2>>
@@ -97,30 +100,24 @@
 <</if>>
 
 :: equip button[nobr]
-<<button "EQUIP">>
-	<<set _event = "equip">>
-	<<if document.getElementById("usebutton")>><<replace "#usebutton">><<include "inventory use button">><</replace>><</if>>
-	<<if document.getElementById("equipbutton")>><<replace "#equipbutton">><<include "inventory cancel button">><</replace>><</if>>
-	<<replace "#itemlist">><<include "inventory puppets">><</replace>>
-<</button>>
-<<if _b == 1>>
-<span class="monospace" style="font-size:85%">[Q]</span>
-<<elseif _b == 2>>
-<span class="monospace" style="font-size:85%">[W]</span>
+<<if $Player.hasEquipped(_display.name)>>
+	<<button "UNEQUIP">>
+		<<run $Player.unequip(_display)>>
+		<<replace "#menu-display">><<include "inventory item display">><</replace>>
+	<</button>>
+<<else>>
+	<<button "EQUIP">>
+		<<run $Player.equip(_display)>>
+		<<replace "#menu-display">><<include "inventory item display">><</replace>>
+	<</button>>
 <</if>>
 
 :: inventory use button[nobr]
 <<button "USE">>
-	<<if _display.instantUse === true>>
-		<<run _display.onUse()>>
-	<<else>>
-		<<set _event = "use">>
-		<<if document.getElementById("usebutton")>><<replace "#usebutton">><<include "inventory cancel button">><</replace>><</if>>
-		<<if document.getElementById("equipbutton")>><<replace "#equipbutton">><<include "equip button">><</replace>><</if>>
-		<<replace "#itemlist">><<include "inventory puppets">><</replace>>
-	<</if>>
+	<<run _display.onUse()>>
+	<<unset _display>>
+	<<replace "#menu-display">><<include "inventory item display">><</replace>>
 <</button>>
-<span class="monospace" style="font-size:85%">[Q]</span>
 
 :: inventory cancel button[nobr]
 <span id="cancelbutton">
