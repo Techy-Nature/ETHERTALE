@@ -13,6 +13,7 @@ All I did was go to the settings and search up "keyboard" without the quotes, an
 ---
  Jaden's code below*/
  
+<<set $Player to $Frisk>> 
 <<set $Frisk to {}>>
 <<set $Frisk.age to 16>>
 <<set $Frisk.Gold to 10>>

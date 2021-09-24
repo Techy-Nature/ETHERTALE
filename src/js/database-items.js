@@ -41,8 +41,9 @@ setup.itemData = {
 		"type": "atk",
 		"special": 6,
 		"desc": "A multi-purpose knife, with a few different sized screwdrivers, a bottle-opener and tiny pair of scissors, as well as a ruler and a back and forward button that cycles the tools on the side.",
+		"info": "A high tech knife- you can attack with it (6atk).",
 		"onEquip": function (puppet) {
-			puppet.stats["Attack"].addMod("HT Knife",6,true);
+			puppet.stats["Attack"].addMod("HTKnife",6,true);
 		},
 		"onRemove": function (puppet) {
 			puppet.stats["Attack"].removeMod("HT Knife");
@@ -59,7 +60,7 @@ setup.itemData = {
 		},
 		"onRemove": function (puppet) {
 			puppet.stats["Attack"].removeMod("LS Knife");
-		},
+		}
 	},
   "Electric Shortsword": {
 	"useable": ["inmenu"],
