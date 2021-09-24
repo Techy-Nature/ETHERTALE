@@ -14,27 +14,30 @@ setup.itemData = {
 		}
   },
   "M&M Cake": {
-	"useable": ["inmenu"],
+		"useable": ["inmenu"],
     "type": "hel",
     "special": 10,
     "desc": "The two Ms in this cake stand for Miniature and Monster. These cakes come in chocolate, vanilla and marbled, but always include chocolate frosting on top.",
-	"onUse": function (puppet) {
-		puppet.hp += this.special
-		inv().decItem(this.name);
-		return;
+		"onUse": function (puppet) {
+			puppet.hp += this.special
+			inv().decItem(this.name);
+			return;
+		}
 	},
   "Beast Jerky": {
-	"useable": ["inmenu"],
+		"useable": ["inmenu"],
     "type": "hel",
     "special": 5,
     "desc": "A monster version of beef jerky. The meat seems tougher than normal beef.",
-	"onUse": function (puppet) {
-		puppet.hp += this.special
-		inv().decItem(this.name);
-		return;
-	}
+		"onUse": function (puppet) {
+			puppet.hp += this.special
+			inv().decItem(this.name);
+			return;
+		}
+	},
+
 	//Equppables and Crafting supplies
-  },
+
 	"High Tech Knife": {
 		"useable": ["inmenu"],
 		"equippable": {slot: "Weapon"},
@@ -62,154 +65,150 @@ setup.itemData = {
 		},
 	},
   "Electric Shortsword": {
-	"useable": ["inmenu"],
+		"useable": ["inmenu"],
 	  "name":"Electric Shortsword",
-	"equippable": {slot: "Weapon"},
+		"equippable": {slot: "Weapon"},
     "type": "atk",
     "special": 20,
     "stunchance": 20,
     "desc": "A small shortsword with circuitry making the edges of the blade electrified.",
-	"onEquip": function (puppet) {
-		puppet.stats["Attack"].addMod("Electric Sword",20,true);
-	},
-	"onRemove": function (puppet) {
-		puppet.stats["Attack"].removeMod("Electric Sword");
-	},
+		"onEquip": function (puppet) {
+			puppet.stats["Attack"].addMod("Electric Sword",20,true);
+		},
+		"onRemove": function (puppet) {
+			puppet.stats["Attack"].removeMod("Electric Sword");
+		}
   },
   "Small Pistol": {
-	"useable": ["inmenu"],
-	"equippable": {slot: "Weapon"},
+		"useable": ["inmenu"],
+		"equippable": {slot: "Weapon"},
     "type": "atk",
     "special": 12,
     "desc": "A small pistol with a suppressor made for beginners to gunslinging.",
-	"onEquip": function (puppet) {
-		puppet.stats["Attack"].addMod("Sm. Pistol",12,true);
-	},
-	"onRemove": function (puppet) {
-		puppet.stats["Attack"].removeMod("Sm. Pistol");
-	},
+		"onEquip": function (puppet) {
+			puppet.stats["Attack"].addMod("Sm. Pistol",12,true);
+		},
+		"onRemove": function (puppet) {
+			puppet.stats["Attack"].removeMod("Sm. Pistol");
+		}
   },
   "Laser Pistol": {
-	"useable": ["inmenu"],
-	"equippable": {slot: "Weapon"},
+		"useable": ["inmenu"],
+		"equippable": {slot: "Weapon"},
     "type": "atk",
     "special": 15,
     "burnchance": 30,
     "desc": "A custom-upgraded pistol, with an added battery pack and a trigger-activated laser for short bursts of white-hot plasma.",
-	"onEquip": function (puppet) {
-		puppet.stats["Attack"].addMod("Laser Pistol",15,true);
-	},
-	"onRemove": function (puppet) {
-		puppet.stats["Attack"].removeMod("Laser Pistol");
-	},
+		"onEquip": function (puppet) {
+			puppet.stats["Attack"].addMod("Laser Pistol",15,true);
+		},
+		"onRemove": function (puppet) {
+			puppet.stats["Attack"].removeMod("Laser Pistol");
+		}
   },
   "Space Suit": {
-	"useable": ["inmenu"],
-	"equippable": {slot: "Torso"},
+		"useable": ["inmenu"],
+		"equippable": {slot: new Set(["Head","Torso","Legs"])},
     "type": "def",
     "special": 8,
     "desc": "A heavy-duty space suit, with the same white and blue bone pattern as the ship on the heavy fabric. It also has a large air dome with an air tank attached via a plastic tube.",
-	"onEquip": function (puppet) {
-		puppet.stats["Defense"].addMod("Sp. Suit",8,true);
-	},
-	"onRemove": function (puppet) {
-		puppet.stats["Defense"].removeMod("Sp. Suit");
-	},
+		"onEquip": function (puppet) {
+			puppet.stats["Defense"].addMod("Sp. Suit",8,true);
+		},
+		"onRemove": function (puppet) {
+			puppet.stats["Defense"].removeMod("Sp. Suit");
+		}
   },
   "Starship Bonetrousle Uniform": {
-	"useable": ["inmenu"],
-	"equippable": {slot: "Torso"},
+		"useable": ["inmenu"],
+		"equippable": {slot: "Torso"},
     "type": "def",
     "special": 6,
     "desc": "a light blue and white bone patterned shirt with a name tag attached to the left lapel. The nametag reads \"Frisk - They/Them\" The nametag also doubles as an ID passcard into the upper levels of the Starship Bonetrousle.",
-	"onEquip": function (puppet) {
-		puppet.stats["Defense"].addMod("SB Uniform",6,true);
-	},
-	"onRemove": function (puppet) {
-		puppet.stats["Defense"].removeMod("SB Uniform");
-	},
+		"onEquip": function (puppet) {
+			puppet.stats["Defense"].addMod("SB Uniform",6,true);
+		},
+		"onRemove": function (puppet) {
+			puppet.stats["Defense"].removeMod("SB Uniform");
+		}
   },
   "Ripped Blue Jeans": {
-	"useable": ["inmenu"],
-	"equippable": {slot: "Legs"},
+		"useable": ["inmenu"],
+		"equippable": {slot: "Legs"},
     "type": "def",
     "special": 4,
     "desc": "A somewhat beat-up pair of dark blue jeans. It has rips in the knees after being on the receiving end of many adventures.",
-	"onEquip": function (puppet) {
-		puppet.stats["Defense"].addMod("Rip.Bl. Jeans",4,true);
-	},
-	"onRemove": function (puppet) {
-		puppet.stats["Defense"].removeMod("Rip.Bl. Jeans");
-	},
+		"onEquip": function (puppet) {
+			puppet.stats["Defense"].addMod("Rip.Bl. Jeans",4,true);
+		},
+		"onRemove": function (puppet) {
+			puppet.stats["Defense"].removeMod("Rip.Bl. Jeans");
+		}
   },
-    "Blue Jeans": {
-	"useable": ["inmenu"],
-	"equippable": {slot: "Legs"},
+  "Blue Jeans": {
+		"useable": ["inmenu"],
+		"equippable": {slot: "Legs"},
     "type": "def",
     "special": 6,
     "desc": "A normal pair of dark blue jeans.",
-	"onEquip": function (puppet) {
-		puppet.stats["Defense"].addMod("Bl. Jeans",6,true);
-	},
-	"onRemove": function (puppet) {
-		puppet.stats["Defense"].removeMod("Bl.Jeans");
-	},
+		"onEquip": function (puppet) {
+			puppet.stats["Defense"].addMod("Bl. Jeans",6,true);
+		},
+		"onRemove": function (puppet) {
+			puppet.stats["Defense"].removeMod("Bl.Jeans");
+		}
   },
   "Light Blue Slacks": {
-	"useable": ["inmenu"],
-	"equippable": {slot: "Legs"},
+		"useable": ["inmenu"],
+		"equippable": {slot: "Legs"},
     "type": "def",
     "special": 5,
     "desc": "A pair of high quality light blue pants that were given to Frisk with the Starship-Bonetrousle Uniform. They have an elastic band to keep them in place, as well as deep pockets and beltloops.",
-	"onEquip": function (puppet) {
-		puppet.stats["Defense"].addMod("L.Bl Slacks",5,true);
-	},
-	"onRemove": function (puppet) {
-		puppet.stats["Defense"].removeMod("L.Bl Slacks");
-	},
+		"onEquip": function (puppet) {
+			puppet.stats["Defense"].addMod("L.Bl Slacks",5,true);
+		},
+		"onRemove": function (puppet) {
+			puppet.stats["Defense"].removeMod("L.Bl Slacks");
+		}
   },
-    "Dark Brown Pants": {
-	"useable": ["inmenu"],
-	"equippable": {slot: "Feet"},
+  "Dark Brown Pants": {
+		"useable": ["inmenu"],
+		"equippable": {slot: "Feet"},
     "type": "def",
     "special": 2,
     "desc": "A normal pair dark brown pants, with deep pockets and an elastic band to keep it in place on the waist.",
-	"onEquip": function (puppet) {
-		puppet.stats["Defense"].addMod("DB Pants",2,true);
-	},
-	"onRemove": function (puppet) {
-		puppet.stats["Defense"].removeMod("DB Pants");
-	},
+		"onEquip": function (puppet) {
+			puppet.stats["Defense"].addMod("DB Pants",2,true);
+		},
+		"onRemove": function (puppet) {
+			puppet.stats["Defense"].removeMod("DB Pants");
+		}
   },
   "Dark Brown Sneakers": {
-	"useable": ["inmenu"],
-	"equippable": {slot: "Legs"},
+		"useable": ["inmenu"],
+		"equippable": {slot: "Legs"},
     "type": "def",
     "special": 2,
     "desc": "A normal pair of breathable, flexible sneakers.",
-	"onEquip": function (puppet) {
-		puppet.stats["Defense"].addMod("LB Sneakers",2,true);
-	},
-	"onRemove": function (puppet) {
-		puppet.stats["Defense"].removeMod("DB Sneakers");
-	}
+		"onEquip": function (puppet) {
+			puppet.stats["Defense"].addMod("LB Sneakers",2,true);
+		},
+		"onRemove": function (puppet) {
+			puppet.stats["Defense"].removeMod("DB Sneakers");
+		}
   },
   "Blue and Purple Striped Sweater": {
-	"useable": ["inmenu"],
-	"equippable": {slot: "Torso"},
+		"useable": ["inmenu"],
+		"equippable": {slot: "Torso"},
     "type": "def",
     "special": 3,
     "desc": " \"This is the lightweight, long-sleeved, singular purple-striped mostly light blue sweater that I usually wear.\" - Frisk",
-	"onEquip": function (puppet) {
-		puppet.stats["Defense"].addMod("Bl.Prpl. Striped Sweater",3,true);
-	},
-	"onRemove": function (puppet) {
-		puppet.stats["Defense"].removeMod("Bl.Prpl. Striped Sweater");
-	}
-},
-	  
-	"Space Suit": {
-		"equippable": {slot: new Set(["Head","Torso","Legs"])}
+		"onEquip": function (puppet) {
+			puppet.stats["Defense"].addMod("Bl.Prpl. Striped Sweater",3,true);
+		},
+		"onRemove": function (puppet) {
+			puppet.stats["Defense"].removeMod("Bl.Prpl. Striped Sweater");
+		}
 	},
 
   "Cloth": {
@@ -299,4 +298,4 @@ setup.itemData = {
 			return (item.known) ? "CURSED | ATK -1" : "It's a mystery!";
 		}
 	}
-}};
+};

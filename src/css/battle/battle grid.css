@@ -1,0 +1,49 @@
+.actors.grid {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  row-gap: 1em;
+  width: 100%;
+  height: auto;
+/*  grid-template-columns: repeat(auto-fit,1fr); */
+  /*
+  By default, this will result in rows of size 4.
+  For shorter rows, put a defined number in place of auto-fit or the space specification.
+  For longer rows, you must expand the width of #content and/or adjust the width of .actor.grid.
+  */
+}
+
+.actors.grid.large {
+	grid-template: repeat(2,1fr) / repeat(3,1fr);
+}
+
+#puppets .actors.grid {
+  margin-top: 3em;
+}
+
+.actor.grid {
+  position: relative;
+  width: 140px; /* 4 per row at default #content width */
+  min-height: 96px;
+}
+
+.actor.grid.large {
+	grid-column: 1 / 4;
+	grid-row: 1 / 3;
+	width: 100%;
+	height: 192px;	/* 2 actor boxes */
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+}
+
+.actor.large .actorname {
+	font-size: 24pt;
+}
+
+.actor.empty {
+  border: dotted gray;
+}
