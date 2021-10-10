@@ -6,7 +6,6 @@
 
 :: Inventory [menu battle noreturn]
 <span id="content" class="menu"><<nobr>>
-<<set $inventory = $Frisk.inv>>
 <<run console.log(inv())>>
 <<set _filter = "all">>
 <div id="itemlist">
@@ -49,7 +48,7 @@
 <div class="itemcontainer">
 <<set _p = 2>>
 <<run console.log("starting item list")>>
-<<for _item range inv()>>
+<<for _item range inv("items")>>
 	<<run console.log(_item)>>
 	<<if _filter == "all" || (_filter == "usable" && _item.usable.includes("inmenu")) || (_filter == "equipment" && _item.equippable)>>
 	<<if _p == 1>>
@@ -87,7 +86,7 @@
 				</span>
 			</span>
 		<</if>>
-		<<if _display.equippable && _display.stock > 0>>
+		<<if _display.equippable>>
 			<<set _b++>>
 			<span @id="'button'+_b">
 				<span id="equipbutton">
@@ -102,10 +101,10 @@
 :: equip button[nobr]
 <<if $Player.hasEquipped(_display.name)>>
 	<<button "UNEQUIP">>
-		<<run $Player.unequip(_display)>>
+		<<run $Player.unequip(_display.equippable.slot)>>
 		<<replace "#menu-display">><<include "inventory item display">><</replace>>
 	<</button>>
-<<else>>
+<<elseif _display.stock > 0>>
 	<<button "EQUIP">>
 		<<run $Player.equip(_display)>>
 		<<replace "#menu-display">><<include "inventory item display">><</replace>>

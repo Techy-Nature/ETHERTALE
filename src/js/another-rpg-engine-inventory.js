@@ -294,7 +294,7 @@ window.Inventory = class Inventory {
 				amt = 1;
 			}
 			existingItem.stock -= amt;
-			if (existingItem.stock <= 0){
+			if (!existingItem.equippable && existingItem.stock <= 0){
 				this.inventory.delete(existingItem);
 			}
 			return;
