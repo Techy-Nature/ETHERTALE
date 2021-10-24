@@ -1,0 +1,354 @@
+sugarcube-2:
+  macros:
+    checkvars:
+      name: checkvars
+    chain:
+      name: chain
+    pickUp:
+      name: pickUp
+    refresh:
+      name: refresh
+    restock:
+      name: restock
+    markAttack:
+      name: markAttack
+    hunterCheck:
+      name: hunterCheck
+    update:
+      name: update
+    actorBox:
+      name: actorBox
+    backbtn:
+      name: backbtn
+    specialcheck:
+      name: specialcheck
+    victorycheck:
+      name: victorycheck
+    endturn:
+      name: endturn
+    act:
+      name: act
+    rest:
+      name: rest
+    items:
+      name: items
+    move:
+      name: move
+    spare:
+      name: spare
+    stat:
+      name: stat
+    soak:
+      name: soak
+    res:
+      name: res
+    tol:
+      name: tol
+    effectinfo:
+      name: effectinfo
+    crisisLink:
+      name: crisisLink
+    actionListBattle:
+      name: actionListBattle
+    itemList:
+      name: itemList
+    liveblock:
+      name: liveblock
+      container: true
+    numberboxplus:
+      name: numberboxplus
+      container: true
+    endOfRound:
+      name: endOfRound
+    newTurn:
+      name: newTurn
+    actionName:
+      name: actionName
+    mouseover:
+      name: mouseover
+      container: true
+    actionLink:
+      name: actionLink
+    onmouseover:
+      name: onmouseover
+    onmouseout:
+      name: onmouseout
+    decayMessage:
+      name: decayMessage
+    echoDamage:
+      name: echoDamage
+    refreshPuppets:
+      name: refreshPuppets
+    callEncounter:
+      name: callEncounter
+    newmeter:
+      name: newmeter
+      container: true
+    colors:
+      name: colors
+    animation:
+      name: animation
+    sizing:
+      name: sizing
+    critCheck:
+      name: critCheck
+    accuracyCheck:
+      name: accuracyCheck
+    damageCalc:
+      name: damageCalc
+    shieldCheck:
+      name: shieldCheck
+    deathcheck:
+      name: deathcheck
+    longreturn:
+      name: longreturn
+    live:
+      name: live
+    actorDisplay:
+      name: actorDisplay
+    trigger:
+      name: trigger
+    event:
+      name: event
+      container: true
+    which:
+      name: which
+    numKey:
+      name: numKey
+    unequipAll:
+      name: unequipAll
+    statOOB:
+      name: statOOB
+    actionListMenu:
+      name: actionListMenu
+    actorNameLink:
+      name: actorNameLink
+    actorRightDisplay:
+      name: actorRightDisplay
+    notify:
+      name: notify
+      container: true
+    showmeter:
+      name: showmeter
+    equipSlotDisplay:
+      name: equipSlotDisplay
+    guardCheck:
+      name: guardCheck
+    martyrCheck:
+      name: martyrCheck
+    threatTarget:
+      name: threatTarget
+    protectionCheck:
+      name: protectionCheck
+    randomTarget:
+      name: randomTarget
+    updatemeter:
+      name: updatemeter
+    levelcheck:
+      name: levelcheck
+    LevelUp:
+      name: LevelUp
+    endofbattle:
+      name: endofbattle
+    status:
+      name: status
+    effectmanager:
+      name: effectmanager
+    addhrs:
+      name: addhrs
+    addmins:
+      name: addmins
+    Frisk-worried-o:
+      name: Frisk-worried-o
+      container: true
+    Frisk-worried:
+      name: Frisk-worried
+      container: true
+    Frisk-angry-o:
+      name: Frisk-angry-o
+      container: true
+    Frisk-angry:
+      name: Frisk-angry
+      container: true
+    Frisk-furious-o:
+      name: Frisk-furious-o
+      container: true
+    Frisk-furious:
+      name: Frisk-furious
+      container: true
+    G-worried-o:
+      name: G-worried-o
+      container: true
+    G-worried:
+      name: G-worried
+      container: true
+    U-worried-o:
+      name: U-worried-o
+      container: true
+    U-worried:
+      name: U-worried
+      container: true
+    G-annoyed-o:
+      name: G-annoyed-o
+      container: true
+    G-annoyed:
+      name: G-annoyed
+      container: true
+    G-content-o:
+      name: G-content-o
+      container: true
+    Frisk-embarrased-o:
+      name: Frisk-embarrased-o
+      container: true
+    Frisk-embarrased:
+      name: Frisk-embarrased
+      container: true
+    Frisk-determined-o:
+      name: Frisk-determined-o
+      container: true
+    Frisk-determined:
+      name: Frisk-determined
+      container: true
+    Frisk-bored-o:
+      name: Frisk-bored-o
+      container: true
+    Frisk-bored:
+      name: Frisk-bored
+      container: true
+    G-furious-o:
+      name: G-furious-o
+      container: true
+    G-furious:
+      name: G-furious
+      container: true
+    U-angry-o:
+      name: U-angry-o
+      container: true
+    U-angry:
+      name: U-angry
+      container: true
+    G-determined-o:
+      name: G-determined-o
+      container: true
+    G-determined:
+      name: G-determined
+      container: true
+    G-bored-o:
+      name: G-bored-o
+      container: true
+    G-bored:
+      name: G-bored
+      container: true
+    U-determined:
+      name: U-determined
+      container: true
+    U-determined-o:
+      name: U-determined-o
+      container: true
+    U-happy-o:
+      name: U-happy-o
+      container: true
+    G-confused-o:
+      name: G-confused-o
+      container: true
+    G-confused:
+      name: G-confused
+      container: true
+    fadein:
+      name: fadein
+      container: true
+    hovertip:
+      name: hovertip
+      container: true
+    checkboxPlus:
+      name: checkboxPlus
+    sans-bluemagic-o:
+      name: sans-bluemagic-o
+      container: true
+    sans-bluemagic:
+      name: sans-bluemagic
+      container: true
+    Frisk-happy-o:
+      name: Frisk-happy-o
+      container: true
+    Frisk-happy:
+      name: Frisk-happy
+      container: true
+    sans-thoughtful-o:
+      name: sans-thoughtful-o
+      container: true
+    sans-thoughtful:
+      name: sans-thoughtful
+      container: true
+    sans-serious-o:
+      name: sans-serious-o
+      container: true
+    sans-serious:
+      name: sans-serious
+      container: true
+    sans-smile-o:
+      name: sans-smile-o
+      container: true
+    sans-smile:
+      name: sans-smile
+      container: true
+    Frisk-confuzzled-o:
+      name: Frisk-confuzzled-o
+      container: true
+    Frisk-confuzzled:
+      name: Frisk-confuzzled
+      container: true
+    printFriskbday:
+      name: printFriskbday
+    populateEnemies:
+      name: populateEnemies
+    stashlist:
+      name: stashlist
+    actionInfo:
+      name: actionInfo
+    character:
+      name: character
+    label:
+      name: label
+    printfulldate:
+      name: printfulldate
+    printtime12hr:
+      name: printtime12hr
+    THEY:
+      name: THEY
+    They:
+      name: They
+    they:
+      name: they
+    THEM:
+      name: THEM
+    Them:
+      name: Them
+    them:
+      name: them
+    THEIR:
+      name: THEIR
+    Their:
+      name: Their
+    their:
+      name: their
+    THEIRS:
+      name: THEIRS
+    Theirs:
+      name: Theirs
+    theirs:
+      name: theirs
+    THEYRE:
+      name: THEYRE
+    Theyre:
+      name: Theyre
+    theyre:
+      name: theyre
+    THEMSELF:
+      name: THEMSELF
+    Themself:
+      name: Themself
+    themself:
+      name: themself
+    an:
+      name: an

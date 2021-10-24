@@ -32,13 +32,14 @@ How long should I <<if $now.getHours() gte 20 or $now.getHours() lt 6>>sleep<<el
 <</switch>>
 <<if $now.getHours() gte 20 or $now.getHours() lt 6>><span class="link2">[[Exit the large vent.|Engine room]]</span><<else>><span class="link6">[[Exit the large vent.|Engine room]]</span><</if>>
 
-<<if $C.Starship["Vent 3"].length is 0>>There's nothing stored here right now, but you've got extra space if you need to [[store things here.|Inventory Menu]]<<elseif>>You've stored, and can pick back up...
+<<if $C.Starship["Vent 3"].length is 0>>There's nothing stored here right now, but I've got extra space if I need to [[store things here.|Inventory Menu]]<<else>>I've stored, and can pick back up...
 
-<<include "Room Item List">><</if>>
+<<include "Room Item List">>
+I can [[store more things here.|Inventory Menu]]<</if>>
 
 :: Gravity on ship Explain [cutscene]
 
-<<if lastVisited("Jump explain") isnot 1>><<nobr>>Frisk thinks, then replies, <i><span class="dtm-mono">I think I read somewhere that the gravity on ships is powered by skeletons and other monsters with the blue magic ability. To calibrate one of these things, one of those types of monsters has to target the orb and pedestal with their magic, keeping it on the ground. Then the pedestal will power the gravity on the ship, keeping everyone on the ground by their SOULs. Obviously jumping doesn't work too well, but as long as our feet touch the ground, it will let us move about the ship easily.</span></i><</nobr>><</if>>
+<<if lastVisited("Jump explain") isnot 1>>Frisk thinks, then replies, <i><span class="dtm-mono">I think I read somewhere that the gravity on ships is powered by skeletons and other monsters with the blue magic ability. To calibrate one of these things, one of those types of monsters has to target the orb and pedestal with their magic, keeping it on the ground. Then the pedestal will power the gravity on the ship, keeping everyone on the ground by their SOULs. Obviously jumping doesn't work too well, but as long as we touch anything, even the walls, it will let us move about the ship easily.</span></i><</if>>
 
 <span class="dtm-mono"><i>Any more questions about this?</i><span> I think to you.
 

@@ -48,6 +48,7 @@ It is <<printtime12hr>>
 
 <span class="save-point"><<link "SAVE/LOAD">><<run UI.saves()>><</link>></span>
 <<if hasVisited("Explore Cargo")>>@@#invlink;[[Inventory Menu]]@@<</if>>
+<<if $debug is true>><<link "checkvars">><<checkvars>><</link>><</if>>
 
 :: Player-Settings [stoptime menuitem]
 
@@ -129,7 +130,8 @@ Testing with sentences: Hello, I go by <<they>>/<<them>> pronouns. Can you pass 
 <<option "Use custom pronouns." true>>
 <<option "Don't use custom pronouns." false>>
 <</cycle>></span>
-If you want to not use custom pronouns anymore, you can tell Frisk with the link above.
+If you want to not use custom pronouns anymore, you can tell Frisk with the link above. 
+
 <<textbox "$ne" "ne">>
 <<textbox "$nem" "nem" >>
 <<textbox "$nir" "nir">>

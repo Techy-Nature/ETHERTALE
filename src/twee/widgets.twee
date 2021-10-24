@@ -33,7 +33,7 @@
 >><</widget>>
 /* Prints Frisk's birthday, without the weekday. */
 <<widget "printFriskbday">><<print String.format("{0} {2}, {3}",
-GameMonths[$Frisk.bday.getMonth()],
+GameMonths[$Frisk.bday.getMonth()]
 	$Frisk.bday.getDate(),
 	$Frisk.bday.getFullYear())>><</widget>>
 /* Prints Frisk's birth month. The same for the date and weekday with the other widgets.*/

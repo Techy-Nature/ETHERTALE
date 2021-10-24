@@ -1,4 +1,5 @@
 :: User-defined variables [nobr]
+<<set $puppets to ["Frisk", "Player Character", "Gaster", ]>>
 <<run customMods()>>
 <<set $PtagsInit to []>>
 <<set $PC to {}>>
@@ -60,6 +61,7 @@ All I did was go to the settings and search up "keyboard" without the quotes, an
 	"Ladder":[]
   }
 }>>
+/* */
 /*  Jaden's Item Controller end
 	Jaden's talk macro setup
  Sans talk macros*/
