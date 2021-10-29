@@ -116,10 +116,7 @@
 <<run console.log("rendering "+_actor.name+" for movement phase, not subject? "+(_actor !== $subject))>>
 <<if _actor instanceof Puppet && _actor !== $subject>>
   <<capture _actor>>
-  <<set _link = `<<link "_actor.name">>
-        <<set $subject.position = [_actor.row,_actor.col]>>
-      <<replace "#puppets">><<include "actorlist puppets">><</replace>>
-    <</link>>`>>
+  <<set _link = `<<link "_actor.name">><<set $subject.position = [_actor.row,_actor.col]>><<replace "#puppets">><<include "actorlist puppets">><</replace>><</link>>`>>
   <<if setup.SCALE_NAMES>>
     <<print setup.scaledTextDiv(_actor.name,setup.NAME_LENGTH,{bold:true},_link)>>
   <<else>>

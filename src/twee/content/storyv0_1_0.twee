@@ -124,8 +124,10 @@ I head towards the ladder, climb it, and try to open the hatch at the top, but i
 <<include "Room Item List">><</if>>
 
 :: Vent 1 [Vent_1 room]
-<<nobr>><<set $currentRoom to "Vent 1">><</nobr>>
-I<<nobr>><<if lastVisited("Footsteps") lt 2>> scrambled <<elseif lastVisited("Starship hallway") lt 2>>  climbed <</if>>into the vent. <<if lastVisited("Starship hallway") lte 2 and visited() is 1>> It's too dark to see past the first few feet, so I probably wouldn't be able to use these vents to transport myself, but they are good for hiding in. I <span class="link1">[[exit the vent.|Starship hallway]]<</if>><<if lastVisited("Footsteps") lte 1>>I quiet my breathing as the footsteps pass, trying not to shuffle uncomfortably in the tiny vent. <<timed 5s>>Once the danger passes, I <span class="link1">[[exit the vent.|Starship hallway]]<</timed>><</if>></span>> <<if $C.Starship["Vent 1"].length is 0>>There's not much here to look at, after all.<<</if>><</nobr>>
+<<set $currentRoom to "Vent 1">>I <<if PC.inv.includes("High Tech Knife") and visited() is 1>>unscrewed the bolts on the vent with my screwdriver from the High-Tech Knife, then <</if>>moved the cover aside and climbed <<if previous() is "Starship hallway">>quickly<</if>> into the vent.
+
+<<nobr>>/*<</nobr>>
+I<<nobr>><<if lastVisited("Footsteps") lt 2>> scrambled <<elseif lastVisited("Starship hallway") lt 2>>  climbed <</if>>into the vent. <<if lastVisited("Starship hallway") lte 2 and visited() is 1>> It's too dark to see past the first few feet, so I probably wouldn't be able to use these vents to transport myself, but they are good for hiding in. I <span class="link1">[[exit the vent.|Starship hallway]]<</if>><<if lastVisited("Footsteps") lte 1>>I quiet my breathing as the footsteps pass, trying not to shuffle uncomfortably in the tiny vent. <<timed 5s>>Once the danger passes, I <span class="link1">[[exit the vent.|Starship hallway]]<</timed>><</if>></span>> <<if $C.Starship["Vent 1"].length is 0>>There's not much here to look at, after all.<</if>>*/<</nobr>>
 <<if $C.Starship["Vent 1"].length gt 0>>* I can pick up...
 
 <<include "Room Item List">><</if>>

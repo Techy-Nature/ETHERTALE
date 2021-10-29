@@ -1,6 +1,6 @@
 :: Character Description [menuitem stoptime]
 
-My name is Frisk. I'm an orphan, so I don't know my parents' last name. I used to live on the streets of Earth.
+My name is Frisk. I'm an orphan, so I don't know my parents' last name. I used to live on the streets of Earth.  Once I get a family, I'll take on their last name.
 People tell me I'm "high functioning" autistic. I know a small amount of ASL (American Sign Language) from school before I ran away from there to learn by traveling rather than by what others tell me. I'm <<= $Frisk.age>> years of age, and my birthday is <<printFriskbday>>.
 
 @@.onlylink;<<link "Return." $return>><</link>>@@
@@ -25,3 +25,4 @@ SPACE&ENTER/RETURN = clicking on the only link on the page, or clicking on the f
 Links will let you continue through the game and cutscenes. If something is colored differently or the font is different, it's usually someone speaking, their intentions or thoughts. Thoughts are always <i>in italic,</i> no matter what font they are in. Other than that, gameplay is pretty easy! Have fun! ;)
 
 @@.onlylink;<<link "Return." $return>><</link>>@@
+

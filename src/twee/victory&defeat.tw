@@ -79,12 +79,13 @@
 <</if>>
 
 :: Defeat
+<<if $PC is $Frisk>><<audio "Determination">>
 <span class="8bit-wonder">Game Over</span>
 [img[imgs/broken.gif]]
 
-@@.dtm-mono;Don't give up yet! I know we can do it if we work together! Maybe if we Restart, we can try something different-?@@
+@@.dtm-mono;Don't give up yet! I know we can do anything if we work together! Maybe if we Restart, we can try something different-?@@
 
 * @@.pcdarklink;[[Retry the battle|Preparation]]@@
-* [[Restart|Intro-Start]]
+* [[Restart|Start-Intro]]<</if>>
 
 <<endofbattle>>

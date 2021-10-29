@@ -112,9 +112,7 @@ GameMonths[$Frisk.bday.getMonth()]
 	Usage: <<checkboxPlus "variableName" "text" ["className"]>>
 
 	The value of the checkbox would then be tied to a variable, which
-	is passed to the widget as a string.  All story variables passed to
-	the widget will be set to either a Boolean true or false.  If the
-	variable had a "truthy" value, then the checkbox will be checked.
+	is passed to the widget as a string.  All story variables passed to	the widget will be set to either a Boolean true or false.  If the variable had a "truthy" value, then the checkbox will be checked.
 	The	"className" is an optional parameter, which adds that CSS class	to the text.
 
 	Example: /checkboxPlus "$EnabledOp" "Enable Option" "blueText"/

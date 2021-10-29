@@ -1,5 +1,5 @@
 :: User-defined variables [nobr]
-<<set $puppets to ["Frisk", "Player Character", "Gaster", ]>>
+<<set $puppets to ["Frisk"]>>
 <<run customMods()>>
 <<set $PtagsInit to []>>
 <<set $PC to {}>>
@@ -13,7 +13,7 @@
 Jaden here. In Opera the shortcut for the Developer Console is Ctrl-Shift-J, but you can add more shortcuts through the settings.
 All I did was go to the settings and search up "keyboard" without the quotes, and it should find it. If that doesn't work, try "shortcuts," again without the quotes.
 ---
- Jaden's code below*/
+ Irin's code below*/
 
 <<set setup.DEFAULT_EQUIP_SLOTS = {
   "Weapon": 1,
@@ -22,7 +22,8 @@ All I did was go to the settings and search up "keyboard" without the quotes, an
   "Legs": 1,
 	"Feet": 1
  }>>
-
+/*Irin's Code End */
+/*Jaden's code start */
 <<set $Frisk = new Puppet("Frisk")>>
 <<set $Player = $Frisk>>
 <<set $Frisk.age to 16>>
@@ -140,7 +141,7 @@ All I did was go to the settings and search up "keyboard" without the quotes, an
 <<character "U-furious-o" "Undyne" "https://raw.githubusercontent.com/Techy-Nature/ETHERTALE/master/src/imgs/Talk/Undyne/U_Furious.png">>
 <<character "U-happy-o" "Undyne" "https://raw.githubusercontent.com/Techy-Nature/ETHERTALE/master/src/imgs/Talk/Undyne/U_Happy.png">>
 /*HP Meter setup*/
-<<newmeter "Frisk-HP" $Frisk.HP>>
+<<newmeter "PC-HP" $PC.HP>>
 <<sizing 10% 10em>>
 <<animation false>>
 <<colors #fff200 darkred white>>
@@ -154,14 +155,19 @@ All I did was go to the settings and search up "keyboard" without the quotes, an
 <<cacheaudio "bgm_Star_Ship_B" "sounds/bgm/Star_Ship_B.mp3">>
 <<cacheaudio "bgm_Ship_Ruins" "sounds/bgm/Ship_Ruins.mp3">>
 <<cacheaudio "bgm_Hiding" "sounds/bgm/Hiding.mp3">>
+<<cacheaudio "bgm_DTM" "sounds/bgm/Determination.mp3">>
 <<createaudiogroup ":bgm">>
 	<<track "bgm_Hiding">>
+	<<track "bgm_DTM">>
 	<<track "bgm_Friendly">>
 	<<track "bgm_M-Space">>
 	<<track "bgm_Sneaking">>
 	<<track "bgm_Star_Ship_B">>
 	<<track "bgm_Ship_Ruins">>
 	<<track "bgm_OUAET">>
+<</createaudiogroup>>
+<<createaudiogroup ":battlebgm">>
+	<<track "bgm_DTM">>
 <</createaudiogroup>>
 <<set $audio to "muted">><<set $bgm_audio to "muted">><<masteraudio mute>><<audio ":bgm" mute>>
 /* Will add more songs later */

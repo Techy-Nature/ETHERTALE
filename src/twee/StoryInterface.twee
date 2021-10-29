@@ -48,7 +48,11 @@ It is <<printtime12hr>>
 
 <span class="save-point"><<link "SAVE/LOAD">><<run UI.saves()>><</link>></span>
 <<if hasVisited("Explore Cargo")>>@@#invlink;[[Inventory Menu]]@@<</if>>
-<<if $debug is true>><<link "checkvars">><<checkvars>><</link>><</if>>
+<<if $debug is true>>[[checkvars]]<</if>>
+
+:: checkvars
+
+<<checkvars>>
 
 :: Player-Settings [stoptime menuitem]
 
