@@ -1,6 +1,6 @@
 :: Character Description [menuitem stoptime]
 
-My name is Frisk. I'm an orphan, so I don't know my parents' last name. I used to live on the streets of Earth.  Once I get a family, I'll take on their last name.
+My name is Frisk. I'm an orphan, so I don't know my parents' last name. Once I get adopted by a family, I'll take on their last name. I used to live on the streets of Earth. 
 People tell me I'm "high functioning" autistic. I know a small amount of ASL (American Sign Language) from school before I ran away from there to learn by traveling rather than by what others tell me. I'm <<= $Frisk.age>> years of age, and my birthday is <<printFriskbday>>.
 
 @@.onlylink;<<link "Return." $return>><</link>>@@

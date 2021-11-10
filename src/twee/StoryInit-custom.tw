@@ -1,5 +1,5 @@
 :: User-defined variables [nobr]
-<<set $puppets to ["Frisk"]>>
+<<set $puppets to [$Frisk]>>
 <<run customMods()>>
 <<set $PtagsInit to []>>
 <<set $PC to {}>>
@@ -8,7 +8,6 @@
 <<set $PC.imagesHidden to false>>
 <<set $PC.custompronouns to false>>
 <<set $now = new Date(2031, 4, 1, 14, 30, 0)>>
-/* Dukemz: In case my inventory system for some reason doesn't work as it should, I can re-paste it here in a script tag. */
 /*
 Jaden here. In Opera the shortcut for the Developer Console is Ctrl-Shift-J, but you can add more shortcuts through the settings.
 All I did was go to the settings and search up "keyboard" without the quotes, and it should find it. If that doesn't work, try "shortcuts," again without the quotes.
@@ -156,6 +155,11 @@ All I did was go to the settings and search up "keyboard" without the quotes, an
 <<cacheaudio "bgm_Ship_Ruins" "sounds/bgm/Ship_Ruins.mp3">>
 <<cacheaudio "bgm_Hiding" "sounds/bgm/Hiding.mp3">>
 <<cacheaudio "bgm_DTM" "sounds/bgm/Determination.mp3">>
+/*Music setup end */
+/*sfx setup below -Jaden */
+<<cacheaudio "sfx_broken" "sounds/sfx/broken-sfx.mp3">>
+/*more sfx later, rn it'll just be this one -Jaden */
+/*Setting up audio groups. Written by Jaden */
 <<createaudiogroup ":bgm">>
 	<<track "bgm_Hiding">>
 	<<track "bgm_DTM">>
@@ -169,8 +173,8 @@ All I did was go to the settings and search up "keyboard" without the quotes, an
 <<createaudiogroup ":battlebgm">>
 	<<track "bgm_DTM">>
 <</createaudiogroup>>
-<<set $audio to "muted">><<set $bgm_audio to "muted">><<masteraudio mute>><<audio ":bgm" mute>>
-/* Will add more songs later */
+<<set $audio to "muted">><<set $bgm_audio to "muted">><<masteraudio mute>><<audio ":bgm" mute>><<audio ":battlebgm" mute>>
+/* Will add more songs and sfx later -Jaden */
 /* Chapelr's code below */
 <<set
 	window.GameDays to [

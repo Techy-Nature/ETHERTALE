@@ -1,10 +1,10 @@
-:: Inventory Menu [menu]
+:: Inventory Menu [menuitem stoptime]
 
 <<include "Inventory">>
 
 <<link "Return." $return>><</link>>
 
-:: Inventory [menu battle noreturn]
+:: Inventory [menuitem battle noreturn stoptime]
 <span id="content" class="menu"><<nobr>>
 <<run console.log(inv())>>
 <<set _filter = "all">>
@@ -17,7 +17,7 @@
 <</nobr>>
 </span>
 
-:: inventory item list[nobr]
+:: inventory item list[nobr menuitem stoptime]
 <div style="display:flex; justify-content:space-evenly;">
 <<if _filter == "all">>
 	<b>All</b>
@@ -70,7 +70,7 @@
 <</for>>
 </div>
 
-:: inventory item display[nobr]
+:: inventory item display[nobr menuitem stoptime]
 <<if ndef _display || _display === null>>
 	<div class="centered" style="color: gray">Click on an item to see info</div>
 <<else>>
@@ -98,7 +98,7 @@
 	<</if>>
 <</if>>
 
-:: equip button[nobr]
+:: equip button[nobr menuitem stoptime]
 <<if $Player.hasEquipped(_display.name)>>
 	<<button "UNEQUIP">>
 		<<run $Player.unequip(_display.equippable.slot)>>
@@ -111,14 +111,14 @@
 	<</button>>
 <</if>>
 
-:: inventory use button[nobr]
+:: inventory use button[nobr menuitem stoptime]
 <<button "USE">>
 	<<run _display.onUse()>>
 	<<unset _display>>
 	<<replace "#menu-display">><<include "inventory item display">><</replace>>
 <</button>>
 
-:: inventory cancel button[nobr]
+:: inventory cancel button[nobr menuitem stoptime]
 <span id="cancelbutton">
 <<button "CANCEL">>
 	<<if document.getElementById("usebutton")>><<replace "#usebutton">><<include "inventory use button">><</replace>><</if>>
@@ -128,7 +128,7 @@
 </span>
 <span class="monospace" style="font-size:85%">[R]</span>
 
-:: inventory puppets[nobr]
+:: inventory puppets[stoptime nobr menuitem]
 <<set _HPmeters = []>>
 <<set _MPmeters = []>>
 <<for _i, _p range puppets().filter(function(p) { return temporary().event != "equip" || (!p.lockEquipment && p.checkRestriction(temporary().display)); })>>

@@ -104,7 +104,7 @@ With that done, I <span class="onlylink">[[exit through the pressurized door to 
 I enter the cargo hold<<if lastVisited("Explore Cargo") lte 2>> again<</if>>. I can <span class="link1">[[decide to look around|Explore Cargo]]</span> or I can <span class="link2">[[leave the way I came.|Starship hallway]]</span>
 
 :: Starship hallway [1st_Floor_Corridor room]
-<<nobr>><<set $currentRoom to "1st Floor Corridor">><</nobr>>
+<<nobr>><<set $currentRoom to "1st Floor Corridor">><<if previous() is "Vent 1">><<audio "bgm_Hiding" fadeout>><<audio "bgm_Sneaking" fadein play loop>><</if>><</nobr>>
 <<if lastVisited("Explore Cargo") is 1>>After exiting the cargo hold,<</if>> I enter a long hallway. Should I go...
 
 *  <span class="link1">[[right,|Engine room]]</span>
@@ -124,17 +124,15 @@ I head towards the ladder, climb it, and try to open the hatch at the top, but i
 <<include "Room Item List">><</if>>
 
 :: Vent 1 [Vent_1 room]
-<<set $currentRoom to "Vent 1">>I <<if PC.inv.includes("High Tech Knife") and visited() is 1>>unscrewed the bolts on the vent with my screwdriver from the High-Tech Knife, then <</if>>moved the cover aside and climbed <<if previous() is "Starship hallway">>quickly<</if>> into the vent.
+<<nobr>><<if previous() is "Starship hallway">><<audio "bgm_Sneaking" fadeout>><<audio "bgm_Hiding" play loop>><</if>><</nobr>><<set $currentRoom to "Vent 1">>I <<if $PC.inv.includes("High Tech Knife") and visited() is 1>>unscrewed the bolts on the vent with my screwdriver on the High-Tech Knife, then <</if>>moved the cover aside and climbed <<if previous() is "Footsteps">>quickly<</if>> into the vent.<<if previous() is "Footsteps">><<fadein 500ms>> I wait until the coast is clear, breathing as quietly as possible until the shuffling footsteps are no longer able to be heard;<</fadein>><<fadein 1000ms>> then, I climb carefully back out of the vent, making sure not to make any noise.<</fadein>><<elseif previous() is "Starship hallway" and visited() is 1>>It's too dark to see past the first few feet of the inside of this vent, so I won't be able to travel in here without a source of light. However, this is a good place to hide if I ever need to. I exit the vent<<if $C.Starship["Vent 1"].length eq 0>>since there's nothing else to see here<</if>>.<</if>>
 
-<<nobr>>/*<</nobr>>
-I<<nobr>><<if lastVisited("Footsteps") lt 2>> scrambled <<elseif lastVisited("Starship hallway") lt 2>>  climbed <</if>>into the vent. <<if lastVisited("Starship hallway") lte 2 and visited() is 1>> It's too dark to see past the first few feet, so I probably wouldn't be able to use these vents to transport myself, but they are good for hiding in. I <span class="link1">[[exit the vent.|Starship hallway]]<</if>><<if lastVisited("Footsteps") lte 1>>I quiet my breathing as the footsteps pass, trying not to shuffle uncomfortably in the tiny vent. <<timed 5s>>Once the danger passes, I <span class="link1">[[exit the vent.|Starship hallway]]<</timed>><</if>></span>> <<if $C.Starship["Vent 1"].length is 0>>There's not much here to look at, after all.<</if>>*/<</nobr>>
 <<if $C.Starship["Vent 1"].length gt 0>>* I can pick up...
 
 <<include "Room Item List">><</if>>
 
 :: Footsteps  [cutscene]
 
-There are footsteps coming down the hallway! <<if lastVisited("Starship hallway")is 1>><span class="link1">[[I should probably hide|Vent 1]]</span><</if>>!
+There are footsteps coming down the hallway! <<if previous() is "Starship hallway">><span class="link1">[[I should probably hide!|Vent 1]]</span><</if>>
 
 <<nobr>>
 <<timed 10s>> I should hurry! The footsteps are getting closer!
@@ -155,7 +153,7 @@ I am confused as to this turn of events, but to say I am surprised to get caught
 
 <<checkboxPlus "$Frisk.curiousabtcrew" "was curious about the crew.">>
 <<checkboxPlus "$Frisk.gotbored" "got bored slinking around like a rat.">>
-<<checkboxPlus "$Frisk.wantedajob" "Needed somewhere to stay and work.">>
+<<checkboxPlus "$Frisk.wantedajob" "needed somewhere to stay and work.">>
 
 <span class="onlylink">[[I watch the skeleton walk as I'm carried by my SOUL to the front of the ship, likely where the captain will be.|Hallway conversation]]</span>
 

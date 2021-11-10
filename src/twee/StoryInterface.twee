@@ -40,7 +40,7 @@ It is <<printtime12hr>>
 	<div id="story-subtitle" data-passage="StorySubtitle"></div></div><div id="passages"></div>
 	</div>
 
-:: StoryMenu [stoptime menuitem]
+:: StoryMenu [menuitem stoptime]
 
 <span class="restartlink"><<link "RESET">><<set $PC.resetcounter++>>
 <<run memorize('resets', $PC.resetcounter)>><<run UI.restart()>><</link>></span>
@@ -50,11 +50,11 @@ It is <<printtime12hr>>
 <<if hasVisited("Explore Cargo")>>@@#invlink;[[Inventory Menu]]@@<</if>>
 <<if $debug is true>>[[checkvars]]<</if>>
 
-:: checkvars
+:: checkvars [menu stoptime]
 
 <<checkvars>>
 
-:: Player-Settings [stoptime menuitem]
+:: Player-Settings [menuitem stoptime]
 
 <span class="pcdarklink link1"><<if $PC.Offline is false>>
   <<link "Would you like to play offline?" 'Player-Settings'>><<set $PC.Offline to true>><<refresh>><</link>>
@@ -82,7 +82,7 @@ If debug is on, be prepared for spoilers that are unwanted.
 
 :: Test pronouns room - debug [stoptime menuitem]
 
-<span class="eight-bit-wonder">Here, we can test your pronouns. Hopefully, errors won't abound.</span>
+Here, we can test your pronouns. Hopefully, errors won't abound.
 
 <<THEY>>
 <<They>>
@@ -108,12 +108,25 @@ If debug is on, be prepared for spoilers that are unwanted.
 <<Themself>>
 <<themself>>
 
+?PAL
+?Pal
+?pal
+
+?YOUNGPERSON
+?youngPerson
+
+?ADULTPERSON
+?adultPerson
+
+?GENERALPERSON
+?generalPerson
+
+
 <span class="pcdarklink onlylink" ><<link "Return." $return>><</link>></span>
 
-Testing with sentences: Hello, I go by <<they>>/<<them>> pronouns. Can you pass me the butter? Thanks a lot!
-<<Theyre>> going to be sad if <<their>> food is taken away. That's <<theirs>>. Later on... <<They>> should be about done, it's been a half-hour. Can you go check on <<them>>? Just don't take <<their>> food away. <<Their>> food is <<theirs>>.
 
-:: Pronouns [stoptime menuitem]
+
+:: Pronouns [menuitem stoptime]
 
 @@.dtm-mono;Sure, $PC.name. What would you like to go by? You can change them or keep them the same, but why would you ask me if you wanted to keep them?@@
 /* $pgen: 0 = male, 1 = female, 2 = gender neutral, 3 = no gender */
@@ -127,7 +140,7 @@ Testing with sentences: Hello, I go by <<they>>/<<them>> pronouns. Can you pass 
 
 <span class="pcdarklink link1"><<link "Thanks, Frisk. I'll go by these pronouns." $return>></span><</link>>
 
-:: Custom Pronouns [stoptime menuitem]
+:: Custom Pronouns [menuitem stoptime]
 
 @@.dtm-mono;<i>Alright. Well, make sure you tell me which ones you <i>would</i> like then.</i>@@
 <span class="pcdarklink link1"><<cycle "$PC.custompronouns">>

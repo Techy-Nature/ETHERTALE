@@ -16,6 +16,9 @@ This is the QR Code for the Monero Request.
 
 ![My Monero Request](https://64.media.tumblr.com/fa1cdf3e2a8db0e2ef95834f398a5aaa/e637204a645e7333-c1/s250x400/3ea440c213d77dbd48b20a4e8630e9f8e8da8227.png)
 
+I also have a CashApp account now! Click or scan the QR code to donate. :)
+[![CashApp Request][https://64.media.tumblr.com/bc43916bcc90eec9f0fe0521e8ff082a/e637204a645e7333-1b/s640x960/00475fcd0dca03a9475c056a2037e937e4e2a747.jpg]][https://cash.app/$TechyNature]
+
 Thanks so much if you donate, or if you share this page or the [Tumblr dev blog](https://ethertale-fangame.tumblr.com) around!
 
 ## Getting Started

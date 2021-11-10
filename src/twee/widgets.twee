@@ -76,27 +76,25 @@ GameMonths[$Frisk.bday.getMonth()]
 		<<case "i">>
 			<<set $pgen = 3>>
 		<<default>>
-			<<set $pgen = 0>>
-	<</switch>>
-<</nobr>><</widget>>
+			<<set $pgen = 0>><</switch>><</widget>>
 /* <<SetGender>> widget - End */
 /* Extra custom pronouns widget by Jaden */
 
 <<widget "they">><<if $PC.custompronouns is true>><<print $ne>><<else>>?they<</if>><</widget>>
 <<widget "them">><<if $PC.custompronouns is true>><<print $nem>><<else>>?them<</if>><</widget>>
-<<widget "theyre">><<if $PC.custompronouns is true>><<print $nir + " is">><<else>>?theyre<</if>><</widget>>
+<<widget "theyre">><<if $PC.custompronouns is true>><<print $ne + " is">><<else>>?theyre<</if>><</widget>>
 <<widget "their">><<if $PC.custompronouns is true>><<print $nir>><<else>>?their<</if>><</widget>>
 <<widget "theirs">><<if $PC.custompronouns is true>><<print $nirs>><<else>>?theirs<</if>><</widget>>
 <<widget "themself">><<if $PC.custompronouns is true>><<print $nemself>><<else>>?themself<</if>><</widget>>
 <<widget "They">><<if $PC.custompronouns is true>><<print $ne.toUpperFirst()>><<else>>?They<</if>><</widget>>
 <<widget "Them">><<if $PC.custompronouns is true>><<print $nem.toUpperFirst()>><<else>>?Them<</if>><</widget>>
-<<widget "Theyre">><<if $PC.custompronouns is true>><<print $nir.toUpperFirst() + " is">><<else>>?Theyre<</if>><</widget>>
+<<widget "Theyre">><<if $PC.custompronouns is true>><<print $ne.toUpperFirst() + " is">><<else>>?Theyre<</if>><</widget>>
 <<widget "Theirs">><<if $PC.custompronouns is true>><<print $nirs.toUpperFirst()>><<else>>?Theirs<</if>><</widget>>
 <<widget "Their">><<if $PC.custompronouns is true>><<print $nir.toUpperFirst()>><<else>>?Their<</if>><</widget>>
 <<widget "Themself">><<if $PC.custompronouns is true>><<print $nemself.toUpperFirst()>><<else>>?Themself<</if>><</widget>>
 <<widget "THEY">><<if $PC.custompronouns is true>><<print $ne.toUpperCase()>><<else>>?THEY<</if>><</widget>>
 <<widget "THEM">><<if $PC.custompronouns is true>><<print $nem.toUpperCase()>><<else>>?THEM<</if>><</widget>>
-<<widget "THEYRE">><<if $PC.custompronouns is true>><<print $nir.toUpperCase() + " IS">><<else>>?THEYRE<</if>><</widget>>
+<<widget "THEYRE">><<if $PC.custompronouns is true>><<print $ne.toUpperCase() + " IS">><<else>>?THEYRE<</if>><</widget>>
 <<widget "THEIR">><<if $PC.custompronouns is true>><<print $nir.toUpperCase()>><<else>>?THEIR<</if>><</widget>>
 <<widget "THEIRS">><<if $PC.custompronouns is true>><<print $nirs.toUpperCase()>><<else>>?THEIRS<</if>><</widget>>
 <<widget "THEMSELF">><<if $PC.custompronouns is true>><<print $nemself.toUpperCase()>><<else>>?THEMSELF<</if>><</widget>>
