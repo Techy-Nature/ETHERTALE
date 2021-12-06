@@ -10,7 +10,7 @@
 <<set $now = new Date(2031, 4, 1, 14, 30, 0)>>
 /*
 Jaden here. In Opera the shortcut for the Developer Console is Ctrl-Shift-J, but you can add more shortcuts through the settings.
-All I did was go to the settings and search up "keyboard" without the quotes, and it should find it. If that doesn't work, try "shortcuts," again without the quotes.
+All I did was go to the settings and search up "keyboard" without the quotes, and it should find it. If that doesn't work, try "shortcuts" again without the quotes.
 ---
  Irin's code below*/
 
@@ -139,6 +139,12 @@ All I did was go to the settings and search up "keyboard" without the quotes, an
 <<character "U-worried-o" "Undyne" "https://raw.githubusercontent.com/Techy-Nature/ETHERTALE/master/src/imgs/Talk/Undyne/U_Worried.png">>
 <<character "U-furious-o" "Undyne" "https://raw.githubusercontent.com/Techy-Nature/ETHERTALE/master/src/imgs/Talk/Undyne/U_Furious.png">>
 <<character "U-happy-o" "Undyne" "https://raw.githubusercontent.com/Techy-Nature/ETHERTALE/master/src/imgs/Talk/Undyne/U_Happy.png">>
+/* Asgore Talk Heads, Art by Luna 
+offline:*/
+<<character "Asgore-happy" "Asgore" "imgs/Talk/Asgore/Asgore_Happy.png">>
+<<character "Asgore-confused" "Asgore" "imgs/Talk/Asgore/Asgore_Confused.png">>
+<<character "Asgore-angry" "Asgore" "imgs/Talk/Asgore/Asgore_Angry.png">>
+/*online Asgore heads will come later*/
 /*HP Meter setup*/
 <<newmeter "PC-HP" $PC.HP>>
 <<sizing 10% 10em>>

@@ -59,7 +59,7 @@ GameMonths[$Frisk.bday.getMonth()]
 <<widget "refresh">><<run Engine.show()>><</widget>>
 
 /* /SetGender>> widget - Start - By HiEv */
-<<widget "SetGender">><<nobr>>
+<<widget "SetGender">>
 /* Usage... (defaults to male) */
 /* for "he":   <<SetGender>> or <<SetGender "m">> */
 /* for "she":  <<SetGender "f">> */

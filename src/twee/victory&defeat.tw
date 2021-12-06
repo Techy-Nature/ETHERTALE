@@ -79,13 +79,14 @@
 <</if>>
 
 :: Defeat
-<<if $PC is $Frisk>><<audio "Determination">>
+<<if $PC is $Frisk>><<audio "Determination" play loop>><</if>>
 <span class="8bit-wonder">Game Over</span>
 [img[imgs/broken.gif]]
 
-@@.dtm-mono;Don't give up yet! I know we can do anything if we work together! Maybe if we Restart, we can try something different-?@@
+<<if >> @@.dtm-mono;<i>Don't give up yet! I know we can do anything if we work together! Maybe if we RESTART, we can try something different...?</i>@@
 
 * @@.pcdarklink;[[Retry the battle|Preparation]]@@
-* [[Restart|Start-Intro]]<</if>>
+* <span class="restartlink"><<link "RESTART">><<set $PC.resetcounter++>>
+<<run memorize('resets', $PC.resetcounter)>><<run UI.restart()>><</link>></span><</if>>
 
 <<endofbattle>>

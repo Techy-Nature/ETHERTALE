@@ -14,7 +14,7 @@ ETHERTALE
 :: StorySubtitle [stoptime]
 
 Prologue: Starship Stowaway
-v.0.03.01beta
+v0.03.01beta
 <<if $debug is true>>The passage you're in is <<print passage()>>.
 The room you're in is $currentRoom.
 You are <<if $inRoom is true>>in a room<<elseif tags().includes("cutscene") and $inRoom is false>>in a cutscene.<<elseif tags(passage()).includes("menuitem")>>in a menu.<</if>><<else>><</if>>
@@ -25,11 +25,11 @@ It is <<printtime12hr>>
 <span class="pcdarklink"><<if $bgm_audio is "muted">><<link "Turn background audio on?">><<audio ":bgm" unmute>><<set $bgm_audio to "unmuted">><<refresh>><</link>><<elseif $bgm_audio is "unmuted">><<link "Turn background music off?">><<audio ":bgm" mute>><<set $bgm_audio to "muted">><<refresh>><</link>><</if>></span><</if>>
 <<nobr>>/*<<if $battle_audio is "muted">><<link "Turn battle music on?">><<playlist "bgm_E-T" unmute>><<refresh>><</link>><<elseif $battle_audio is "unmuted">><<link "Turn battle music off?">><<playlist "bgm_E-T" mute>><<refresh>><</link>><</if>>*/<</nobr>>
 
-<span id="desclink"><<link "Character Description">><<run Engine.play('Character Description', true)>><</link>></span>
+<span id="desclink">[[Character Description]]</span>
 
-@@.pcdarklink;#pcsetting;<<link "Player-Settings">><<run Engine.play('Player-Settings', true)>><</link>>@@
+@@.pcdarklink;#pcsetting;[[Player-Settings]]@@
 
-<span class="pcdarklink"><span id="ctrlslink"><<link "Controls">><<run Engine.play('Controls', true)>><</link>></span></span>@@
+<span class="pcdarklink"><span id="ctrlslink">[[Controls]]</span></span>@@
 
 :: StoryInterface
 
@@ -124,11 +124,9 @@ Here, we can test your pronouns. Hopefully, errors won't abound.
 
 <span class="pcdarklink onlylink" ><<link "Return." $return>><</link>></span>
 
-
-
 :: Pronouns [menuitem stoptime]
 
-@@.dtm-mono;Sure, $PC.name. What would you like to go by? You can change them or keep them the same, but why would you ask me if you wanted to keep them?@@
+@@.dtm-mono;<i>Sure, $PC.name. What would you like to go by? You can change them or keep them the same, but why would you ask me if you wanted to keep them?</i>@@
 /* $pgen: 0 = male, 1 = female, 2 = gender neutral, 3 = no gender */
 <<listbox "$pgen">>
 	<<option "Female, she/her" 1>>
