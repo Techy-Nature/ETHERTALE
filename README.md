@@ -51,7 +51,6 @@ You'll need the images, fonts and music to go with the HTML file. They are all b
 * **Duke** - [Dukemz](https://github.com/Dukemz)
 * **Jaden** - [Techy-Nature](https://github.com/Techy-Nature)
 * **Irin** - [AFriendlyIrin](https://github.com/AFriendlyIrin)
-* **Luna** - Asgore Art - [Clover Lucky Charms-YT](https://www.youtube.com/channel/UCobXQjiipxApQaz95HN1XAA)/[BellaHound_1987-TikTok](https://vm.tiktok.com/ZMRq5J4Bq/)
 
 See also the list of [contributors](https://github.com/Techy-girl/ETHERTALE/contributors) who participated in this project.
 
@@ -67,3 +66,4 @@ This project is licensed under the GNUvrs.3 License - see the [LICENSE.md](https
 
 * Dukemz
 * Toby Fox for Undertale
+* * **Luna** - Asgore Art - [Clover Lucky Charms-YT](https://www.youtube.com/channel/UCobXQjiipxApQaz95HN1XAA)/[BellaHound_1987-TikTok](https://vm.tiktok.com/ZMRq5J4Bq/)
