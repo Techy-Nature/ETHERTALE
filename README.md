@@ -66,4 +66,4 @@ This project is licensed under the GNUvrs.3 License - see the [LICENSE.md](https
 
 * Dukemz
 * Toby Fox for Undertale
-* * **Luna** - Asgore Art - [Clover Lucky Charms-YT](https://www.youtube.com/channel/UCobXQjiipxApQaz95HN1XAA)/[BellaHound_1987-TikTok](https://vm.tiktok.com/ZMRq5J4Bq/)
+* **Luna** - Asgore Art - [Clover Lucky Charms-YT](https://www.youtube.com/channel/UCobXQjiipxApQaz95HN1XAA)/[BellaHound_1987-TikTok](https://vm.tiktok.com/ZMRq5J4Bq/)
