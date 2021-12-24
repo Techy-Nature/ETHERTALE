@@ -38,12 +38,12 @@
   }>>
 
 /* An array of all the elements that will appear in your game, in the order you wish for them to be displayed on the elemental resistances screen. The Actor constructor will automatically initialize everyone's values for these strings to 1. Note that any use of these elements must be set to EXACTLY the same string, case-sensitive. */
-<<set setup.ELEMENT_LIST to ["black","white","red","blue","yellow"]>>
+<<set setup.ELEMENT_LIST to ["void","white","red","blue","yellow","green"]>>
 
 <<set setup.elementMessages = {
 		weakpoint: "Super effective!",
 		resist: "It's not very effective...",
-		immune: "No effect!",
+		immune: "There's no effect!",
 		absorb: "Absorbed!"
 	}>>
 
@@ -57,8 +57,8 @@
 <<set setup.MENU_OPTIONS = ["Status","Inventory","Equipment","Party"]>>
 
 <<set $currency = 0>>
-<<set setup.CURRENCY_NAME = "GP">>
-/* This is the name that will be displayed every time the game refers to currency. By default it is the Dungeons & Dragons standard, GP for "gold pieces". */
+<<set setup.CURRENCY_NAME = "G">>
+/* This is the name that will be displayed every time the game refers to currency. | I've changed it to G, which stands for Gold. This is the default in Undertale */
 
 /* Set whether to show animations in battle. */
 <<set setup.ANIMATIONS = true>>
@@ -67,7 +67,7 @@
 <<set setup.SHOW_HEALTHBARS = true>>
 
 <<set setup.ENEMY_BAR_COLOR = "#cc0000">>
-<<set setup.PLAYER_BAR_COLOR = "green">>
+<<set setup.PLAYER_BAR_COLOR = "yellow">>
 <<set setup.MP_BAR_COLOR = "blue">>
 <<set setup.HEALTH_BAR_TIME = "500ms">> /* animation duration for health bar updates (after taking damage, etc.) */
 
@@ -80,7 +80,7 @@
 
 /* Variables for determining lasting damage. By default, puppets are fully restored after every battle. See refreshPuppets for more info. */
 <<set $lastingDamage = false>>
-<<set $reviveAfterBattle = true>>
+<<set $reviveAfterBattle = false>>
 <<set $actionRefillAfterBattle = true>>
 
 /* Initializing constants that will be used elsewhere. DON'T define variables that will be used in JavaScript database definitions here, as StoryInit is run after JavaScript initialization. */
@@ -95,11 +95,11 @@
 <<set setup.ITEM_MAX = 9>> /* maximum of each item that can be stored in inventory */
 <<set setup.PARTY_SIZE = 3>>
 <<set setup.ACCURACY_RATE = true>> /* default accuracy of attacks in percent value or Boolean, default always-accurate */
-<<set setup.MIN_ACCURACY = 0>> /* minimum accuracy rate if reduced by e.g. evasion stat */
+<<set setup.MIN_ACCURACY = 0.1>> /* minimum accuracy rate if reduced by e.g. evasion stat */
 <<set setup.CRITICAL_RATE = 0>> /* default critical hit rate in percent value, default 0% (no crits) */
 <<set setup.CRITICAL_MULTIPLIER = 1.5>> /* default multiplier for critical hit damage */
 <<set setup.CRISIS_FACTOR = (10/7)>> /* multiplied by dmg/maxhp to get crisis points per hit, at 1 target must take 100% max HP to fill Crisis */
-<<set setup.DURATION_MAX = 9>> /* maximum turns a status effect can last */
+<<set setup.DURATION_MAX = 10>> /* maximum turns a status effect can last */
 <<set setup.FIREFLY_FACTOR = 2>> /* targeting probability multiplier for characters with Firefly */
 <<set setup.WALLFLOWER_FACTOR = 0.5>> /* targeting probability multiplier for characters with Wallflower */
 <<set setup.INDEFINITE_EFFECT_MULTIPLIER = 2>> /* multiplier for effect threat value for indefinite effects */
@@ -119,7 +119,7 @@
 	}
 >>
 
-<<set $difficulty to "hard">>
+<<set $difficulty to "medium">>
 /*
 Hard: smart targeting will only target vulnerable characters
 Medium: smart targeting gives preference to vulnerable characters

@@ -19,7 +19,7 @@
 <</for>>
 
 <<if ndef _subj>>
-(You should write an error message here.)
+<b>ERROR: subject not defined.</b>
 <<else>>
 	<<set $subject = _actor>>
 	<<if subject() instanceof Enemy>>
