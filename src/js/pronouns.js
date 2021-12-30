@@ -33,8 +33,18 @@ Template.add("GeneralPerson", function () { return ["Guy", "Girl", "Enby", "Enby
 Template.add("GeneralPeople", function () { return ["Guys", "Girls", "Enbys", "Enbys"][State.variables.pgen]; });
 Template.add("Pal", function () { return ["Dude", "Chick", "Friend", "Pal"][State.variables.pgen]; });
 Template.add("Pals", function () { return ["Dudes", "Chicks", "Friends", "Pals"][State.variables.pgen]; });
-
-/* Uppercase version added by Jaden */
+Template.add("sibling", function () { return ["brother", "sister", "sibling", "sibling"][State.variables.PC.pgen]; });
+/* Family titles for enbys are hard, I credit https://genderqueeries.tumblr.com/titles for those. The rest of this code is mine. -Jaden*/
+Template.add("Sibling", function () { return ["Brother", "Sister", "Sibling", "Sibling"][State.variables.PC.pgen]; });
+Template.add("Sprig", function () { return ["Son", "Daughter", "Prog", "Sprig"][State.variables.PC.pgen]; });
+Template.add("sprig", function () { return ["son", "daughter", "prog", "sprig"][State.variables.PC.pgen]; });
+Template.add("Parent", function () { return ["Father", "Mother", "Parent", "Parent"][State.variables.PC.pgen]; });
+Template.add("parent", function () { return ["father", "mother", "parent", "parent"][State.variables.PC.pgen]; });
+Template.add("Nini", function () { return ["Dad", "Mom", "Nini", "Bibi"][State.variables.PC.pgen]; });
+Template.add("nini", function () { return ["dad", "mom", "nini", "bibi"][State.variables.PC.pgen]; });
+Template.add("Auncle", function () { return ["Uncle", "Aunt", "Auncle", "Nibling"][State.variables.PC.pgen]; });
+Template.add("auncle", function () { return ["uncle", "aunt", "auncle", "nibling"][State.variables.PC.pgen]; });
+/* Uppercase version added by Jaden as well */
 Template.add("THEY", function () { return ["HE", "SHE", "THEY", "IT"][State.variables.pgen]; });
 Template.add("THEM", function () { return ["HIM", "HER", "THEM", "ITS"][State.variables.pgen]; });
 Template.add("THEIR", function () { return ["HIS", "HER", "THEIR", "ITS"][State.variables.pgen]; });
@@ -49,4 +59,9 @@ Template.add("GENERALPERSON", function () { return ["GUY", "GIRL", "ENBY", "ENBY
 Template.add("GENERALPEOPLE", function () { return ["GUYS", "GIRLS", "ENBYS", "ENBYS"][State.variables.pgen];})
 Template.add("PAL", function () { return ["DUDE", "CHICK", "FRIEND", "PAL"][State.variables.pgen]; });
 Template.add("PALS", function () { return ["DUDES", "CHICKS", "FRIENDS", "PALS"][State.variables.pgen]; });
+Template.add("SIBLING", function () { return ["BROTHER", "SISTER", "SIBLING", "SIBLING"][State.variables.PC.pgen]; });
+Template.add("SPRIG", function () { return ["SON", "DAUGHTER", "PROG", "SPRIG"][State.variables.PC.pgen]; });
+Template.add("PARENT", function () { return ["FATHER", "MOTHER", "PARENT", "PARENT"][State.variables.PC.pgen]; });
+Template.add("NINI", function () { return ["DAD", "MOM", "NINI", "BIBI"][State.variables.PC.pgen]; });
+Template.add("AUNCLE", function () { return ["UNCLE", "AUNT", "AUNCLE", "NIBLING"][State.variables.PC.pgen]; });
 /* Pronoun Templates - End */

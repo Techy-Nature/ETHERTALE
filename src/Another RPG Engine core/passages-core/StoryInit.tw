@@ -80,7 +80,7 @@
 
 /* Variables for determining lasting damage. By default, puppets are fully restored after every battle. See refreshPuppets for more info. */
 <<set $lastingDamage = false>>
-<<set $reviveAfterBattle = false>>
+<<set $reviveAfterBattle = true>>
 <<set $actionRefillAfterBattle = true>>
 
 /* Initializing constants that will be used elsewhere. DON'T define variables that will be used in JavaScript database definitions here, as StoryInit is run after JavaScript initialization. */
@@ -90,7 +90,7 @@
 <<set setup.DEFEND_FACTOR = 0.5>>
 <<set setup.SHIELD_FACTOR = 0.3>>
 <<set setup.ITEM_COST = 2>> /* EN cost of using items */
-<<set setup.RESPAWN_HP = 1>> /* proportion of HP that respawned characters will revive at */
+<<set setup.RESPAWN_HP = 0.5>> /* proportion of HP that respawned characters will revive at */
 <<set setup.THREAT_DECAY = 0.10>> /* threat decay per round */
 <<set setup.ITEM_MAX = 9>> /* maximum of each item that can be stored in inventory */
 <<set setup.PARTY_SIZE = 3>>

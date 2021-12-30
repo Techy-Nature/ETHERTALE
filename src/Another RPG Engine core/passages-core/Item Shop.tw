@@ -1,4 +1,4 @@
-:: Item Shop[noreturn]
+:: Item Shop[menuitem]
 <<longreturn>>
 
 MegaCorp® is happy to provide you with their top-of-the-line items, provided you have the cash. You have a limited budget, so choose which items you want to bring into your next battle. MegaCorp® will (with uncharacteristic generosity) fully refund you for any items you wish to exchange, so don't worry about going broke.
@@ -7,7 +7,7 @@ MegaCorp® is happy to provide you with their top-of-the-line items, provided yo
 
 <span id="items"><<include "item shop display">></span>
 
-:: item shop display[nobr]
+:: item shop display[nobr menuitem]
 <<for _k, _v range $inventory>>
 <<if _v.usable.includes("inbattle")>>
 <div>

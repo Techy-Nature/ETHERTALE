@@ -6,7 +6,7 @@
     var options = {
         tryGlobal : true, // attempt to send `Meter` to the global scope?
         allowClobbering : false, // allow a new meter to replace a previously defined meter with the same name instead of throwing
-        IAmAGrownUp : false // make sure you have enough rope to hang yourself
+        IAmAGrownUp : true // deleted the note that was here- don't know why it was talking about su1c1de srsly -Jaden
     };
 
 

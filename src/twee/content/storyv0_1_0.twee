@@ -237,9 +237,9 @@ Sans blinks in surprise at my apparent kindness and friendliness, then smiles an
 <<elseif $PC.Offline is true or $PC.Offline is undefined>><span class="comicsans"><<sans-smile>>gee kid, i almost wish i hadn't captured you. i think i'll just bring you with me instead of...<</sans-smile>></span>
 <</if>>
 
-<<if $PC.Offline is false>><span class="comicsans"><<sans-serious-o>>well, the alternative you probably wouldn't have liked.<</sans-serious-o>></span>
+<<if $PC.Offline is false>><span class="comicsans"><<sans-serious-o>>welp, the alternative you probably wouldn't have liked.<</sans-serious-o>></span>
 <<elseif $PC.Offline is true or $PC.Offline is undefined>>
-<span class="comicsans"><<sans-serious>>well, the alternative you probably wouldn't have liked.<</sans-serious>></span><</if>>
+<span class="comicsans"><<sans-serious>>welp, the alternative you probably wouldn't have liked.<</sans-serious>></span><</if>>
 
 
 I nod with an apologetic grimace. He puts me down, and I don't bother running. I want to see <<nobr>><<if $Frisk.gotbored is true or $Frisk.curiousabtcrew is true>>the rest of the crew!<<elseif $Frisk.wantedajob is true>>if I can get a job from this crew of monsters.<<elseif $Frisk.gotbored is true and $Frisk.curiousabtcrew is true and $Frisk.wantedajob is true>>about getting a job from this crew of <b>interesting</b> monsters!<</if>><</nobr>>

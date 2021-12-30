@@ -1,8 +1,8 @@
 :: Inventory Menu [menuitem stoptime]
-
+<<longreturn>>
 <<include "Inventory">>
 
-<<link "Return." $return>><</link>>
+@@.onlylink;[[Return.|$return]]@@
 
 :: Inventory [menuitem battle noreturn stoptime]
 <span id="content" class="menu"><<nobr>>
