@@ -2,9 +2,9 @@
 <<longreturn>>
 <<include "Inventory">>
 
-@@.onlylink;[[Return.|$return]]@@
+@@.onlylink;<<longreturn>>@@
 
-:: Inventory [menuitem battle noreturn stoptime]
+:: Inventory [menuitem battle stoptime]
 <span id="content" class="menu"><<nobr>>
 <<run console.log(inv())>>
 <<set _filter = "all">>

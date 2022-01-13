@@ -131,7 +131,7 @@ You are victorious! /* this is a reference to an old game, cookies if you recogn
 
 :: Widget: longreturn [widget nobr]
 <<widget "longreturn">>
-<<link "Return" $return>><</link>>
+<<return [[Return.|$return]]>>
 <</widget>>
 
 :: Widget: deathcheck [widget nobr]

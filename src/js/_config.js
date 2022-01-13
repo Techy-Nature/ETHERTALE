@@ -1,5 +1,5 @@
 $(document).on(':passagestart', function (ev) {
-	if (!ev.passage.tags.includesAny('menuitem','menu')) {
+	if (ev.passage.tags.includesAny('room','cutscene')) {
 		State.variables.return = ev.passage.title;
 	}
 });

@@ -66,7 +66,7 @@ It is <<printtime12hr>>
 		<<run toggleImg(true)>> to hide images,
 		and <<run toggleImg(false)>> to show images. */<</nobr>>
 <strong>WARNING: <i>If you're on Android, or any phone-like device, Online is the only way to play with pictures. Sorry about this.</i></strong>
-If you'd rather @@.PCdarklink.link2;<<if $PC.imagesHidden is false>><<link "disable images">><<set $PC.imagesHidden to true>><<run toggleImg(true)>><<refresh>><</link>><<elseif $PC.imagesHidden is true>><<link "enable images">><<set $PC.imageshidden to false>><<run ToggleImg(false)>><<refresh>><</link>><</if>>@@, we won't<<if $PC.imagesHidden is true>> mind one iota.<<elseif $PC.imagesHidden is false>> pass any blame.<</if>>
+If you'd rather @@.PCdarklink.link2;<<if $PC.imagesHidden is false>><<link "disable images">><<set $PC.imagesHidden to true>><<run toggleImg(true)>><<refresh>><</link>><<elseif $PC.imagesHidden is true>><<link "enable images">><<set $PC.imageshidden to false>><<run toggleImg(false)>><<refresh>><</link>><</if>>@@, we won't<<if $PC.imagesHidden is true>> mind one iota.<<elseif $PC.imagesHidden is false>> pass any blame.<</if>>
 
 @@.link3.PCdarklink;<<if $debug is false>>
   <<link "Turn on debug mode?" 'Player-Settings'>><<set $debug to true>><<refresh>><</link>>
@@ -79,7 +79,7 @@ If debug is on, be prepared for spoilers that are unwanted.
 <<nobr>><<if $debug is true>>[[Test pronouns|Test pronouns room - debug]]<</if>>
 <</nobr>>@@
 
-<span class="pcdarklink link5"><<link "Return." $return>><<refresh>><</link>></span>
+<span class="pcdarklink link5"><<longreturn>></span>
 
 :: Test pronouns room - debug [stoptime menuitem]
 
@@ -123,7 +123,7 @@ Here, we can test your pronouns. Hopefully, errors won't abound.
 ?generalPerson
 
 
-<span class="pcdarklink onlylink" ><<link "Return." $return>><</link>></span>
+<span class="pcdarklink onlylink" ><<longreturn>></span>
 
 :: Pronouns [menuitem stoptime]
 
@@ -137,7 +137,7 @@ Here, we can test your pronouns. Hopefully, errors won't abound.
 <</listbox>>
 @@.pcdarklink.link2;[[I don't like any of these.|Custom Pronouns]]@@
 
-<span class="pcdarklink link1"><<link "Thanks, Frisk. I'll go by these pronouns." $return>></span><</link>>
+<span class="pcdarklink link1"><<link "Thanks, Frisk. I'll go by these pronouns." $return>><</link>></span>
 
 :: Custom Pronouns [menuitem stoptime]
 
