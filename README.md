@@ -5,25 +5,15 @@
 
 A coming of age adventure CYOA UNDERTALE AU that will have space travel, inventory management, sci-fi technology and choices that impact your playthrough as well as future playthroughs, just like the original UNDERTALE.
 
-# DONATE?
+# ARCHIVED PROJECT 
 
-You don't have to, but I'd really appreciate it if you did. :) It helps me get better artwork, music and possibly coding help as well. 
+This project is no longer actively being maintained. The Code is still mine, and the art's copyrights stay with the original artists. I have an outline for this, but seeing as I have have been able to find time to work on this (and frankly, I am unsure what the story even was supposed to be after all this time.. I've gone to school and become an adult in the time that I haven't been writing this!) this game and project are now **archived.** This means it stays up, but it will be unlisted or privated so only certain people can see it. I will be showing the most recent compiled version to potential employers as an example of what I can do with enough focus and time.. If you'd like a more personal reason for this archival, see the [blog](https://archived-ethertale-game.tumblr.com/?source=share), in the pinned [blog post.](https://www.tumblr.com/archived-ethertale-game/754305587383336960/i-am-sorry?source=share)
 
-[Donate! Every dollar helps!](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=JQ9BXNQUQS5NQ&currency_code=USD)
-Bitcoin/My Monero donations send to: 47ntPeRSKfpbQBdziwTZ8q5HNuCybTLuQZ3ZGmHtht3HMYwJi3YW4Cr1YECv2JfzwqJKebRVz27QzXkoLmadFdg2Rsfa1jx
-
-This is the QR Code for the Monero Request.
-
-![My Monero Request](https://64.media.tumblr.com/fa1cdf3e2a8db0e2ef95834f398a5aaa/e637204a645e7333-c1/s250x400/3ea440c213d77dbd48b20a4e8630e9f8e8da8227.png)
-
-I also have a CashApp account now! Click on [this link](https://cash.app/$TechyNature) or scan the QR code to donate. :)
-![CashApp Request](https://64.media.tumblr.com/bc43916bcc90eec9f0fe0521e8ff082a/e637204a645e7333-1b/s640x960/00475fcd0dca03a9475c056a2037e937e4e2a747.jpg)
-
-Thanks so much if you donate, or if you share this page or the [Tumblr dev blog](https://ethertale-fangame.tumblr.com) around!
+So sorry to anyone this might disappoint.
 
 ## Getting Started
 
-Follow the instructions below in installing. Find index.html and run that on any recently updated browser after extracting the zip file, and you should be ready to play! Make sure to keep the files in the same arrangement and the same file names as they came in.
+Follow the instructions below in installing. Find index.html and run that on any recently updated browser after extracting the zip file, and you should be ready to play! Make sure to keep the files in the same arrangement and the same file names as they came in, otherwise that will mess it up.
 
 ### Prerequisites
 
